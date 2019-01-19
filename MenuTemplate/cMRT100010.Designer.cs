@@ -29,16 +29,6 @@
         private void InitializeComponent()
         {
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.BottomStatePanel = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
-            this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
-            this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
             this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
@@ -48,20 +38,30 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.BottomStatePanel = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.ContainerPanel = new System.Windows.Forms.Panel();
             this.MenuLeftPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
             this.TopPanel.SuspendLayout();
-            this.BottomStatePanel.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
+            this.BottomStatePanel.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuLeftPanel
             // 
-            this.MenuLeftPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(124)))), ((int)(((byte)(129)))));
             this.MenuLeftPanel.Controls.Add(this.ExitButton);
             this.MenuLeftPanel.Controls.Add(this.pictureBox1);
             this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
@@ -76,112 +76,6 @@
             this.MenuLeftPanel.Name = "MenuLeftPanel";
             this.MenuLeftPanel.Size = new System.Drawing.Size(200, 576);
             this.MenuLeftPanel.TabIndex = 0;
-            // 
-            // TopPanel
-            // 
-            this.TopPanel.BackColor = System.Drawing.Color.White;
-            this.TopPanel.Controls.Add(this.CloseWindowsPictureBox);
-            this.TopPanel.Controls.Add(this.MaxWindowsPictureBox);
-            this.TopPanel.Controls.Add(this.MinWindowsPictureBox);
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(200, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(688, 30);
-            this.TopPanel.TabIndex = 1;
-            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            // 
-            // BottomStatePanel
-            // 
-            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BottomStatePanel.Controls.Add(this.statusStrip1);
-            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomStatePanel.Location = new System.Drawing.Point(200, 546);
-            this.BottomStatePanel.Name = "BottomStatePanel";
-            this.BottomStatePanel.Size = new System.Drawing.Size(688, 30);
-            this.BottomStatePanel.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UsertoolStripStatusLabel,
-            this.DatetoolStripStatusLabel,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(688, 30);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // DatetoolStripStatusLabel
-            // 
-            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
-            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
-            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
-            // 
-            // ContainerPanel
-            // 
-            this.ContainerPanel.BackgroundImage = global::MenuTemplate.Properties.Resources.BackgroudClock;
-            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
-            this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
-            this.ContainerPanel.TabIndex = 3;
-            // 
-            // UsertoolStripStatusLabel
-            // 
-            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.UsertoolStripStatusLabel.Image = global::MenuTemplate.Properties.Resources.user24;
-            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
-            this.UsertoolStripStatusLabel.Text = "JBALAM";
-            // 
-            // CloseWindowsPictureBox
-            // 
-            this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.close32;
-            this.CloseWindowsPictureBox.Location = new System.Drawing.Point(648, 0);
-            this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
-            this.CloseWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.CloseWindowsPictureBox.TabIndex = 3;
-            this.CloseWindowsPictureBox.TabStop = false;
-            this.CloseWindowsPictureBox.Click += new System.EventHandler(this.CloseWindowsPictureBox_Click);
-            // 
-            // MaxWindowsPictureBox
-            // 
-            this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MaxWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.maximizar32;
-            this.MaxWindowsPictureBox.Location = new System.Drawing.Point(615, 0);
-            this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
-            this.MaxWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.MaxWindowsPictureBox.TabIndex = 2;
-            this.MaxWindowsPictureBox.TabStop = false;
-            this.MaxWindowsPictureBox.Click += new System.EventHandler(this.MaxWindowsPictureBox_Click);
-            // 
-            // MinWindowsPictureBox
-            // 
-            this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MinWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.minimizar32;
-            this.MinWindowsPictureBox.Location = new System.Drawing.Point(582, 0);
-            this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
-            this.MinWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.MinWindowsPictureBox.TabIndex = 1;
-            this.MinWindowsPictureBox.TabStop = false;
-            this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
             // 
             // ExitButton
             // 
@@ -343,6 +237,112 @@
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.Color.White;
+            this.TopPanel.Controls.Add(this.CloseWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MaxWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MinWindowsPictureBox);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(200, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(688, 30);
+            this.TopPanel.TabIndex = 1;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            // 
+            // CloseWindowsPictureBox
+            // 
+            this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.close32;
+            this.CloseWindowsPictureBox.Location = new System.Drawing.Point(648, 0);
+            this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
+            this.CloseWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.CloseWindowsPictureBox.TabIndex = 3;
+            this.CloseWindowsPictureBox.TabStop = false;
+            this.CloseWindowsPictureBox.Click += new System.EventHandler(this.CloseWindowsPictureBox_Click);
+            // 
+            // MaxWindowsPictureBox
+            // 
+            this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MaxWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.maximizar32;
+            this.MaxWindowsPictureBox.Location = new System.Drawing.Point(615, 0);
+            this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
+            this.MaxWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MaxWindowsPictureBox.TabIndex = 2;
+            this.MaxWindowsPictureBox.TabStop = false;
+            this.MaxWindowsPictureBox.Click += new System.EventHandler(this.MaxWindowsPictureBox_Click);
+            // 
+            // MinWindowsPictureBox
+            // 
+            this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MinWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.minimizar32;
+            this.MinWindowsPictureBox.Location = new System.Drawing.Point(582, 0);
+            this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
+            this.MinWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MinWindowsPictureBox.TabIndex = 1;
+            this.MinWindowsPictureBox.TabStop = false;
+            this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
+            // 
+            // BottomStatePanel
+            // 
+            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BottomStatePanel.Controls.Add(this.statusStrip1);
+            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomStatePanel.Location = new System.Drawing.Point(200, 546);
+            this.BottomStatePanel.Name = "BottomStatePanel";
+            this.BottomStatePanel.Size = new System.Drawing.Size(688, 30);
+            this.BottomStatePanel.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsertoolStripStatusLabel,
+            this.DatetoolStripStatusLabel,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(688, 30);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // UsertoolStripStatusLabel
+            // 
+            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UsertoolStripStatusLabel.Image = global::MenuTemplate.Properties.Resources.user24;
+            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
+            this.UsertoolStripStatusLabel.Text = "JBALAM";
+            // 
+            // DatetoolStripStatusLabel
+            // 
+            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(134, 25);
+            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
+            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
+            // 
+            // ContainerPanel
+            // 
+            this.ContainerPanel.BackgroundImage = global::MenuTemplate.Properties.Resources.BackgroudClock;
+            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
+            this.ContainerPanel.TabIndex = 3;
+            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,16 +356,16 @@
             this.Name = "cMRT100010";
             this.Text = "Form1";
             this.MenuLeftPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.TopPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).EndInit();
             this.BottomStatePanel.ResumeLayout(false);
             this.BottomStatePanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
