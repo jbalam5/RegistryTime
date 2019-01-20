@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using System.Configuration;
 using System.IO;
+using System.Data.SqlClient;
 
 
 namespace BussinesLayer.Connection
@@ -17,13 +18,21 @@ namespace BussinesLayer.Connection
         public String core = "BusinessJDLRegistryTime.Conexion";
         public String name = ConfigurationManager.AppSettings.Get("nameSystem");
 
-        
+       public void CreateDirectory(String directory)
+        {
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+        }
+
         public void saveConexion(String instancia, String username, String password, String database)
         {
             try
             {
-                
-                String path = String.Format(@"C:\{0}\ConnectionString.config", name);
+                String directory = String.Format("C:\\{0}", name);
+                CreateDirectory(directory);
+                String path = String.Format(@"{0}\ConnectionString.config", directory);
                 File.Delete(path);
                 if (!File.Exists(path))
                 {
@@ -133,6 +142,37 @@ namespace BussinesLayer.Connection
             catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.DesEncriptar: {1}", core, ex));
+            }
+        }
+
+        public void CreateConnection()
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionStrings()
+                };
+                Conexion.Open();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception("Datos de Conexion incorrectos!!");
+                //throw new Exception(String.Format("{0}.CreateConnection", core, ex));
+            }
+        }
+        public void DeleteConnection()
+        {
+            try
+            {
+                String directory = String.Format("C:\\{0}", name);
+                CreateDirectory(directory);
+                String path = String.Format(@"{0}\ConnectionString.config", directory);
+                File.Delete(path);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.DeleteConnection: {1}", core, ex));
             }
         }
 

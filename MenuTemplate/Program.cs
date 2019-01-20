@@ -12,11 +12,26 @@ namespace MenuTemplate
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new cMRT100010());
+            try
+            {
+                ArgumentSystem.Arguments arguments = new ArgumentSystem.Arguments();
+                if(args.Length == 0)
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new cMRT100010());
+                }
+                else
+                {
+                    arguments.Verification(args);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("Main: {0}", ex), "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
     }
 }

@@ -40,6 +40,7 @@
       <HintPath>..\LibPackage\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,11 +53,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArgumentSystem\Arguments.cs" />
     <Compile Include="cMRT100010.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="cMRT100010.Designer.cs">
       <DependentUpon>cMRT100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMCX000010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMCX000010.Designer.cs">
+      <DependentUpon>cFMCX000010.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\cFRT110010.cs">
       <SubType>Form</SubType>
@@ -80,6 +88,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="cMRT100010.resx">
       <DependentUpon>cMRT100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMCX000010.resx">
+      <DependentUpon>cFMCX000010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT110010.resx">
       <DependentUpon>cFRT110010.cs</DependentUpon>
@@ -188,6 +199,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\CircleDeletex421.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BussinesLayer\BusinessLayer.csproj">
+      <Project>{c3955e83-a7d3-4a42-afd0-d13923f55e41}</Project>
+      <Name>BusinessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
