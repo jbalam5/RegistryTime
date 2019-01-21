@@ -32,7 +32,7 @@
             this.ContainerPanel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ButtonSave = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialSingleLineTextField9 = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -84,7 +84,7 @@
             this.ContainerPanel.BackColor = System.Drawing.Color.White;
             this.ContainerPanel.Controls.Add(this.button3);
             this.ContainerPanel.Controls.Add(this.button2);
-            this.ContainerPanel.Controls.Add(this.button1);
+            this.ContainerPanel.Controls.Add(this.ButtonSave);
             this.ContainerPanel.Controls.Add(this.label2);
             this.ContainerPanel.Controls.Add(this.materialLabel9);
             this.ContainerPanel.Controls.Add(this.materialSingleLineTextField9);
@@ -144,21 +144,22 @@
             this.button2.TabIndex = 24;
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // ButtonSave
             // 
-            this.button1.BackColor = System.Drawing.Color.Transparent;
-            this.button1.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleSavex48;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(44, 51);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(35, 36);
-            this.button1.TabIndex = 23;
-            this.button1.UseVisualStyleBackColor = false;
+            this.ButtonSave.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonSave.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleSavex48;
+            this.ButtonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ButtonSave.FlatAppearance.BorderSize = 0;
+            this.ButtonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ButtonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ButtonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSave.Location = new System.Drawing.Point(44, 51);
+            this.ButtonSave.Margin = new System.Windows.Forms.Padding(1);
+            this.ButtonSave.Name = "ButtonSave";
+            this.ButtonSave.Size = new System.Drawing.Size(35, 36);
+            this.ButtonSave.TabIndex = 23;
+            this.ButtonSave.UseVisualStyleBackColor = false;
+            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
             // 
             // label2
             // 
@@ -557,6 +558,6 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextField7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonSave;
     }
 }

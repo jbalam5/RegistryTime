@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
-            this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
@@ -48,6 +47,9 @@
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.buttonTurno = new System.Windows.Forms.Button();
             this.MenuLeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
@@ -57,12 +59,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuLeftPanel
             // 
             this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(124)))), ((int)(((byte)(129)))));
-            this.MenuLeftPanel.Controls.Add(this.ExitButton);
+            this.MenuLeftPanel.Controls.Add(this.buttonTurno);
+            this.MenuLeftPanel.Controls.Add(this.panel1);
             this.MenuLeftPanel.Controls.Add(this.pictureBox1);
             this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
             this.MenuLeftPanel.Controls.Add(this.ReportsButton);
@@ -76,26 +80,6 @@
             this.MenuLeftPanel.Name = "MenuLeftPanel";
             this.MenuLeftPanel.Size = new System.Drawing.Size(200, 576);
             this.MenuLeftPanel.TabIndex = 0;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExitButton.FlatAppearance.BorderSize = 0;
-            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.ForeColor = System.Drawing.Color.White;
-            this.ExitButton.Image = global::MenuTemplate.Properties.Resources.exit32;
-            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitButton.Location = new System.Drawing.Point(2, 536);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(199, 40);
-            this.ExitButton.TabIndex = 8;
-            this.ExitButton.Text = "  Salir";
-            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ExitButton.UseVisualStyleBackColor = true;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // pictureBox1
             // 
@@ -138,7 +122,7 @@
             this.ReportsButton.ForeColor = System.Drawing.Color.White;
             this.ReportsButton.Image = global::MenuTemplate.Properties.Resources.reports32;
             this.ReportsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsButton.Location = new System.Drawing.Point(2, 328);
+            this.ReportsButton.Location = new System.Drawing.Point(4, 377);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(199, 40);
             this.ReportsButton.TabIndex = 5;
@@ -157,7 +141,7 @@
             this.TurnosButton.ForeColor = System.Drawing.Color.White;
             this.TurnosButton.Image = global::MenuTemplate.Properties.Resources.time32;
             this.TurnosButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TurnosButton.Location = new System.Drawing.Point(1, 288);
+            this.TurnosButton.Location = new System.Drawing.Point(3, 337);
             this.TurnosButton.Name = "TurnosButton";
             this.TurnosButton.Size = new System.Drawing.Size(199, 40);
             this.TurnosButton.TabIndex = 4;
@@ -197,7 +181,7 @@
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Image = global::MenuTemplate.Properties.Resources.settings32;
             this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(1, 374);
+            this.SettingsButton.Location = new System.Drawing.Point(3, 423);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(199, 40);
             this.SettingsButton.TabIndex = 2;
@@ -343,6 +327,54 @@
             this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
             this.ContainerPanel.TabIndex = 3;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 537);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 39);
+            this.panel1.TabIndex = 9;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Image = global::MenuTemplate.Properties.Resources.exit32;
+            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ExitButton.Location = new System.Drawing.Point(1, -1);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(199, 40);
+            this.ExitButton.TabIndex = 9;
+            this.ExitButton.Text = "  Salir";
+            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ExitButton.UseVisualStyleBackColor = true;
+            // 
+            // buttonTurno
+            // 
+            this.buttonTurno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonTurno.FlatAppearance.BorderSize = 0;
+            this.buttonTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonTurno.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTurno.ForeColor = System.Drawing.Color.White;
+            this.buttonTurno.Image = global::MenuTemplate.Properties.Resources.office32;
+            this.buttonTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonTurno.Location = new System.Drawing.Point(0, 288);
+            this.buttonTurno.Name = "buttonTurno";
+            this.buttonTurno.Size = new System.Drawing.Size(199, 40);
+            this.buttonTurno.TabIndex = 10;
+            this.buttonTurno.Text = "Puesto";
+            this.buttonTurno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTurno.UseVisualStyleBackColor = true;
+            this.buttonTurno.Click += new System.EventHandler(this.buttonTurno_Click);
+            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -355,6 +387,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cMRT100010";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.cMRT100010_Load);
             this.MenuLeftPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
@@ -366,6 +399,7 @@
             this.BottomStatePanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -387,11 +421,13 @@
         private System.Windows.Forms.Button EmploymentsButton;
         private System.Windows.Forms.Button ReportsButton;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel UsertoolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel DatetoolStripStatusLabel;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button buttonTurno;
     }
 }
 

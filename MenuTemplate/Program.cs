@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MenuTemplate.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace MenuTemplate
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new cMRT100010());
+                    Application.Run(new cFMTE100010());
+                    //Application.Run(new cMRT100010());
                 }
                 else
                 {

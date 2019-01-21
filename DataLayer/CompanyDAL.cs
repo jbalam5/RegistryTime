@@ -23,7 +23,7 @@ namespace DataLayer
         public String Email { get; set; }
         public String PostalCode { get; set; }
         public String Telephone { get; set; }
-        public String image { get; set; }
+        public String Image { get; set; }
         public int _regitry { get; set; }
         public int IdUserInsert { get; set; }
         public DateTime DateInsert { get; set; }
@@ -87,7 +87,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( rfc,businessName,street,musicipality,state,country,email,postalCode,telephone,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},{3},{4},{5},{6},{7},{8},{9},1,{10},GETDATE())",company.Rfc, company.BusinessName, company.Street, company.Musicipality, company.State, company.Country, company.Email, company.PostalCode, company.Telephone, company.image ,company.IdUserInsert);
+                Query.AppendFormat(" VALUES({0},{1},{3},{4},{5},{6},{7},{8},{9},1,{10},GETDATE())",company.Rfc, company.BusinessName, company.Street, company.Musicipality, company.State, company.Country, company.Email, company.PostalCode, company.Telephone, company.Image ,company.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -121,7 +121,7 @@ namespace DataLayer
                 Query.AppendFormat("email = {0}", company.Email);
                 Query.AppendFormat("postalCode = {0}", company.PostalCode);
                 Query.AppendFormat("telephone = {0}", company.Telephone);
-                Query.AppendFormat("image = {0}", company.image);
+                Query.AppendFormat("image = {0}", company.Image);
                 Query.AppendFormat("idUserUpdate = {0}", company.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", company.Id);

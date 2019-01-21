@@ -56,5 +56,15 @@ namespace MenuTemplate.Forms
         private extern static void SendMessage(System.IntPtr hwnd, int wsmg, int wparam, int lparam);
 
         #endregion
+
+        private void ButtonSave_Click(object sender, EventArgs e)
+        {
+            try{
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("ButtonSave_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

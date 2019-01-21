@@ -114,5 +114,15 @@ namespace MenuTemplate
         {
             this.Close();
         }
+
+        private void cMRT100010_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void buttonTurno_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new MenuTemplate.Forms.cFRT110010());
+        }
     }
 }

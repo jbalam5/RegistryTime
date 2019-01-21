@@ -103,5 +103,61 @@ namespace MenuTemplate.Forms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!String.IsNullOrEmpty(textBoxServer.Text) && !String.IsNullOrEmpty(textBoxUserName.Text) && !String.IsNullOrEmpty(textBoxPassword.Text) && !String.IsNullOrEmpty(textBoxDatabase.Text))
+        //        {
+        //            connection.saveConexion(textBoxServer.Text, textBoxUserName.Text, textBoxPassword.Text, textBoxDatabase.Text);
+        //            try
+        //            {
+        //                connection.CreateConnection();
+        //                MessageBox.Show("DATOS GUARDADOS", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                MessageBox.Show("Datos de Conexion incorrectos!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                connection.DeleteConnection();
+        //                Clear();
+        //            }
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(String.Format("button1_Click: {0}", ex), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
+
+        
+
+        private void buttonGUARDAR_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(textBoxServer.Text) && !String.IsNullOrEmpty(textBoxUserName.Text) && !String.IsNullOrEmpty(textBoxPassword.Text) && !String.IsNullOrEmpty(textBoxDatabase.Text))
+                {
+                    connection.saveConexion(textBoxServer.Text, textBoxUserName.Text, textBoxPassword.Text, textBoxDatabase.Text);
+                    try
+                    {
+                        connection.CreateConnection();
+                        MessageBox.Show("DATOS GUARDADOS", "INFORMACION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Datos de Conexion incorrectos!!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        connection.DeleteConnection();
+                        Clear();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("button1_Click: {0}", ex), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

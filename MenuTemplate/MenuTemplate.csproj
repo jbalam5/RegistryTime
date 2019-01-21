@@ -66,6 +66,12 @@
     <Compile Include="Forms\cFMCX000010.Designer.cs">
       <DependentUpon>cFMCX000010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFMTE100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMTE100010.Designer.cs">
+      <DependentUpon>cFMTE100010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\cFRT110010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMCX000010.resx">
       <DependentUpon>cFMCX000010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMTE100010.resx">
+      <DependentUpon>cFMTE100010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT110010.resx">
       <DependentUpon>cFRT110010.cs</DependentUpon>
@@ -204,6 +213,10 @@
     <ProjectReference Include="..\BussinesLayer\BusinessLayer.csproj">
       <Project>{c3955e83-a7d3-4a42-afd0-d13923f55e41}</Project>
       <Name>BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataLayer\DataLayer.csproj">
+      <Project>{7a752e3c-ca6a-4128-a608-e830589577fd}</Project>
+      <Name>DataLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

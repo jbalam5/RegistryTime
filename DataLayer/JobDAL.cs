@@ -75,7 +75,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},1,{2},GETDATE())", job.Name, job.Description, job.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}',1,{2},GETDATE())", job.Name, job.Description, job.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
