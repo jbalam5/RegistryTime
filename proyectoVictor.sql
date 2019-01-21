@@ -1,3 +1,4 @@
+
 use registryTime
 go 
 create table users(
@@ -46,7 +47,7 @@ go
 create table job (
 id int primary key identity(1,1) not null,
 name nvarchar(50) not null,
-descript nvarchar(250),
+description nvarchar(250),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
