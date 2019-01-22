@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(DaysOfTurnDAL daysOfTurn)
+        public int Save(DaysOfTurnML daysOfTurn)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(DaysOfTurnDAL daysOfTurn)
+        public int Delete(DaysOfTurnML daysOfTurn)
         {
             try
             {

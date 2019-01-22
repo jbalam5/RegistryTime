@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,19 +13,7 @@ namespace DataLayer
     {
         public String core = "DataLayer.DepartamentDAL";
         public String TableName = "departament";
-
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String Manage { get; set; }
-        public String Description { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
+        public String TablaStatusBook = "statusBook";
 
         public DataTable All(String ConnectionString)
         {
@@ -33,7 +22,7 @@ namespace DataLayer
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Nombre,{0}.[manager] as Encargado,{0}.[description] as Descripcion,{1}.Name as Estado FROM {0} left outer join {1} on {1}.id = {0}._registry where {0}._registry = 1", TableName, TablaStatusBook);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
@@ -69,7 +58,7 @@ namespace DataLayer
         }
 
 
-        public int Save(DepartamentDAL departament, String ConnectionString)
+        public int Save(DepartamentML departament, String ConnectionString)
         {
             try
             {
@@ -77,7 +66,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},{2},1,{3},GETDATE())", departament.Name,departament.Manage, departament.Description, departament.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", departament.Name,departament.Manage, departament.Description, departament.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
@@ -92,7 +81,7 @@ namespace DataLayer
 
         }
 
-        public int Update(DepartamentDAL departament, String ConnectionString)
+        public int Update(DepartamentML departament, String ConnectionString)
         {
             try
             {
@@ -122,7 +111,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DepartamentDAL departament, String ConnectionString)
+        public int Delete(DepartamentML departament, String ConnectionString)
         {
             try
             {

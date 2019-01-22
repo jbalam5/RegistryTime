@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,17 +13,6 @@ namespace DataLayer
     {
         public String core = "DataLayer.PermissionDAL";
         public String TableName = "permission";
-
-        public int Id { get; set; }
-        public String IdUser { get; set; }
-        public String IdPermission { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
 
 
         public DataTable All(String ConnectionString)
@@ -71,7 +61,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(PermissionsOfUserDAL permissionsOfUser, String ConnectionString)
+        public int Save(PermissionsOfUserML permissionsOfUser, String ConnectionString)
         {
             try
             {
@@ -96,7 +86,7 @@ namespace DataLayer
 
         }
 
-        public int Update(PermissionsOfUserDAL permissionsOfUser, String ConnectionString)
+        public int Update(PermissionsOfUserML permissionsOfUser, String ConnectionString)
         {
             try
             {
@@ -127,7 +117,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(PermissionsOfUserDAL permissionsOfUser, String ConnectionString)
+        public int Delete(PermissionsOfUserML permissionsOfUser, String ConnectionString)
         {
             try
             {

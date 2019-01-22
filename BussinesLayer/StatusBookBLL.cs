@@ -5,12 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
     public class StatusBookBLL
     {
-        public StatusBookDAL StatusBook = new StatusBookDAL();
+        public StatusBookDAL StatusBookDAL = new StatusBookDAL();
         public Connection.ConnectionBLL conexion = new Connection.ConnectionBLL();
         public String ConnectionStrings;
         public String core = "BussinesLayer.StatusBookBLL";
@@ -24,7 +25,7 @@ namespace BussinesLayer
         {
             try
             {
-                return StatusBook.All(ConnectionStrings);
+                return StatusBookDAL.All(ConnectionStrings);
 
             }
             catch (Exception ex)
@@ -38,7 +39,7 @@ namespace BussinesLayer
             try
             {
 
-                return StatusBook.GetIdEntity(Id, ConnectionStrings);
+                return StatusBookDAL.GetIdEntity(Id, ConnectionStrings);
             }
             catch (Exception ex)
             {
@@ -46,17 +47,17 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(StatusBookDAL StatusBook)
+        public int Save(StatusBookML StatusBook)
         {
             try
             {
                 if (StatusBook.Id == 0)
                 {
-                    return StatusBook.Save(StatusBook, ConnectionStrings);
+                    return StatusBookDAL.Save(StatusBook, ConnectionStrings);
                 }
                 else
                 {
-                    return StatusBook.Update(StatusBook, ConnectionStrings);
+                    return StatusBookDAL.Update(StatusBook, ConnectionStrings);
                 }
             }
             catch (Exception ex)
@@ -65,11 +66,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(StatusBookDAL StatusBook)
+        public int Delete(StatusBookML StatusBook)
         {
             try
             {
-                return StatusBook.Delete(StatusBook, ConnectionStrings);
+                return StatusBookDAL.Delete(StatusBook, ConnectionStrings);
             }
             catch (Exception ex)
             {

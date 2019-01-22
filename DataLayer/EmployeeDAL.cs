@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -13,24 +14,7 @@ namespace DataLayer
         public String core = "DataLayer.EmployeeDAL";
         public String TableName = "employee";
 
-        public int Id { get; set; }
-        public String RFC { get; set; }
-        public String Curp { get; set; }
-        public String Name { get; set; }
-        public String LastName { get; set; }
-        public String Scholarship { get; set; }
-        public String IdJob { get; set; }
-        public String IdDepartament { get; set; }
-        public String IdUser { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
-
+       
         public DataTable All(String ConnectionString)
         {
             try
@@ -74,7 +58,7 @@ namespace DataLayer
         }
 
 
-        public int Save(EmployeeDAL employee, String ConnectionString)
+        public int Save(EmployeeML employee, String ConnectionString)
         {
             try
             {
@@ -82,7 +66,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( rfc,curp,name,lastname,scholarship,idJob,idDepartament,idUser,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},{2},{3},{4},{5},{6},{7},1,{9},GETDATE())", employee.RFC, employee.Curp, employee.Name, employee.LastName,employee.Scholarship, employee.IdJob, employee.IdDepartament, employee.IdUser,employee.IdUserDelete);
+                Query.AppendFormat(" VALUES('{0}','{1}','{2}','{3}','{4}',{5},{6},{7},1,{9},GETDATE())", employee.RFC, employee.Curp, employee.Name, employee.LastName,employee.Scholarship, employee.IdJob, employee.IdDepartament, employee.IdUser,employee.IdUserDelete);
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
@@ -97,7 +81,7 @@ namespace DataLayer
 
         }
 
-        public int Update(EmployeeDAL employee, String ConnectionString)
+        public int Update(EmployeeML employee, String ConnectionString)
         {
             try
             {
@@ -132,7 +116,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(EmployeeDAL employee, String ConnectionString)
+        public int Delete(EmployeeML employee, String ConnectionString)
         {
             try
             {

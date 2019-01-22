@@ -29,6 +29,12 @@ idUserDelete int,
 dateDelete datetime
 )
 
+GO
+
+INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Activo','Dato')
+INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Inactivo','Dato')
+           
+GO
 go
 create table role(
 id int primary key identity(1,1) not null,

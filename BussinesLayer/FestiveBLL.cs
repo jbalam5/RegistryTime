@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(FestiveDAL festive)
+        public int Save(FestiveML festive)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(FestiveDAL festive)
+        public int Delete(FestiveML festive)
         {
             try
             {

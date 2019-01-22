@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(EmployeeDAL employee)
+        public int Save(EmployeeML employee)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(EmployeeDAL employee)
+        public int Delete(EmployeeML employee)
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(PermissionsOfUserDAL PermissionsOfUser)
+        public int Save(PermissionsOfUserML PermissionsOfUser)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(PermissionsOfUserDAL PermissionsOfUser)
+        public int Delete(PermissionsOfUserML PermissionsOfUser)
         {
             try
             {

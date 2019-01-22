@@ -67,6 +67,10 @@
       <Project>{7a752e3c-ca6a-4128-a608-e830589577fd}</Project>
       <Name>DataLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
+      <Project>{685a462a-723f-4b66-be27-bf5ce9ad7177}</Project>
+      <Name>ModelLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

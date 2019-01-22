@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -13,17 +14,7 @@ namespace DataLayer
         public String core = "DataLayer.TurnDAL";
         public String TableName = "turn";
 
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String StarTime { get; set; }
-        public String EndTime { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
+        
 
 
         public DataTable All(String ConnectionString)
@@ -72,7 +63,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(TurnDAL turn, String ConnectionString)
+        public int Save(TurnML turn, String ConnectionString)
         {
             try
             {
@@ -80,7 +71,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,startTime,endTime,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1}{2},1,{3},GETDATE())", turn.Name, turn.StarTime, turn.EndTime, turn.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", turn.Name, turn.StarTime, turn.EndTime, turn.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -97,7 +88,7 @@ namespace DataLayer
 
         }
 
-        public int Update(TurnDAL turn, String ConnectionString)
+        public int Update(TurnML turn, String ConnectionString)
         {
             try
             {
@@ -105,9 +96,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("name = {0}", turn.Name);
-                Query.AppendFormat("startTime = {0}", turn.StarTime);
-                Query.AppendFormat("endTime = {0}", turn.EndTime);
+                Query.AppendFormat("name = '{0}'", turn.Name);
+                Query.AppendFormat("startTime = '{0}'", turn.StarTime);
+                Query.AppendFormat("endTime = '{0}'", turn.EndTime);
                 Query.AppendFormat("idUserUpdate = {0}", turn.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", turn.Id);
@@ -129,7 +120,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(TurnDAL turn, String ConnectionString)
+        public int Delete(TurnML turn, String ConnectionString)
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -13,16 +14,7 @@ namespace DataLayer
         public String core = "DataLayer.PermissionDAL";
         public String TableName = "permission";
 
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String Type { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
+      
 
 
         public DataTable All(String ConnectionString)
@@ -71,7 +63,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(PermissionDAL permission, String ConnectionString)
+        public int Save(PermissionML permission, String ConnectionString)
         {
             try
             {
@@ -79,7 +71,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("(name,type,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},1,{2},GETDATE())", permission.Name, permission.Type);
+                Query.AppendFormat(" VALUES('{0}',{1},1,{2},GETDATE())", permission.Name, permission.Type);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -96,7 +88,7 @@ namespace DataLayer
 
         }
 
-        public int Update(PermissionDAL permission, String ConnectionString)
+        public int Update(PermissionML permission, String ConnectionString)
         {
             try
             {
@@ -104,7 +96,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("Name = {0}", permission.Name);
+                Query.AppendFormat("Name = '{0}'", permission.Name);
                 Query.AppendFormat("type = {0}", permission.Type);
                 Query.AppendFormat("idUserUpdate = {0}", permission.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
@@ -127,7 +119,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(PermissionDAL permission, String ConnectionString)
+        public int Delete(PermissionML permission, String ConnectionString)
         {
             try
             {

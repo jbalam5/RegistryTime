@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,19 +13,6 @@ namespace DataLayer
     {
         public String core = "DataLayer.FestiveDAL";
         public String TableName = "festive";
-
-        public int Id { get; set; }
-        public String Date { get; set; }
-        public String Name { get; set; }
-        public String TypeJob { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
 
         public DataTable All(String ConnectionString)
         {
@@ -72,7 +60,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(FestiveDAL festive, String ConnectionString)
+        public int Save(FestiveML festive, String ConnectionString)
         {
             try
             {
@@ -80,7 +68,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( date,name,typeJob,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1}{2},1,{3},GETDATE())", festive.Date, festive.Name, festive.TypeJob, festive.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", festive.Date, festive.Name, festive.TypeJob, festive.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -97,7 +85,7 @@ namespace DataLayer
 
         }
 
-        public int Update(FestiveDAL festive, String ConnectionString)
+        public int Update(FestiveML festive, String ConnectionString)
         {
             try
             {
@@ -105,9 +93,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("date = {0}", festive.Date);
-                Query.AppendFormat("name = {0}", festive.Name);
-                Query.AppendFormat("typeJob = {0}", festive.TypeJob);
+                Query.AppendFormat("date = '{0}'", festive.Date);
+                Query.AppendFormat("name = '{0}'", festive.Name);
+                Query.AppendFormat("typeJob = '{0}'", festive.TypeJob);
                 Query.AppendFormat("idUserUpdate = {0}", festive.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", festive.Id);
@@ -129,7 +117,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(FestiveDAL festive, String ConnectionString)
+        public int Delete(FestiveML festive, String ConnectionString)
         {
             try
             {

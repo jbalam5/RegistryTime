@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
 using System.Data;
+using ModelLayer;
+
 namespace BussinesLayer
 {
     public class UsersBLL
@@ -44,7 +46,7 @@ namespace BussinesLayer
             }
         }
 
-        public  int Save(UsersDAL users)
+        public  int Save(UsersML users)
         {
             try
             {
@@ -63,7 +65,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(UsersDAL users)
+        public int Delete(UsersML users)
         {
             try
             {

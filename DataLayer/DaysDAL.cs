@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,17 +13,6 @@ namespace DataLayer
     {
         public String core = "DataLayer.DaysDAL";
         public String TableName = "days";
-
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
 
         public DataTable All(String ConnectionString)
         {
@@ -70,7 +60,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(DaysDAL days, String ConnectionString)
+        public int Save(DaysML days, String ConnectionString)
         {
             try
             {
@@ -78,7 +68,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},1,{2},GETDATE())", days.Name, days.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}',1,{2},GETDATE())", days.Name, days.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -95,7 +85,7 @@ namespace DataLayer
 
         }
 
-        public int Update(DaysDAL days, String ConnectionString)
+        public int Update(DaysML days, String ConnectionString)
         {
             try
             {
@@ -103,7 +93,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("name = {0}", days.Name);
+                Query.AppendFormat("name = '{0}'", days.Name);
                 Query.AppendFormat("idUserUpdate = {0}", days.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", days.Id);
@@ -125,7 +115,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DaysDAL days, String ConnectionString)
+        public int Delete(DaysML days, String ConnectionString)
         {
             try
             {

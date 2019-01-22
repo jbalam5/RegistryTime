@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(AbsenteeismDAL absenteeism)
+        public int Save(AbsenteeismML absenteeism)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(AbsenteeismDAL absenteeism)
+        public int Delete(AbsenteeismML absenteeism)
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,20 +13,6 @@ namespace DataLayer
     {
         public String core = "DataLayer.UsersDAL";
         public String TableName = "users";
-
-        public int Id { get; set; }
-        public String UserName { get; set; }
-        public String Password { get; set; }
-        public String Rol { get; set; }
-        public String Image { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
 
         public DataTable All(String ConnectionString)
         {
@@ -70,7 +57,7 @@ namespace DataLayer
         }
 
 
-        public int Save(UsersDAL user, String ConnectionString)
+        public int Save(UsersML user, String ConnectionString)
         {
             try
             {
@@ -78,7 +65,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},{2},{3},1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}',{2},'{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
@@ -93,7 +80,7 @@ namespace DataLayer
 
         }
 
-        public int Update(UsersDAL user, String ConnectionString)
+        public int Update(UsersML user, String ConnectionString)
         {
             try
             {
@@ -101,10 +88,10 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ",TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("username = {0}", user.UserName);
-                Query.AppendFormat("password = {0}", user.Password);
+                Query.AppendFormat("username = '{0}'", user.UserName);
+                Query.AppendFormat("password = '{0}'", user.Password);
                 Query.AppendFormat("rol = {0}", user.Rol);
-                Query.AppendFormat("image = {0}", user.Image);
+                Query.AppendFormat("image = '{0}'", user.Image);
                 Query.AppendFormat("idUserUpdate = {0}", user.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", user.Id);
@@ -124,7 +111,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(UsersDAL user, String ConnectionString)
+        public int Delete(UsersML user, String ConnectionString)
         {
             try
             {

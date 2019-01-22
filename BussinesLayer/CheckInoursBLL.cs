@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,17 +47,17 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(CheckInHoursDAL CheckInHoursDAL)
+        public int Save(CheckInHoursML CheckInHours)
         {
             try
             {
-                if (CheckInHoursDAL.Id == 0)
+                if (CheckInHours.Id == 0)
                 {
-                    return CheckInHoursDAL.Save(CheckInHoursDAL, ConnectionStrings);
+                    return CheckInHoursDAL.Save(CheckInHours, ConnectionStrings);
                 }
                 else
                 {
-                    return CheckInHoursDAL.Update(CheckInHoursDAL, ConnectionStrings);
+                    return CheckInHoursDAL.Update(CheckInHours, ConnectionStrings);
                 }
             }
             catch (Exception ex)
@@ -65,11 +66,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(CheckInHoursDAL CheckInHoursDAL)
+        public int Delete(CheckInHoursML CheckInHours)
         {
             try
             {
-                return CheckInHoursDAL.Delete(CheckInHoursDAL, ConnectionStrings);
+                return CheckInHoursDAL.Delete(CheckInHours, ConnectionStrings);
             }
             catch (Exception ex)
             {

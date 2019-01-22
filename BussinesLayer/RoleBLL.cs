@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataLayer;
 using System.Data;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -46,7 +47,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(RoleDAL Role)
+        public int Save(RoleML Role)
         {
             try
             {
@@ -65,7 +66,7 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(RoleDAL Role)
+        public int Delete(RoleML Role)
         {
             try
             {

@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
-using DataLayer;
+using ModelLayer;
 
 namespace MenuTemplate.Forms
 {
@@ -28,7 +28,7 @@ namespace MenuTemplate.Forms
 
         private void ButtonSave_Click(object sender, EventArgs e)
         {
-            JobDAL job = new JobDAL
+            JobML job = new JobML
             {
                 Id = 0,
                 Name = textBoxNombre.Text,

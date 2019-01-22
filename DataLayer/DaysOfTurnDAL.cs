@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -12,18 +13,6 @@ namespace DataLayer
     {
         public String core = "DataLayer.DaysOfTurnDAL";
         public String TableName = "daysOfTurn";
-
-        public int Id { get; set; }
-        public String IdDays { get; set; }
-        public String IdTurn { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
 
         public DataTable All(String ConnectionString)
         {
@@ -71,7 +60,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(DaysOfTurnDAL daysOfTurn, String ConnectionString)
+        public int Save(DaysOfTurnML daysOfTurn, String ConnectionString)
         {
             try
             {
@@ -96,7 +85,7 @@ namespace DataLayer
 
         }
 
-        public int Update(DaysOfTurnDAL daysOfTurn, String ConnectionString)
+        public int Update(DaysOfTurnML daysOfTurn, String ConnectionString)
         {
             try
             {
@@ -127,7 +116,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DaysOfTurnDAL daysOfTurn, String ConnectionString)
+        public int Delete(DaysOfTurnML daysOfTurn, String ConnectionString)
         {
             try
             {

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using ModelLayer;
 
 namespace DataLayer
 {
@@ -13,24 +14,14 @@ namespace DataLayer
         public String core = "DataLayer.jobDAL";
         public String TableName = "job";
 
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public String Description { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
-
-
         public DataTable All(String ConnectionString)
         {
             try
             {
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
@@ -52,8 +43,10 @@ namespace DataLayer
             {
 
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
@@ -67,7 +60,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(JobDAL job, String ConnectionString)
+        public int Save(JobML job, String ConnectionString)
         {
             try
             {
@@ -90,7 +83,7 @@ namespace DataLayer
 
         }
 
-        public int Update(JobDAL job, String ConnectionString)
+        public int Update(JobML job, String ConnectionString)
         {
             try
             {
@@ -119,7 +112,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(JobDAL job, String ConnectionString)
+        public int Delete(JobML job, String ConnectionString)
         {
             try
             {
@@ -132,8 +125,10 @@ namespace DataLayer
                 Query.AppendLine("dateDelete = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", job.Id);
 
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();
