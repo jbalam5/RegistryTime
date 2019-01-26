@@ -26,7 +26,7 @@ namespace BussinesLayer.Connection
             }
         }
 
-        public void saveConexion(String instancia, String username, String password, String database)
+        public void SaveConexion(String instancia, String username, String password, String database)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace BussinesLayer.Connection
         {
             try
             {
-                CollectionConneccionString Values = openConexionFile();
+                CollectionConneccionString Values = OpenConexionFile();
                 String ConnectionString = String.Format("server={0} ; database={1}; User Id={2};Password = {3}; ", Values.Instancia, Values.database, Values.username, Values.password);
                 return ConnectionString;
             }
@@ -84,7 +84,7 @@ namespace BussinesLayer.Connection
             }
         }
 
-        public CollectionConneccionString openConexionFile()
+        public CollectionConneccionString OpenConexionFile()
         {
             try
             {

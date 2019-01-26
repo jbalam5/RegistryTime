@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Connection_BLL">
+      <HintPath>..\..\connection\Connection\Connection\bin\Debug\Connection_BLL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -46,7 +49,6 @@
     <Compile Include="CheckInoursBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CompanyBLL.cs" />
-    <Compile Include="Connection\ConnectionBLL.cs" />
     <Compile Include="DaysBLL.cs" />
     <Compile Include="DaysOfTurnBLL.cs" />
     <Compile Include="DepartamentBLL.cs" />

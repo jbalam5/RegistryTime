@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using DataLayer;
 using System.Data;
 using ModelLayer;
+using Connection_BLL;
 
 namespace BussinesLayer
 {
     public class UsersBLL
     {
         public UsersDAL usersDAL = new UsersDAL();
-        public Connection.ConnectionBLL conexion = new Connection.ConnectionBLL();
+        public ConnectionBLL conexion = new ConnectionBLL();
         public String ConnectionStrings;
         public String core = "BussinesLayer.UsersBLL";
 

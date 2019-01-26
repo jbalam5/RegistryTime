@@ -39,8 +39,8 @@
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialSingleLineTextFieldEncargado = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.materialSingleLineTextFieldNombre = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.textBoxEncargado = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDepartamentos)).BeginInit();
@@ -69,6 +69,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBoxEncargado);
+            this.panel2.Controls.Add(this.textBoxNombre);
             this.panel2.Controls.Add(this.dataGridViewDepartamentos);
             this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button2);
@@ -77,8 +79,6 @@
             this.panel2.Controls.Add(this.materialLabel3);
             this.panel2.Controls.Add(this.materialLabel2);
             this.panel2.Controls.Add(this.materialLabel1);
-            this.panel2.Controls.Add(this.materialSingleLineTextFieldEncargado);
-            this.panel2.Controls.Add(this.materialSingleLineTextFieldNombre);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
@@ -128,6 +128,7 @@
             this.button2.Size = new System.Drawing.Size(35, 36);
             this.button2.TabIndex = 27;
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ButtonSave
             // 
@@ -193,35 +194,19 @@
             this.materialLabel1.TabIndex = 3;
             this.materialLabel1.Text = "Nombre";
             // 
-            // materialSingleLineTextFieldEncargado
+            // textBoxNombre
             // 
-            this.materialSingleLineTextFieldEncargado.Depth = 0;
-            this.materialSingleLineTextFieldEncargado.Hint = "";
-            this.materialSingleLineTextFieldEncargado.Location = new System.Drawing.Point(74, 126);
-            this.materialSingleLineTextFieldEncargado.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextFieldEncargado.Name = "materialSingleLineTextFieldEncargado";
-            this.materialSingleLineTextFieldEncargado.PasswordChar = '\0';
-            this.materialSingleLineTextFieldEncargado.SelectedText = "";
-            this.materialSingleLineTextFieldEncargado.SelectionLength = 0;
-            this.materialSingleLineTextFieldEncargado.SelectionStart = 0;
-            this.materialSingleLineTextFieldEncargado.Size = new System.Drawing.Size(269, 23);
-            this.materialSingleLineTextFieldEncargado.TabIndex = 2;
-            this.materialSingleLineTextFieldEncargado.UseSystemPasswordChar = false;
+            this.textBoxNombre.Location = new System.Drawing.Point(76, 78);
+            this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.Size = new System.Drawing.Size(335, 20);
+            this.textBoxNombre.TabIndex = 30;
             // 
-            // materialSingleLineTextFieldNombre
+            // textBoxEncargado
             // 
-            this.materialSingleLineTextFieldNombre.Depth = 0;
-            this.materialSingleLineTextFieldNombre.Hint = "";
-            this.materialSingleLineTextFieldNombre.Location = new System.Drawing.Point(74, 75);
-            this.materialSingleLineTextFieldNombre.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSingleLineTextFieldNombre.Name = "materialSingleLineTextFieldNombre";
-            this.materialSingleLineTextFieldNombre.PasswordChar = '\0';
-            this.materialSingleLineTextFieldNombre.SelectedText = "";
-            this.materialSingleLineTextFieldNombre.SelectionLength = 0;
-            this.materialSingleLineTextFieldNombre.SelectionStart = 0;
-            this.materialSingleLineTextFieldNombre.Size = new System.Drawing.Size(271, 23);
-            this.materialSingleLineTextFieldNombre.TabIndex = 1;
-            this.materialSingleLineTextFieldNombre.UseSystemPasswordChar = false;
+            this.textBoxEncargado.Location = new System.Drawing.Point(76, 129);
+            this.textBoxEncargado.Name = "textBoxEncargado";
+            this.textBoxEncargado.Size = new System.Drawing.Size(335, 20);
+            this.textBoxEncargado.TabIndex = 34;
             // 
             // cFMDE100010
             // 
@@ -249,8 +234,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextFieldEncargado;
-        private MaterialSkin.Controls.MaterialSingleLineTextField materialSingleLineTextFieldNombre;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         private System.Windows.Forms.TextBox textBoxDescripcion;
@@ -258,5 +241,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button ButtonSave;
         private System.Windows.Forms.DataGridView dataGridViewDepartamentos;
+        private System.Windows.Forms.TextBox textBoxEncargado;
+        private System.Windows.Forms.TextBox textBoxNombre;
     }
 }

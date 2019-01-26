@@ -31,8 +31,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonGUARDAR = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,7 +41,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.textBoxServer = new System.Windows.Forms.TextBox();
-            this.buttonGUARDAR = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -55,9 +55,10 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(410, 27);
+            this.panel1.Size = new System.Drawing.Size(412, 27);
             this.panel1.TabIndex = 0;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            
+            //this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // pictureBox1
             // 
@@ -68,7 +69,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // panel3
             // 
@@ -80,19 +81,8 @@
             this.panel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.panel3.Location = new System.Drawing.Point(0, 27);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(410, 285);
+            this.panel3.Size = new System.Drawing.Size(412, 285);
             this.panel3.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(99, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "DATOS DE CONEXION";
             // 
             // panel2
             // 
@@ -106,10 +96,24 @@
             this.panel2.Controls.Add(this.textBoxUserName);
             this.panel2.Controls.Add(this.textBoxServer);
             this.panel2.Location = new System.Drawing.Point(40, 44);
-            this.panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(328, 217);
             this.panel2.TabIndex = 15;
+            // 
+            // buttonGUARDAR
+            // 
+            this.buttonGUARDAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(116)))), ((int)(((byte)(166)))));
+            this.buttonGUARDAR.FlatAppearance.BorderSize = 0;
+            this.buttonGUARDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonGUARDAR.ForeColor = System.Drawing.Color.White;
+            this.buttonGUARDAR.Location = new System.Drawing.Point(237, 191);
+            this.buttonGUARDAR.Name = "buttonGUARDAR";
+            this.buttonGUARDAR.Size = new System.Drawing.Size(75, 23);
+            this.buttonGUARDAR.TabIndex = 23;
+            this.buttonGUARDAR.Text = "Guardar";
+            this.buttonGUARDAR.UseVisualStyleBackColor = false;
+            //this.buttonGUARDAR.Click += new System.EventHandler(this.buttonGUARDAR_Click);
             // 
             // label2
             // 
@@ -184,25 +188,22 @@
             this.textBoxServer.Size = new System.Drawing.Size(220, 20);
             this.textBoxServer.TabIndex = 15;
             // 
-            // buttonGUARDAR
+            // label1
             // 
-            this.buttonGUARDAR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(116)))), ((int)(((byte)(166)))));
-            this.buttonGUARDAR.FlatAppearance.BorderSize = 0;
-            this.buttonGUARDAR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonGUARDAR.ForeColor = System.Drawing.Color.White;
-            this.buttonGUARDAR.Location = new System.Drawing.Point(237, 191);
-            this.buttonGUARDAR.Name = "buttonGUARDAR";
-            this.buttonGUARDAR.Size = new System.Drawing.Size(75, 23);
-            this.buttonGUARDAR.TabIndex = 23;
-            this.buttonGUARDAR.Text = "Guardar";
-            this.buttonGUARDAR.UseVisualStyleBackColor = false;
-            this.buttonGUARDAR.Click += new System.EventHandler(this.buttonGUARDAR_Click);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(99, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(196, 20);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "DATOS DE CONEXION";
             // 
             // cFMCX000010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 312);
+            this.ClientSize = new System.Drawing.Size(412, 312);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using System.Data;
 using DataLayer;
 using ModelLayer;
+using Connection_BLL;
 
 namespace BussinesLayer
 {
     public class PermissionBLL
     {
         public PermissionDAL PermissionDAL = new PermissionDAL();
-        public Connection.ConnectionBLL conexion = new Connection.ConnectionBLL();
+        public ConnectionBLL conexion = new ConnectionBLL();
         public String ConnectionStrings;
         public String core = "BussinesLayer.PermissionBLL";
 
