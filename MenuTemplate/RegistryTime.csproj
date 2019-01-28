@@ -6,12 +6,27 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AA787724-53E9-40A3-8A65-509EB260CFBC}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MenuTemplate</RootNamespace>
-    <AssemblyName>MenuTemplate</AssemblyName>
+    <RootNamespace>RegistryTime</RootNamespace>
+    <AssemblyName>RegistryTime</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,6 +57,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -60,17 +76,23 @@
     <Compile Include="cMRT100010.Designer.cs">
       <DependentUpon>cMRT100010.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\cFMCX000010.cs">
+    <Compile Include="cMRT1000101.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\cFMCX000010.Designer.cs">
-      <DependentUpon>cFMCX000010.cs</DependentUpon>
+    <Compile Include="cMRT1000101.Designer.cs">
+      <DependentUpon>cMRT1000101.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\cFMDE100010.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\cFMDE100010.Designer.cs">
       <DependentUpon>cFMDE100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMDE110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMDE110010.Designer.cs">
+      <DependentUpon>cFMDE110010.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\cFMTE100010.cs">
       <SubType>Form</SubType>
@@ -84,12 +106,6 @@
     <Compile Include="Forms\cFRT110010.Designer.cs">
       <DependentUpon>cFRT110010.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\cFRT120010.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\cFRT120010.Designer.cs">
-      <DependentUpon>cFRT120010.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\cFRT130010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,20 +117,20 @@
     <EmbeddedResource Include="cMRT100010.resx">
       <DependentUpon>cMRT100010.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\cFMCX000010.resx">
-      <DependentUpon>cFMCX000010.cs</DependentUpon>
+    <EmbeddedResource Include="cMRT1000101.resx">
+      <DependentUpon>cMRT1000101.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMDE100010.resx">
       <DependentUpon>cFMDE100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMDE110010.resx">
+      <DependentUpon>cFMDE110010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMTE100010.resx">
       <DependentUpon>cFMTE100010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT110010.resx">
       <DependentUpon>cFRT110010.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\cFRT120010.resx">
-      <DependentUpon>cFRT120010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT130010.resx">
       <DependentUpon>cFRT130010.cs</DependentUpon>
@@ -230,6 +246,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\iconDel.png" />
+    <Content Include="Resources\iconLineH.png" />
+    <Content Include="Resources\iconsmax15.png" />
+    <Content Include="Resources\iconSquared.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace MenuTemplate.Forms
+﻿namespace RegistryTime.Forms
 {
     partial class cFRT110010
     {

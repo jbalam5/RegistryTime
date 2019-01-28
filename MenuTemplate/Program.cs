@@ -1,11 +1,11 @@
-﻿using MenuTemplate.Forms;
+﻿using RegistryTime.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuTemplate
+namespace RegistryTime
 {
     static class Program
     {
@@ -22,8 +22,8 @@ namespace MenuTemplate
                 {
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new cFMDE100010());
-                    //Application.Run(new cMRT100010());
+                    //Application.Run(new cFMDE100010());
+                    Application.Run(new cMRT100010());
                 }
                 else
                 {

@@ -9,19 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
-
 namespace RegistryTime
 {
-    public partial class cMRT100010 : Form
+    public partial class cMRT1000101 : Form
     {
-        #region "GLOBAL VARIABLES"
-        private Rectangle sizeGripRectangle;
-        private int tolerance = 15;
-        int lx, ly;
-        int sw, sh;
-        #endregion
-
-        public cMRT100010()
+        public cMRT1000101()
         {
             InitializeComponent();
         }
@@ -38,52 +30,20 @@ namespace RegistryTime
 
         private void CloseWindowsPictureBox_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void MaxWindowsPictureBox_Click(object sender, EventArgs e)
         {
-
+            if (this.WindowState == FormWindowState.Maximized)
+                this.WindowState = FormWindowState.Normal;
+            else
+                this.WindowState = FormWindowState.Maximized;
         }
 
         private void MinWindowsPictureBox_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Minimizebutton_Click(object sender, EventArgs e)
-        {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void NormalButton_Click(object sender, EventArgs e)
-        {
-            this.Size = new Size(sw, sh);
-            this.Location = new Point(lx, ly);
-            this.MaximizeButton.Visible = true;
-            this.NormalButton.Visible = false;
-        }
-
-        private void MaximizeButton_Click(object sender, EventArgs e)
-        {
-            lx = this.Location.X;
-            ly = this.Location.Y;
-            sw = this.Size.Width;
-            sh = this.Size.Height;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-            this.NormalButton.Visible = true;
-            this.MaximizeButton.Visible = false;
-
-            //if (this.WindowState == FormWindowState.Maximized)
-            //    this.WindowState = FormWindowState.Normal;
-            //else
-            //    this.WindowState = FormWindowState.Maximized;
-        }
-
-        private void Closebutton_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -94,6 +54,8 @@ namespace RegistryTime
 
         private void DepartamentoButton_Click(object sender, EventArgs e)
         {
+            //MenuTemplate.Forms.cFRT120010 frm = new Forms.cFRT120010();
+            //frm.ShowDialog();
             OpenFormChild(new RegistryTime.Forms.cFMDE100010());
         }
 
@@ -113,46 +75,15 @@ namespace RegistryTime
             ClearPanelContainer();
         }
 
-        private void ExitButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ReportsButton_Click(object sender, EventArgs e)
-        {
-            //OpenFormChild(new RegistryTime.Forms.cFRT100010());
-        }
-
-        //protected override void OnSizeChanged(EventArgs e)
-        //{
-        //    base.OnSizeChanged(e);
-        //    var region = new Region(new Rectangle(0, 0, this.ClientRectangle.Width, this.ClientRectangle.Height));
-
-        //    sizeGripRectangle = new Rectangle(this.ClientRectangle.Width - tolerance, this.ClientRectangle.Height - tolerance, tolerance, tolerance);
-
-        //    region.Exclude(sizeGripRectangle);
-        //    this.PrincipalPanel.Region = region;
-        //    this.Invalidate();
-        //}
-        //----------------COLOR Y GRIP DE RECTANGULO INFERIOR
-        //protected override void OnPaint(PaintEventArgs e)
-        //{
-
-        //    SolidBrush blueBrush = new SolidBrush(Color.FromArgb(55, 61, 69));
-        //    e.Graphics.FillRectangle(blueBrush, sizeGripRectangle);
-
-        //    base.OnPaint(e);
-        //    ControlPaint.DrawSizeGrip(e.Graphics, Color.Transparent, sizeGripRectangle);
-        //}
         #endregion
-
+        
         #region "Methods"
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wsmg, int wparam, int lparam);
 
-        private void OpenFormChild(object frmChild)
+        public void OpenFormChild(object frmChild)
         {
             try
             {
@@ -167,8 +98,7 @@ namespace RegistryTime
                 this.ContainerPanel.Tag = frm;
                 frm.Show();
 
-            }
-            catch (Exception ex)
+            }catch (Exception ex)
             {
                 MessageBox.Show(String.Format("OpenFormChild: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -181,9 +111,19 @@ namespace RegistryTime
         }
         #endregion
 
-        private void SettingsButton_Click(object sender, EventArgs e)
+        private void ExitButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        private void cMRT100010_Load(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void buttonTurno_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFRT110010());
         }
     }
 }

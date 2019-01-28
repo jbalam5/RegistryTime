@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuTemplate", "MenuTemplate\MenuTemplate.csproj", "{AA787724-53E9-40A3-8A65-509EB260CFBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistryTime", "MenuTemplate\RegistryTime.csproj", "{AA787724-53E9-40A3-8A65-509EB260CFBC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BussinesLayer\BusinessLayer.csproj", "{C3955E83-A7D3-4A42-AFD0-D13923F55E41}"
 EndProject

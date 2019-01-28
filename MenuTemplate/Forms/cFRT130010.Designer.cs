@@ -1,4 +1,4 @@
-﻿namespace MenuTemplate.Forms
+﻿namespace RegistryTime.Forms
 {
     partial class cFRT130010
     {
@@ -115,7 +115,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleDeletex421;
+            this.button3.BackgroundImage = global::RegistryTime.Properties.Resources.CircleDeletex421;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -131,7 +131,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleEditx421;
+            this.button2.BackgroundImage = global::RegistryTime.Properties.Resources.CircleEditx421;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -147,7 +147,7 @@
             // ButtonSave
             // 
             this.ButtonSave.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonSave.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleSavex48;
+            this.ButtonSave.BackgroundImage = global::RegistryTime.Properties.Resources.CircleSavex48;
             this.ButtonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ButtonSave.FlatAppearance.BorderSize = 0;
             this.ButtonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -256,7 +256,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = global::MenuTemplate.Properties.Resources.Preview;
+            this.pictureBox1.BackgroundImage = global::RegistryTime.Properties.Resources.Preview;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(417, 97);
             this.pictureBox1.Name = "pictureBox1";
@@ -470,7 +470,7 @@
             // 
             this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.close32;
+            this.CloseWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.close32;
             this.CloseWindowsPictureBox.Location = new System.Drawing.Point(762, 0);
             this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
             this.CloseWindowsPictureBox.Size = new System.Drawing.Size(30, 30);
@@ -482,7 +482,7 @@
             // 
             this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MaxWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.maximizar32;
+            this.MaxWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.maximizar32;
             this.MaxWindowsPictureBox.Location = new System.Drawing.Point(730, 0);
             this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
             this.MaxWindowsPictureBox.Size = new System.Drawing.Size(30, 30);
@@ -494,7 +494,7 @@
             // 
             this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MinWindowsPictureBox.Image = global::MenuTemplate.Properties.Resources.minimizar32;
+            this.MinWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.minimizar32;
             this.MinWindowsPictureBox.Location = new System.Drawing.Point(698, 0);
             this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
             this.MinWindowsPictureBox.Size = new System.Drawing.Size(30, 30);

@@ -1,4 +1,4 @@
-﻿namespace MenuTemplate.Forms
+﻿namespace RegistryTime.Forms
 {
     partial class cFMTE100010
     {
@@ -118,7 +118,7 @@
             // buttonEliminar
             // 
             this.buttonEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEliminar.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleDeletex421;
+            this.buttonEliminar.BackgroundImage = global::RegistryTime.Properties.Resources.CircleDeletex421;
             this.buttonEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonEliminar.FlatAppearance.BorderSize = 0;
             this.buttonEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -134,7 +134,7 @@
             // buttonEditar
             // 
             this.buttonEditar.BackColor = System.Drawing.Color.Transparent;
-            this.buttonEditar.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleEditx421;
+            this.buttonEditar.BackgroundImage = global::RegistryTime.Properties.Resources.CircleEditx421;
             this.buttonEditar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.buttonEditar.FlatAppearance.BorderSize = 0;
             this.buttonEditar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -150,7 +150,7 @@
             // ButtonSave
             // 
             this.ButtonSave.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonSave.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleSavex48;
+            this.ButtonSave.BackgroundImage = global::RegistryTime.Properties.Resources.CircleSavex48;
             this.ButtonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ButtonSave.FlatAppearance.BorderSize = 0;
             this.ButtonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));

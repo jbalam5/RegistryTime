@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
 
-namespace MenuTemplate.Forms
+namespace RegistryTime.Forms
 {
     public partial class cFMTE100010 : Form
     {

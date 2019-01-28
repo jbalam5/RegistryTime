@@ -10,7 +10,7 @@ namespace ModelLayer
     {
         public int Id { get; set; }
         public String Name { get; set; }
-        public String Manage { get; set; }
+        public String Manager { get; set; }
         public String Description { get; set; }
         public int _regitry { get; set; }
         public int IdUserInsert { get; set; }

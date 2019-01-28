@@ -22,7 +22,8 @@ namespace DataLayer
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
-                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Nombre,{0}.[manager] as Encargado,{0}.[description] as Descripcion,{1}.Name as Estado FROM {0} left outer join {1} on {1}.id = {0}._registry where {0}._registry = 1", TableName, TablaStatusBook);
+                //String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Nombre,{0}.[manager] as Encargado,{0}.[description] as Descripcion,{1}.Name as Estado FROM {0} left outer join {1} on {1}.id = {0}._registry where {0}._registry = 1", TableName, TablaStatusBook);
+                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Nombre,{0}.[manager] as Encargado,{0}.[description] as Descripcion FROM {0} where {0}._registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
@@ -66,7 +67,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", departament.Name,departament.Manage, departament.Description, departament.IdUserInsert);
+                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", departament.Name,departament.Manager, departament.Description, departament.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
                 Conexion.Open();
@@ -89,12 +90,12 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("name = {0}", departament.Name);
-                Query.AppendFormat("manager = {0}", departament.Manage);
-                Query.AppendFormat("description = {0}", departament.Description);
-                Query.AppendFormat("idUserUpdate = {0}", departament.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", departament.Id);
+                Query.AppendFormat(" name = '{0}',", departament.Name);
+                Query.AppendFormat(" manager = '{0}',", departament.Manager);
+                Query.AppendFormat(" description = '{0}',", departament.Description);
+                Query.AppendFormat(" idUserUpdate = {0},", departament.IdUserUpdate);
+                Query.AppendLine(" dateUpdate = GETDATE()");
+                Query.AppendFormat(" WHERE id={0}", departament.Id);
 
                 SqlConnection Conexion = new SqlConnection();
                 Conexion.ConnectionString = ConnectionString;
@@ -119,9 +120,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", departament.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
+                Query.AppendLine(" _registry = 2,");
+                Query.AppendFormat(" idUserDelete = {0}, ", departament.IdUserDelete);
+                Query.AppendLine(" dateDelete = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", departament.Id);
 
                 SqlConnection Conexion = new SqlConnection();

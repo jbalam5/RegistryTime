@@ -1,6 +1,6 @@
 ﻿namespace RegistryTime
 {
-    partial class cMRT100010
+    partial class cMRT1000101
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,19 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.PrincipalPanel = new System.Windows.Forms.Panel();
-            this.BottomStatePanel = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.ContentPanel = new System.Windows.Forms.Panel();
-            this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.NormalButton = new System.Windows.Forms.Button();
-            this.Closebutton = new System.Windows.Forms.Button();
-            this.MaximizeButton = new System.Windows.Forms.Button();
-            this.Minimizebutton = new System.Windows.Forms.Button();
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
@@ -50,182 +37,35 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.BottomStatePanel = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.ContainerPanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
-            this.PrincipalPanel.SuspendLayout();
-            this.BottomStatePanel.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.ContentPanel.SuspendLayout();
-            this.TopPanel.SuspendLayout();
+            this.buttonTurno = new System.Windows.Forms.Button();
             this.MenuLeftPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
+            this.TopPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
+            this.BottomStatePanel.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // PrincipalPanel
-            // 
-            this.PrincipalPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PrincipalPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.PrincipalPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PrincipalPanel.Controls.Add(this.BottomStatePanel);
-            this.PrincipalPanel.Controls.Add(this.ContentPanel);
-            this.PrincipalPanel.Controls.Add(this.TopPanel);
-            this.PrincipalPanel.Controls.Add(this.MenuLeftPanel);
-            this.PrincipalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrincipalPanel.Location = new System.Drawing.Point(0, 0);
-            this.PrincipalPanel.Name = "PrincipalPanel";
-            this.PrincipalPanel.Size = new System.Drawing.Size(888, 576);
-            this.PrincipalPanel.TabIndex = 0;
-            // 
-            // BottomStatePanel
-            // 
-            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BottomStatePanel.Controls.Add(this.statusStrip1);
-            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomStatePanel.Location = new System.Drawing.Point(200, 544);
-            this.BottomStatePanel.Name = "BottomStatePanel";
-            this.BottomStatePanel.Size = new System.Drawing.Size(686, 30);
-            this.BottomStatePanel.TabIndex = 6;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UsertoolStripStatusLabel,
-            this.DatetoolStripStatusLabel,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(686, 30);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // UsertoolStripStatusLabel
-            // 
-            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
-            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
-            this.UsertoolStripStatusLabel.Text = "JBALAM";
-            // 
-            // DatetoolStripStatusLabel
-            // 
-            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(134, 25);
-            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
-            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
-            // 
-            // ContentPanel
-            // 
-            this.ContentPanel.Controls.Add(this.ContainerPanel);
-            this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentPanel.Location = new System.Drawing.Point(200, 30);
-            this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(686, 544);
-            this.ContentPanel.TabIndex = 0;
-            // 
-            // ContainerPanel
-            // 
-            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
-            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
-            this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(686, 544);
-            this.ContainerPanel.TabIndex = 7;
-            // 
-            // TopPanel
-            // 
-            this.TopPanel.BackColor = System.Drawing.Color.White;
-            this.TopPanel.Controls.Add(this.NormalButton);
-            this.TopPanel.Controls.Add(this.Closebutton);
-            this.TopPanel.Controls.Add(this.MaximizeButton);
-            this.TopPanel.Controls.Add(this.Minimizebutton);
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(200, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(686, 30);
-            this.TopPanel.TabIndex = 5;
-            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            // 
-            // NormalButton
-            // 
-            this.NormalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NormalButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconSquared;
-            this.NormalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.NormalButton.FlatAppearance.BorderSize = 0;
-            this.NormalButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.NormalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.NormalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NormalButton.Location = new System.Drawing.Point(624, 0);
-            this.NormalButton.Name = "NormalButton";
-            this.NormalButton.Size = new System.Drawing.Size(30, 30);
-            this.NormalButton.TabIndex = 7;
-            this.NormalButton.UseVisualStyleBackColor = true;
-            this.NormalButton.Visible = false;
-            this.NormalButton.Click += new System.EventHandler(this.NormalButton_Click);
-            // 
-            // Closebutton
-            // 
-            this.Closebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Closebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconDel;
-            this.Closebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Closebutton.FlatAppearance.BorderSize = 0;
-            this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Closebutton.Location = new System.Drawing.Point(656, 0);
-            this.Closebutton.Name = "Closebutton";
-            this.Closebutton.Size = new System.Drawing.Size(30, 30);
-            this.Closebutton.TabIndex = 6;
-            this.Closebutton.UseVisualStyleBackColor = true;
-            this.Closebutton.Click += new System.EventHandler(this.Closebutton_Click);
-            // 
-            // MaximizeButton
-            // 
-            this.MaximizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaximizeButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconsmax15;
-            this.MaximizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MaximizeButton.FlatAppearance.BorderSize = 0;
-            this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaximizeButton.Location = new System.Drawing.Point(625, 0);
-            this.MaximizeButton.Name = "MaximizeButton";
-            this.MaximizeButton.Size = new System.Drawing.Size(30, 30);
-            this.MaximizeButton.TabIndex = 5;
-            this.MaximizeButton.UseVisualStyleBackColor = true;
-            this.MaximizeButton.Click += new System.EventHandler(this.MaximizeButton_Click);
-            // 
-            // Minimizebutton
-            // 
-            this.Minimizebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Minimizebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconLineH;
-            this.Minimizebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Minimizebutton.FlatAppearance.BorderSize = 0;
-            this.Minimizebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Minimizebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Minimizebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimizebutton.Location = new System.Drawing.Point(592, 0);
-            this.Minimizebutton.Name = "Minimizebutton";
-            this.Minimizebutton.Size = new System.Drawing.Size(30, 30);
-            this.Minimizebutton.TabIndex = 4;
-            this.Minimizebutton.UseVisualStyleBackColor = true;
-            this.Minimizebutton.Click += new System.EventHandler(this.Minimizebutton_Click);
-            // 
             // MenuLeftPanel
             // 
-            this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(121)))), ((int)(((byte)(124)))), ((int)(((byte)(129)))));
+            this.MenuLeftPanel.Controls.Add(this.buttonTurno);
             this.MenuLeftPanel.Controls.Add(this.panel1);
             this.MenuLeftPanel.Controls.Add(this.pictureBox1);
             this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
@@ -238,8 +78,8 @@
             this.MenuLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuLeftPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuLeftPanel.Name = "MenuLeftPanel";
-            this.MenuLeftPanel.Size = new System.Drawing.Size(200, 574);
-            this.MenuLeftPanel.TabIndex = 4;
+            this.MenuLeftPanel.Size = new System.Drawing.Size(200, 576);
+            this.MenuLeftPanel.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -282,14 +122,13 @@
             this.ReportsButton.ForeColor = System.Drawing.Color.White;
             this.ReportsButton.Image = global::RegistryTime.Properties.Resources.reports32;
             this.ReportsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsButton.Location = new System.Drawing.Point(2, 328);
+            this.ReportsButton.Location = new System.Drawing.Point(4, 377);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(199, 40);
             this.ReportsButton.TabIndex = 5;
             this.ReportsButton.Text = "  Reportes";
             this.ReportsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ReportsButton.UseVisualStyleBackColor = true;
-            this.ReportsButton.Click += new System.EventHandler(this.ReportsButton_Click);
             // 
             // TurnosButton
             // 
@@ -302,7 +141,7 @@
             this.TurnosButton.ForeColor = System.Drawing.Color.White;
             this.TurnosButton.Image = global::RegistryTime.Properties.Resources.time32;
             this.TurnosButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TurnosButton.Location = new System.Drawing.Point(1, 288);
+            this.TurnosButton.Location = new System.Drawing.Point(3, 337);
             this.TurnosButton.Name = "TurnosButton";
             this.TurnosButton.Size = new System.Drawing.Size(199, 40);
             this.TurnosButton.TabIndex = 4;
@@ -342,14 +181,13 @@
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Image = global::RegistryTime.Properties.Resources.settings32;
             this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(1, 374);
+            this.SettingsButton.Location = new System.Drawing.Point(3, 423);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(199, 40);
             this.SettingsButton.TabIndex = 2;
             this.SettingsButton.Text = "  Configuración";
             this.SettingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.SettingsButton.UseVisualStyleBackColor = true;
-            this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
             // HomeButton
             // 
@@ -383,18 +221,123 @@
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.Color.White;
+            this.TopPanel.Controls.Add(this.CloseWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MaxWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MinWindowsPictureBox);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(200, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(688, 30);
+            this.TopPanel.TabIndex = 1;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            // 
+            // CloseWindowsPictureBox
+            // 
+            this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.close32;
+            this.CloseWindowsPictureBox.Location = new System.Drawing.Point(648, 0);
+            this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
+            this.CloseWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.CloseWindowsPictureBox.TabIndex = 3;
+            this.CloseWindowsPictureBox.TabStop = false;
+            this.CloseWindowsPictureBox.Click += new System.EventHandler(this.CloseWindowsPictureBox_Click);
+            // 
+            // MaxWindowsPictureBox
+            // 
+            this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MaxWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.maximizar32;
+            this.MaxWindowsPictureBox.Location = new System.Drawing.Point(615, 0);
+            this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
+            this.MaxWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MaxWindowsPictureBox.TabIndex = 2;
+            this.MaxWindowsPictureBox.TabStop = false;
+            this.MaxWindowsPictureBox.Click += new System.EventHandler(this.MaxWindowsPictureBox_Click);
+            // 
+            // MinWindowsPictureBox
+            // 
+            this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MinWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.minimizar32;
+            this.MinWindowsPictureBox.Location = new System.Drawing.Point(582, 0);
+            this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
+            this.MinWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MinWindowsPictureBox.TabIndex = 1;
+            this.MinWindowsPictureBox.TabStop = false;
+            this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
+            // 
+            // BottomStatePanel
+            // 
+            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BottomStatePanel.Controls.Add(this.statusStrip1);
+            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomStatePanel.Location = new System.Drawing.Point(200, 546);
+            this.BottomStatePanel.Name = "BottomStatePanel";
+            this.BottomStatePanel.Size = new System.Drawing.Size(688, 30);
+            this.BottomStatePanel.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsertoolStripStatusLabel,
+            this.DatetoolStripStatusLabel,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(688, 30);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // UsertoolStripStatusLabel
+            // 
+            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
+            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
+            this.UsertoolStripStatusLabel.Text = "JBALAM";
+            // 
+            // DatetoolStripStatusLabel
+            // 
+            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(134, 25);
+            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
+            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
+            // 
+            // ContainerPanel
+            // 
+            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
+            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
+            this.ContainerPanel.TabIndex = 3;
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 531);
+            this.panel1.Location = new System.Drawing.Point(0, 537);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 43);
-            this.panel1.TabIndex = 8;
+            this.panel1.Size = new System.Drawing.Size(200, 39);
+            this.panel1.TabIndex = 9;
             // 
             // ExitButton
             // 
-            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.FlatAppearance.BorderSize = 0;
             this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
@@ -404,34 +347,58 @@
             this.ExitButton.ForeColor = System.Drawing.Color.White;
             this.ExitButton.Image = global::RegistryTime.Properties.Resources.exit32;
             this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitButton.Location = new System.Drawing.Point(1, 3);
+            this.ExitButton.Location = new System.Drawing.Point(1, -1);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(199, 38);
+            this.ExitButton.Size = new System.Drawing.Size(199, 40);
             this.ExitButton.TabIndex = 9;
             this.ExitButton.Text = "  Salir";
             this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ExitButton.UseVisualStyleBackColor = true;
+            // 
+            // buttonTurno
+            // 
+            this.buttonTurno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonTurno.FlatAppearance.BorderSize = 0;
+            this.buttonTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonTurno.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTurno.ForeColor = System.Drawing.Color.White;
+            this.buttonTurno.Image = global::RegistryTime.Properties.Resources.office32;
+            this.buttonTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonTurno.Location = new System.Drawing.Point(0, 288);
+            this.buttonTurno.Name = "buttonTurno";
+            this.buttonTurno.Size = new System.Drawing.Size(199, 40);
+            this.buttonTurno.TabIndex = 10;
+            this.buttonTurno.Text = "Puesto";
+            this.buttonTurno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTurno.UseVisualStyleBackColor = true;
+            this.buttonTurno.Click += new System.EventHandler(this.buttonTurno_Click);
             // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(888, 576);
-            this.Controls.Add(this.PrincipalPanel);
+            this.Controls.Add(this.ContainerPanel);
+            this.Controls.Add(this.BottomStatePanel);
+            this.Controls.Add(this.TopPanel);
+            this.Controls.Add(this.MenuLeftPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cMRT100010";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.PrincipalPanel.ResumeLayout(false);
+            this.Load += new System.EventHandler(this.cMRT100010_Load);
+            this.MenuLeftPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
+            this.TopPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).EndInit();
             this.BottomStatePanel.ResumeLayout(false);
             this.BottomStatePanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.ContentPanel.ResumeLayout(false);
-            this.TopPanel.ResumeLayout(false);
-            this.MenuLeftPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -439,30 +406,28 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel PrincipalPanel;
+        private System.Windows.Forms.Panel MenuLeftPanel;
+        private System.Windows.Forms.Panel TopPanel;
         private System.Windows.Forms.Panel BottomStatePanel;
+        private System.Windows.Forms.Panel ContainerPanel;
+        private System.Windows.Forms.PictureBox MinWindowsPictureBox;
+        private System.Windows.Forms.PictureBox MaxWindowsPictureBox;
+        private System.Windows.Forms.PictureBox CloseWindowsPictureBox;
+        private System.Windows.Forms.Button HomeButton;
+        private System.Windows.Forms.PictureBox MenuPictureBox;
+        private System.Windows.Forms.Button TurnosButton;
+        private System.Windows.Forms.Button DepartamentoButton;
+        private System.Windows.Forms.Button SettingsButton;
+        private System.Windows.Forms.Button EmploymentsButton;
+        private System.Windows.Forms.Button ReportsButton;
+        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel UsertoolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel DatetoolStripStatusLabel;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.Panel TopPanel;
-        private System.Windows.Forms.Button Closebutton;
-        private System.Windows.Forms.Button MaximizeButton;
-        private System.Windows.Forms.Button Minimizebutton;
-        private System.Windows.Forms.Panel MenuLeftPanel;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button EmploymentsButton;
-        private System.Windows.Forms.Button ReportsButton;
-        private System.Windows.Forms.Button TurnosButton;
-        private System.Windows.Forms.Button DepartamentoButton;
-        private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.Button HomeButton;
-        private System.Windows.Forms.PictureBox MenuPictureBox;
-        private System.Windows.Forms.Panel ContainerPanel;
-        private System.Windows.Forms.Panel ContentPanel;
-        private System.Windows.Forms.Button NormalButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button buttonTurno;
     }
 }
 

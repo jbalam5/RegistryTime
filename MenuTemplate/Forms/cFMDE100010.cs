@@ -7,61 +7,123 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ModelLayer;
 using BussinesLayer;
+using ModelLayer;
 
-namespace MenuTemplate.Forms
+
+namespace RegistryTime.Forms
 {
     public partial class cFMDE100010 : Form
     {
-        public DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        #region "Declaracion Variables"
+        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        public int IdRowSelect;
+        #endregion
         public cFMDE100010()
         {
             InitializeComponent();
         }
 
-        private void cFMDE100010_Load(object sender, EventArgs e)
-        {
-            dataGridViewDepartamentos.DataSource = DepartamentBLL.All();
-            dataGridViewDepartamentos.AutoResizeRows();
-        }
 
-        private void ButtonSave_Click(object sender, EventArgs e)
+        private void cFRT100010_Load(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
-                {
-                    DepartamentML departament = new DepartamentML
-                    {
-                        Id = 0,
-                        Name = textBoxNombre.Text,
-                        Manage = textBoxEncargado.Text,
-                        Description = textBoxDescripcion.Text,
-                        IdUserInsert = 1
-                    };
-                    DepartamentBLL.Save(departament);
-                    MessageBox.Show("Guardado con Exito");
-                    Clear();
-                }
+                LoadDataGridView();
+                dataGridViewData.AutoResizeColumns();
+                dataGridViewData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewData.ClearSelection();
+                AlterColorDataGridView(dataGridViewData);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show(String.Format("ButtonSave_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("cFRT100010_Load: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
         }
 
-        public void Clear()
+        private void cFRT100010_Resize(object sender, EventArgs e)
         {
-            textBoxNombre.Text = String.Empty;
-            textBoxEncargado.Text = String.Empty;
-            textBoxDescripcion.Text = String.Empty;
+            dataGridViewData.Width = this.Width - 50;
+            dataGridViewData.Height = this.Height - 170;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void AlterColorDataGridView(DataGridView Dgv)
         {
-            //DataTable data = dataGridViewDepartamentos.SelectedColumns.;
+            Dgv.DefaultCellStyle.BackColor = Color.LightBlue;
+            Dgv.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+        }
+
+        private void buttonNuevo_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                cFMDE110010 Catalogo = new cFMDE110010();
+                AddOwnedForm(Catalogo);
+                Catalogo.FormBorderStyle = FormBorderStyle.None;
+                Catalogo.TopLevel = false;
+                Catalogo.Dock = DockStyle.Fill;
+                this.Controls.Add(Catalogo);
+                this.Tag = Catalogo;
+                Catalogo.BringToFront();
+                Catalogo.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonNuevo_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IdRowSelect = dataGridViewData.CurrentRow.Index;
+                if (IdRowSelect >= 0)
+                {
+                    cFMDE110010 Catalogo = new cFMDE110010();
+                    Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    Catalogo.textBoxNombre.Text = dataGridViewData.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
+                    Catalogo.textBoxEncargado.Text = dataGridViewData.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
+                    Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                    AddOwnedForm(Catalogo);
+                    Catalogo.FormBorderStyle = FormBorderStyle.None;
+                    Catalogo.TopLevel = false;
+                    Catalogo.Dock = DockStyle.Fill;
+                    this.Controls.Add(Catalogo);
+                    this.Tag = Catalogo;
+                    Catalogo.BringToFront();
+                    Catalogo.Show();
+                }
+                else
+                {
+                    MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonEditar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadDataGridView()
+        {
+            dataGridViewData.DataSource = DepartamentBLL.All();
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IdRowSelect = dataGridViewData.CurrentRow.Index;
+                DepartamentML Departament = new DepartamentML();
+                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                Departament.IdUserDelete = 1;
+                DepartamentBLL.Delete(Departament);
+                dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

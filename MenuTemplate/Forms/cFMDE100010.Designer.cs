@@ -1,4 +1,4 @@
-﻿namespace MenuTemplate.Forms
+﻿namespace RegistryTime.Forms
 {
     partial class cFMDE100010
     {
@@ -30,200 +30,137 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridViewDepartamentos = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.ButtonSave = new System.Windows.Forms.Button();
-            this.textBoxDescripcion = new System.Windows.Forms.TextBox();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.textBoxEncargado = new System.Windows.Forms.TextBox();
+            this.PrincipalPanel = new System.Windows.Forms.Panel();
+            this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.dataGridViewData = new System.Windows.Forms.DataGridView();
+            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.buttonEditar = new System.Windows.Forms.Button();
+            this.buttonNuevo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDepartamentos)).BeginInit();
+            this.PrincipalPanel.SuspendLayout();
+            this.ContainerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 37);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 7);
+            this.label1.Location = new System.Drawing.Point(4, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(140, 24);
             this.label1.TabIndex = 0;
             this.label1.Text = "Departamento";
             // 
-            // panel2
+            // PrincipalPanel
             // 
-            this.panel2.Controls.Add(this.textBoxEncargado);
-            this.panel2.Controls.Add(this.textBoxNombre);
-            this.panel2.Controls.Add(this.dataGridViewDepartamentos);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.ButtonSave);
-            this.panel2.Controls.Add(this.textBoxDescripcion);
-            this.panel2.Controls.Add(this.materialLabel3);
-            this.panel2.Controls.Add(this.materialLabel2);
-            this.panel2.Controls.Add(this.materialLabel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 413);
-            this.panel2.TabIndex = 3;
+            this.PrincipalPanel.Controls.Add(this.ContainerPanel);
+            this.PrincipalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PrincipalPanel.Location = new System.Drawing.Point(0, 0);
+            this.PrincipalPanel.Name = "PrincipalPanel";
+            this.PrincipalPanel.Size = new System.Drawing.Size(800, 450);
+            this.PrincipalPanel.TabIndex = 1;
             // 
-            // dataGridViewDepartamentos
+            // ContainerPanel
             // 
-            this.dataGridViewDepartamentos.AllowUserToAddRows = false;
-            this.dataGridViewDepartamentos.AllowUserToDeleteRows = false;
-            this.dataGridViewDepartamentos.AllowUserToOrderColumns = true;
-            this.dataGridViewDepartamentos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDepartamentos.Location = new System.Drawing.Point(76, 274);
-            this.dataGridViewDepartamentos.Name = "dataGridViewDepartamentos";
-            this.dataGridViewDepartamentos.ReadOnly = true;
-            this.dataGridViewDepartamentos.Size = new System.Drawing.Size(680, 81);
-            this.dataGridViewDepartamentos.TabIndex = 29;
+            this.ContainerPanel.Controls.Add(this.dataGridViewData);
+            this.ContainerPanel.Controls.Add(this.buttonEliminar);
+            this.ContainerPanel.Controls.Add(this.buttonEditar);
+            this.ContainerPanel.Controls.Add(this.buttonNuevo);
+            this.ContainerPanel.Controls.Add(this.panel1);
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(800, 450);
+            this.ContainerPanel.TabIndex = 5;
             // 
-            // button3
+            // dataGridViewData
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
-            this.button3.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleDeletex421;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(155, 6);
-            this.button3.Margin = new System.Windows.Forms.Padding(1);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(35, 36);
-            this.button3.TabIndex = 28;
-            this.button3.UseVisualStyleBackColor = false;
+            this.dataGridViewData.AllowUserToAddRows = false;
+            this.dataGridViewData.AllowUserToDeleteRows = false;
+            this.dataGridViewData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewData.EnableHeadersVisualStyles = false;
+            this.dataGridViewData.Location = new System.Drawing.Point(12, 99);
+            this.dataGridViewData.Name = "dataGridViewData";
+            this.dataGridViewData.ReadOnly = true;
+            this.dataGridViewData.RowHeadersVisible = false;
+            this.dataGridViewData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewData.Size = new System.Drawing.Size(776, 339);
+            this.dataGridViewData.TabIndex = 11;
             // 
-            // button2
+            // buttonEliminar
             // 
-            this.button2.BackColor = System.Drawing.Color.Transparent;
-            this.button2.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleEditx421;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(115, 6);
-            this.button2.Margin = new System.Windows.Forms.Padding(1);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(35, 36);
-            this.button2.TabIndex = 27;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.buttonEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonEliminar.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEliminar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEliminar.ForeColor = System.Drawing.Color.White;
+            this.buttonEliminar.Location = new System.Drawing.Point(174, 43);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(86, 40);
+            this.buttonEliminar.TabIndex = 10;
+            this.buttonEliminar.Text = "Eliminar";
+            this.buttonEliminar.UseVisualStyleBackColor = false;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
-            // ButtonSave
+            // buttonEditar
             // 
-            this.ButtonSave.BackColor = System.Drawing.Color.Transparent;
-            this.ButtonSave.BackgroundImage = global::MenuTemplate.Properties.Resources.CircleSavex48;
-            this.ButtonSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonSave.FlatAppearance.BorderSize = 0;
-            this.ButtonSave.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ButtonSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ButtonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSave.Location = new System.Drawing.Point(74, 6);
-            this.ButtonSave.Margin = new System.Windows.Forms.Padding(1);
-            this.ButtonSave.Name = "ButtonSave";
-            this.ButtonSave.Size = new System.Drawing.Size(35, 36);
-            this.ButtonSave.TabIndex = 26;
-            this.ButtonSave.UseVisualStyleBackColor = false;
-            this.ButtonSave.Click += new System.EventHandler(this.ButtonSave_Click);
+            this.buttonEditar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonEditar.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditar.ForeColor = System.Drawing.Color.White;
+            this.buttonEditar.Location = new System.Drawing.Point(93, 43);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(82, 40);
+            this.buttonEditar.TabIndex = 9;
+            this.buttonEditar.Text = "Editar";
+            this.buttonEditar.UseVisualStyleBackColor = false;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
-            // textBoxDescripcion
+            // buttonNuevo
             // 
-            this.textBoxDescripcion.Location = new System.Drawing.Point(74, 174);
-            this.textBoxDescripcion.Multiline = true;
-            this.textBoxDescripcion.Name = "textBoxDescripcion";
-            this.textBoxDescripcion.Size = new System.Drawing.Size(682, 72);
-            this.textBoxDescripcion.TabIndex = 6;
-            // 
-            // materialLabel3
-            // 
-            this.materialLabel3.AutoSize = true;
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(70, 152);
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-            this.materialLabel3.Size = new System.Drawing.Size(89, 19);
-            this.materialLabel3.TabIndex = 5;
-            this.materialLabel3.Text = "Descripción";
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(72, 101);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(80, 19);
-            this.materialLabel2.TabIndex = 4;
-            this.materialLabel2.Text = "Encargado";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(72, 56);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(63, 19);
-            this.materialLabel1.TabIndex = 3;
-            this.materialLabel1.Text = "Nombre";
-            // 
-            // textBoxNombre
-            // 
-            this.textBoxNombre.Location = new System.Drawing.Point(76, 78);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(335, 20);
-            this.textBoxNombre.TabIndex = 30;
-            // 
-            // textBoxEncargado
-            // 
-            this.textBoxEncargado.Location = new System.Drawing.Point(76, 129);
-            this.textBoxEncargado.Name = "textBoxEncargado";
-            this.textBoxEncargado.Size = new System.Drawing.Size(335, 20);
-            this.textBoxEncargado.TabIndex = 34;
+            this.buttonNuevo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonNuevo.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonNuevo.ForeColor = System.Drawing.Color.White;
+            this.buttonNuevo.Location = new System.Drawing.Point(12, 43);
+            this.buttonNuevo.Name = "buttonNuevo";
+            this.buttonNuevo.Size = new System.Drawing.Size(82, 40);
+            this.buttonNuevo.TabIndex = 8;
+            this.buttonNuevo.Text = "Nuevo";
+            this.buttonNuevo.UseVisualStyleBackColor = false;
+            this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
             // cFMDE100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cFMDE100010";
             this.Text = "cFMDE100010";
-            this.Load += new System.EventHandler(this.cFMDE100010_Load);
+            this.Load += new System.EventHandler(this.cFRT100010_Load);
+            this.Resize += new System.EventHandler(this.cFRT100010_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDepartamentos)).EndInit();
+            this.PrincipalPanel.ResumeLayout(false);
+            this.ContainerPanel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -232,16 +169,11 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private System.Windows.Forms.TextBox textBoxDescripcion;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button ButtonSave;
-        private System.Windows.Forms.DataGridView dataGridViewDepartamentos;
-        private System.Windows.Forms.TextBox textBoxEncargado;
-        private System.Windows.Forms.TextBox textBoxNombre;
+        private System.Windows.Forms.Panel PrincipalPanel;
+        private System.Windows.Forms.Panel ContainerPanel;
+        private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.Button buttonEditar;
+        private System.Windows.Forms.Button buttonNuevo;
+        private System.Windows.Forms.DataGridView dataGridViewData;
     }
 }

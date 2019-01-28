@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MenuTemplate.Forms
+namespace RegistryTime.Forms
 {
     public partial class cFRT130010 : Form
     {

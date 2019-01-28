@@ -1,4 +1,4 @@
-﻿using MenuTemplate.Forms;
+﻿using RegistryTime.Forms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 //using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Forms;
 
-namespace MenuTemplate.ArgumentSystem
+namespace RegistryTime.ArgumentSystem
 {
     public class Arguments
     {
@@ -29,7 +29,7 @@ namespace MenuTemplate.ArgumentSystem
                     switch (ArgumentsList[2])
                     {
                         case "FMCX":
-                            Application.Run(new cFMCX000010());
+                            //Application.Run(new cFMCX000010());
                             break;
                         default:
                             break;
