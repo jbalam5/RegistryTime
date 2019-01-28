@@ -35,6 +35,9 @@ INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Activo','Dato')
 INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Inactivo','Dato')
            
 GO
+
+insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('ADMIN','ADMIN',1,1,getDate())
+insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('INVITADO','INVITADO',2,1,getDate())
 go
 create table role(
 id int primary key identity(1,1) not null,
@@ -48,6 +51,9 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
+go
+INSERT INTO [dbo].[role]([name],[description]) VALUES('ADMIN','USUARIO PARA CONFIGURACION')
+INSERT INTO [dbo].[role]([name],[description]) VALUES('CAPTURA','USUARIO PARA CAPTURA DE HORA')
 
 go
 create table job (
@@ -85,6 +91,19 @@ curp nvarchar(25),
 name nvarchar(50) not null,
 lastname nvarchar(50) not null,
 scholarship nvarchar(50),
+birthdate date null,
+gender nvarchar(10)null,
+nationality nvarchar(25) null,
+address nvarchar(100) null,
+municipality nvarchar(100) null,
+country nvarchar(50) null,
+email nvarchar(50) null,
+civilStatus  nvarchar(20) null,
+colony nvarchar(50) null,
+stateCountry nvarchar(50) null,
+postalCode int null,
+controlNumber nvarchar(max),
+sureType nvarchar(25),
 idJob int not null,
 idDepartament int not null,
 idUser int not null,
