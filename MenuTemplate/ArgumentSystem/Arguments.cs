@@ -31,6 +31,9 @@ namespace RegistryTime.ArgumentSystem
                         case "FMCX":
                             //Application.Run(new cFMCX000010());
                             break;
+                        case "RTEM":
+                            Application.Run(new RegistryTime.Forms.CFRT140010());
+                            break;
                         default:
                             break;
                     }
