@@ -118,11 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="TimeCalendarx64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TimeCalendarx64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BackgroudClock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroudClock.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reports32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reports32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconLineH" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLineH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -130,11 +130,11 @@
   <data name="CircleSavex48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CircleSavex48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="anonimo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\anonimo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="maximizar32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\maximizar32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WorldTimex128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WorldTimex128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="realtimeexpert-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\realtimeexpert-logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -147,6 +147,9 @@
   </data>
   <data name="Preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CicleYellowSavex48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CicleYellowSavex48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,6 +174,9 @@
   </data>
   <data name="CircleDeletex42" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CircleDeletex42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconDel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconDel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimize_thewindow_theapplication_2872" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_thewindow_theapplication_2872.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,19 +211,16 @@
   <data name="iconCircleTimex48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconCircleTimex48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="anonimo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\anonimo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CircleEditx42" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CircleEditx42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconDel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconDel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reports32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reports32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="TimeCalendarx64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TimeCalendarx64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="WorldTimex128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\WorldTimex128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="TimeCalendarx641" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TimeCalendarx641.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

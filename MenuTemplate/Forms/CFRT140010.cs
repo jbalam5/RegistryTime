@@ -39,5 +39,15 @@ namespace RegistryTime.Forms
             MensajePanel.Visible = true;
             MensajeLabel.Text = Message;
         }
+
+        private void Minimizebutton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Closebutton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -363,6 +363,16 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TimeCalendarx641 {
+            get {
+                object obj = ResourceManager.GetObject("TimeCalendarx641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user24 {
             get {
                 object obj = ResourceManager.GetObject("user24", resourceCulture);

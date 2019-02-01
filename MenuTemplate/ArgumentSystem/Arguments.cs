@@ -34,6 +34,9 @@ namespace RegistryTime.ArgumentSystem
                         case "RTEM":
                             Application.Run(new RegistryTime.Forms.CFRT140010());
                             break;
+                        case "RTLG":
+                            Application.Run(new RegistryTime.Forms.cFRT150010());
+                            break;
                         default:
                             break;
                     }

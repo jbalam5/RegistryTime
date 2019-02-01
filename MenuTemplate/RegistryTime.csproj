@@ -125,6 +125,12 @@
     <Compile Include="Forms\CFRT140010.Designer.cs">
       <DependentUpon>CFRT140010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFRT150010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFRT150010.Designer.cs">
+      <DependentUpon>cFRT150010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="cMRT100010.resx">
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CFRT140010.resx">
       <DependentUpon>CFRT140010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFRT150010.resx">
+      <DependentUpon>cFRT150010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -264,6 +273,7 @@
     <None Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TimeCalendarx641.png" />
     <None Include="Resources\WorldTimex128.png" />
     <None Include="Resources\TimeCalendarx64.png" />
     <None Include="Resources\anonimo.jpg" />
