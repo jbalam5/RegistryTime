@@ -51,12 +51,19 @@
     <Reference Include="ButtonMenuLeft">
       <HintPath>..\..\..\JBControlDLL\ButtonMenuLeft.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\LibPackage\MaterialSkin.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -171,6 +178,17 @@
     </Compile>
     <Compile Include="Forms\cFMAA100010.Designer.cs">
       <DependentUpon>cFMAA100010.cs</DependentUpon>
+    <Compile Include="Forms\CFRT140010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CFRT140010.Designer.cs">
+      <DependentUpon>CFRT140010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFRT150010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFRT150010.Designer.cs">
+      <DependentUpon>cFRT150010.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -224,6 +242,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMAA100010.resx">
       <DependentUpon>cFMAA100010.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CFRT140010.resx">
+      <DependentUpon>CFRT140010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFRT150010.resx">
+      <DependentUpon>cFRT150010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -338,6 +361,10 @@
     <None Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\TimeCalendarx641.png" />
+    <None Include="Resources\WorldTimex128.png" />
+    <None Include="Resources\TimeCalendarx64.png" />
+    <None Include="Resources\anonimo.jpg" />
     <Content Include="Resources\iconDel.png" />
     <Content Include="Resources\iconLineH.png" />
     <Content Include="Resources\iconsmax15.png" />

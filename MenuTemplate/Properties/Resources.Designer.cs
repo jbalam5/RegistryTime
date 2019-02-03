@@ -63,6 +63,16 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap anonimo {
+            get {
+                object obj = ResourceManager.GetObject("anonimo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BackgroudClock {
             get {
                 object obj = ResourceManager.GetObject("BackgroudClock", resourceCulture);
@@ -343,6 +353,26 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap TimeCalendarx64 {
+            get {
+                object obj = ResourceManager.GetObject("TimeCalendarx64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TimeCalendarx641 {
+            get {
+                object obj = ResourceManager.GetObject("TimeCalendarx641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap user24 {
             get {
                 object obj = ResourceManager.GetObject("user24", resourceCulture);
@@ -366,6 +396,16 @@ namespace RegistryTime.Properties {
         internal static System.Drawing.Bitmap users42 {
             get {
                 object obj = ResourceManager.GetObject("users42", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WorldTimex128 {
+            get {
+                object obj = ResourceManager.GetObject("WorldTimex128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

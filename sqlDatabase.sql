@@ -1,6 +1,4 @@
 
-use registryTime
-go 
 create table users(
 id int primary key identity(1,1) not null,
 userName nvarchar(25) not null,
@@ -15,7 +13,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table statusBook(
 id int primary key identity(1,1) not null,
 name nvarchar(25) not null,
@@ -29,16 +27,16 @@ idUserDelete int,
 dateDelete datetime
 )
 
-GO
+
 
 INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Activo','Dato')
 INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Inactivo','Dato')
            
-GO
+
 
 insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('ADMIN','ADMIN',1,1,getDate())
 insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('INVITADO','INVITADO',2,1,getDate())
-go
+
 create table role(
 id int primary key identity(1,1) not null,
 name nvarchar(25) not null,
@@ -51,11 +49,11 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 INSERT INTO [dbo].[role]([name],[description]) VALUES('ADMIN','USUARIO PARA CONFIGURACION')
 INSERT INTO [dbo].[role]([name],[description]) VALUES('CAPTURA','USUARIO PARA CAPTURA DE HORA')
 
-go
+
 create table job (
 id int primary key identity(1,1) not null,
 name nvarchar(50) not null,
@@ -68,7 +66,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table departament (
 id int primary key identity(1,1) not null,
 name nvarchar(50) not null,
@@ -83,7 +81,7 @@ idUserDelete int,
 dateDelete datetime
 )
 
-go
+
 create table employee(
 id int primary key identity(1,1) not null,
 rfc nvarchar(25),
@@ -127,7 +125,7 @@ CONSTRAINT FK_employee_idJob FOREIGN KEY (idJob)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION
 )
-go
+
 create table festive(
 id int primary key identity(1,1) not null,
 date date not null,
@@ -145,7 +143,7 @@ CONSTRAINT FK_festive_typeJob FOREIGN KEY (typeJob)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION
 )
-go
+
 create table absenteeism(
 id int primary key identity(1,1) not null,
 isKey nvarchar(5) not null,
@@ -159,7 +157,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table turn(
 id int primary key identity(1,1) not null,
 name nvarchar(50) not null,
@@ -173,7 +171,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table days(
 id int primary key identity(1,1) not null,
 name nvarchar(10),
@@ -185,7 +183,15 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
+insert into days(name,_registry) values('Lunes',1)
+insert into days(name,_registry) values('Martes',1)
+insert into days(name,_registry) values('Miercoles',1)
+insert into days(name,_registry) values('Jueves',1)
+insert into days(name,_registry) values('Viernes',1)
+insert into days(name,_registry) values('Sabado',1)
+insert into days(name,_registry) values('Domingo',1)
+
 create table daysOfTurn(
 id int primary key identity(1,1) not null,
 idDays int,
@@ -206,7 +212,7 @@ CONSTRAINT FK_daysOfTurn_idDays FOREIGN KEY (idDays)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION,
 )
-go
+
 create table turnsOfEmployee(
 id int primary key identity(1,1) not null,
 idTurn int,
@@ -228,7 +234,7 @@ CONSTRAINT FK_turnsOfEmployee_idEmployee FOREIGN KEY (idEmployee)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION
 )
-go
+
 create table company(
 id int primary key identity(1,1) not null,
 rfc nvarchar(25),
@@ -249,7 +255,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table permission(
 id int primary key identity(1,1) not null,
 name nvarchar(25),
@@ -262,7 +268,7 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
-go
+
 create table permissionsOfUser(
 id int primary key identity(1,1) not null,
 idUser int not null,
@@ -283,7 +289,7 @@ CONSTRAINT FK_permissionsOfUser_idUser FOREIGN KEY (idUser)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION
 )
-go
+
 create table checkInHours(
 id int primary key identity(1,1) not null,
 date datetime not null,
@@ -301,4 +307,3 @@ CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION,
 )
-go
