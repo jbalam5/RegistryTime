@@ -64,6 +64,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -76,6 +77,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Alerts\cFAT100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Alerts\cFAT100010.Designer.cs">
+      <DependentUpon>cFAT100010.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArgumentSystem\Arguments.cs" />
     <Compile Include="cMRT100010.cs">
       <SubType>Form</SubType>
@@ -178,7 +185,7 @@
     </Compile>
     <Compile Include="Forms\cFMAA100010.Designer.cs">
       <DependentUpon>cFMAA100010.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Forms\CFRT140010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +200,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Alerts\cFAT100010.resx">
+      <DependentUpon>cFAT100010.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="cMRT100010.resx">
       <DependentUpon>cMRT100010.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,7 +253,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMAA100010.resx">
       <DependentUpon>cFMAA100010.cs</DependentUpon>
-	  </EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CFRT140010.resx">
       <DependentUpon>CFRT140010.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,12 +373,19 @@
     <None Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\IconWarningOrnge.png" />
+    <None Include="Resources\IconWarning.png" />
     <None Include="Resources\TimeCalendarx641.png" />
     <None Include="Resources\WorldTimex128.png" />
     <None Include="Resources\TimeCalendarx64.png" />
     <None Include="Resources\anonimo.jpg" />
+    <None Include="Resources\IconAlarmWarning.png" />
     <Content Include="Resources\iconDel.png" />
+    <None Include="Resources\IconError.png" />
+    <None Include="Resources\IconInformation.png" />
     <Content Include="Resources\iconLineH.png" />
+    <None Include="Resources\IconQuestion.png" />
+    <None Include="Resources\IconQuestionOrange.png" />
     <Content Include="Resources\iconsmax15.png" />
     <Content Include="Resources\iconSquared.png" />
   </ItemGroup>
