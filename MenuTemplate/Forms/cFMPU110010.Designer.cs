@@ -1,6 +1,6 @@
 ﻿namespace RegistryTime.Forms
 {
-    partial class cFMDE110010
+    partial class cFMPU110010
     {
         /// <summary>
         /// Required designer variable.
@@ -31,12 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBoxEncargado = new System.Windows.Forms.TextBox();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
+            this.textBoxPuesto = new System.Windows.Forms.TextBox();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
@@ -61,18 +59,16 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(12, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 24);
+            this.label1.Size = new System.Drawing.Size(175, 24);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Departamento";
+            this.label1.Text = "Puesto Empleado";
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.textBoxEncargado);
-            this.panel2.Controls.Add(this.textBoxNombre);
+            this.panel2.Controls.Add(this.textBoxPuesto);
             this.panel2.Controls.Add(this.textBoxDescripcion);
             this.panel2.Controls.Add(this.materialLabel3);
             this.panel2.Controls.Add(this.materialLabel2);
-            this.panel2.Controls.Add(this.materialLabel1);
             this.panel2.Controls.Add(this.buttonCancelar);
             this.panel2.Controls.Add(this.buttonLimpiar);
             this.panel2.Controls.Add(this.buttonGuardar);
@@ -83,23 +79,17 @@
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
-            // textBoxEncargado
+            // textBoxPuesto
             // 
-            this.textBoxEncargado.Location = new System.Drawing.Point(16, 131);
-            this.textBoxEncargado.Name = "textBoxEncargado";
-            this.textBoxEncargado.Size = new System.Drawing.Size(335, 20);
-            this.textBoxEncargado.TabIndex = 4;
-            // 
-            // textBoxNombre
-            // 
-            this.textBoxNombre.Location = new System.Drawing.Point(16, 80);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(335, 20);
-            this.textBoxNombre.TabIndex = 1;
+            this.textBoxPuesto.Location = new System.Drawing.Point(16, 85);
+            this.textBoxPuesto.Name = "textBoxPuesto";
+            this.textBoxPuesto.Size = new System.Drawing.Size(335, 20);
+            this.textBoxPuesto.TabIndex = 4;
+            this.textBoxPuesto.TextChanged += new System.EventHandler(this.textBoxEncargado_TextChanged);
             // 
             // textBoxDescripcion
             // 
-            this.textBoxDescripcion.Location = new System.Drawing.Point(14, 176);
+            this.textBoxDescripcion.Location = new System.Drawing.Point(14, 130);
             this.textBoxDescripcion.Multiline = true;
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.Size = new System.Drawing.Size(616, 72);
@@ -111,7 +101,7 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(10, 154);
+            this.materialLabel3.Location = new System.Drawing.Point(10, 108);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(89, 19);
@@ -124,25 +114,12 @@
             this.materialLabel2.Depth = 0;
             this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(12, 103);
+            this.materialLabel2.Location = new System.Drawing.Point(12, 57);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(80, 19);
+            this.materialLabel2.Size = new System.Drawing.Size(56, 19);
             this.materialLabel2.TabIndex = 42;
-            this.materialLabel2.Text = "Encargado";
-            // 
-            // materialLabel1
-            // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel1.Location = new System.Drawing.Point(12, 58);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(63, 19);
-            this.materialLabel1.TabIndex = 41;
-            this.materialLabel1.Text = "Nombre";
+            this.materialLabel2.Text = "Puesto";
             // 
             // buttonCancelar
             // 
@@ -189,14 +166,14 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // cFMDE110010
+            // cFMPU130010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "cFMDE110010";
+            this.Name = "cFMPU130010";
             this.Load += new System.EventHandler(this.cFRT140010_Load);
             this.Resize += new System.EventHandler(this.cFMDE110010_Resize);
             this.panel1.ResumeLayout(false);
@@ -215,11 +192,9 @@
         private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.Button buttonGuardar;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox textBoxEncargado;
-        public System.Windows.Forms.TextBox textBoxNombre;
+        public System.Windows.Forms.TextBox textBoxPuesto;
         public System.Windows.Forms.TextBox textBoxDescripcion;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

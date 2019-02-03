@@ -12,12 +12,12 @@ using ModelLayer;
 
 namespace RegistryTime.Forms
 {
-    public partial class cFMDE110010 : Form
+    public partial class cFMCO110010 : Form
     {
-        public int IdDepartament = 0;
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        public int IdAbsenteeism = 0;
+        AbsenteeismBLL AbsenteeismBLL = new AbsenteeismBLL();
 
-        public cFMDE110010()
+        public cFMCO110010()
         {
             InitializeComponent();
         }
@@ -33,8 +33,8 @@ namespace RegistryTime.Forms
         }
         public void Clear()
         {
-            textBoxNombre.Text = String.Empty;
-            textBoxEncargado.Text = String.Empty;
+            textBoxClave.Text = String.Empty;
+            textBoxConcepto.Text = String.Empty;
             textBoxDescripcion.Text = String.Empty;
         }
 
@@ -42,24 +42,24 @@ namespace RegistryTime.Forms
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
+                if (!String.IsNullOrEmpty(textBoxClave.Text))
                 {
-                    DepartamentML Departament = new DepartamentML();
-                    if (IdDepartament == 0)
+                    AbsenteeismML Absenteeism = new AbsenteeismML();
+                    if (IdAbsenteeism == 0)
                     {
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
+                        Absenteeism.IsKey = textBoxClave.Text;
+                        Absenteeism.Concept = textBoxConcepto.Text;
+                        Absenteeism.description = textBoxDescripcion.Text;
                     }
                     else
                     {
-                        Departament.Id = IdDepartament;
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
-                        Departament.IdUserUpdate = 1;
+                        Absenteeism.Id = IdAbsenteeism;
+                        Absenteeism.Concept = textBoxClave.Text;
+                        Absenteeism.Concept = textBoxConcepto.Text;
+                        Absenteeism.description = textBoxDescripcion.Text;
+                        Absenteeism.IdUserUpdate = 1;
                     }
-                    DepartamentBLL.Save(Departament);
+                    AbsenteeismBLL.Save(Absenteeism);
 
                     cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
                     FrmDataGrid.LoadDataGridView();
@@ -86,7 +86,7 @@ namespace RegistryTime.Forms
             textBoxDescripcion.Width = this.Width - 150;
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void textBoxConcepto_TextChanged(object sender, EventArgs e)
         {
 
         }

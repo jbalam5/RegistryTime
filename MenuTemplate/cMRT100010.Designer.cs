@@ -42,6 +42,12 @@
             this.MaximizeButton = new System.Windows.Forms.Button();
             this.Minimizebutton = new System.Windows.Forms.Button();
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.PuestoButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
@@ -50,17 +56,15 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ExitButton = new System.Windows.Forms.Button();
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
             this.MenuLeftPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrincipalPanel
@@ -116,7 +120,7 @@
             this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
             this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(134, 25);
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
             this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
             this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -226,6 +230,10 @@
             // MenuLeftPanel
             // 
             this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.MenuLeftPanel.Controls.Add(this.button3);
+            this.MenuLeftPanel.Controls.Add(this.button2);
+            this.MenuLeftPanel.Controls.Add(this.button1);
+            this.MenuLeftPanel.Controls.Add(this.PuestoButton);
             this.MenuLeftPanel.Controls.Add(this.panel1);
             this.MenuLeftPanel.Controls.Add(this.pictureBox1);
             this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
@@ -240,6 +248,114 @@
             this.MenuLeftPanel.Name = "MenuLeftPanel";
             this.MenuLeftPanel.Size = new System.Drawing.Size(200, 574);
             this.MenuLeftPanel.TabIndex = 4;
+            // 
+            // button3
+            // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = global::RegistryTime.Properties.Resources.time32;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(1, 405);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(199, 40);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "  Registro";
+            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::RegistryTime.Properties.Resources.time32;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(1, 368);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(199, 40);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "  Ausentismo";
+            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::RegistryTime.Properties.Resources.time32;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 331);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(199, 40);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "  Concepto";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // PuestoButton
+            // 
+            this.PuestoButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PuestoButton.FlatAppearance.BorderSize = 0;
+            this.PuestoButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.PuestoButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.PuestoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PuestoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PuestoButton.ForeColor = System.Drawing.Color.White;
+            this.PuestoButton.Image = global::RegistryTime.Properties.Resources.office32;
+            this.PuestoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.PuestoButton.Location = new System.Drawing.Point(0, 259);
+            this.PuestoButton.Name = "PuestoButton";
+            this.PuestoButton.Size = new System.Drawing.Size(207, 40);
+            this.PuestoButton.TabIndex = 9;
+            this.PuestoButton.Text = "  Puesto";
+            this.PuestoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.PuestoButton.UseVisualStyleBackColor = true;
+            this.PuestoButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 531);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 43);
+            this.panel1.TabIndex = 8;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Image = global::RegistryTime.Properties.Resources.exit32;
+            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ExitButton.Location = new System.Drawing.Point(1, 3);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(199, 38);
+            this.ExitButton.TabIndex = 9;
+            this.ExitButton.Text = "  Salir";
+            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ExitButton.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -262,11 +378,11 @@
             this.EmploymentsButton.ForeColor = System.Drawing.Color.White;
             this.EmploymentsButton.Image = global::RegistryTime.Properties.Resources.users32;
             this.EmploymentsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.EmploymentsButton.Location = new System.Drawing.Point(1, 196);
+            this.EmploymentsButton.Location = new System.Drawing.Point(1, 187);
             this.EmploymentsButton.Name = "EmploymentsButton";
             this.EmploymentsButton.Size = new System.Drawing.Size(199, 40);
             this.EmploymentsButton.TabIndex = 6;
-            this.EmploymentsButton.Text = "  Empleados";
+            this.EmploymentsButton.Text = "  Empleado";
             this.EmploymentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.EmploymentsButton.UseVisualStyleBackColor = true;
             this.EmploymentsButton.Click += new System.EventHandler(this.EmploymentsButton_Click);
@@ -282,7 +398,7 @@
             this.ReportsButton.ForeColor = System.Drawing.Color.White;
             this.ReportsButton.Image = global::RegistryTime.Properties.Resources.reports32;
             this.ReportsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsButton.Location = new System.Drawing.Point(2, 328);
+            this.ReportsButton.Location = new System.Drawing.Point(1, 439);
             this.ReportsButton.Name = "ReportsButton";
             this.ReportsButton.Size = new System.Drawing.Size(199, 40);
             this.ReportsButton.TabIndex = 5;
@@ -302,11 +418,11 @@
             this.TurnosButton.ForeColor = System.Drawing.Color.White;
             this.TurnosButton.Image = global::RegistryTime.Properties.Resources.time32;
             this.TurnosButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TurnosButton.Location = new System.Drawing.Point(1, 288);
+            this.TurnosButton.Location = new System.Drawing.Point(-1, 294);
             this.TurnosButton.Name = "TurnosButton";
             this.TurnosButton.Size = new System.Drawing.Size(199, 40);
             this.TurnosButton.TabIndex = 4;
-            this.TurnosButton.Text = "  Turnos";
+            this.TurnosButton.Text = "  Turno";
             this.TurnosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.TurnosButton.UseVisualStyleBackColor = true;
             this.TurnosButton.Click += new System.EventHandler(this.TurnosButton_Click);
@@ -322,7 +438,7 @@
             this.DepartamentoButton.ForeColor = System.Drawing.Color.White;
             this.DepartamentoButton.Image = global::RegistryTime.Properties.Resources.office32;
             this.DepartamentoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DepartamentoButton.Location = new System.Drawing.Point(1, 242);
+            this.DepartamentoButton.Location = new System.Drawing.Point(1, 224);
             this.DepartamentoButton.Name = "DepartamentoButton";
             this.DepartamentoButton.Size = new System.Drawing.Size(199, 40);
             this.DepartamentoButton.TabIndex = 3;
@@ -342,7 +458,7 @@
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Image = global::RegistryTime.Properties.Resources.settings32;
             this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(1, 374);
+            this.SettingsButton.Location = new System.Drawing.Point(1, 485);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(199, 40);
             this.SettingsButton.TabIndex = 2;
@@ -383,35 +499,6 @@
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 531);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 43);
-            this.panel1.TabIndex = 8;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExitButton.FlatAppearance.BorderSize = 0;
-            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.ForeColor = System.Drawing.Color.White;
-            this.ExitButton.Image = global::RegistryTime.Properties.Resources.exit32;
-            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitButton.Location = new System.Drawing.Point(1, 3);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(199, 38);
-            this.ExitButton.TabIndex = 9;
-            this.ExitButton.Text = "  Salir";
-            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ExitButton.UseVisualStyleBackColor = true;
-            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,9 +517,9 @@
             this.ContentPanel.ResumeLayout(false);
             this.TopPanel.ResumeLayout(false);
             this.MenuLeftPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -463,6 +550,10 @@
         private System.Windows.Forms.Button NormalButton;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.Button PuestoButton;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -12,12 +12,12 @@ using ModelLayer;
 
 namespace RegistryTime.Forms
 {
-    public partial class cFMDE110010 : Form
+    public partial class cFMPU110010 : Form
     {
-        public int IdDepartament = 0;
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        public int IdJob = 0;
+        JobBLL JobBLL = new JobBLL();
 
-        public cFMDE110010()
+        public cFMPU110010()
         {
             InitializeComponent();
         }
@@ -33,8 +33,7 @@ namespace RegistryTime.Forms
         }
         public void Clear()
         {
-            textBoxNombre.Text = String.Empty;
-            textBoxEncargado.Text = String.Empty;
+            textBoxPuesto.Text = String.Empty;
             textBoxDescripcion.Text = String.Empty;
         }
 
@@ -42,29 +41,27 @@ namespace RegistryTime.Forms
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
+                if (!String.IsNullOrEmpty(textBoxPuesto.Text))
                 {
-                    DepartamentML Departament = new DepartamentML();
-                    if (IdDepartament == 0)
+                    JobML Job = new JobML();
+                    if (IdJob == 0)
                     {
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
+                        Job.Name = textBoxPuesto.Text;
+                        Job.Description = textBoxDescripcion.Text;
                     }
                     else
                     {
-                        Departament.Id = IdDepartament;
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
-                        Departament.IdUserUpdate = 1;
+                        Job.Id = IdJob;
+                        Job.Name = textBoxPuesto.Text;
+                        Job.Description = textBoxDescripcion.Text;
+                        Job.IdUserUpdate = 1;
                     }
-                    DepartamentBLL.Save(Departament);
+                    JobBLL.Save(Job);
 
-                    cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
+                    cFMPU100010 FrmDataGrid = this.Owner as cFMPU100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Exito");
+                    MessageBox.Show("Guardado con Éxito");
                     Clear();
                     this.Close();
                 }
@@ -84,6 +81,11 @@ namespace RegistryTime.Forms
         private void cFMDE110010_Resize(object sender, EventArgs e)
         {
             textBoxDescripcion.Width = this.Width - 150;
+        }
+
+        private void textBoxEncargado_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)

@@ -82,6 +82,36 @@
     <Compile Include="cMRT1000101.Designer.cs">
       <DependentUpon>cMRT1000101.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFMAA110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMAA110010.Designer.cs">
+      <DependentUpon>cFMAA110010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMTU110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMTU110010.Designer.cs">
+      <DependentUpon>cFMTU110010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMCO110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMCO110010.Designer.cs">
+      <DependentUpon>cFMCO110010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMEM110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMEM110010.Designer.cs">
+      <DependentUpon>cFMEM110010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMPU110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMPU110010.Designer.cs">
+      <DependentUpon>cFMPU110010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\cFMDE100010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +142,36 @@
     <Compile Include="Forms\cFRT130010.Designer.cs">
       <DependentUpon>cFRT130010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFMPU100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMPU100010.Designer.cs">
+      <DependentUpon>cFMPU100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMEM100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMEM100010.Designer.cs">
+      <DependentUpon>cFMEM100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMCO100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMCO100010.Designer.cs">
+      <DependentUpon>cFMCO100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMTU100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMTU100010.Designer.cs">
+      <DependentUpon>cFMTU100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\cFMAA100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMAA100010.Designer.cs">
+      <DependentUpon>cFMAA100010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="cMRT100010.resx">
@@ -119,6 +179,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cMRT1000101.resx">
       <DependentUpon>cMRT1000101.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMAA110010.resx">
+      <DependentUpon>cFMAA110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMTU110010.resx">
+      <DependentUpon>cFMTU110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMCO110010.resx">
+      <DependentUpon>cFMCO110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMEM110010.resx">
+      <DependentUpon>cFMEM110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMPU110010.resx">
+      <DependentUpon>cFMPU110010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMDE100010.resx">
       <DependentUpon>cFMDE100010.cs</DependentUpon>
@@ -134,6 +209,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT130010.resx">
       <DependentUpon>cFRT130010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMPU100010.resx">
+      <DependentUpon>cFMPU100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMEM100010.resx">
+      <DependentUpon>cFMEM100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMCO100010.resx">
+      <DependentUpon>cFMCO100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMTU100010.resx">
+      <DependentUpon>cFMTU100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMAA100010.resx">
+      <DependentUpon>cFMAA100010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

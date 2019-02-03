@@ -23,7 +23,8 @@ namespace DataLayer
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                //String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Puesto,{0}.[Description] as Descripcion FROM {0} where {0}._registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);

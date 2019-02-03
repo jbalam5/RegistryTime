@@ -24,6 +24,8 @@ namespace RegistryTime
         public cMRT100010()
         {
             InitializeComponent();
+            MetodMax();
+
         }
 
         #region "EVENTS"
@@ -64,7 +66,7 @@ namespace RegistryTime
             this.NormalButton.Visible = false;
         }
 
-        private void MaximizeButton_Click(object sender, EventArgs e)
+        public void MetodMax()
         {
             lx = this.Location.X;
             ly = this.Location.Y;
@@ -74,6 +76,20 @@ namespace RegistryTime
             this.Location = Screen.PrimaryScreen.WorkingArea.Location;
             this.NormalButton.Visible = true;
             this.MaximizeButton.Visible = false;
+        }
+
+        private void MaximizeButton_Click(object sender, EventArgs e)
+        {
+            MetodMax();
+
+            //lx = this.Location.X;
+            //ly = this.Location.Y;
+            //sw = this.Size.Width;
+            //sh = this.Size.Height;
+            //this.Size = Screen.PrimaryScreen.WorkingArea.Size;
+            //this.Location = Screen.PrimaryScreen.WorkingArea.Location;
+            //this.NormalButton.Visible = true;
+            //this.MaximizeButton.Visible = false;
 
             //if (this.WindowState == FormWindowState.Maximized)
             //    this.WindowState = FormWindowState.Normal;
@@ -99,13 +115,15 @@ namespace RegistryTime
 
         private void EmploymentsButton_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new RegistryTime.Forms.cFRT110010());
+            OpenFormChild(new RegistryTime.Forms.cFMEM100010());
         }
 
         private void TurnosButton_Click(object sender, EventArgs e)
         {
-            RegistryTime.Forms.cFRT130010 frm = new Forms.cFRT130010();
-            frm.ShowDialog();
+            //RegistryTime.Forms.cFMTU140010 frm = new Forms.cFMTU140010();
+            //frm.ShowDialog();
+            OpenFormChild(new RegistryTime.Forms.cFMTU100010());
+
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -172,6 +190,21 @@ namespace RegistryTime
             {
                 MessageBox.Show(String.Format("OpenFormChild: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMPU100010());
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMCO100010());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMAA100010());
         }
 
         private void ClearPanelContainer()
