@@ -17,14 +17,31 @@ namespace RegistryTime.Forms
             InitializeComponent();
         }
 
+        #region "EVENTS"
         private void CFRT140010_Load(object sender, EventArgs e)
         {
             SetTimer();
         }
 
+        private void Minimizebutton_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Closebutton_Click(object sender, EventArgs e)
+        {
+            Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
+            this.Hide();
+            frmLogin.ShowDialog();
+        }
+
+        #endregion
+
+        #region "METHODS"
+
         private void SetTimer()
         {
-            RegistroTimer.Interval = 1000;
+            RegistroTimer.Interval = 500;
             RegistroTimer.Tick += (sender, e) =>
             {
                 HoraActualLabel.Text = DateTime.Now.ToLongTimeString();
@@ -39,15 +56,6 @@ namespace RegistryTime.Forms
             MensajePanel.Visible = true;
             MensajeLabel.Text = Message;
         }
-
-        private void Minimizebutton_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void Closebutton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
+        #endregion
     }
 }

@@ -135,6 +135,60 @@ namespace DataLayer
             {
                 throw new Exception(String.Format("{0}.delete: {1}", core, ex));
             }
-        }       
+        }
+        
+        public UsersML IsUser(UsersML user, String ConnectionString)
+        {
+            try
+            {
+                if (user != null)
+                {
+                    if (!string.IsNullOrEmpty(user.UserName) && !string.IsNullOrEmpty(user.Password))
+                    {
+                        String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND userName='{1}' AND password='{2}'", TableName, user.UserName, user.Password);
+                        SqlConnection Conexion = new SqlConnection();
+                        Conexion.ConnectionString = ConnectionString;
+                        Conexion.Open();
+                        SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                        DataTable dtUser = new DataTable();
+                        cmd.Fill(dtUser);
+                        Conexion.Close();
+
+                        if (dtUser != null && dtUser.Rows.Count > 0)
+                        {
+                            return getEntity(dtUser.Rows[0]);
+                        }
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.delete: {1}", core, ex));
+            }
+        }
+
+        private UsersML getEntity(DataRow row)
+        {
+            try
+            {
+                if(row != null)
+                {
+                    UsersML userML = new UsersML()
+                    {
+                        Id = (row["Id"] != DBNull.Value) ? int.Parse(row["Id"].ToString()) : 0,
+                        UserName = (row["userName"] != DBNull.Value) ? row["userName"].ToString() : string.Empty,
+                        Rol = (row["rol"] != DBNull.Value) ? row["rol"].ToString() : string.Empty
+                    };
+
+                    return userML;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                throw new Exception(string.Format("getEntity: {0}", ex.Message));
+            }
+        }
     }
 }

@@ -356,6 +356,7 @@
             this.ExitButton.Text = "  Salir";
             this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click_1);
             // 
             // pictureBox1
             // 
