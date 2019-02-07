@@ -8,6 +8,23 @@ namespace ModelLayer
 {
     public class UsersML
     {
+
+        public class DataBase
+        {
+            public const string Id = "Id";
+            public const string UserName = "UserName";
+            public const string Password = "Password";
+            public const string Rol = "Rol";
+            public const string Image = "Image";
+            public const string _registry = "registry";
+            public const string IdUserInsert = "IdUserInsert";
+            public const string DateInsert = "DateInsert";
+            public const string IdUserUpdate = "IdUserUpdate";
+            public const string DateUpdate = "DateUpdate";
+            public const string IdUserDelete = "IdUserDelete";
+            public const string DateDelete = "DateDelete";
+        }
+
         public int Id { get; set; }
         public String UserName { get; set; }
         public String Password { get; set; }
