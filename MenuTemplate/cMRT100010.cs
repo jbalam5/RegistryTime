@@ -99,7 +99,9 @@ namespace RegistryTime
 
         private void Closebutton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
+            this.Hide();
+            frmLogin.ShowDialog();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -207,6 +209,13 @@ namespace RegistryTime
             OpenFormChild(new RegistryTime.Forms.cFMAA100010());
         }
 
+        private void ExitButton_Click_1(object sender, EventArgs e)
+        {
+            Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
+            this.Hide();
+            frmLogin.ShowDialog();
+        }
+
         private void ClearPanelContainer()
         {
             if (this.ContainerPanel.Controls.Count > 0)
@@ -216,7 +225,7 @@ namespace RegistryTime
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

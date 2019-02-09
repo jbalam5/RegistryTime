@@ -23,7 +23,7 @@ namespace RegistryTime
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
                     //Application.Run(new cFMDE100010());
-                    Application.Run(new cMRT100010());
+                    Application.Run(new Forms.cFRT150010());
                 }
                 else
                 {

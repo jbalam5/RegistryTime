@@ -47,6 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RegistryTime.Program</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ButtonMenuLeft">
       <HintPath>..\..\..\JBControlDLL\ButtonMenuLeft.dll</HintPath>

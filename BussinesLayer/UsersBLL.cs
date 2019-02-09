@@ -84,5 +84,17 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
             }
         }
+
+        public UsersML IsUser(UsersML user)
+        {
+            try
+            {
+                return usersDAL.IsUser(user, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.IsUser: {1}", core, ex));
+            }
+        }
     }
 }

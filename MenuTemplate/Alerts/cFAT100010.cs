@@ -96,7 +96,7 @@ namespace Alerts
             }
             this.TitleLabel.Text = _Title;
             this.DescriptionLabel.Text = _Description;
-            this.Height = 150;
+            this.Height = 160;
 
             ChangeIcon();
         }
