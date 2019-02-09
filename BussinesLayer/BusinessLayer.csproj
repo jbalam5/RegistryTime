@@ -52,6 +52,7 @@
     <Compile Include="CompanyBLL.cs" />
     <Compile Include="DaysBLL.cs" />
     <Compile Include="DaysOfTurnBLL.cs" />
+    <Compile Include="DaysOfWorkEmployeeBLL.cs" />
     <Compile Include="DepartamentBLL.cs" />
     <Compile Include="EmployeeBLL.cs" />
     <Compile Include="FestiveBLL.cs" />

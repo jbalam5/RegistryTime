@@ -9,19 +9,21 @@ using ModelLayer;
 
 namespace DataLayer
 {
-    public class UsersDAL
+    public class DaysOfWorkEmployeeDAL
     {
-        public String core = "DataLayer.UsersDAL";
-        public String TableName = "users";
+        public String core = "DataLayer.DaysOfWorkEmployeeDAL";
+        public String TableName = "daysOfWorkEmployee";
 
         public DataTable All(String ConnectionString)
         {
             try
             {
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1",TableName);
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
@@ -41,11 +43,10 @@ namespace DataLayer
             {
 
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
-                SqlConnection Conexion = new SqlConnection()
+                SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
-
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
@@ -59,32 +60,46 @@ namespace DataLayer
             }
         }
 
-
-        public int Save(UsersML user, String ConnectionString)
+        public DataTable GetAllEntitys(int id, String ConnectionString)
         {
             try
             {
-                 
+
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND idEmployee={1}", TableName, id);
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+                return dtDepartamentos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex));
+            }
+        }
+
+        public int Save(DaysOfWorkEmployeeML DaysOfWorkEmployee, String ConnectionString)
+        {
+            try
+            {
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}',{2},'{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
+                Query.AppendLine("( idDays,idEmployee,_registry,idUserInsert,dateInsert)");
+                Query.AppendFormat(" VALUES({0},{1},1,{2},GETDATE())", DaysOfWorkEmployee.IdDays, DaysOfWorkEmployee.IdEmployee, DaysOfWorkEmployee.IdUserInsert);
                 Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
+                return cmd2.ExecuteNonQuery();
                 
-                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
-                {
-                    Conexion.Open();
-                    int  newID = (Int32)cmd2.ExecuteScalar();
-
-                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
-                    return newID;
-                }
-                
-                    
             }
             catch (Exception ex)
             {
@@ -93,60 +108,38 @@ namespace DataLayer
 
         }
 
-        public int LastId(String ConnectionString)
+        public int Update(DaysOfWorkEmployeeML DaysOfWorkEmployee, String ConnectionString)
         {
             try
             {
-                SqlConnection Conexion = new SqlConnection()
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand("SELECT LAST_INSERT_ID() as lastid", Conexion);
-                int idInsert = (int)cmd2.ExecuteScalar();
-                Conexion.Close();
-                return idInsert;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(String.Format("{0}.LastId : {1}", core, ex));
-            }
-        }
-
-        public int Update(UsersML user, String ConnectionString)
-        {
-            try
-            {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ",TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("username = '{0}'", user.UserName);
-                Query.AppendFormat("password = '{0}'", user.Password);
-                Query.AppendFormat("rol = {0}", user.Rol);
-                Query.AppendFormat("image = '{0}'", user.Image);
-                Query.AppendFormat("idUserUpdate = {0}", user.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", user.Id);
                 
-                SqlConnection Conexion = new SqlConnection()
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("UPDATE {0} ", TableName);
+                Query.AppendLine(" SET ");
+                Query.AppendFormat("idDays = {0}", DaysOfWorkEmployee.IdDays);
+                Query.AppendFormat("idEmployee = {0}", DaysOfWorkEmployee.IdEmployee);
+                Query.AppendFormat("idUserUpdate = {0}", DaysOfWorkEmployee.IdUserUpdate);
+                Query.AppendLine("dateUpdate = GETDATE()");
+                Query.AppendFormat("WHERE id={0}", DaysOfWorkEmployee.Id);
+
+                SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
-
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
-                return user.Id;
+                return DaysOfWorkEmployee.Id;
 
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.update: {1}", core, ex));
             }
         }
 
-        public int Delete(UsersML user, String ConnectionString)
+        public int Delete(DaysOfWorkEmployeeML DaysOfWorkEmployee, String ConnectionString)
         {
             try
             {
@@ -155,12 +148,14 @@ namespace DataLayer
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
                 Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", user.IdUserDelete);
+                Query.AppendFormat("idUserDelete = {0}", DaysOfWorkEmployee.IdUserDelete);
                 Query.AppendLine("dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", user.Id);
+                Query.AppendFormat("WHERE id={0}", DaysOfWorkEmployee.Id);
 
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();
@@ -170,6 +165,6 @@ namespace DataLayer
             {
                 throw new Exception(String.Format("{0}.delete: {1}", core, ex));
             }
-        }       
+        }
     }
 }

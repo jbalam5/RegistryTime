@@ -45,20 +45,16 @@ namespace RegistryTime.Forms
                 if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
                 {
                     DepartamentML Departament = new DepartamentML();
-                    if (IdDepartament == 0)
-                    {
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
-                    }
-                    else
+                    Departament.Name = textBoxNombre.Text;
+                    Departament.Manager = textBoxEncargado.Text;
+                    Departament.Description = textBoxDescripcion.Text;
+
+                    if (IdDepartament > 0)
                     {
                         Departament.Id = IdDepartament;
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
                         Departament.IdUserUpdate = 1;
                     }
+                    
                     DepartamentBLL.Save(Departament);
 
                     cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
