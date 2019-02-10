@@ -128,21 +128,21 @@ namespace Alerts
 
         private void ChangeIcon()
         {
-            IconPictureBox.BackgroundImageLayout = ImageLayout.Zoom;
+            IconPictureBox.BackgroundImageLayout = ImageLayout.Center;
 
             switch (_Type)
             {
                 case MessageBoxIcon.Information:
-                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconInformation;
+                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconInformationx70;
                     break;
                 case MessageBoxIcon.Question:
-                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconQuestion;
+                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconQuestionOrangex70;
                     break;
                 case MessageBoxIcon.Error:
-                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconError;
+                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconErrorx70;
                     break;
                 case MessageBoxIcon.Warning:
-                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconWarningOrnge;
+                    IconPictureBox.BackgroundImage = RegistryTime.Properties.Resources.IconWarningOrngex70;
                     break;
                 default:
                     IconPictureBox.BackgroundImage = null;

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.BottomStatePanel = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -56,6 +57,7 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
+            this.StateTimer = new System.Windows.Forms.Timer(this.components);
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -112,16 +114,16 @@
             this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
             this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
             this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
-            this.UsertoolStripStatusLabel.Text = "JBALAM";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(82, 25);
+            this.UsertoolStripStatusLabel.Text = "UserName";
             // 
             // DatetoolStripStatusLabel
             // 
             this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
             this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
-            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(77, 25);
+            this.DatetoolStripStatusLabel.Text = "Fecha Actual";
             this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
             // toolStripProgressBar1
@@ -230,6 +232,7 @@
             // MenuLeftPanel
             // 
             this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.MenuLeftPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MenuLeftPanel.Controls.Add(this.button3);
             this.MenuLeftPanel.Controls.Add(this.button2);
             this.MenuLeftPanel.Controls.Add(this.button1);
@@ -332,9 +335,9 @@
             // 
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 531);
+            this.panel1.Location = new System.Drawing.Point(0, 529);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 43);
+            this.panel1.Size = new System.Drawing.Size(198, 43);
             this.panel1.TabIndex = 8;
             // 
             // ExitButton
@@ -493,7 +496,7 @@
             this.MenuPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MenuPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MenuPictureBox.Image = global::RegistryTime.Properties.Resources.menu42;
-            this.MenuPictureBox.Location = new System.Drawing.Point(154, 0);
+            this.MenuPictureBox.Location = new System.Drawing.Point(152, 0);
             this.MenuPictureBox.Name = "MenuPictureBox";
             this.MenuPictureBox.Size = new System.Drawing.Size(41, 40);
             this.MenuPictureBox.TabIndex = 0;
@@ -510,6 +513,7 @@
             this.Name = "cMRT100010";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.cMRT100010_Load);
             this.PrincipalPanel.ResumeLayout(false);
             this.BottomStatePanel.ResumeLayout(false);
             this.BottomStatePanel.PerformLayout();
@@ -555,6 +559,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer StateTimer;
     }
 }
 

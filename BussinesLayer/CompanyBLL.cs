@@ -35,11 +35,22 @@ namespace BussinesLayer
             }
         }
 
+        public CompanyML GetEntity()
+        {
+            try
+            {
+                return CompanyDAL.GetEntity(ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEntity: {1}", core, ex));
+            }
+        }
+
         public DataTable GetIdEntity(int Id)
         {
             try
             {
-
                 return CompanyDAL.GetIdEntity(Id, ConnectionStrings);
             }
             catch (Exception ex)

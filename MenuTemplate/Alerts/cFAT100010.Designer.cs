@@ -31,24 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFAT100010));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.TitleLabel = new System.Windows.Forms.Label();
+            this.Closebutton = new System.Windows.Forms.Button();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.DescriptionPanel = new System.Windows.Forms.Panel();
             this.DescriptionLabel = new System.Windows.Forms.Label();
+            this.IconPictureBox = new System.Windows.Forms.PictureBox();
             this.ButtonPanel = new System.Windows.Forms.Panel();
             this.QuestionPanel = new System.Windows.Forms.Panel();
             this.NoButton = new System.Windows.Forms.Button();
             this.YesButton = new System.Windows.Forms.Button();
             this.InfoPanel = new System.Windows.Forms.Panel();
             this.OkButton = new System.Windows.Forms.Button();
-            this.IconPictureBox = new System.Windows.Forms.PictureBox();
-            this.Closebutton = new System.Windows.Forms.Button();
             this.TopPanel.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.DescriptionPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).BeginInit();
             this.ButtonPanel.SuspendLayout();
             this.QuestionPanel.SuspendLayout();
             this.InfoPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // TopPanel
@@ -74,6 +74,25 @@
             this.TitleLabel.TabIndex = 13;
             this.TitleLabel.Text = "Información";
             // 
+            // Closebutton
+            // 
+            this.Closebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Closebutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Closebutton.BackgroundImage")));
+            this.Closebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Closebutton.CausesValidation = false;
+            this.Closebutton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Closebutton.FlatAppearance.BorderSize = 0;
+            this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Closebutton.Location = new System.Drawing.Point(426, 0);
+            this.Closebutton.Name = "Closebutton";
+            this.Closebutton.Size = new System.Drawing.Size(30, 30);
+            this.Closebutton.TabIndex = 12;
+            this.Closebutton.UseVisualStyleBackColor = true;
+            this.Closebutton.Visible = false;
+            this.Closebutton.Click += new System.EventHandler(this.Closebutton_Click);
+            // 
             // PrincipalPanel
             // 
             this.PrincipalPanel.BackColor = System.Drawing.Color.Transparent;
@@ -90,25 +109,37 @@
             // 
             // DescriptionPanel
             // 
+            this.DescriptionPanel.AutoScroll = true;
+            this.DescriptionPanel.AutoSize = true;
             this.DescriptionPanel.Controls.Add(this.DescriptionLabel);
             this.DescriptionPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.DescriptionPanel.Location = new System.Drawing.Point(114, 30);
             this.DescriptionPanel.Name = "DescriptionPanel";
-            this.DescriptionPanel.Size = new System.Drawing.Size(342, 42);
+            this.DescriptionPanel.Size = new System.Drawing.Size(342, 61);
             this.DescriptionPanel.TabIndex = 10;
             // 
             // DescriptionLabel
             // 
-            this.DescriptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DescriptionLabel.AutoSize = true;
             this.DescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DescriptionLabel.Location = new System.Drawing.Point(3, 20);
+            this.DescriptionLabel.Location = new System.Drawing.Point(3, 19);
             this.DescriptionLabel.Name = "DescriptionLabel";
-            this.DescriptionLabel.Size = new System.Drawing.Size(242, 20);
+            this.DescriptionLabel.Size = new System.Drawing.Size(338, 42);
             this.DescriptionLabel.TabIndex = 7;
             this.DescriptionLabel.Text = "Proceso realizado correctamente";
-            this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.DescriptionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // IconPictureBox
+            // 
+            this.IconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.IconPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.IconPictureBox.Location = new System.Drawing.Point(0, 30);
+            this.IconPictureBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.IconPictureBox.Name = "IconPictureBox";
+            this.IconPictureBox.Padding = new System.Windows.Forms.Padding(10);
+            this.IconPictureBox.Size = new System.Drawing.Size(114, 240);
+            this.IconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.IconPictureBox.TabIndex = 9;
+            this.IconPictureBox.TabStop = false;
             // 
             // ButtonPanel
             // 
@@ -185,38 +216,6 @@
             this.OkButton.UseVisualStyleBackColor = false;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // IconPictureBox
-            // 
-            this.IconPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.IconPictureBox.Dock = System.Windows.Forms.DockStyle.Left;
-            this.IconPictureBox.Location = new System.Drawing.Point(0, 30);
-            this.IconPictureBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.IconPictureBox.Name = "IconPictureBox";
-            this.IconPictureBox.Padding = new System.Windows.Forms.Padding(10);
-            this.IconPictureBox.Size = new System.Drawing.Size(114, 240);
-            this.IconPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.IconPictureBox.TabIndex = 9;
-            this.IconPictureBox.TabStop = false;
-            // 
-            // Closebutton
-            // 
-            this.Closebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Closebutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Closebutton.BackgroundImage")));
-            this.Closebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Closebutton.CausesValidation = false;
-            this.Closebutton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Closebutton.FlatAppearance.BorderSize = 0;
-            this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Closebutton.Location = new System.Drawing.Point(426, 0);
-            this.Closebutton.Name = "Closebutton";
-            this.Closebutton.Size = new System.Drawing.Size(30, 30);
-            this.Closebutton.TabIndex = 12;
-            this.Closebutton.UseVisualStyleBackColor = true;
-            this.Closebutton.Visible = false;
-            this.Closebutton.Click += new System.EventHandler(this.Closebutton_Click);
-            // 
             // cFAT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -231,12 +230,12 @@
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.PrincipalPanel.ResumeLayout(false);
+            this.PrincipalPanel.PerformLayout();
             this.DescriptionPanel.ResumeLayout(false);
-            this.DescriptionPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).EndInit();
             this.ButtonPanel.ResumeLayout(false);
             this.QuestionPanel.ResumeLayout(false);
             this.InfoPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.IconPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

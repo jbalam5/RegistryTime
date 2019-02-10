@@ -244,4 +244,28 @@
   <data name="IconWarningOrnge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconWarningOrnge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconAlarmWarningx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconAlarmWarningx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconAlarmWarningx80" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconAlarmWarningx80.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconErrorx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconErrorx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconInformationx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconInformationx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconQuestionOrangex70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconQuestionOrangex70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconQuestionx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconQuestionx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconWarningOrngex70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconWarningOrngex70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconWarningx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconWarningx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

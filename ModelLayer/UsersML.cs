@@ -11,18 +11,18 @@ namespace ModelLayer
 
         public class DataBase
         {
-            public const string Id = "Id";
-            public const string UserName = "UserName";
-            public const string Password = "Password";
-            public const string Rol = "Rol";
-            public const string Image = "Image";
-            public const string _registry = "registry";
-            public const string IdUserInsert = "IdUserInsert";
-            public const string DateInsert = "DateInsert";
-            public const string IdUserUpdate = "IdUserUpdate";
-            public const string DateUpdate = "DateUpdate";
-            public const string IdUserDelete = "IdUserDelete";
-            public const string DateDelete = "DateDelete";
+            public const string Id = "id";
+            public const string UserName = "userName";
+            public const string Password = "password";
+            public const string Rol = "rol";
+            public const string Image = "image";
+            public const string _registry = "_registry";
+            public const string IdUserInsert = "idUserInsert";
+            public const string DateInsert = "dateInsert";
+            public const string IdUserUpdate = "idUserUpdate";
+            public const string DateUpdate = "dateUpdate";
+            public const string IdUserDelete = "idUserDelete";
+            public const string DateDelete = "dateDelete";
         }
 
         public int Id { get; set; }

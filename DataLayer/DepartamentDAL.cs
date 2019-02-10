@@ -82,7 +82,6 @@ namespace DataLayer
         {
             try
             {
-                int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");

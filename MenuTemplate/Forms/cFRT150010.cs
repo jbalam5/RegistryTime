@@ -39,6 +39,7 @@ namespace RegistryTime.Forms
 
         private void cFRT150010_Load(object sender, EventArgs e)
         {
+            BussinesLayer.GlobalBLL.userML = null;
             DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
         }
 
@@ -76,7 +77,6 @@ namespace RegistryTime.Forms
                 if (FormValidate() > 0)
                 {
                     BussinesLayer.UsersBLL UserBLL = new BussinesLayer.UsersBLL();
-
                     ModelLayer.UsersML UsersML = new ModelLayer.UsersML() { UserName = UserNameTextBox.Text, Password = PasswordTextBox.Text };
                     UsersML = UserBLL.IsUser(UsersML);
 
@@ -85,6 +85,8 @@ namespace RegistryTime.Forms
                         if (UsersML.Rol == "1")
                         {
                             //_frm = new cMRT100010();
+                            BussinesLayer.GlobalBLL.userML = UsersML;
+
                             cMRT100010 frm = new cMRT100010();
                             this.Hide();
                             frm.Show();

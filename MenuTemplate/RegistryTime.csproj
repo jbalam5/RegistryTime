@@ -105,6 +105,12 @@
     <Compile Include="Forms\cFMAA110010.Designer.cs">
       <DependentUpon>cFMAA110010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFMSE110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMSE110010.Designer.cs">
+      <DependentUpon>cFMSE110010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\cFMTU110010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -214,6 +220,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMAA110010.resx">
       <DependentUpon>cFMAA110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMSE110010.resx">
+      <DependentUpon>cFMSE110010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMTU110010.resx">
       <DependentUpon>cFMTU110010.cs</DependentUpon>
@@ -376,6 +385,8 @@
     <None Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\IconWarningx70.png" />
+    <None Include="Resources\IconWarningOrngex70.png" />
     <None Include="Resources\IconWarningOrnge.png" />
     <None Include="Resources\IconWarning.png" />
     <None Include="Resources\TimeCalendarx641.png" />
@@ -383,12 +394,18 @@
     <None Include="Resources\TimeCalendarx64.png" />
     <None Include="Resources\anonimo.jpg" />
     <None Include="Resources\IconAlarmWarning.png" />
+    <None Include="Resources\IconAlarmWarningx80.png" />
+    <None Include="Resources\IconAlarmWarningx70.png" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />
+    <None Include="Resources\IconErrorx70.png" />
+    <None Include="Resources\IconInformationx70.png" />
     <Content Include="Resources\iconLineH.png" />
     <None Include="Resources\IconQuestion.png" />
     <None Include="Resources\IconQuestionOrange.png" />
+    <None Include="Resources\IconQuestionOrangex70.png" />
+    <None Include="Resources\IconQuestionx70.png" />
     <Content Include="Resources\iconsmax15.png" />
     <Content Include="Resources\iconSquared.png" />
   </ItemGroup>

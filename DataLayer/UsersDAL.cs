@@ -212,9 +212,10 @@ namespace DataLayer
                 {
                     UsersML userML = new UsersML()
                     {
-                        Id = (row["Id"] != DBNull.Value) ? int.Parse(row["Id"].ToString()) : 0,
-                        UserName = (row["userName"] != DBNull.Value) ? row["userName"].ToString() : string.Empty,
-                        Rol = (row["rol"] != DBNull.Value) ? row["rol"].ToString() : string.Empty
+                        Id = (row[UsersML.DataBase.Id] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Id].ToString()) : 0,
+                        UserName = (row[UsersML.DataBase.UserName] != DBNull.Value) ? row[UsersML.DataBase.UserName].ToString() : string.Empty,
+                        Rol = (row[UsersML.DataBase.Rol] != DBNull.Value) ? row[UsersML.DataBase.Rol].ToString() : string.Empty,
+                        Image = (row[UsersML.DataBase.Image] != DBNull.Value) ? row[UsersML.DataBase.Image].ToString() : string.Empty,
                     };
 
                     return userML;
