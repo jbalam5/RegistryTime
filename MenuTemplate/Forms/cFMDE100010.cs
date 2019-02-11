@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Forms
@@ -82,9 +83,6 @@ namespace RegistryTime.Forms
                 {
                     cFMDE110010 Catalogo = new cFMDE110010();
                     Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNombre.Text = dataGridViewData.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
-                    Catalogo.textBoxEncargado.Text = dataGridViewData.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
-                    Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
                     AddOwnedForm(Catalogo);
                     Catalogo.FormBorderStyle = FormBorderStyle.None;
                     Catalogo.TopLevel = false;
@@ -114,11 +112,17 @@ namespace RegistryTime.Forms
             try
             {
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
-                DepartamentML Departament = new DepartamentML();
-                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Departament.IdUserDelete = 1;
-                DepartamentBLL.Delete(Departament);
-                dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                int idDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                cFAT100010 Alert = new cFAT100010("Información",String.Format("¿Desea eliminar el registro {0}?",idDepartament),MessageBoxIcon.Question);
+                Alert.ShowDialog();
+                if(Alert.DialogResult == DialogResult.OK)
+                {
+                    DepartamentML Departament = new DepartamentML();
+                    Departament.Id = idDepartament; 
+                    Departament.IdUserDelete = 1;
+                    DepartamentBLL.Delete(Departament);
+                    dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                }
             }
             catch (Exception ex)
             {

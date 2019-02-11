@@ -78,14 +78,20 @@ namespace DataLayer
             }
         }
 
-        public int Save(DepartamentML departament, String ConnectionString)
+        public int Save(DepartamentML Departament, String ConnectionString)
         {
             try
             {
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", departament.Name,departament.Manager, departament.Description, departament.IdUserInsert);
+                Query.AppendLine(" VALUES( ");
+                Query.AppendFormat(" '{0}', ", Departament.Name);
+                Query.AppendFormat(" '{0}', ", Departament.Manager);
+                Query.AppendFormat(" '{0}', ", Departament.Description);
+                Query.AppendLine(" 1, ");
+                Query.AppendFormat(" {0}, ", Departament.IdUserInsert);
+                Query.AppendLine(" GETDATE()) ");
                 Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                 SqlConnection Conexion = new SqlConnection
                 {
