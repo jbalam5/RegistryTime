@@ -108,6 +108,28 @@ namespace DataLayer
 
         }
 
+        public void DeleteRegistrys(int IdEmployee,String ConnectionString)
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("DELETE FROM {0}", TableName);
+                Query.AppendFormat(" WHERE idEmployee={0}", IdEmployee);
+                SqlConnection Conexion = new SqlConnection
+                {
+                   ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.DeleteRistrys: {1}", core, ex));
+            }
+        }
+
+
         public int Update(DaysOfWorkEmployeeML DaysOfWorkEmployee, String ConnectionString)
         {
             try

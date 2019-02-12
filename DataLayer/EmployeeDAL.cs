@@ -70,7 +70,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( rfc,curp,name,lastname,scholarship,birthdate,gender,nationality,address,municipality,country," +
-                    "email,telephone,civilStatus,postalCode,colony,stateCountry,controlNumber,sureType,numberSure,salary,idJob,idDepartament,idUser,_registry,idUserInsert,dateInsert)");
+                    "email,telephone,civilStatus,postalCode,colony,stateCountry,controlNumber,admissionDate,sureType,numberSure,salary,idJob,idDepartament,idUser,_registry,idUserInsert,dateInsert)");
                 Query.AppendLine("VALUES(");
                 Query.AppendFormat(" '{0}',", employee.RFC);
                 Query.AppendFormat(" '{0}',", employee.Curp);
@@ -90,6 +90,7 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", employee.Colony);
                 Query.AppendFormat(" '{0}',", employee.StateCountry);
                 Query.AppendFormat(" '{0}',", employee.ControlNumber);
+                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToShortDateString());
                 Query.AppendFormat(" '{0}',", employee.SureType);
                 Query.AppendFormat(" '{0}',", employee.NumberSure);
                 Query.AppendFormat(" {0},", employee.Salary);
@@ -105,9 +106,7 @@ namespace DataLayer
                 {
                     ConnectionString = ConnectionString
                 };
-                //Conexion.Open();
-                //SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-
+                
                 using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
                 {
                     Conexion.Open();
@@ -152,11 +151,11 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat(" rfc = {0}", employee.RFC);
-                Query.AppendFormat(" curp = {0}", employee.Curp);
-                Query.AppendFormat(" name = {0}", employee.Name);
-                Query.AppendFormat(" lastname = {0}", employee.LastName);
-                Query.AppendFormat(" scholarship = {0}", employee.Scholarship);
+                Query.AppendFormat(" rfc = '{0}',", employee.RFC);
+                Query.AppendFormat(" curp = '{0}',", employee.Curp);
+                Query.AppendFormat(" name = '{0}',", employee.Name);
+                Query.AppendFormat(" lastname = '{0}',", employee.LastName);
+                Query.AppendFormat(" scholarship = '{0}',", employee.Scholarship);
                 Query.AppendFormat(" birthdate='{0}',", employee.Birthdate);
                 Query.AppendFormat(" gender= '{0}',", employee.Gender);
                 Query.AppendFormat(" nationality = '{0}',", employee.Nationality);
@@ -170,16 +169,14 @@ namespace DataLayer
                 Query.AppendFormat(" colony= '{0}',", employee.Colony);
                 Query.AppendFormat(" stateCountry = '{0}',", employee.StateCountry);
                 Query.AppendFormat(" controlNumber = '{0}',", employee.ControlNumber);
+                Query.AppendFormat(" admissionDate = '{0}',", employee.AdmissionDate.ToShortDateString());
                 Query.AppendFormat(" sureType = '{0}',", employee.SureType);
                 Query.AppendFormat(" numberSure = '{0}',", employee.NumberSure);
-                Query.AppendFormat(" salary = {0},", employee.Salary);
-                Query.AppendFormat(" idJob = {0}", employee.IdJob);
-                Query.AppendFormat(" idDepartament = {0}", employee.IdDepartament);
-
-
-                Query.AppendFormat(" idUser = {0}", employee.IdUser);
-                Query.AppendFormat(" idUserUpdate = {0}", employee.IdUserUpdate);
-
+                Query.AppendFormat(" salary = '{0}',", employee.Salary);
+                Query.AppendFormat(" idJob = {0},", employee.IdJob);
+                Query.AppendFormat(" idDepartament = {0},", employee.IdDepartament);
+                Query.AppendFormat(" idUser = {0},", employee.IdUser);
+                Query.AppendFormat(" idUserUpdate = {0},", employee.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", employee.Id);
 
