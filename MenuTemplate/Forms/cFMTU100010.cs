@@ -16,7 +16,7 @@ namespace RegistryTime.Forms
     public partial class cFMTU100010 : Form
     {
         #region "Declaracion Variables"
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        TurnBLL TurnBLL = new TurnBLL();
         public int IdRowSelect;
         #endregion
         public cFMTU100010()
@@ -80,11 +80,16 @@ namespace RegistryTime.Forms
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
                 if (IdRowSelect >= 0)
                 {
-                    cFMDE110010 Catalogo = new cFMDE110010();
-                    Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNombre.Text = dataGridViewData.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
-                    Catalogo.textBoxEncargado.Text = dataGridViewData.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
+                    cFMTU110010 Catalogo = new cFMTU110010();
+                    Catalogo.IdTurn = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    Catalogo.textBoxTurno.Text = dataGridViewData.Rows[IdRowSelect].Cells["Turno"].Value.ToString();
                     Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                    Catalogo.dateTimeHoraEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["HoraEntrada"].Value.ToString();
+                    Catalogo.dateTimeIniciaEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["IniciaEntrada"].Value.ToString();
+                    Catalogo.dateTimeLimiteEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["LimiteEntrada"].Value.ToString();
+                    Catalogo.dateTimeHoraSalida.Text = dataGridViewData.Rows[IdRowSelect].Cells["HoraSalida"].Value.ToString();
+                    Catalogo.dateTimeLimiteSalida.Text = dataGridViewData.Rows[IdRowSelect].Cells["LimiteSalida"].Value.ToString();
+                    Catalogo.textBoxHorasJornada.Text = dataGridViewData.Rows[IdRowSelect].Cells["HorasJornada"].Value.ToString();
                     AddOwnedForm(Catalogo);
                     Catalogo.FormBorderStyle = FormBorderStyle.None;
                     Catalogo.TopLevel = false;
@@ -96,7 +101,7 @@ namespace RegistryTime.Forms
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No tiene Seleccionado un Turno", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -107,7 +112,7 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewData.DataSource = DepartamentBLL.All();
+            dataGridViewData.DataSource = TurnBLL.All();
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -115,16 +120,21 @@ namespace RegistryTime.Forms
             try
             {
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
-                DepartamentML Departament = new DepartamentML();
-                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Departament.IdUserDelete = 1;
-                DepartamentBLL.Delete(Departament);
+                TurnML Turn = new TurnML();
+                Turn.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                Turn.IdUserDelete = 1;
+                TurnBLL.Delete(Turn);
                 dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ContainerPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -161,8 +161,13 @@ dateDelete datetime
 create table turn(
 id int primary key identity(1,1) not null,
 name nvarchar(50) not null,
-startTime time not null,
-endTime time not null,
+Description nvarchar(250),
+TimeEntry time not null,
+StartEntry time,
+LimitEntry time,
+Departuretime time not null,
+LimitDeparture time,
+HoursJornada int,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -288,6 +293,23 @@ CONSTRAINT FK_permissionsOfUser_idUser FOREIGN KEY (idUser)
     REFERENCES users(id)     
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION
+)
+
+create table AbsenteeismAssignment(
+id int primary key identity(1,1) not null,
+controlNumber nvarchar(max),
+KeyAbsenteeism nvarchar(5) not null,
+Description nvarchar(max),
+Status nvarchar(30) not null,
+DateStar datetime,
+DateEnd datetime,
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime
 )
 
 create table checkInHours(

@@ -77,7 +77,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 413);
             this.panel2.TabIndex = 1;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // textBoxPuesto
             // 
@@ -85,7 +84,6 @@
             this.textBoxPuesto.Name = "textBoxPuesto";
             this.textBoxPuesto.Size = new System.Drawing.Size(335, 20);
             this.textBoxPuesto.TabIndex = 4;
-            this.textBoxPuesto.TextChanged += new System.EventHandler(this.textBoxEncargado_TextChanged);
             // 
             // textBoxDescripcion
             // 
@@ -166,14 +164,14 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // cFMPU130010
+            // cFMPU110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Name = "cFMPU130010";
+            this.Name = "cFMPU110010";
             this.Load += new System.EventHandler(this.cFRT140010_Load);
             this.Resize += new System.EventHandler(this.cFMDE110010_Resize);
             this.panel1.ResumeLayout(false);
@@ -187,7 +185,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.Button buttonGuardar;
@@ -196,5 +193,6 @@
         public System.Windows.Forms.TextBox textBoxDescripcion;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        public System.Windows.Forms.Panel panel2;
     }
 }

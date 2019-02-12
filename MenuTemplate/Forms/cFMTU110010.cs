@@ -14,8 +14,8 @@ namespace RegistryTime.Forms
 {
     public partial class cFMTU110010 : Form
     {
-        public int IdDepartament = 0;
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        public int IdTurn = 0;
+        TurnBLL TurnBLL = new TurnBLL();
 
         public cFMTU110010()
         {
@@ -24,7 +24,7 @@ namespace RegistryTime.Forms
 
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-
+            //dateTimeLimiteEntrada.Format = DateTimePickerFormat.Time;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -33,41 +33,70 @@ namespace RegistryTime.Forms
         }
         public void Clear()
         {
-            //textBoxNombre.Text = String.Empty;
-            //textBoxEncargado.Text = String.Empty;
-            //textBoxDescripcion.Text = String.Empty;
+            textBoxTurno.Text = String.Empty;
+            textBoxDescripcion.Text = String.Empty;
+            textBoxHorasJornada.Text = "0";
+            dateTimeHoraEntrada.CustomFormat = "HH:mm:ss";
+            dateTimeHoraEntrada.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dateTimeIniciaEntrada.CustomFormat = "HH:mm:ss";
+            dateTimeIniciaEntrada.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dateTimeLimiteEntrada.CustomFormat = "HH:mm:ss";
+            dateTimeLimiteEntrada.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dateTimeHoraSalida.CustomFormat = "HH:mm:ss";
+            dateTimeHoraSalida.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+            dateTimeLimiteSalida.CustomFormat = "HH:mm:ss";
+            dateTimeLimiteSalida.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day);
+
+        }
+
+        public void CalcHorasJornada()
+        {
+            
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                //if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
-                //{
-                //    DepartamentML Departament = new DepartamentML();
-                //    if (IdDepartament == 0)
-                //    {
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //    }
-                //    else
-                //    {
-                //        Departament.Id = IdDepartament;
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //        Departament.IdUserUpdate = 1;
-                //    }
-                //    DepartamentBLL.Save(Departament);
+                if (!String.IsNullOrEmpty(textBoxTurno.Text))
+                {
+                    TurnML Turn = new TurnML();
+                    int HoursJornada = Convert.ToInt32(textBoxHorasJornada.Text);
 
-                //    cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
-                //    FrmDataGrid.LoadDataGridView();
+                    if (IdTurn == 0)
+                    {
+                        Turn.Name = textBoxTurno.Text;
+                        Turn.Description = textBoxDescripcion.Text;
+                        Turn.TimeEntry = dateTimeHoraEntrada.Value.ToLongTimeString();
+                        Turn.StartEntry = dateTimeIniciaEntrada.Value.ToLongTimeString();
+                        Turn.LimitEntry = dateTimeLimiteEntrada.Value.ToLongTimeString();
+                        Turn.Departuretime = dateTimeHoraSalida.Value.ToLongTimeString();
+                        Turn.LimitDeparture = dateTimeLimiteSalida.Value.ToLongTimeString();
+                        Turn.HoursJornada = HoursJornada;
 
-                //    MessageBox.Show("Guardado con Exito");
-                //    Clear();
-                //    this.Close();
-                //}
+                    }
+                    else
+                    {
+                        Turn.Id = IdTurn;
+                        Turn.Name = textBoxTurno.Text;
+                        Turn.Description = textBoxDescripcion.Text;
+                        Turn.TimeEntry = dateTimeHoraEntrada.Value.ToLongTimeString();
+                        Turn.StartEntry = dateTimeIniciaEntrada.Value.ToLongTimeString();
+                        Turn.LimitEntry = dateTimeLimiteEntrada.Value.ToLongTimeString();
+                        Turn.Departuretime = dateTimeHoraSalida.Value.ToLongTimeString();
+                        Turn.LimitDeparture = dateTimeLimiteSalida.Value.ToLongTimeString();
+                        Turn.HoursJornada = HoursJornada;
+                        Turn.IdUserUpdate = 1;
+                    }
+                    TurnBLL.Save(Turn);
+
+                    cFMTU100010 FrmDataGrid = this.Owner as cFMTU100010;
+                    FrmDataGrid.LoadDataGridView();
+
+                    MessageBox.Show("Guardado con Éxito");
+                    Clear();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -81,16 +110,10 @@ namespace RegistryTime.Forms
             this.Close();
         }
 
-        private void cFMDE110010_Resize(object sender, EventArgs e)
+        private void cFMTU110010_Resize(object sender, EventArgs e)
         {
-            //textBoxDescripcion.Width = this.Width - 150;
             tabControl1.Width = this.Width - 50;
             tabControl1.Height = this.Height - 180;
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        }       
     }
 }

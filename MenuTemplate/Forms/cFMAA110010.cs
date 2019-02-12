@@ -15,7 +15,7 @@ namespace RegistryTime.Forms
     public partial class cFMAA110010 : Form
     {
         public int IdDepartament = 0;
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        AbsenteeismBLL AbsenteeismBLL = new AbsenteeismBLL();
 
         public cFMAA110010()
         {
@@ -33,9 +33,17 @@ namespace RegistryTime.Forms
         }
         public void Clear()
         {
-            //textBoxNombre.Text = String.Empty;
-            //textBoxEncargado.Text = String.Empty;
-            //textBoxDescripcion.Text = String.Empty;
+            textBoxNumControl.Text = String.Empty;
+            textBoxNombre.Text = String.Empty;
+            textBoxApePaterno.Text = String.Empty;
+            textBoxDepartamento.Text = String.Empty;
+            textBoxPuesto.Text = String.Empty;
+
+            comboBoxAusentismo.Text = String.Empty;
+            comboBoxEstadoAsig.Text = String.Empty;
+            textBoxDescripcion.Text = String.Empty;
+            dateTimeFechaInicio.Text = String.Empty;
+            dateTimeFechaFin.Text = String.Empty;      
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -81,14 +89,11 @@ namespace RegistryTime.Forms
             this.Close();
         }
 
-        private void cFMDE110010_Resize(object sender, EventArgs e)
+        private void cFMAA110010_Resize(object sender, EventArgs e)
         {
+            textBoxPuesto.Width = this.Width - 150;
             textBoxDescripcion.Width = this.Width - 150;
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            textBoxDescripcion.Width = this.Width - 150;
         }
     }
 }

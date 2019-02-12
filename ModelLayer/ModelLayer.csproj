@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbsenteeismAssignmentML.cs" />
     <Compile Include="AbsenteeismML.cs" />
     <Compile Include="CheckInHoursML.cs" />
     <Compile Include="Class1.cs" />

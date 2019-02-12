@@ -33,7 +33,7 @@
   <ItemGroup>
     <Reference Include="Connection_BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Connection_BLL.dll</HintPath>
+      <HintPath>..\..\..\cloneJDL\RegistryTime\BussinesLayer\bin\Debug\Connection_BLL.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbsenteeismAssignmentBLL.cs" />
     <Compile Include="AbsenteeismBLL.cs" />
     <Compile Include="CheckInoursBLL.cs" />
     <Compile Include="Class1.cs" />
