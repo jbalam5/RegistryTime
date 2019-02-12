@@ -10,7 +10,6 @@ namespace ModelLayer
     {
         public class DataBase
         {
-            
             public const string Id = "id";
             public const string Rfc = "rfc";
             public const string Curp = "curp";
@@ -30,6 +29,7 @@ namespace ModelLayer
             public const string StateCountry = "stateCountry";
             public const string PostalCode = "postalCode";
             public const string ControlNumber = "controlNumber";
+            public const string AdmissionDate = "admissionDate";
             public const string SureType = "sureType";
             public const string NumberSure = "numberSure";
             public const string Salary = "salary";
@@ -63,6 +63,7 @@ namespace ModelLayer
         public String StateCountry { get; set; }
         public int PostalCode { get; set; }
         public String ControlNumber { get; set; }
+        public DateTime AdmissionDate { get; set; }
         public String SureType { get; set; }
         public String NumberSure { get; set; }
         public decimal Salary { get; set; }

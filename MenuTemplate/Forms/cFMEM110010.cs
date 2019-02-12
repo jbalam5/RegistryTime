@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Forms
@@ -21,6 +22,8 @@ namespace RegistryTime.Forms
         public int DaysWorks = 0;
 
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        UsersML UsersML = new UsersML();
+        DaysOfWorkEmployeeML DaysOfWorkEmployeeML = new DaysOfWorkEmployeeML();
 
         public cFMEM110010()
         {
@@ -36,7 +39,6 @@ namespace RegistryTime.Forms
                 EmployeeBLL EmployeeBLL = new EmployeeBLL();
                 UsersBLL UsersBLL = new UsersBLL();
                 DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
-
                 DataRow EmployeeRow;
                 DataRow UserRow;
                 
@@ -57,7 +59,7 @@ namespace RegistryTime.Forms
                     textBoxTelefono.Text = EmployeeRow[EmployeeML.DataBase.Telephone].ToString();
                     textBoxCodigoPostal.Text = EmployeeRow[EmployeeML.DataBase.PostalCode].ToString();
                     textBoxEstado.Text = EmployeeRow[EmployeeML.DataBase.StateCountry].ToString();
-                    textBoxNumControl.Text = EmployeeRow[EmployeeML.DataBase.NumberSure].ToString();
+                    textBoxNumControl.Text = EmployeeRow[EmployeeML.DataBase.ControlNumber].ToString();
                     textBoxNumSeguro.Text = EmployeeRow[EmployeeML.DataBase.NumberSure].ToString();
                     textBoxSueldo.Text = EmployeeRow[EmployeeML.DataBase.Salary].ToString();
                     comboBoxDepartamento.SelectedValue = EmployeeRow[EmployeeML.DataBase.IdDepartament].ToString();
@@ -68,36 +70,31 @@ namespace RegistryTime.Forms
                 if ( UsersBLL.GetIdEntity(id).Rows.Count > 0){
                     UserRow = UsersBLL.GetIdEntity(id).Rows[0];
                     
-                    textBoxUsuario.Text = UserRow["username"].ToString();
-                    textBoxPassword.Text =  UserRow["password"].ToString();
-                    comboBoxRol.SelectedValue = UserRow["rol"].ToString();
-                    IdUser = Convert.ToInt32( UserRow["id"].ToString());
+                    textBoxUsuario.Text = UserRow[UsersML.DataBase.UserName].ToString();
+                    textBoxPassword.Text =  UserRow[UsersML.DataBase.Password].ToString();
+                    comboBoxRol.SelectedValue = UserRow[UsersML.DataBase.Rol].ToString();
+                    IdUser = Convert.ToInt32( UserRow[UsersML.DataBase.Id].ToString());
 
                 }
                 if(DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows.Count > 0)
                 {
-                    //DaysWorkRow = DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows[0];
+                    int loop;
                     foreach (DataRow DaysWorkRow in DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows)
                     {
-                        //foreach (ListViewItem item in checkedListBoxDias.Items)
-                        //{
-                        //    if (item. = DaysWorkRow["id"].ToString)
-                        //    {
-                        //        item.Checked = true;
-                        //    }
-                        //}
+                        loop = 0;
+                        foreach (object item in checkedListBoxDias.Items)
+                        {
+                            
+                            if(DaysWorkRow[DaysOfWorkEmployeeML.DataBase.IdDays].ToString() == item.GetType().GetProperty("Value").GetValue(item, null).ToString())
+                            {
+                                checkedListBoxDias.SetItemChecked(loop, true);
+                                break;
+                            }
+
+                            loop++;
+                        }
                     }
                 }
-
-
-
-
-                
-                //Catalogo.textBoxUsuario.Text = String.Empty;
-                //Catalogo.textBoxPassword.Text = String.Empty;
-
-
-                //Catalogo.textBoxDescripcion.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -113,7 +110,8 @@ namespace RegistryTime.Forms
             LoadJobs();
             LoadDays();
             LoadRol();
-            if(IdEmployee > 0)
+            LoadTypeSure();
+            if (IdEmployee > 0)
             {
                 LoadGetEmployee(IdEmployee);
             }
@@ -154,11 +152,82 @@ namespace RegistryTime.Forms
 
         }
 
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxCurp.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar Curp");
+                }
+                else if (string.IsNullOrEmpty(textBoxNombre.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Nombre");
+                }
+                else if (string.IsNullOrEmpty(textBoxApellidos.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Apellidos");
+                }
+                else if (String.IsNullOrEmpty(textBoxCalle.Text)){
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Calle");
+                }
+                else if (String.IsNullOrEmpty(textBoxTelefono.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Telefono");
+                }
+                else if (String.IsNullOrEmpty(comboBoxDepartamento.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar Departamento");
+                }
+                else if (String.IsNullOrEmpty(comboBoxPuesto.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar Puesto");
+                }
+                else if (String.IsNullOrEmpty(textBoxUsuario.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar un Usuario");
+                }
+                else if (String.IsNullOrEmpty(textBoxPassword.Text)){
+                    Valid = false;
+                    throw new Exception("Debe ingesar un Password");
+                }
+                
+                else if (String.IsNullOrEmpty(comboBoxRol.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar rol");
+                }
+                
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
+
+        }
+
+
+
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                
+                if (FormValidate())
+                {
+
                 
                 UsersML User = new UsersML
                 {
@@ -170,6 +239,7 @@ namespace RegistryTime.Forms
                 if(IdUser > 0)
                 {
                     User.Id = IdUser;
+                    User.IdUserUpdate = 1;
                 }
                 
                 UsersBLL UsersBALL = new UsersBLL();
@@ -186,16 +256,20 @@ namespace RegistryTime.Forms
                     Municipality = textBoxMunicipio.Text,
                     Country = textBoxPais.Text,
                     Email = textBoxCalle.Text,
-                    CivilStatus = comboBoxEstadoCivil.Text,
+                    Telephone = textBoxTelefono.Text,
+                    CivilStatus = comboBoxEstadoCivil.SelectedValue.ToString(),
                     PostalCode = Int32.Parse(textBoxCodigoPostal.Text),
                     Colony = textBoxColonia.Text,
                     StateCountry = textBoxEstado.Text,
                     ControlNumber = textBoxNumControl.Text,
+                    AdmissionDate = dateTimeFechaIngreso.Value,
                     IdDepartament = Int32.Parse(comboBoxDepartamento.SelectedValue.ToString()),
                     IdJob = Int32.Parse(comboBoxPuesto.SelectedValue.ToString()),
                     SureType = textBoxNumSeguro.Text,
-                    IdUserInsert = 1
-            };
+                    NumberSure = textBoxNumSeguro.Text,
+                    Salary= Convert.ToDecimal( textBoxSueldo.Text),
+                    IdUserInsert = 0
+                };
 
                 if (radioButtonHombre.Checked)
                 {
@@ -215,25 +289,24 @@ namespace RegistryTime.Forms
                 int IdNewEmployee = EmployeeBLL.Save(Employee);
 
                 DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
+                DaysOfWorkEmployeeBLL.DeleteRegistrys(IdEmployee);
                 foreach (object item in checkedListBoxDias.CheckedItems)
                 {
                     DaysOfWorkEmployeeML DaysOfWorkEmployee = new DaysOfWorkEmployeeML()
                     {
                         IdDays = Int32.Parse(item.GetType().GetProperty("Value").GetValue(item, null).ToString()),
-                        IdEmployee = IdEmployee,
+                        IdEmployee = IdNewEmployee,
                         IdUserInsert = 1
                     };
                     DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
                 }
-
-
                 cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();
-
-                MessageBox.Show("Guardado con Exito");
+                cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
+                Alert.ShowDialog();
                 Clear();
                 this.Close();
-
+                }
             }
             catch (Exception ex)
             {
@@ -338,6 +411,28 @@ namespace RegistryTime.Forms
             }
         }
 
+        public void LoadTypeSure()
+        {
+            try
+            {
+                comboBoxTipoSeguro.DisplayMember = "Text";
+                comboBoxTipoSeguro.ValueMember = "Value";
+
+                var items = new[] {
+                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "IMSS", Value = "IMSS" },
+                    new { Text = "IMSTE", Value = "IMSTE" }
+                };
+
+                comboBoxTipoSeguro.DataSource = items;
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadTypeSure: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+            
 
 
         public void LoadCivilStatus()
