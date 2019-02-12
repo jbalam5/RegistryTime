@@ -183,6 +183,36 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconAlarmWarning {
+            get {
+                object obj = ResourceManager.GetObject("IconAlarmWarning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconAlarmWarningx70 {
+            get {
+                object obj = ResourceManager.GetObject("IconAlarmWarningx70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconAlarmWarningx80 {
+            get {
+                object obj = ResourceManager.GetObject("IconAlarmWarningx80", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconCircleTimex48 {
             get {
                 object obj = ResourceManager.GetObject("iconCircleTimex48", resourceCulture);
@@ -203,9 +233,89 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap IconError {
+            get {
+                object obj = ResourceManager.GetObject("IconError", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconErrorx70 {
+            get {
+                object obj = ResourceManager.GetObject("IconErrorx70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconInformation {
+            get {
+                object obj = ResourceManager.GetObject("IconInformation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconInformationx70 {
+            get {
+                object obj = ResourceManager.GetObject("IconInformationx70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconLineH {
             get {
                 object obj = ResourceManager.GetObject("iconLineH", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconQuestion {
+            get {
+                object obj = ResourceManager.GetObject("IconQuestion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconQuestionOrange {
+            get {
+                object obj = ResourceManager.GetObject("IconQuestionOrange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconQuestionOrangex70 {
+            get {
+                object obj = ResourceManager.GetObject("IconQuestionOrangex70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconQuestionx70 {
+            get {
+                object obj = ResourceManager.GetObject("IconQuestionx70", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -226,6 +336,46 @@ namespace RegistryTime.Properties {
         internal static System.Drawing.Bitmap iconSquared {
             get {
                 object obj = ResourceManager.GetObject("iconSquared", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconWarning {
+            get {
+                object obj = ResourceManager.GetObject("IconWarning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconWarningOrnge {
+            get {
+                object obj = ResourceManager.GetObject("IconWarningOrnge", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconWarningOrngex70 {
+            get {
+                object obj = ResourceManager.GetObject("IconWarningOrngex70", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap IconWarningx70 {
+            get {
+                object obj = ResourceManager.GetObject("IconWarningx70", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

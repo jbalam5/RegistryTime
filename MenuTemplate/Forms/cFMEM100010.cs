@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Forms
@@ -16,7 +17,7 @@ namespace RegistryTime.Forms
     public partial class cFMEM100010 : Form
     {
         #region "Declaracion Variables"
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        EmployeeBLL EmployeeBLL = new EmployeeBLL();
         public int IdRowSelect;
         #endregion
 
@@ -81,11 +82,10 @@ namespace RegistryTime.Forms
                 IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
                 if (IdRowSelect >= 0)
                 {
-                    cFMDE110010 Catalogo = new cFMDE110010();
-                    Catalogo.IdDepartament = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNombre.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
-                    Catalogo.textBoxEncargado.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
-                    Catalogo.textBoxDescripcion.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                    cFMEM110010 Catalogo = new cFMEM110010
+                    {
+                        IdEmployee = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString())
+                    };
                     AddOwnedForm(Catalogo);
                     Catalogo.FormBorderStyle = FormBorderStyle.None;
                     Catalogo.TopLevel = false;
@@ -108,7 +108,7 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewDataEmpleado.DataSource = DepartamentBLL.All();
+            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All();
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -116,11 +116,18 @@ namespace RegistryTime.Forms
             try
             {
                 IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
-                DepartamentML Departament = new DepartamentML();
-                Departament.Id = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Departament.IdUserDelete = 1;
-                DepartamentBLL.Delete(Departament);
-                dataGridViewDataEmpleado.Rows.Remove(dataGridViewDataEmpleado.CurrentRow);
+                cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
+                Alert.ShowDialog();
+                if(Alert.DialogResult == DialogResult.Yes)
+                {
+                    EmployeeML Employee = new EmployeeML
+                    {
+                        Id = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
+                        IdUserDelete = 1
+                    };
+                    EmployeeBLL.Delete(Employee);
+                    dataGridViewDataEmpleado.Rows.Remove(dataGridViewDataEmpleado.CurrentRow);
+                }   
             }
             catch (Exception ex)
             {

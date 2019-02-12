@@ -76,7 +76,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 30);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.panel1.Size = new System.Drawing.Size(800, 37);
+            this.panel1.Size = new System.Drawing.Size(798, 37);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -92,6 +92,7 @@
             // 
             // PrincipalPanel
             // 
+            this.PrincipalPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PrincipalPanel.Controls.Add(this.TopPanel);
             this.PrincipalPanel.Controls.Add(this.ContainerPanel);
             this.PrincipalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -110,7 +111,7 @@
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopPanel.Location = new System.Drawing.Point(0, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(800, 30);
+            this.TopPanel.Size = new System.Drawing.Size(798, 30);
             this.TopPanel.TabIndex = 11;
             // 
             // NormalButton
@@ -123,7 +124,7 @@
             this.NormalButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.NormalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.NormalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NormalButton.Location = new System.Drawing.Point(738, 0);
+            this.NormalButton.Location = new System.Drawing.Point(706, 0);
             this.NormalButton.Name = "NormalButton";
             this.NormalButton.Size = new System.Drawing.Size(30, 30);
             this.NormalButton.TabIndex = 7;
@@ -139,7 +140,7 @@
             this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
             this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Closebutton.Location = new System.Drawing.Point(770, 0);
+            this.Closebutton.Location = new System.Drawing.Point(768, 0);
             this.Closebutton.Name = "Closebutton";
             this.Closebutton.Size = new System.Drawing.Size(30, 30);
             this.Closebutton.TabIndex = 6;
@@ -155,7 +156,7 @@
             this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaximizeButton.Location = new System.Drawing.Point(739, 0);
+            this.MaximizeButton.Location = new System.Drawing.Point(706, 0);
             this.MaximizeButton.Name = "MaximizeButton";
             this.MaximizeButton.Size = new System.Drawing.Size(30, 30);
             this.MaximizeButton.TabIndex = 5;
@@ -171,7 +172,7 @@
             this.Minimizebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Minimizebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Minimizebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimizebutton.Location = new System.Drawing.Point(706, 0);
+            this.Minimizebutton.Location = new System.Drawing.Point(737, 0);
             this.Minimizebutton.Name = "Minimizebutton";
             this.Minimizebutton.Size = new System.Drawing.Size(30, 30);
             this.Minimizebutton.TabIndex = 4;
@@ -190,7 +191,7 @@
             this.ContainerPanel.Margin = new System.Windows.Forms.Padding(3, 30, 3, 3);
             this.ContainerPanel.Name = "ContainerPanel";
             this.ContainerPanel.Padding = new System.Windows.Forms.Padding(0, 30, 0, 0);
-            this.ContainerPanel.Size = new System.Drawing.Size(800, 600);
+            this.ContainerPanel.Size = new System.Drawing.Size(798, 598);
             this.ContainerPanel.TabIndex = 5;
             // 
             // panel2
@@ -218,28 +219,26 @@
             // FechaActualLabel
             // 
             this.FechaActualLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.FechaActualLabel.AutoSize = true;
             this.FechaActualLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaActualLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.FechaActualLabel.Location = new System.Drawing.Point(149, 63);
+            this.FechaActualLabel.Location = new System.Drawing.Point(133, 63);
             this.FechaActualLabel.Name = "FechaActualLabel";
-            this.FechaActualLabel.Size = new System.Drawing.Size(133, 24);
+            this.FechaActualLabel.Size = new System.Drawing.Size(379, 24);
             this.FechaActualLabel.TabIndex = 9;
             this.FechaActualLabel.Text = "Fecha Actual";
-            this.FechaActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.FechaActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // HoraActualLabel
             // 
             this.HoraActualLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.HoraActualLabel.AutoSize = true;
             this.HoraActualLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 28F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HoraActualLabel.ForeColor = System.Drawing.Color.SteelBlue;
-            this.HoraActualLabel.Location = new System.Drawing.Point(145, 0);
+            this.HoraActualLabel.Location = new System.Drawing.Point(133, 0);
             this.HoraActualLabel.Name = "HoraActualLabel";
-            this.HoraActualLabel.Size = new System.Drawing.Size(229, 44);
+            this.HoraActualLabel.Size = new System.Drawing.Size(379, 44);
             this.HoraActualLabel.TabIndex = 8;
             this.HoraActualLabel.Text = "Hora Actual";
-            this.HoraActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.HoraActualLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MensajePanel
             // 
@@ -247,18 +246,17 @@
             this.MensajePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.MensajePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MensajePanel.Controls.Add(this.MensajeLabel);
-            this.MensajePanel.Location = new System.Drawing.Point(161, 207);
+            this.MensajePanel.Location = new System.Drawing.Point(159, 207);
             this.MensajePanel.Name = "MensajePanel";
             this.MensajePanel.Size = new System.Drawing.Size(509, 58);
             this.MensajePanel.TabIndex = 10;
             // 
             // MensajeLabel
             // 
-            this.MensajeLabel.AutoSize = true;
             this.MensajeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MensajeLabel.Location = new System.Drawing.Point(3, 19);
             this.MensajeLabel.Name = "MensajeLabel";
-            this.MensajeLabel.Size = new System.Drawing.Size(205, 22);
+            this.MensajeLabel.Size = new System.Drawing.Size(506, 22);
             this.MensajeLabel.TabIndex = 0;
             this.MensajeLabel.Text = "Asistencia Registrada";
             this.MensajeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -296,42 +294,46 @@
             // 
             // TipoEmpleadoTextBox
             // 
-            this.TipoEmpleadoTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.TipoEmpleadoTextBox.BackColor = System.Drawing.Color.White;
+            this.TipoEmpleadoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TipoEmpleadoTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TipoEmpleadoTextBox.Location = new System.Drawing.Point(158, 176);
             this.TipoEmpleadoTextBox.Name = "TipoEmpleadoTextBox";
             this.TipoEmpleadoTextBox.ReadOnly = true;
-            this.TipoEmpleadoTextBox.Size = new System.Drawing.Size(251, 29);
+            this.TipoEmpleadoTextBox.Size = new System.Drawing.Size(251, 22);
             this.TipoEmpleadoTextBox.TabIndex = 10;
             // 
             // DepartamentosTextBox
             // 
-            this.DepartamentosTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.DepartamentosTextBox.BackColor = System.Drawing.Color.White;
+            this.DepartamentosTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DepartamentosTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepartamentosTextBox.Location = new System.Drawing.Point(158, 145);
             this.DepartamentosTextBox.Name = "DepartamentosTextBox";
             this.DepartamentosTextBox.ReadOnly = true;
-            this.DepartamentosTextBox.Size = new System.Drawing.Size(251, 29);
+            this.DepartamentosTextBox.Size = new System.Drawing.Size(251, 22);
             this.DepartamentosTextBox.TabIndex = 9;
             // 
             // ApellidosTtextBox
             // 
-            this.ApellidosTtextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ApellidosTtextBox.BackColor = System.Drawing.Color.White;
+            this.ApellidosTtextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ApellidosTtextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ApellidosTtextBox.Location = new System.Drawing.Point(158, 111);
             this.ApellidosTtextBox.Name = "ApellidosTtextBox";
             this.ApellidosTtextBox.ReadOnly = true;
-            this.ApellidosTtextBox.Size = new System.Drawing.Size(346, 29);
+            this.ApellidosTtextBox.Size = new System.Drawing.Size(346, 22);
             this.ApellidosTtextBox.TabIndex = 8;
             // 
             // NombreTextBox
             // 
-            this.NombreTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.NombreTextBox.BackColor = System.Drawing.Color.White;
+            this.NombreTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NombreTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NombreTextBox.Location = new System.Drawing.Point(158, 79);
             this.NombreTextBox.Name = "NombreTextBox";
             this.NombreTextBox.ReadOnly = true;
-            this.NombreTextBox.Size = new System.Drawing.Size(346, 29);
+            this.NombreTextBox.Size = new System.Drawing.Size(346, 22);
             this.NombreTextBox.TabIndex = 7;
             // 
             // label6
@@ -356,12 +358,13 @@
             // 
             // NoControlTextBox
             // 
-            this.NoControlTextBox.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.NoControlTextBox.BackColor = System.Drawing.Color.White;
+            this.NoControlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.NoControlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NoControlTextBox.Location = new System.Drawing.Point(158, 45);
             this.NoControlTextBox.Name = "NoControlTextBox";
             this.NoControlTextBox.ReadOnly = true;
-            this.NoControlTextBox.Size = new System.Drawing.Size(134, 29);
+            this.NoControlTextBox.Size = new System.Drawing.Size(134, 22);
             this.NoControlTextBox.TabIndex = 6;
             // 
             // label3
@@ -412,10 +415,8 @@
             this.ContainerPanel.ResumeLayout(false);
             this.ContainerPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.MensajePanel.ResumeLayout(false);
-            this.MensajePanel.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PerfilPictureBox)).EndInit();

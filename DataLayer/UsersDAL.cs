@@ -41,8 +41,11 @@ namespace DataLayer
             {
 
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
@@ -61,17 +64,27 @@ namespace DataLayer
         {
             try
             {
-                int id = 0;               
+                 
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
                 Query.AppendFormat(" VALUES('{0}','{1}',{2},'{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                
+                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int  newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
+                
+                    
             }
             catch (Exception ex)
             {
@@ -80,11 +93,30 @@ namespace DataLayer
 
         }
 
+        public int LastId(String ConnectionString)
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand("SELECT LAST_INSERT_ID() as lastid", Conexion);
+                int idInsert = (int)cmd2.ExecuteScalar();
+                Conexion.Close();
+                return idInsert;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.LastId : {1}", core, ex));
+            }
+        }
+
         public int Update(UsersML user, String ConnectionString)
         {
             try
             {
-                int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ",TableName);
                 Query.AppendLine(" SET ");
@@ -96,12 +128,15 @@ namespace DataLayer
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", user.Id);
                 
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                cmd2.ExecuteNonQuery();
+                return user.Id;
 
 
             }
@@ -135,6 +170,61 @@ namespace DataLayer
             {
                 throw new Exception(String.Format("{0}.delete: {1}", core, ex));
             }
-        }       
+        }
+        
+        public UsersML IsUser(UsersML user, String ConnectionString)
+        {
+            try
+            {
+                if (user != null)
+                {
+                    if (!string.IsNullOrEmpty(user.UserName) && !string.IsNullOrEmpty(user.Password))
+                    {
+                        String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND userName='{1}' AND password='{2}'", TableName, user.UserName, user.Password);
+                        SqlConnection Conexion = new SqlConnection();
+                        Conexion.ConnectionString = ConnectionString;
+                        Conexion.Open();
+                        SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                        DataTable dtUser = new DataTable();
+                        cmd.Fill(dtUser);
+                        Conexion.Close();
+
+                        if (dtUser != null && dtUser.Rows.Count > 0)
+                        {
+                            return getEntity(dtUser.Rows[0]);
+                        }
+                    }
+                }
+
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.delete: {1}", core, ex));
+            }
+        }
+
+        private UsersML getEntity(DataRow row)
+        {
+            try
+            {
+                if(row != null)
+                {
+                    UsersML userML = new UsersML()
+                    {
+                        Id = (row[UsersML.DataBase.Id] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Id].ToString()) : 0,
+                        UserName = (row[UsersML.DataBase.UserName] != DBNull.Value) ? row[UsersML.DataBase.UserName].ToString() : string.Empty,
+                        Rol = (row[UsersML.DataBase.Rol] != DBNull.Value) ? row[UsersML.DataBase.Rol].ToString() : string.Empty,
+                        Image = (row[UsersML.DataBase.Image] != DBNull.Value) ? row[UsersML.DataBase.Image].ToString() : string.Empty,
+                    };
+
+                    return userML;
+                }
+                return null;
+            }catch(Exception ex)
+            {
+                throw new Exception(string.Format("getEntity: {0}", ex.Message));
+            }
+        }
     }
 }

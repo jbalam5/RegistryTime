@@ -15,21 +15,40 @@ namespace RegistryTime
     public partial class cMRT100010 : Form
     {
         #region "GLOBAL VARIABLES"
-        private Rectangle sizeGripRectangle;
-        private int tolerance = 15;
         int lx, ly;
         int sw, sh;
         #endregion
 
         public cMRT100010()
         {
+            
+
             InitializeComponent();
             MetodMax();
 
         }
 
         #region "EVENTS"
-
+        private void cMRT100010_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (BussinesLayer.GlobalBLL.userML != null)
+                {
+                    UsertoolStripStatusLabel.Text = BussinesLayer.GlobalBLL.userML.UserName.ToUpper();
+                }
+                else
+                {
+                    MessageBox.Show("No ha iniciado sesión", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString().ToUpper();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("cMRT100010_Load: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void MenuPictureBox_Click(object sender, EventArgs e)
         {
             if (MenuLeftPanel.Width > 50)
@@ -99,7 +118,7 @@ namespace RegistryTime
 
         private void Closebutton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            getLogin();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -135,6 +154,33 @@ namespace RegistryTime
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMPU100010());
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMCO100010());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.cFMAA100010());
+        }
+
+        private void SettingsButton_Click(object sender, EventArgs e)
+        {
+            Forms.cFMSE110010 frm = new Forms.cFMSE110010();
+            OpenFormChild(frm);
+        }
+
+        private void ExitButton_Click_1(object sender, EventArgs e)
+        {
+            getLogin();
+        }
+
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
@@ -178,6 +224,7 @@ namespace RegistryTime
                     this.ContainerPanel.Controls.RemoveAt(0);
 
                 Form frm = frmChild as Form;
+                
                 frm.TopLevel = false;
                 frm.Dock = DockStyle.Fill;
                 frm.FormBorderStyle = FormBorderStyle.None;
@@ -192,31 +239,31 @@ namespace RegistryTime
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenFormChild(new RegistryTime.Forms.cFMPU100010());
-        }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            OpenFormChild(new RegistryTime.Forms.cFMCO100010());
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            OpenFormChild(new RegistryTime.Forms.cFMAA100010());
-        }
-
         private void ClearPanelContainer()
         {
             if (this.ContainerPanel.Controls.Count > 0)
                 this.ContainerPanel.Controls.RemoveAt(0);
         }
+
+        private void getLogin()
+        {
+            Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
+            this.Hide();
+            frmLogin.ShowDialog();
+        }
+
+        private void SetTimer()
+        {
+            StateTimer.Interval = 60000;
+            StateTimer.Tick += (sender, e) =>
+            {
+                DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
+            };
+
+            StateTimer.Start();
+        }
         #endregion
 
-        private void SettingsButton_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

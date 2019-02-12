@@ -38,8 +38,14 @@ namespace BussinesLayer
         {
             try
             {
-                
-                return usersDAL.GetIdEntity(Id,ConnectionStrings);
+                DataTable Users = new DataTable();
+                if (usersDAL.GetIdEntity(Id, ConnectionStrings).Rows.Count > 0)
+                {
+                    DataRow UserRow = usersDAL.GetIdEntity(Id, ConnectionStrings).Rows[0];
+                    UserRow["password"] = conexion.DesEncriptar(UserRow["password"].ToString());
+                    Users = UserRow.Table;
+                }               
+               return Users;
             }
             catch(Exception ex)
             {
@@ -51,12 +57,13 @@ namespace BussinesLayer
         {
             try
             {
+                users.Password = conexion.Encriptar(users.Password);
                 if (users.Id == 0)
                 {
                     return usersDAL.Save(users, ConnectionStrings);
                 }
                 else
-                {
+                {   
                     return usersDAL.Update(users, ConnectionStrings);
                 }
             }
@@ -75,6 +82,18 @@ namespace BussinesLayer
             catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+            }
+        }
+
+        public UsersML IsUser(UsersML user)
+        {
+            try
+            {
+                return usersDAL.IsUser(user, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.IsUser: {1}", core, ex));
             }
         }
     }

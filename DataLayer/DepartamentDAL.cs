@@ -58,22 +58,53 @@ namespace DataLayer
             }
         }
 
-
-        public int Save(DepartamentML departament, String ConnectionString)
+        public int LastId(String ConnectionString)
         {
             try
             {
-                int id = 0;
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand("SELECT LAST_INSERT_ID() as lastid", Conexion);
+                int idInsert = (int)cmd2.ExecuteScalar();
+                Conexion.Close();
+                return idInsert;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.LastId : {1}", core, ex));
+            }
+        }
+
+        public int Save(DepartamentML Departament, String ConnectionString)
+        {
+            try
+            {
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", departament.Name,departament.Manager, departament.Description, departament.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                Query.AppendLine(" VALUES( ");
+                Query.AppendFormat(" '{0}', ", Departament.Name);
+                Query.AppendFormat(" '{0}', ", Departament.Manager);
+                Query.AppendFormat(" '{0}', ", Departament.Description);
+                Query.AppendLine(" 1, ");
+                Query.AppendFormat(" {0}, ", Departament.IdUserInsert);
+                Query.AppendLine(" GETDATE()) ");
+                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
             }
             catch (Exception ex)
             {
@@ -125,8 +156,10 @@ namespace DataLayer
                 Query.AppendLine(" dateDelete = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", departament.Id);
 
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();

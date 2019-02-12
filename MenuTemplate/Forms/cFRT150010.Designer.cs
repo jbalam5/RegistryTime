@@ -31,25 +31,25 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFRT150010));
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TopPanel = new System.Windows.Forms.Panel();
+            this.ExitButton = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.PasswordTextBox = new System.Windows.Forms.TextBox();
+            this.UserNameTextBox = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.OkButton = new System.Windows.Forms.Button();
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.Closebutton = new System.Windows.Forms.Button();
             this.Minimizebutton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TopPanel = new System.Windows.Forms.Panel();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrincipalPanel
@@ -70,8 +70,8 @@
             this.ContainerPanel.Controls.Add(this.pictureBox1);
             this.ContainerPanel.Controls.Add(this.label3);
             this.ContainerPanel.Controls.Add(this.label2);
-            this.ContainerPanel.Controls.Add(this.textBox2);
-            this.ContainerPanel.Controls.Add(this.textBox1);
+            this.ContainerPanel.Controls.Add(this.PasswordTextBox);
+            this.ContainerPanel.Controls.Add(this.UserNameTextBox);
             this.ContainerPanel.Controls.Add(this.statusStrip1);
             this.ContainerPanel.Controls.Add(this.panel1);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -80,40 +80,82 @@
             this.ContainerPanel.Size = new System.Drawing.Size(478, 253);
             this.ContainerPanel.TabIndex = 5;
             // 
-            // panel1
+            // ExitButton
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.panel1.Controls.Add(this.Closebutton);
-            this.panel1.Controls.Add(this.Minimizebutton);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(478, 30);
-            this.panel1.TabIndex = 0;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            this.ExitButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Location = new System.Drawing.Point(316, 184);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(134, 36);
+            this.ExitButton.TabIndex = 8;
+            this.ExitButton.Text = "Salir";
+            this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
-            // label1
+            // OkButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(4, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(136, 24);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Iniciar Sesión";
+            this.OkButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.OkButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
+            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Location = new System.Drawing.Point(164, 184);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(135, 36);
+            this.OkButton.TabIndex = 7;
+            this.OkButton.Text = "Aceptar";
+            this.OkButton.UseVisualStyleBackColor = false;
+            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // TopPanel
+            // pictureBox1
             // 
-            this.TopPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(0, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(478, 30);
-            this.TopPanel.TabIndex = 4;
-            this.TopPanel.Visible = false;
-            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            this.pictureBox1.BackgroundImage = global::RegistryTime.Properties.Resources.WorldTimex128;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.Location = new System.Drawing.Point(13, 44);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(127, 166);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(161, 116);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(92, 20);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Contraseña";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(161, 55);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Usuario";
+            // 
+            // PasswordTextBox
+            // 
+            this.PasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PasswordTextBox.Location = new System.Drawing.Point(164, 140);
+            this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
+            this.PasswordTextBox.Size = new System.Drawing.Size(286, 26);
+            this.PasswordTextBox.TabIndex = 1;
+            // 
+            // UserNameTextBox
+            // 
+            this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UserNameTextBox.Location = new System.Drawing.Point(164, 79);
+            this.UserNameTextBox.Name = "UserNameTextBox";
+            this.UserNameTextBox.Size = new System.Drawing.Size(285, 26);
+            this.UserNameTextBox.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -132,79 +174,18 @@
             this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(75, 17);
             this.DatetoolStripStatusLabel.Text = "Fecha Actual";
             // 
-            // textBox1
+            // panel1
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(164, 79);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(285, 26);
-            this.textBox1.TabIndex = 2;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(164, 140);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(286, 26);
-            this.textBox2.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(161, 55);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Usuario";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(161, 116);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(92, 20);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Contraseña";
-            // 
-            // OkButton
-            // 
-            this.OkButton.BackColor = System.Drawing.Color.Silver;
-            this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OkButton.Location = new System.Drawing.Point(164, 184);
-            this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(135, 36);
-            this.OkButton.TabIndex = 7;
-            this.OkButton.Text = "Aceptar";
-            this.OkButton.UseVisualStyleBackColor = false;
-            this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.BackColor = System.Drawing.Color.Silver;
-            this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
-            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Location = new System.Drawing.Point(316, 184);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(134, 36);
-            this.ExitButton.TabIndex = 8;
-            this.ExitButton.Text = "Salir";
-            this.ExitButton.UseVisualStyleBackColor = false;
-            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::RegistryTime.Properties.Resources.WorldTimex128;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.Location = new System.Drawing.Point(13, 44);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(127, 166);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.panel1.Controls.Add(this.Closebutton);
+            this.panel1.Controls.Add(this.Minimizebutton);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(478, 30);
+            this.panel1.TabIndex = 0;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // Closebutton
             // 
@@ -241,6 +222,28 @@
             this.Minimizebutton.UseVisualStyleBackColor = true;
             this.Minimizebutton.Click += new System.EventHandler(this.Minimizebutton_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(4, 4);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(136, 24);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Iniciar Sesión";
+            // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.SystemColors.Control;
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(0, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(478, 30);
+            this.TopPanel.TabIndex = 4;
+            this.TopPanel.Visible = false;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            // 
             // cFRT150010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,11 +258,11 @@
             this.PrincipalPanel.ResumeLayout(false);
             this.ContainerPanel.ResumeLayout(false);
             this.ContainerPanel.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -280,7 +283,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox PasswordTextBox;
+        private System.Windows.Forms.TextBox UserNameTextBox;
     }
 }

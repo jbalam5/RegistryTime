@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 namespace RegistryTime.Forms
 {
@@ -16,6 +17,8 @@ namespace RegistryTime.Forms
     {
         public int IdDepartament = 0;
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        
+        
 
         public cFMDE110010()
         {
@@ -24,7 +27,18 @@ namespace RegistryTime.Forms
 
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-
+            if(IdDepartament > 0)
+            {
+                DataTable DepartametTable = DepartamentBLL.GetIdEntity(IdDepartament);
+                if(DepartametTable.Rows.Count > 0)
+                {
+                    DepartamentML DepartamentML = new DepartamentML();
+                    DataRow Departament = DepartametTable.Rows[0];
+                    textBoxNombre.Text = Departament[DepartamentML.DataBase.Name].ToString();
+                    textBoxEncargado.Text = Departament[DepartamentML.DataBase.Manager].ToString();
+                    textBoxDescripcion.Text = Departament[DepartamentML.DataBase.Description].ToString();
+                }
+            }
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -38,33 +52,53 @@ namespace RegistryTime.Forms
             textBoxDescripcion.Text = String.Empty;
         }
 
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxNombre.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Nombre");
+                }
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("EROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
+
+        }
+
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
+                if (FormValidate())
                 {
                     DepartamentML Departament = new DepartamentML();
-                    if (IdDepartament == 0)
-                    {
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
-                    }
-                    else
+                    Departament.Name = textBoxNombre.Text;
+                    Departament.Manager = textBoxEncargado.Text;
+                    Departament.Description = textBoxDescripcion.Text;
+
+                    if (IdDepartament > 0)
                     {
                         Departament.Id = IdDepartament;
-                        Departament.Name = textBoxNombre.Text;
-                        Departament.Manager = textBoxEncargado.Text;
-                        Departament.Description = textBoxDescripcion.Text;
                         Departament.IdUserUpdate = 1;
                     }
+                    
                     DepartamentBLL.Save(Departament);
 
                     cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Exito");
+                    cFAT100010 Alert = new cFAT100010("Información","Información Guardado con exito!!", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                    
                     Clear();
                     this.Close();
                 }

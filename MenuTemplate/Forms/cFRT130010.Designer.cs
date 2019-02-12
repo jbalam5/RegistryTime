@@ -59,6 +59,7 @@
             this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
             this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
             this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -82,6 +83,7 @@
             // ContainerPanel
             // 
             this.ContainerPanel.BackColor = System.Drawing.Color.White;
+            this.ContainerPanel.Controls.Add(this.dateTimePicker1);
             this.ContainerPanel.Controls.Add(this.button3);
             this.ContainerPanel.Controls.Add(this.button2);
             this.ContainerPanel.Controls.Add(this.ButtonSave);
@@ -502,6 +504,15 @@
             this.MinWindowsPictureBox.TabStop = false;
             this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(44, 445);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.ShowUpDown = true;
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 26;
+            // 
             // cFRT130010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -512,6 +523,7 @@
             this.Name = "cFRT130010";
             this.Text = "cFRT130010";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.cFRT130010_Load);
             this.PrincipalPanel.ResumeLayout(false);
             this.ContainerPanel.ResumeLayout(false);
             this.ContainerPanel.PerformLayout();
@@ -559,5 +571,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button ButtonSave;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

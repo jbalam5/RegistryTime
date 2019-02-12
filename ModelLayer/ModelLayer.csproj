@@ -48,6 +48,7 @@
     <Compile Include="CompanyML.cs" />
     <Compile Include="DaysML.cs" />
     <Compile Include="DaysOfTurnML.cs" />
+    <Compile Include="DaysOfWorkEmployeeML.cs" />
     <Compile Include="DepartamentML.cs" />
     <Compile Include="EmployeeML.cs" />
     <Compile Include="FestiveML.cs" />

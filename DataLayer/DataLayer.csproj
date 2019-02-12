@@ -48,6 +48,7 @@
     <Compile Include="CompanyDAL.cs" />
     <Compile Include="DaysDAL.cs" />
     <Compile Include="DaysOfTurnDAL.cs" />
+    <Compile Include="DaysOfWorkEmployeeDAL.cs" />
     <Compile Include="DepartamentDAL.cs" />
     <Compile Include="EmployeeDAL.cs" />
     <Compile Include="FestiveDAL.cs" />

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
 
+
 namespace RegistryTime.Forms
 {
     public partial class cFMEM110010 : Form
     {
-        public int IdDepartament = 0;
+        public int IdEmployee = 0;
+
+        public int IdUser = 0;
+        public int DaysWorks = 0;
+
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
 
         public cFMEM110010()
@@ -22,9 +27,96 @@ namespace RegistryTime.Forms
             InitializeComponent();
         }
 
+        public void LoadGetEmployee(int id)
+        {
+            try
+            {
+
+                EmployeeML EmployeeML = new EmployeeML();
+                EmployeeBLL EmployeeBLL = new EmployeeBLL();
+                UsersBLL UsersBLL = new UsersBLL();
+                DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
+
+                DataRow EmployeeRow;
+                DataRow UserRow;
+                
+                if(EmployeeBLL.GetIdEntity(id).Rows.Count > 0)
+                {
+                    EmployeeRow = EmployeeBLL.GetIdEntity(id).Rows[0];
+                    textBoxRfc.Text = EmployeeRow[EmployeeML.DataBase.Rfc].ToString();
+                    textBoxCurp.Text = EmployeeRow[EmployeeML.DataBase.Curp].ToString();
+                    textBoxNombre.Text = EmployeeRow[EmployeeML.DataBase.Name].ToString();
+                    textBoxApellidos.Text = EmployeeRow[EmployeeML.DataBase.Lastname].ToString();
+                    dateTimeFechaNacimiento.Text = Convert.ToDateTime(EmployeeRow[EmployeeML.DataBase.Birthdate]).ToString();
+                    textBoxNacionalidad.Text = EmployeeRow[EmployeeML.DataBase.Nationality].ToString();
+                    textBoxCalle.Text = EmployeeRow[EmployeeML.DataBase.Address].ToString();
+                    textBoxPais.Text = EmployeeRow[EmployeeML.DataBase.Country].ToString();
+                    textBoxMunicipio.Text = EmployeeRow[EmployeeML.DataBase.Municipality].ToString();
+                    textBoxEmail.Text = EmployeeRow[EmployeeML.DataBase.Email].ToString();
+                    textBoxColonia.Text = EmployeeRow[EmployeeML.DataBase.Colony].ToString();
+                    textBoxTelefono.Text = EmployeeRow[EmployeeML.DataBase.Telephone].ToString();
+                    textBoxCodigoPostal.Text = EmployeeRow[EmployeeML.DataBase.PostalCode].ToString();
+                    textBoxEstado.Text = EmployeeRow[EmployeeML.DataBase.StateCountry].ToString();
+                    textBoxNumControl.Text = EmployeeRow[EmployeeML.DataBase.NumberSure].ToString();
+                    textBoxNumSeguro.Text = EmployeeRow[EmployeeML.DataBase.NumberSure].ToString();
+                    textBoxSueldo.Text = EmployeeRow[EmployeeML.DataBase.Salary].ToString();
+                    comboBoxDepartamento.SelectedValue = EmployeeRow[EmployeeML.DataBase.IdDepartament].ToString();
+                    comboBoxEscolaridad.SelectedValue = EmployeeRow[EmployeeML.DataBase.Scholarship].ToString();
+                    comboBoxPuesto.SelectedValue = EmployeeRow[EmployeeML.DataBase.IdJob].ToString(); 
+                    comboBoxEstadoCivil.SelectedValue = EmployeeRow[EmployeeML.DataBase.CivilStatus].ToString();
+                }
+                if ( UsersBLL.GetIdEntity(id).Rows.Count > 0){
+                    UserRow = UsersBLL.GetIdEntity(id).Rows[0];
+                    
+                    textBoxUsuario.Text = UserRow["username"].ToString();
+                    textBoxPassword.Text =  UserRow["password"].ToString();
+                    comboBoxRol.SelectedValue = UserRow["rol"].ToString();
+                    IdUser = Convert.ToInt32( UserRow["id"].ToString());
+
+                }
+                if(DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows.Count > 0)
+                {
+                    //DaysWorkRow = DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows[0];
+                    foreach (DataRow DaysWorkRow in DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows)
+                    {
+                        //foreach (ListViewItem item in checkedListBoxDias.Items)
+                        //{
+                        //    if (item. = DaysWorkRow["id"].ToString)
+                        //    {
+                        //        item.Checked = true;
+                        //    }
+                        //}
+                    }
+                }
+
+
+
+
+                
+                //Catalogo.textBoxUsuario.Text = String.Empty;
+                //Catalogo.textBoxPassword.Text = String.Empty;
+
+
+                //Catalogo.textBoxDescripcion.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-            
+            LoadScholarship();
+            LoadCivilStatus();
+            LoadDepartaments();
+            LoadJobs();
+            LoadDays();
+            LoadRol();
+            if(IdEmployee > 0)
+            {
+                LoadGetEmployee(IdEmployee);
+            }
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -33,41 +125,115 @@ namespace RegistryTime.Forms
         }
         public void Clear()
         {
-            //textBoxNombre.Text = String.Empty;
-            //textBoxEncargado.Text = String.Empty;
-            //textBoxDescripcion.Text = String.Empty;
+            
+            textBoxRfc.Text = String.Empty;
+            textBoxCurp.Text = String.Empty;
+            textBoxNombre.Text = String.Empty;
+            textBoxApellidos.Text = String.Empty;
+            dateTimeFechaNacimiento.Text = DateTime.Now.ToString();
+            textBoxNacionalidad.Text = String.Empty;
+            textBoxCalle.Text = String.Empty;
+            textBoxPais.Text = String.Empty;
+            textBoxMunicipio.Text = String.Empty;
+            textBoxEmail.Text = String.Empty;
+            textBoxColonia.Text = String.Empty;
+            textBoxTelefono.Text = String.Empty;
+            textBoxCodigoPostal.Text = String.Empty;
+            textBoxEstado.Text = String.Empty;
+            textBoxNumControl.Text = String.Empty;
+            textBoxNumSeguro.Text = String.Empty;
+            comboBoxDepartamento.SelectedIndex = 0;
+            comboBoxPuesto.SelectedIndex = 0;
+            comboBoxRol.SelectedIndex = 0;
+            textBoxUsuario.Text = String.Empty;
+            textBoxPassword.Text = String.Empty;
+            comboBoxEstadoCivil.SelectedIndex = 0;
+            comboBoxEscolaridad.SelectedIndex = 0;
+            textBoxSueldo.Text = String.Empty;
+
+
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                //if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
-                //{
-                //    DepartamentML Departament = new DepartamentML();
-                //    if (IdDepartament == 0)
-                //    {
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //    }
-                //    else
-                //    {
-                //        Departament.Id = IdDepartament;
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //        Departament.IdUserUpdate = 1;
-                //    }
-                //    DepartamentBLL.Save(Departament);
+                
+                
+                UsersML User = new UsersML
+                {
+                    UserName = textBoxUsuario.Text,
+                    Password = textBoxPassword.Text,
+                    Rol = comboBoxRol.SelectedValue.ToString()
+                };
 
-                //    cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
-                //    FrmDataGrid.LoadDataGridView();
+                if(IdUser > 0)
+                {
+                    User.Id = IdUser;
+                }
+                
+                UsersBLL UsersBALL = new UsersBLL();
+                EmployeeML Employee = new EmployeeML
+                {
+                    RFC = textBoxRfc.Text,
+                    Curp = textBoxCurp.Text,
+                    Name = textBoxNombre.Text,
+                    LastName = textBoxApellidos.Text,
+                    Scholarship = comboBoxEscolaridad.SelectedValue.ToString(),
+                    Birthdate = dateTimeFechaNacimiento.Value.Date.ToShortDateString(),
+                    Nationality = textBoxNacionalidad.Text,
+                    Address = textBoxCalle.Text,
+                    Municipality = textBoxMunicipio.Text,
+                    Country = textBoxPais.Text,
+                    Email = textBoxCalle.Text,
+                    CivilStatus = comboBoxEstadoCivil.Text,
+                    PostalCode = Int32.Parse(textBoxCodigoPostal.Text),
+                    Colony = textBoxColonia.Text,
+                    StateCountry = textBoxEstado.Text,
+                    ControlNumber = textBoxNumControl.Text,
+                    IdDepartament = Int32.Parse(comboBoxDepartamento.SelectedValue.ToString()),
+                    IdJob = Int32.Parse(comboBoxPuesto.SelectedValue.ToString()),
+                    SureType = textBoxNumSeguro.Text,
+                    IdUserInsert = 1
+            };
 
-                //    MessageBox.Show("Guardado con Exito");
-                //    Clear();
-                //    this.Close();
-                //}
+                if (radioButtonHombre.Checked)
+                {
+                    Employee.Gender = "Hombre";
+                }
+                else
+                {
+                    Employee.Gender = "Mujer";
+                }
+              
+                if(IdEmployee > 0)
+                {
+                    Employee.Id = IdEmployee;
+                }
+                Employee.IdUser = UsersBALL.Save(User);
+                EmployeeBLL EmployeeBLL = new EmployeeBLL();
+                int IdNewEmployee = EmployeeBLL.Save(Employee);
+
+                DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
+                foreach (object item in checkedListBoxDias.CheckedItems)
+                {
+                    DaysOfWorkEmployeeML DaysOfWorkEmployee = new DaysOfWorkEmployeeML()
+                    {
+                        IdDays = Int32.Parse(item.GetType().GetProperty("Value").GetValue(item, null).ToString()),
+                        IdEmployee = IdEmployee,
+                        IdUserInsert = 1
+                    };
+                    DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
+                }
+
+
+                cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
+                FrmDataGrid.LoadDataGridView();
+
+                MessageBox.Show("Guardado con Exito");
+                Clear();
+                this.Close();
+
             }
             catch (Exception ex)
             {
@@ -83,7 +249,6 @@ namespace RegistryTime.Forms
 
         private void cFMDE110010_Resize(object sender, EventArgs e)
         {
-            //textBoxDescripcion.Width = this.Width - 150;
             tabControl1.Width = this.Width - 50;
             tabControl1.Height = this.Height - 180;
         }
@@ -147,5 +312,160 @@ namespace RegistryTime.Forms
         {
 
         }
+
+        public void LoadScholarship()
+        {
+            try
+            {
+
+                comboBoxEscolaridad.DisplayMember = "Text";
+                comboBoxEscolaridad.ValueMember = "Value";
+
+                var items = new[] {
+                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "Primaria", Value = "primaria" },
+                    new { Text = "Secundaria", Value = "secundaria" },
+                    new { Text = "Preparatoria", Value = "preparatoria" },
+                    new { Text = "Universidad", Value = "universidad" }
+                };
+
+                comboBoxEscolaridad.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadEscolaridad: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+
+        public void LoadCivilStatus()
+        {
+            try
+            {
+
+                comboBoxEstadoCivil.DisplayMember = "Text";
+                comboBoxEstadoCivil.ValueMember = "Value";
+                
+                var items = new[] {
+                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "Soltero/a", Value = "Soltero" },
+                    new { Text = "Casado/a", Value = "Casado" },
+                    new { Text = "Divorciado/a", Value = "Divorciado" }
+                };
+
+                comboBoxEstadoCivil.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadEstadoCivil: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public void LoadDepartaments()
+        {
+            try
+            {
+                DepartamentBLL DepartamentBLL = new DepartamentBLL();
+                DataTable Departamentos;
+                Departamentos = DepartamentBLL.All();
+                comboBoxDepartamento.DisplayMember = "Text";
+                comboBoxDepartamento.ValueMember = "Value";
+
+                List<Object> items = new List<object>();
+                items.Add(new { Text = "Seleccione un opción", Value = "0" });
+                foreach (DataRow Depatamento in Departamentos.Rows)
+                {
+                    items.Add(new { Text = Depatamento[1].ToString(), Value = Depatamento[0].ToString() });
+                }
+
+
+
+                comboBoxDepartamento.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadDepartaments: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadJobs()
+        {
+            try
+            {
+                JobBLL JobBLL = new JobBLL();
+                DataTable Jobs;
+                Jobs = JobBLL.All();
+                comboBoxPuesto.DisplayMember = "Text";
+                comboBoxPuesto.ValueMember = "Value";
+
+                List<Object> items = new List<object>();
+                items.Add(new { Text = "Seleccione un opción", Value = "0" });
+                foreach (DataRow Job in Jobs.Rows)
+                {
+                    items.Add(new { Text = Job[1].ToString(), Value = Job[0].ToString() });
+                }
+
+                comboBoxPuesto.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadRol()
+        {
+            try
+            {
+                RoleBLL RoleBLL = new RoleBLL();
+                DataTable Roles;
+                Roles = RoleBLL.All();
+                comboBoxRol.DisplayMember = "Text";
+                comboBoxRol.ValueMember = "Value";
+
+                List<Object> items = new List<object>();
+                items.Add(new { Text = "Seleccione un opción", Value = "0" });
+                foreach (DataRow Rol in Roles.Rows)
+                {
+                    items.Add(new { Text = Rol[1].ToString(), Value = Rol[0].ToString() });
+                }
+
+                comboBoxRol.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        public void LoadDays()
+        {
+            try
+            {
+                DaysBLL DaysBLL = new DaysBLL();
+                DataTable Days;
+                Days = DaysBLL.All();
+                checkedListBoxDias.DisplayMember = "Text";
+                checkedListBoxDias.ValueMember = "Value";
+                foreach (DataRow Day in Days.Rows)
+                {
+                    checkedListBoxDias.Items.Add(new { Text = Day[1].ToString(), Value = Day[0].ToString() }, false);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
     }
 }
+

@@ -60,11 +60,17 @@ namespace RegistryTime.Forms
         private void ButtonSave_Click(object sender, EventArgs e)
         {
             try{
-
+                MessageBox.Show(dateTimePicker1.Value.ToLongTimeString());
             }catch(Exception ex)
             {
                 MessageBox.Show(String.Format("ButtonSave_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void cFRT130010_Load(object sender, EventArgs e)
+        {
+            dateTimePicker1.Format = DateTimePickerFormat.Time;
+            dateTimePicker1.ShowUpDown = true;
         }
     }
 }

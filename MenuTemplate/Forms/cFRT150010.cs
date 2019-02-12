@@ -13,12 +13,22 @@ namespace RegistryTime.Forms
 {
     public partial class cFRT150010 : Form
     {
-        #region "GLOBAL VARIABLES"
-        int lx, ly;
-        int sw, sh;
+        #region "Properties"
+        private Form _frm = null;
+        public Form FormToOpen
+        {
+            get
+            {
+                return _frm;
+            }
+            set
+            {
+                _frm = value;
+            }
+        }
         #endregion
 
-        #region "CONSTRUCTOR"
+            #region "CONSTRUCTOR"
         public cFRT150010()
         {
             InitializeComponent();
@@ -29,6 +39,7 @@ namespace RegistryTime.Forms
 
         private void cFRT150010_Load(object sender, EventArgs e)
         {
+            BussinesLayer.GlobalBLL.userML = null;
             DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
         }
 
@@ -61,7 +72,45 @@ namespace RegistryTime.Forms
 
         private void OkButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (FormValidate() > 0)
+                {
+                    BussinesLayer.UsersBLL UserBLL = new BussinesLayer.UsersBLL();
+                    ModelLayer.UsersML UsersML = new ModelLayer.UsersML() { UserName = UserNameTextBox.Text, Password = PasswordTextBox.Text };
+                    UsersML = UserBLL.IsUser(UsersML);
 
+                    if (UsersML != null && UsersML.Id > 0)
+                    {
+                        if (UsersML.Rol == "1")
+                        {
+                            //_frm = new cMRT100010();
+                            BussinesLayer.GlobalBLL.userML = UsersML;
+
+                            cMRT100010 frm = new cMRT100010();
+                            this.Hide();
+                            frm.Show();
+         
+                        }
+                        if (UsersML.Rol == "2")
+                        {
+                            //_frm = new Forms.CFRT140010();
+                            Forms.CFRT140010 frm = new Forms.CFRT140010();
+                            this.Hide();
+                            frm.Show();
+                        }
+                    }
+                    else
+                    {
+                        Alerts.cFAT100010 frmAlert = new Alerts.cFAT100010("Información", "El Usuario/contraseña no es valido", MessageBoxIcon.Error);
+                        frmAlert.ShowDialog();
+                    }
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("OkButton_Click: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -76,6 +125,33 @@ namespace RegistryTime.Forms
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hwnd, int wsmg, int wparam, int lparam);
+
+        private int FormValidate()
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(UserNameTextBox.Text))
+                {
+                    Alerts.cFAT100010 frmAlert = new Alerts.cFAT100010("Información", "Ingrese su Usuario", MessageBoxIcon.Information);
+                    frmAlert.ShowDialog();
+                    return 0;
+                }
+
+                if (string.IsNullOrEmpty(PasswordTextBox.Text))
+                {
+                    Alerts.cFAT100010 frmAlert = new Alerts.cFAT100010("Información", "Ingrese su Contraseña", MessageBoxIcon.Information);
+                    frmAlert.ShowDialog();
+                    return 0;
+                }
+
+                return 1;
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(String.Format("formValidate: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 0;
+            }
+        }
         #endregion
     }
 }
