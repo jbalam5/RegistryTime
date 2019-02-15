@@ -121,7 +121,7 @@ namespace DataLayer
             }
         }
 
-        public int Save(UsersML user, String ConnectionString)
+        public int Save(UsersML User, String ConnectionString)
         {
             try
             {
@@ -129,7 +129,15 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}','{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
+                //Query.AppendFormat(" VALUES('{0}','{1}',{2},'{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
+                Query.AppendLine(" VALUES( ");
+                Query.AppendFormat(" '{0}', ", User.UserName);
+                Query.AppendFormat(" '{0}', ", User.Password);
+                Query.AppendFormat(" {0}, ", User.Rol);
+                Query.AppendFormat(" '{0}', ", User.Image);
+                Query.AppendLine(" 1, ");
+                Query.AppendFormat(" '{0}', ", User.IdUserInsert);
+                Query.AppendLine(" GETDATE()) ");
                 Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                 SqlConnection Conexion = new SqlConnection
                 {
@@ -181,11 +189,11 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ",TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("username = '{0}'", user.UserName);
-                Query.AppendFormat("password = '{0}'", user.Password);
-                Query.AppendFormat("rol = '{0}'", user.Rol);
-                Query.AppendFormat("image = '{0}'", user.Image);
-                Query.AppendFormat("idUserUpdate = {0}", user.IdUserUpdate);
+                Query.AppendFormat("username = '{0}',", user.UserName);
+                Query.AppendFormat("password = '{0}',", user.Password);
+                Query.AppendFormat("rol = {0},", user.Rol);
+                Query.AppendFormat("image = '{0}',", user.Image);
+                Query.AppendFormat("idUserUpdate = {0},", user.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE()");
                 Query.AppendFormat("WHERE id={0}", user.Id);
                 

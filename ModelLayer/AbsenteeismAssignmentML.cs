@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    public class TurnML
+    class AbsenteeismAssignmentML
     {
         public int Id { get; set; }
-        public String Name { get; set; }
-        public String StarTime { get; set; }
+        public String controlNumber { get; set; }
+        public String KeyAbsenteeism { get; set; }
         public String Description { get; set; }
-        public String TimeEntry { get; set; }
-        public String StartEntry { get; set; }
-        public String LimitEntry { get; set; }
-        public String Departuretime { get; set; }
-        public String LimitDeparture { get; set; }
-        public int HoursJornada { get; set; }
+        public String Status { get; set; }
+        public DateTime DateStar { get; set; }
+        public DateTime DateEnd { get; set; }
+        public int _regitry { get; set; }
         public int IdUserInsert { get; set; }
         public DateTime DateInsert { get; set; }
         public int IdUserUpdate { get; set; }

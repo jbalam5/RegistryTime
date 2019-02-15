@@ -28,31 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+            MaterialSkin.Controls.MaterialLabel materialLabel7;
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.numericUpDownJornada = new System.Windows.Forms.NumericUpDown();
+            this.textBoxHorasJornada = new System.Windows.Forms.TextBox();
+            this.dateTimeLimiteSalida = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeHoraSalida = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeLimiteEntrada = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeIniciaEntrada = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeHoraEntrada = new System.Windows.Forms.DateTimePicker();
             this.materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownLimiteSalida = new System.Windows.Forms.NumericUpDown();
             this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownHoraSalida = new System.Windows.Forms.NumericUpDown();
             this.materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownTiempoComida = new System.Windows.Forms.NumericUpDown();
-            this.materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownEntradaComida = new System.Windows.Forms.NumericUpDown();
-            this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownSalidaComida = new System.Windows.Forms.NumericUpDown();
-            this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownLimiteEntrada = new System.Windows.Forms.NumericUpDown();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownIniciaEntrada = new System.Windows.Forms.NumericUpDown();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.numericUpDownHoraEntrada = new System.Windows.Forms.NumericUpDown();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
@@ -70,23 +64,32 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            materialLabel7 = new MaterialSkin.Controls.MaterialLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJornada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimiteSalida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHoraSalida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTiempoComida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEntradaComida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalidaComida)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimiteEntrada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIniciaEntrada)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHoraEntrada)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // materialLabel7
+            // 
+            materialLabel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            materialLabel7.AutoSize = true;
+            materialLabel7.Depth = 0;
+            materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
+            materialLabel7.ForeColor = System.Drawing.Color.Red;
+            materialLabel7.Location = new System.Drawing.Point(45, 4);
+            materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel7.Name = "materialLabel7";
+            materialLabel7.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel7.Size = new System.Drawing.Size(15, 19);
+            materialLabel7.TabIndex = 79;
+            materialLabel7.Text = "*";
+            materialLabel7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
@@ -97,7 +100,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 37);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -131,7 +133,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(800, 349);
-            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
+            this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.tabControl1.TabIndex = 15;
             // 
             // tabPage1
@@ -147,25 +149,19 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.numericUpDownJornada);
+            this.panel3.Controls.Add(materialLabel7);
+            this.panel3.Controls.Add(this.textBoxHorasJornada);
+            this.panel3.Controls.Add(this.dateTimeLimiteSalida);
+            this.panel3.Controls.Add(this.dateTimeHoraSalida);
+            this.panel3.Controls.Add(this.dateTimeLimiteEntrada);
+            this.panel3.Controls.Add(this.dateTimeIniciaEntrada);
+            this.panel3.Controls.Add(this.dateTimeHoraEntrada);
             this.panel3.Controls.Add(this.materialLabel11);
-            this.panel3.Controls.Add(this.numericUpDownLimiteSalida);
             this.panel3.Controls.Add(this.materialLabel12);
-            this.panel3.Controls.Add(this.numericUpDownHoraSalida);
             this.panel3.Controls.Add(this.materialLabel13);
             this.panel3.Controls.Add(this.materialLabel14);
-            this.panel3.Controls.Add(this.numericUpDownTiempoComida);
-            this.panel3.Controls.Add(this.materialLabel7);
-            this.panel3.Controls.Add(this.numericUpDownEntradaComida);
-            this.panel3.Controls.Add(this.materialLabel8);
-            this.panel3.Controls.Add(this.numericUpDownSalidaComida);
-            this.panel3.Controls.Add(this.materialLabel9);
-            this.panel3.Controls.Add(this.materialLabel10);
-            this.panel3.Controls.Add(this.numericUpDownLimiteEntrada);
             this.panel3.Controls.Add(this.materialLabel6);
-            this.panel3.Controls.Add(this.numericUpDownIniciaEntrada);
             this.panel3.Controls.Add(this.materialLabel5);
-            this.panel3.Controls.Add(this.numericUpDownHoraEntrada);
             this.panel3.Controls.Add(this.materialLabel4);
             this.panel3.Controls.Add(this.materialLabel3);
             this.panel3.Controls.Add(this.textBoxDescripcion);
@@ -178,12 +174,66 @@
             this.panel3.Size = new System.Drawing.Size(786, 312);
             this.panel3.TabIndex = 13;
             // 
-            // numericUpDownJornada
+            // textBoxHorasJornada
             // 
-            this.numericUpDownJornada.Location = new System.Drawing.Point(475, 225);
-            this.numericUpDownJornada.Name = "numericUpDownJornada";
-            this.numericUpDownJornada.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownJornada.TabIndex = 67;
+            this.textBoxHorasJornada.Location = new System.Drawing.Point(475, 228);
+            this.textBoxHorasJornada.Name = "textBoxHorasJornada";
+            this.textBoxHorasJornada.Size = new System.Drawing.Size(125, 24);
+            this.textBoxHorasJornada.TabIndex = 78;
+            this.textBoxHorasJornada.Text = "0";
+            this.textBoxHorasJornada.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dateTimeLimiteSalida
+            // 
+            this.dateTimeLimiteSalida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeLimiteSalida.Location = new System.Drawing.Point(283, 225);
+            this.dateTimeLimiteSalida.Name = "dateTimeLimiteSalida";
+            this.dateTimeLimiteSalida.ShowUpDown = true;
+            this.dateTimeLimiteSalida.Size = new System.Drawing.Size(125, 24);
+            this.dateTimeLimiteSalida.TabIndex = 77;
+            this.dateTimeLimiteSalida.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            // 
+            // dateTimeHoraSalida
+            // 
+            this.dateTimeHoraSalida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeHoraSalida.Location = new System.Drawing.Point(89, 225);
+            this.dateTimeHoraSalida.Name = "dateTimeHoraSalida";
+            this.dateTimeHoraSalida.ShowUpDown = true;
+            this.dateTimeHoraSalida.Size = new System.Drawing.Size(125, 24);
+            this.dateTimeHoraSalida.TabIndex = 76;
+            this.dateTimeHoraSalida.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            // 
+            // dateTimeLimiteEntrada
+            // 
+            this.dateTimeLimiteEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeLimiteEntrada.Location = new System.Drawing.Point(475, 148);
+            this.dateTimeLimiteEntrada.Name = "dateTimeLimiteEntrada";
+            this.dateTimeLimiteEntrada.ShowUpDown = true;
+            this.dateTimeLimiteEntrada.Size = new System.Drawing.Size(125, 24);
+            this.dateTimeLimiteEntrada.TabIndex = 73;
+            this.dateTimeLimiteEntrada.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            // 
+            // dateTimeIniciaEntrada
+            // 
+            this.dateTimeIniciaEntrada.CustomFormat = "";
+            this.dateTimeIniciaEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeIniciaEntrada.Location = new System.Drawing.Point(283, 148);
+            this.dateTimeIniciaEntrada.Name = "dateTimeIniciaEntrada";
+            this.dateTimeIniciaEntrada.ShowUpDown = true;
+            this.dateTimeIniciaEntrada.Size = new System.Drawing.Size(125, 24);
+            this.dateTimeIniciaEntrada.TabIndex = 72;
+            this.dateTimeIniciaEntrada.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            // 
+            // dateTimeHoraEntrada
+            // 
+            this.dateTimeHoraEntrada.CustomFormat = "hh: mm: ss";
+            this.dateTimeHoraEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeHoraEntrada.Location = new System.Drawing.Point(89, 148);
+            this.dateTimeHoraEntrada.Name = "dateTimeHoraEntrada";
+            this.dateTimeHoraEntrada.ShowUpDown = true;
+            this.dateTimeHoraEntrada.Size = new System.Drawing.Size(125, 24);
+            this.dateTimeHoraEntrada.TabIndex = 71;
+            this.dateTimeHoraEntrada.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
             // 
             // materialLabel11
             // 
@@ -198,13 +248,6 @@
             this.materialLabel11.TabIndex = 66;
             this.materialLabel11.Text = "Horas Jornada";
             // 
-            // numericUpDownLimiteSalida
-            // 
-            this.numericUpDownLimiteSalida.Location = new System.Drawing.Point(283, 225);
-            this.numericUpDownLimiteSalida.Name = "numericUpDownLimiteSalida";
-            this.numericUpDownLimiteSalida.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownLimiteSalida.TabIndex = 65;
-            // 
             // materialLabel12
             // 
             this.materialLabel12.AutoSize = true;
@@ -217,13 +260,6 @@
             this.materialLabel12.Size = new System.Drawing.Size(96, 19);
             this.materialLabel12.TabIndex = 64;
             this.materialLabel12.Text = "Limite Salida";
-            // 
-            // numericUpDownHoraSalida
-            // 
-            this.numericUpDownHoraSalida.Location = new System.Drawing.Point(89, 225);
-            this.numericUpDownHoraSalida.Name = "numericUpDownHoraSalida";
-            this.numericUpDownHoraSalida.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownHoraSalida.TabIndex = 63;
             // 
             // materialLabel13
             // 
@@ -251,105 +287,18 @@
             this.materialLabel14.TabIndex = 61;
             this.materialLabel14.Text = "Hora Salida";
             // 
-            // numericUpDownTiempoComida
-            // 
-            this.numericUpDownTiempoComida.Location = new System.Drawing.Point(475, 175);
-            this.numericUpDownTiempoComida.Name = "numericUpDownTiempoComida";
-            this.numericUpDownTiempoComida.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownTiempoComida.TabIndex = 60;
-            // 
-            // materialLabel7
-            // 
-            this.materialLabel7.AutoSize = true;
-            this.materialLabel7.Depth = 0;
-            this.materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel7.Location = new System.Drawing.Point(471, 153);
-            this.materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel7.Name = "materialLabel7";
-            this.materialLabel7.Size = new System.Drawing.Size(116, 19);
-            this.materialLabel7.TabIndex = 59;
-            this.materialLabel7.Text = "Tiempo Comida";
-            // 
-            // numericUpDownEntradaComida
-            // 
-            this.numericUpDownEntradaComida.Location = new System.Drawing.Point(283, 175);
-            this.numericUpDownEntradaComida.Name = "numericUpDownEntradaComida";
-            this.numericUpDownEntradaComida.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownEntradaComida.TabIndex = 58;
-            // 
-            // materialLabel8
-            // 
-            this.materialLabel8.AutoSize = true;
-            this.materialLabel8.Depth = 0;
-            this.materialLabel8.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel8.Location = new System.Drawing.Point(279, 153);
-            this.materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel8.Name = "materialLabel8";
-            this.materialLabel8.Size = new System.Drawing.Size(60, 19);
-            this.materialLabel8.TabIndex = 57;
-            this.materialLabel8.Text = "Entrada";
-            // 
-            // numericUpDownSalidaComida
-            // 
-            this.numericUpDownSalidaComida.Location = new System.Drawing.Point(89, 175);
-            this.numericUpDownSalidaComida.Name = "numericUpDownSalidaComida";
-            this.numericUpDownSalidaComida.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownSalidaComida.TabIndex = 56;
-            // 
-            // materialLabel9
-            // 
-            this.materialLabel9.AutoSize = true;
-            this.materialLabel9.Depth = 0;
-            this.materialLabel9.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel9.Location = new System.Drawing.Point(-1, 152);
-            this.materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel9.Name = "materialLabel9";
-            this.materialLabel9.Size = new System.Drawing.Size(61, 19);
-            this.materialLabel9.TabIndex = 55;
-            this.materialLabel9.Text = "Comida";
-            // 
-            // materialLabel10
-            // 
-            this.materialLabel10.AutoSize = true;
-            this.materialLabel10.Depth = 0;
-            this.materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel10.Location = new System.Drawing.Point(85, 153);
-            this.materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel10.Name = "materialLabel10";
-            this.materialLabel10.Size = new System.Drawing.Size(50, 19);
-            this.materialLabel10.TabIndex = 54;
-            this.materialLabel10.Text = "Salida";
-            // 
-            // numericUpDownLimiteEntrada
-            // 
-            this.numericUpDownLimiteEntrada.Location = new System.Drawing.Point(475, 122);
-            this.numericUpDownLimiteEntrada.Name = "numericUpDownLimiteEntrada";
-            this.numericUpDownLimiteEntrada.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownLimiteEntrada.TabIndex = 53;
-            // 
             // materialLabel6
             // 
             this.materialLabel6.AutoSize = true;
             this.materialLabel6.Depth = 0;
             this.materialLabel6.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel6.Location = new System.Drawing.Point(471, 100);
+            this.materialLabel6.Location = new System.Drawing.Point(471, 126);
             this.materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel6.Name = "materialLabel6";
             this.materialLabel6.Size = new System.Drawing.Size(106, 19);
             this.materialLabel6.TabIndex = 52;
             this.materialLabel6.Text = "Limite Entrada";
-            // 
-            // numericUpDownIniciaEntrada
-            // 
-            this.numericUpDownIniciaEntrada.Location = new System.Drawing.Point(283, 122);
-            this.numericUpDownIniciaEntrada.Name = "numericUpDownIniciaEntrada";
-            this.numericUpDownIniciaEntrada.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownIniciaEntrada.TabIndex = 51;
             // 
             // materialLabel5
             // 
@@ -357,19 +306,12 @@
             this.materialLabel5.Depth = 0;
             this.materialLabel5.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel5.Location = new System.Drawing.Point(279, 100);
+            this.materialLabel5.Location = new System.Drawing.Point(279, 126);
             this.materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel5.Name = "materialLabel5";
             this.materialLabel5.Size = new System.Drawing.Size(100, 19);
             this.materialLabel5.TabIndex = 50;
             this.materialLabel5.Text = "Inicia Entrada";
-            // 
-            // numericUpDownHoraEntrada
-            // 
-            this.numericUpDownHoraEntrada.Location = new System.Drawing.Point(89, 122);
-            this.numericUpDownHoraEntrada.Name = "numericUpDownHoraEntrada";
-            this.numericUpDownHoraEntrada.Size = new System.Drawing.Size(172, 24);
-            this.numericUpDownHoraEntrada.TabIndex = 49;
             // 
             // materialLabel4
             // 
@@ -377,7 +319,7 @@
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel4.Location = new System.Drawing.Point(-1, 99);
+            this.materialLabel4.Location = new System.Drawing.Point(-1, 125);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
             this.materialLabel4.Size = new System.Drawing.Size(60, 19);
@@ -390,7 +332,7 @@
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
             this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel3.Location = new System.Drawing.Point(85, 100);
+            this.materialLabel3.Location = new System.Drawing.Point(85, 126);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
             this.materialLabel3.Size = new System.Drawing.Size(97, 19);
@@ -400,6 +342,7 @@
             // textBoxDescripcion
             // 
             this.textBoxDescripcion.Location = new System.Drawing.Point(3, 72);
+            this.textBoxDescripcion.Multiline = true;
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.Size = new System.Drawing.Size(335, 24);
             this.textBoxDescripcion.TabIndex = 44;
@@ -481,9 +424,13 @@
             // 
             // dateTimeFecha
             // 
+            this.dateTimeFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimeFecha.Location = new System.Drawing.Point(3, 21);
             this.dateTimeFecha.Name = "dateTimeFecha";
-            this.dateTimeFecha.Size = new System.Drawing.Size(335, 24);
+            this.dateTimeFecha.Size = new System.Drawing.Size(196, 24);
             this.dateTimeFecha.TabIndex = 26;
             // 
             // label11
@@ -567,7 +514,7 @@
             this.Controls.Add(this.panel1);
             this.Name = "cFMTU110010";
             this.Load += new System.EventHandler(this.cFRT140010_Load);
-            this.Resize += new System.EventHandler(this.cFMDE110010_Resize);
+            this.Resize += new System.EventHandler(this.cFMTU110010_Resize);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -575,15 +522,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownJornada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimiteSalida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHoraSalida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTiempoComida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownEntradaComida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalidaComida)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLimiteEntrada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIniciaEntrada)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownHoraEntrada)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -615,25 +553,18 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.NumericUpDown numericUpDownJornada;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
-        private System.Windows.Forms.NumericUpDown numericUpDownLimiteSalida;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        private System.Windows.Forms.NumericUpDown numericUpDownHoraSalida;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private MaterialSkin.Controls.MaterialLabel materialLabel14;
-        private System.Windows.Forms.NumericUpDown numericUpDownTiempoComida;
-        private MaterialSkin.Controls.MaterialLabel materialLabel7;
-        private System.Windows.Forms.NumericUpDown numericUpDownEntradaComida;
-        private MaterialSkin.Controls.MaterialLabel materialLabel8;
-        private System.Windows.Forms.NumericUpDown numericUpDownSalidaComida;
-        private MaterialSkin.Controls.MaterialLabel materialLabel9;
-        private MaterialSkin.Controls.MaterialLabel materialLabel10;
-        private System.Windows.Forms.NumericUpDown numericUpDownLimiteEntrada;
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
-        private System.Windows.Forms.NumericUpDown numericUpDownIniciaEntrada;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        private System.Windows.Forms.NumericUpDown numericUpDownHoraEntrada;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        public System.Windows.Forms.DateTimePicker dateTimeHoraEntrada;
+        public System.Windows.Forms.DateTimePicker dateTimeLimiteSalida;
+        public System.Windows.Forms.DateTimePicker dateTimeHoraSalida;
+        public System.Windows.Forms.DateTimePicker dateTimeLimiteEntrada;
+        public System.Windows.Forms.DateTimePicker dateTimeIniciaEntrada;
+        public System.Windows.Forms.TextBox textBoxHorasJornada;
     }
 }

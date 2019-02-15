@@ -82,15 +82,5 @@ namespace RegistryTime.Forms
         {
             textBoxDescripcion.Width = this.Width - 150;
         }
-
-        private void textBoxEncargado_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

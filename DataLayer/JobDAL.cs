@@ -92,10 +92,10 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("name = {0}", job.Name);
-                Query.AppendFormat("description = {0}", job.Description);
-                Query.AppendFormat("idUserUpdate = {0}", job.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
+                Query.AppendFormat("name = '{0}', ", job.Name);
+                Query.AppendFormat("description = '{0}', ", job.Description);
+                Query.AppendFormat("idUserUpdate = {0}, ", job.IdUserUpdate);
+                Query.AppendLine("dateUpdate = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", job.Id);
 
                 SqlConnection Conexion = new SqlConnection();
@@ -121,9 +121,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", job.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
+                Query.AppendLine("_registry = 2, ");
+                Query.AppendFormat("idUserDelete = {0}, ", job.IdUserDelete);
+                Query.AppendLine("dateDelete = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", job.Id);
 
                 SqlConnection Conexion = new SqlConnection

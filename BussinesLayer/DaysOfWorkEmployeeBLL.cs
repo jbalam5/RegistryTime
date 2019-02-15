@@ -15,7 +15,7 @@ namespace BussinesLayer
         DaysOfWorkEmployeeDAL DaysOfWorkEmployeeDAL = new DaysOfWorkEmployeeDAL();
         public String ConnectionStrings;
         public ConnectionBLL conexion = new ConnectionBLL();
-        public String core = "BussinesLayer.DaysOfTurnBLL";
+        public String core = "BussinesLayer.DaysOfWorkEmployeeBLL";
 
         public DaysOfWorkEmployeeBLL()
         {
@@ -89,6 +89,18 @@ namespace BussinesLayer
             catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+            }
+        }
+
+        public void DeleteRegistrys(int IdEmployee)
+        {
+            try
+            {
+                DaysOfWorkEmployeeDAL.DeleteRegistrys(IdEmployee, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.DeleteRegistrys: {1}", core, ex));
             }
         }
     }

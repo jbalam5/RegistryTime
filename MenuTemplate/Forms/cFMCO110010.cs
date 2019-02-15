@@ -54,17 +54,17 @@ namespace RegistryTime.Forms
                     else
                     {
                         Absenteeism.Id = IdAbsenteeism;
-                        Absenteeism.Concept = textBoxClave.Text;
+                        Absenteeism.IsKey = textBoxClave.Text;
                         Absenteeism.Concept = textBoxConcepto.Text;
                         Absenteeism.description = textBoxDescripcion.Text;
                         Absenteeism.IdUserUpdate = 1;
                     }
                     AbsenteeismBLL.Save(Absenteeism);
 
-                    cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
+                    cFMCO100010 FrmDataGrid = this.Owner as cFMCO100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Exito");
+                    MessageBox.Show("Guardado con Éxito");
                     Clear();
                     this.Close();
                 }

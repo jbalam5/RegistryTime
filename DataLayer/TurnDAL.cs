@@ -26,12 +26,14 @@ namespace DataLayer
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                //String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Turno,{0}.[Description] as Descripcion,{0}.[TimeEntry] as HoraEntrada,{0}.[StartEntry] as IniciaEntrada,{0}.[LimitEntry] as LimiteEntrada,{0}.[Departuretime] as HoraSalida,{0}.[LimitDeparture] as LimiteSalida, {0}.[HoursJornada] as HorasJornada  FROM {0} where {0}._registry = 1", TableName);
+
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtTurnos = new DataTable();
+                cmd.Fill(dtTurnos);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtTurnos;
             }
             catch (Exception ex)
             {
@@ -52,10 +54,10 @@ namespace DataLayer
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtTurnos = new DataTable();
+                cmd.Fill(dtTurnos);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtTurnos;
             }
             catch (Exception ex)
             {
@@ -63,15 +65,28 @@ namespace DataLayer
             }
         }
 
-        public int Save(TurnML turn, String ConnectionString)
+        public int Save(TurnML Turn, String ConnectionString)
         {
             try
             {
                 int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( name,startTime,endTime,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", turn.Name, turn.StarTime, turn.EndTime, turn.IdUserInsert);
+                Query.AppendLine("( name, Description, TimeEntry, StartEntry, LimitEntry, Departuretime, LimitDeparture, HoursJornada, _registry, idUserInsert, dateInsert)");
+                Query.AppendLine(" VALUES(");
+                Query.AppendFormat(" '{0}',", Turn.Name);
+                Query.AppendFormat(" '{0}',", Turn.Description);
+                Query.AppendFormat(" '{0}',", Turn.TimeEntry);
+                Query.AppendFormat(" '{0}',", Turn.StartEntry);
+                Query.AppendFormat(" '{0}',", Turn.LimitEntry);
+                Query.AppendFormat(" '{0}',", Turn.Departuretime);
+                Query.AppendFormat(" '{0}',", Turn.LimitDeparture);
+                Query.AppendFormat(" {0},", Turn.HoursJornada);
+                Query.AppendLine(" 1,");
+                Query.AppendFormat(" {0},", Turn.IdUserInsert );
+                Query.AppendLine(" getDate() )");
+                
+                //Query.AppendFormat(" VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}',{7},GETDATE(),GETDATE(),1,{13},GETDATE())", turn.Name, turn.Description, turn.TimeEntry, turn.StartEntry, turn.LimitEntry, turn.Departuretime, turn.LimitDeparture, turn.HoursJornada, turn.IdUserInsert);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
@@ -96,11 +111,16 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("name = '{0}'", turn.Name);
-                Query.AppendFormat("startTime = '{0}'", turn.StarTime);
-                Query.AppendFormat("endTime = '{0}'", turn.EndTime);
-                Query.AppendFormat("idUserUpdate = {0}", turn.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
+                Query.AppendFormat("name = '{0}', ", turn.Name);
+                Query.AppendFormat("description = '{0}', ", turn.Description);
+                Query.AppendFormat("timeentry = '{0}', ", turn.TimeEntry);
+                Query.AppendFormat("startentry = '{0}', ", turn.StartEntry);
+                Query.AppendFormat("limitentry = '{0}', ", turn.LimitEntry);
+                Query.AppendFormat("departuretime = '{0}', ", turn.Departuretime);
+                Query.AppendFormat("limitdeparture = '{0}', ", turn.LimitDeparture);
+                Query.AppendFormat("hoursjornada = {0}, ", turn.HoursJornada);
+                Query.AppendFormat("idUserUpdate = {0}, ", turn.IdUserUpdate);
+                Query.AppendLine("dateUpdate = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", turn.Id);
 
                 SqlConnection Conexion = new SqlConnection
@@ -128,9 +148,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", turn.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
+                Query.AppendLine("_registry = 2, ");
+                Query.AppendFormat("idUserDelete = {0}, ", turn.IdUserDelete);
+                Query.AppendLine("dateDelete = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", turn.Id);
 
                 SqlConnection Conexion = new SqlConnection

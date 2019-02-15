@@ -94,11 +94,11 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("isKey = '{0}'", absenteeism.IsKey);
-                Query.AppendFormat("concept = '{0}'", absenteeism.Concept);
-                Query.AppendFormat("description = '{0}'", absenteeism.description);
-                Query.AppendFormat("idUserUpdate = {0}", absenteeism.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
+                Query.AppendFormat("isKey = '{0}', ", absenteeism.IsKey);
+                Query.AppendFormat("concept = '{0}', ", absenteeism.Concept);
+                Query.AppendFormat("description = '{0}', ", absenteeism.description);
+                Query.AppendFormat("idUserUpdate = {0}, ", absenteeism.IdUserUpdate);
+                Query.AppendLine("dateUpdate = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", absenteeism.Id);
 
                 SqlConnection Conexion = new SqlConnection
@@ -126,9 +126,9 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", absenteeism.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
+                Query.AppendLine("_registry = 2, ");
+                Query.AppendFormat("idUserDelete = {0}, ", absenteeism.IdUserDelete);
+                Query.AppendLine("dateDelete = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", absenteeism.Id);
 
                 SqlConnection Conexion = new SqlConnection
