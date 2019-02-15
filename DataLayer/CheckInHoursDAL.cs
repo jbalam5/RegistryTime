@@ -60,6 +60,29 @@ namespace DataLayer
             }
         }
 
+        //public CheckInHoursML GetEntityByNoControl(int Id, string ConnectionString)
+        //{
+        //    try
+        //    {
+        //        String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
+        //        SqlConnection Conexion = new SqlConnection
+        //        {
+        //            ConnectionString = ConnectionString
+        //        };
+        //        Conexion.Open();
+        //        SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+        //        DataTable dtDepartamentos = new DataTable();
+        //        cmd.Fill(dtDepartamentos);
+        //        Conexion.Close();
+        //        return dtDepartamentos;
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw new Exception(String.Format("{0}.GetEntityByNoControl : {1}", core, ex));
+        //    }
+
+        //}
+
         public int Save(CheckInHoursML checkInHours, String ConnectionString)
         {
             try

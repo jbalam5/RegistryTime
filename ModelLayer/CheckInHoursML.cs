@@ -8,9 +8,23 @@ namespace ModelLayer
 {
     public class CheckInHoursML
     {
+        public class Database {
+            public const string id = "id";
+            public const string date = "date";
+            public const string type = "type";
+            public const string idEmployee = "idEmployee";
+            public const string _registry = "_registry";
+            public const string idUserInsert = "idUserInsert";
+            public const string dateInsert = "dateInsert";
+            public const string idUserUpdate = "idUserUpdate";
+            public const string dateUpdate = "dateUpdate";
+            public const string idUserDelete = "idUserDelete";
+            public const string dateDelete = "dateDelete";
+        }
+
         public int Id { get; set; }
         public String Date { get; set; }
-        public String IdEmployee { get; set; }
+        public int IdEmployee { get; set; }
         public String Type { get; set; }
         public int _regitry { get; set; }
         public int IdUserInsert { get; set; }
