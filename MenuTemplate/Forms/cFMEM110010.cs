@@ -10,18 +10,23 @@ using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
 using Alerts;
-
+using System.Data.SqlClient;
 
 namespace RegistryTime.Forms
 {
     public partial class cFMEM110010 : Form
     {
         public int IdEmployee = 0;
-
+        private String DirectoryFiles = "ImagenTMP/Employee";
+        private String PathFileImage = String.Empty;
+        private String PathFileImageOld = String.Empty;
         public int IdUser = 0;
         public int DaysWorks = 0;
 
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        UsersBLL UsersBLL = new UsersBLL();
+        DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
+        EmployeeBLL EmployeeBLL = new EmployeeBLL();
         UsersML UsersML = new UsersML();
         DaysOfWorkEmployeeML DaysOfWorkEmployeeML = new DaysOfWorkEmployeeML();
 
@@ -36,9 +41,6 @@ namespace RegistryTime.Forms
             {
 
                 EmployeeML EmployeeML = new EmployeeML();
-                EmployeeBLL EmployeeBLL = new EmployeeBLL();
-                UsersBLL UsersBLL = new UsersBLL();
-                DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
                 DataRow EmployeeRow;
                 DataRow UserRow;
                 
@@ -73,7 +75,17 @@ namespace RegistryTime.Forms
                     textBoxUsuario.Text = UserRow[UsersML.DataBase.UserName].ToString();
                     textBoxPassword.Text =  UserRow[UsersML.DataBase.Password].ToString();
                     comboBoxRol.SelectedValue = UserRow[UsersML.DataBase.Rol].ToString();
+                    PathFileNameTextBox.Text = UserRow[UsersML.DataBase.Image].ToString();
                     IdUser = Convert.ToInt32( UserRow[UsersML.DataBase.Id].ToString());
+                    if (!string.IsNullOrEmpty(UserRow[UsersML.DataBase.Image].ToString()))
+                    {
+                        String FilePath = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), UserRow[UsersML.DataBase.Image].ToString());
+                        PathFileImageOld = FilePath;
+                        if (System.IO.File.Exists(FilePath))
+                            pictureBoxImage.BackgroundImage = new Bitmap(FilePath);
+                        else
+                            throw new Exception("No se encontró la imagen");
+                    }
 
                 }
                 if(DaysOfWorkEmployeeBLL.GetAllEntitys(id).Rows.Count > 0)
@@ -148,8 +160,7 @@ namespace RegistryTime.Forms
             comboBoxEstadoCivil.SelectedIndex = 0;
             comboBoxEscolaridad.SelectedIndex = 0;
             textBoxSueldo.Text = String.Empty;
-
-
+            PathFileNameTextBox.Text = String.Empty;
         }
 
         public bool FormValidate()
@@ -161,21 +172,21 @@ namespace RegistryTime.Forms
                 if (string.IsNullOrEmpty(textBoxCurp.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar Curp");
+                    throw new Exception("Debe ingresar Curp");
                 }
                 else if (string.IsNullOrEmpty(textBoxNombre.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar el Nombre");
+                    throw new Exception("Debe ingresar el Nombre");
                 }
                 else if (string.IsNullOrEmpty(textBoxApellidos.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar el Apellidos");
+                    throw new Exception("Debe ingresar el Apellidos");
                 }
                 else if (String.IsNullOrEmpty(textBoxCalle.Text)){
                     Valid = false;
-                    throw new Exception("Debe ingesar el Calle");
+                    throw new Exception("Debe ingresar el Calle");
                 }
                 else if (String.IsNullOrEmpty(textBoxTelefono.Text))
                 {
@@ -185,27 +196,32 @@ namespace RegistryTime.Forms
                 else if (String.IsNullOrEmpty(comboBoxDepartamento.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar Departamento");
+                    throw new Exception("Debe ingresar Departamento");
                 }
                 else if (String.IsNullOrEmpty(comboBoxPuesto.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar Puesto");
+                    throw new Exception("Debe ingresar Puesto");
                 }
                 else if (String.IsNullOrEmpty(textBoxUsuario.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar un Usuario");
+                    throw new Exception("Debe ingresar un Usuario");
                 }
                 else if (String.IsNullOrEmpty(textBoxPassword.Text)){
                     Valid = false;
-                    throw new Exception("Debe ingesar un Password");
+                    throw new Exception("Debe ingresar un Password");
                 }
                 
                 else if (String.IsNullOrEmpty(comboBoxRol.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar rol");
+                    throw new Exception("Debe ingresar rol");
+                }
+                else if (UsersBLL.UserExists(textBoxUsuario.Text))
+                {
+                    Valid = false;
+                    throw new Exception("El usuario ya existe");
                 }
                 
                 return Valid;
@@ -228,12 +244,12 @@ namespace RegistryTime.Forms
                 if (FormValidate())
                 {
 
-                
                 UsersML User = new UsersML
                 {
                     UserName = textBoxUsuario.Text,
                     Password = textBoxPassword.Text,
-                    Rol = comboBoxRol.SelectedValue.ToString()
+                    Rol = comboBoxRol.SelectedValue.ToString(),
+                    Image = System.IO.Path.GetFileName(PathFileNameTextBox.Text)
                 };
 
                 if(IdUser > 0)
@@ -300,7 +316,16 @@ namespace RegistryTime.Forms
                     };
                     DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
                 }
-                cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
+
+                if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
+                {
+                    if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
+
+                    //System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, lastImage));
+                    System.IO.File.Copy(PathFileImage, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                }
+
+                    cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();
                 cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
                 Alert.ShowDialog();
@@ -528,9 +553,7 @@ namespace RegistryTime.Forms
                 {
                     items.Add(new { Text = Rol[1].ToString(), Value = Rol[0].ToString() });
                 }
-
                 comboBoxRol.DataSource = items;
-
             }
             catch (Exception ex)
             {
@@ -552,8 +575,6 @@ namespace RegistryTime.Forms
                 {
                     checkedListBoxDias.Items.Add(new { Text = Day[1].ToString(), Value = Day[0].ToString() }, false);
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -561,6 +582,39 @@ namespace RegistryTime.Forms
             }
         }
 
+
+        private void buttonBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String filePath = string.Empty;
+
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Title = "Buscar Imagen";
+                    openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = true;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        if (pictureBoxImage.BackgroundImage != null)
+                            pictureBoxImage.BackgroundImage.Dispose();
+
+                        pictureBoxImage.BackgroundImage = new Bitmap(openFileDialog.FileName);
+                        PathFileNameTextBox.Text = openFileDialog.SafeFileName;
+                        PathFileImage = openFileDialog.FileName;
+
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("SearchButton_Click: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
 

@@ -96,5 +96,18 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.IsUser: {1}", core, ex));
             }
         }
+
+        public Boolean UserExists(String Username)
+        {
+            try
+            {
+                return usersDAL.UserExists(Username, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.UserExists: {1}", core, ex));
+            }
+        }
+
     }
 }

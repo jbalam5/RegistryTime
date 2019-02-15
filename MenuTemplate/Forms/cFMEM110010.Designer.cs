@@ -34,6 +34,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.PathFileNameTextBox = new System.Windows.Forms.TextBox();
+            this.buttonBuscar = new System.Windows.Forms.Button();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxApellidos = new System.Windows.Forms.TextBox();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -43,7 +45,7 @@
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxRfc = new System.Windows.Forms.TextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.comboBoxEscolaridad = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -107,7 +109,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -174,6 +176,8 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.PathFileNameTextBox);
+            this.panel3.Controls.Add(this.buttonBuscar);
             this.panel3.Controls.Add(this.materialLabel6);
             this.panel3.Controls.Add(this.textBoxApellidos);
             this.panel3.Controls.Add(this.materialLabel4);
@@ -183,13 +187,39 @@
             this.panel3.Controls.Add(this.materialLabel2);
             this.panel3.Controls.Add(this.textBoxRfc);
             this.panel3.Controls.Add(this.materialLabel1);
-            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.pictureBoxImage);
             this.panel3.Controls.Add(this.comboBoxEscolaridad);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(767, 357);
             this.panel3.TabIndex = 13;
+            // 
+            // PathFileNameTextBox
+            // 
+            this.PathFileNameTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PathFileNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PathFileNameTextBox.Location = new System.Drawing.Point(450, 197);
+            this.PathFileNameTextBox.Multiline = true;
+            this.PathFileNameTextBox.Name = "PathFileNameTextBox";
+            this.PathFileNameTextBox.ReadOnly = true;
+            this.PathFileNameTextBox.Size = new System.Drawing.Size(211, 23);
+            this.PathFileNameTextBox.TabIndex = 54;
+            // 
+            // buttonBuscar
+            // 
+            this.buttonBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonBuscar.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscar.ForeColor = System.Drawing.Color.White;
+            this.buttonBuscar.Location = new System.Drawing.Point(368, 180);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(83, 40);
+            this.buttonBuscar.TabIndex = 15;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.UseVisualStyleBackColor = false;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // materialLabel6
             // 
@@ -217,7 +247,7 @@
             this.materialLabel4.AutoSize = true;
             this.materialLabel4.Depth = 0;
             this.materialLabel4.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel4.ForeColor = System.Drawing.Color.Red;
+            this.materialLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel4.Location = new System.Drawing.Point(-1, 148);
             this.materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel4.Name = "materialLabel4";
@@ -237,7 +267,7 @@
             this.materialLabel3.AutoSize = true;
             this.materialLabel3.Depth = 0;
             this.materialLabel3.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel3.ForeColor = System.Drawing.Color.Red;
+            this.materialLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel3.Location = new System.Drawing.Point(-1, 99);
             this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel3.Name = "materialLabel3";
@@ -257,12 +287,12 @@
             // 
             this.materialLabel2.AutoSize = true;
             this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.Red;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialLabel2.Location = new System.Drawing.Point(-1, 50);
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(40, 18);
+            this.materialLabel2.Size = new System.Drawing.Size(40, 19);
             this.materialLabel2.TabIndex = 45;
             this.materialLabel2.Text = "Curp";
             // 
@@ -286,13 +316,15 @@
             this.materialLabel1.TabIndex = 43;
             this.materialLabel1.Text = "Rfc";
             // 
-            // pictureBox1
+            // pictureBoxImage
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(370, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 115);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxImage.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBoxImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxImage.Location = new System.Drawing.Point(370, 3);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(185, 171);
+            this.pictureBoxImage.TabIndex = 19;
+            this.pictureBoxImage.TabStop = false;
             // 
             // comboBoxEscolaridad
             // 
@@ -835,6 +867,7 @@
             // 
             // textBoxUsuario
             // 
+            this.textBoxUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxUsuario.Location = new System.Drawing.Point(29, 44);
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(335, 24);
@@ -902,7 +935,7 @@
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -937,7 +970,7 @@
         public System.Windows.Forms.TextBox textBoxApellidos;
         public System.Windows.Forms.CheckedListBox checkedListBoxDias;
         private System.Windows.Forms.TabPage tabPage4;
-        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBoxImage;
         public System.Windows.Forms.ComboBox comboBoxEscolaridad;
         public System.Windows.Forms.ComboBox comboBoxEstadoCivil;
         public System.Windows.Forms.TextBox textBoxCodigoPostal;
@@ -991,5 +1024,7 @@
         public System.Windows.Forms.TextBox textBoxUsuario;
         public System.Windows.Forms.CheckedListBox checkedListBox1;
         public System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.TextBox PathFileNameTextBox;
     }
 }
