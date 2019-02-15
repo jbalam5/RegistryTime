@@ -61,6 +61,71 @@ namespace DataLayer
             }
         }
 
+        public EmployeeML GetEmploymentByIdUser(int id, String ConnectionString)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND idUser={1}", TableName, id);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+
+                if (dtDepartamentos != null && dtDepartamentos.Rows.Count > 0)
+                {
+                    return GetEntity(dtDepartamentos.Rows[0]);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEmploymentByIdUser : {1}", core, ex));
+            }
+        }
+
+        public EmployeeML GetEntity(DataRow row)
+        {
+            try
+            {
+                if(row != null)
+                {
+                    EmployeeML employmentML = new EmployeeML()
+                    {
+                        RFC = (row[EmployeeML.DataBase.Rfc] != DBNull.Value) ? row[EmployeeML.DataBase.Rfc].ToString() : string.Empty,
+                        Curp = (row[EmployeeML.DataBase.Curp] != DBNull.Value) ? row[EmployeeML.DataBase.Curp].ToString() : string.Empty,
+                        Name = (row[EmployeeML.DataBase.Name] != DBNull.Value) ? row[EmployeeML.DataBase.Name].ToString() : string.Empty,
+                        LastName = (row[EmployeeML.DataBase.Lastname] != DBNull.Value) ? row[EmployeeML.DataBase.Lastname].ToString() : string.Empty,
+                        Scholarship = (row[EmployeeML.DataBase.Scholarship] != DBNull.Value) ? row[EmployeeML.DataBase.Scholarship].ToString() : string.Empty,
+                        Birthdate = (row[EmployeeML.DataBase.Birthdate] != DBNull.Value) ? row[EmployeeML.DataBase.Birthdate].ToString() : string.Empty,
+                        Gender = (row[EmployeeML.DataBase.Gender] != DBNull.Value) ? row[EmployeeML.DataBase.Gender].ToString() : string.Empty,
+                        Nationality = (row[EmployeeML.DataBase.Nationality] != DBNull.Value) ? row[EmployeeML.DataBase.Nationality].ToString() : string.Empty,
+                        Address = (row[EmployeeML.DataBase.Address] != DBNull.Value) ? row[EmployeeML.DataBase.Address].ToString() : string.Empty,
+                        Municipality = (row[EmployeeML.DataBase.Municipality] != DBNull.Value) ? row[EmployeeML.DataBase.Municipality].ToString() : string.Empty,
+                        Country = (row[EmployeeML.DataBase.Country] != DBNull.Value) ? row[EmployeeML.DataBase.Country].ToString() : string.Empty,
+                        Email = (row[EmployeeML.DataBase.Email] != DBNull.Value) ? row[EmployeeML.DataBase.Email].ToString() : string.Empty,
+                        CivilStatus = (row[EmployeeML.DataBase.CivilStatus] != DBNull.Value) ? row[EmployeeML.DataBase.CivilStatus].ToString() : string.Empty,
+                        Colony = (row[EmployeeML.DataBase.Colony] != DBNull.Value) ? row[EmployeeML.DataBase.Colony].ToString() : string.Empty,
+                        StateCountry = (row[EmployeeML.DataBase.StateCountry] != DBNull.Value) ? row[EmployeeML.DataBase.StateCountry].ToString() : string.Empty,
+                        PostalCode = (row[EmployeeML.DataBase.PostalCode] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.PostalCode].ToString()) : 0,
+                        ControlNumber = (row[EmployeeML.DataBase.ControlNumber] != DBNull.Value) ? row[EmployeeML.DataBase.ControlNumber].ToString() : string.Empty,
+                        SureType = (row[EmployeeML.DataBase.SureType] != DBNull.Value) ? row[EmployeeML.DataBase.SureType].ToString() : string.Empty,
+                        IdJob = (row[EmployeeML.DataBase.IdJob] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdJob].ToString()) : 0,
+                        IdDepartament = (row[EmployeeML.DataBase.IdDepartament] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdDepartament].ToString()) : 0,
+                        IdUser = (row[EmployeeML.DataBase.IdUser] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdUser].ToString()) : 0,
+                    };
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex));
+            }
+        }
 
         public int Save(EmployeeML employee, String ConnectionString)
         {

@@ -82,7 +82,12 @@ namespace RegistryTime.Forms
 
                     if (UsersML != null && UsersML.Id > 0)
                     {
-                        if (UsersML.Rol == "1")
+                        BussinesLayer.RoleBLL roleBLL = new BussinesLayer.RoleBLL();
+                        ModelLayer.RoleML roleML = roleBLL.GetIdEntity(UsersML.Rol);
+
+                        if (roleML == null) throw new Exception("No se encontro el rol del usuario");
+                        
+                        if (roleML.Name.ToUpper() == "ADMIN")
                         {
                             //_frm = new cMRT100010();
                             BussinesLayer.GlobalBLL.userML = UsersML;
@@ -90,10 +95,9 @@ namespace RegistryTime.Forms
                             cMRT100010 frm = new cMRT100010();
                             this.Hide();
                             frm.Show();
-         
+
                         }
-                        if (UsersML.Rol == "2")
-                        {
+                        else {                         
                             //_frm = new Forms.CFRT140010();
                             Forms.CFRT140010 frm = new Forms.CFRT140010();
                             this.Hide();

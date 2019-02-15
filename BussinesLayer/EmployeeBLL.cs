@@ -48,6 +48,19 @@ namespace BussinesLayer
             }
         }
 
+        public EmployeeML GetEmploymentByIdUser(int Id)
+        {
+            try
+            {
+
+                return EmployeeDAL.GetEmploymentByIdUser(Id, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEmploymentByIdUser: {1}", core, ex));
+            }
+        }
+
         public int Save(EmployeeML employee)
         {
             try

@@ -50,8 +50,8 @@ idUserDelete int,
 dateDelete datetime
 )
 
-INSERT INTO [dbo].[role]([name],[description]) VALUES('ADMIN','USUARIO PARA CONFIGURACION')
-INSERT INTO [dbo].[role]([name],[description]) VALUES('CAPTURA','USUARIO PARA CAPTURA DE HORA')
+INSERT INTO [dbo].[role]([name],[description],[_registry]) VALUES('ADMIN','USUARIO PARA CONFIGURACION',1)
+INSERT INTO [dbo].[role]([name],[description],[_registry]) VALUES('CAPTURA','USUARIO PARA CAPTURA DE HORA',1)
 
 
 create table job (

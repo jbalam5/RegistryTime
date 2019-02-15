@@ -34,6 +34,18 @@ namespace BussinesLayer
             }
         }
 
+        public UsersML GetEntityById(int Id)
+        {
+            try
+            {
+                return usersDAL.GetEntityById(Id, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+            }
+        }
+
         public DataTable GetIdEntity(int Id)
         {
             try
@@ -44,12 +56,24 @@ namespace BussinesLayer
                     DataRow UserRow = usersDAL.GetIdEntity(Id, ConnectionStrings).Rows[0];
                     UserRow["password"] = conexion.DesEncriptar(UserRow["password"].ToString());
                     Users = UserRow.Table;
-                }               
-               return Users;
+                }
+                return Users;
             }
             catch(Exception ex)
             {
                 throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+            }
+        }
+
+        public int UserExist(string UserName, int id)
+        {
+            try
+            {
+                return usersDAL.UserExist(UserName, id, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.UserExist: {1}", core, ex));
             }
         }
 

@@ -35,7 +35,7 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public RoleML GetIdEntity(int id, String ConnectionString)
         {
             try
             {
@@ -48,7 +48,12 @@ namespace DataLayer
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
                 Conexion.Close();
-                return dtDepartamentos;
+
+                if(dtDepartamentos != null && dtDepartamentos.Rows.Count > 0)
+                {
+                    return GetEntity(dtDepartamentos.Rows[0]);
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -56,6 +61,30 @@ namespace DataLayer
             }
         }
 
+        public RoleML GetEntity(DataRow row)
+        {
+            try
+            {
+                if(row != null)
+                {
+                    RoleML roleML = new RoleML()
+                    {
+                        Name = (row[RoleML.DataBase.name] != DBNull.Value) ? row[RoleML.DataBase.name].ToString() : string.Empty,
+                        Description = (row[RoleML.DataBase.description] != DBNull.Value) ? row[RoleML.DataBase.description].ToString() : string.Empty,
+                        _regitry = (row[RoleML.DataBase._registry] != DBNull.Value) ? int.Parse(row[RoleML.DataBase._registry].ToString()) : 0
+                    };
+
+                    return roleML;
+
+                }
+                return null;
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEntity : {1}", core, ex));
+            }
+        }
         public int Save(RoleML role, String ConnectionString)
         {
             try

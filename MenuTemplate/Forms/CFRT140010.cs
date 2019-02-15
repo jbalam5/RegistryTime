@@ -57,5 +57,20 @@ namespace RegistryTime.Forms
             MensajeLabel.Text = Message;
         }
         #endregion
+
+        private void CheckInButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(NoControlTextBox.Text))
+                {
+                    SetMessage("Se ha completado su registro");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("CheckInButton_Click: {0}", ex.Message), "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

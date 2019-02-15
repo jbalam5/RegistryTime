@@ -164,7 +164,7 @@ namespace RegistryTime.Forms
                 {
                     UserName = textBoxUsuario.Text,
                     Password = textBoxPassword.Text,
-                    Rol = comboBoxRol.SelectedValue.ToString()
+                    Rol = int.Parse(comboBoxRol.SelectedValue.ToString())
                 };
 
                 if(IdUser > 0)

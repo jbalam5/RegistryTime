@@ -8,6 +8,20 @@ namespace ModelLayer
 {
     public class RoleML
     {
+        public class DataBase
+        {
+            public const string name = "name";
+            public const string description = "description";
+            public const string _registry = "_registry";
+            public const string idUserInsert = "idUserInsert";
+            public const string dateInsert = "dateInsert";
+            public const string idUserUpdate = "idUserUpdate";
+            public const string dateUpdate = "dateUpdate";
+            public const string idUserDelete = "idUserDelete";
+            public const string dateDelete = "dateDelete";
+
+        }
+
         public int Id { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }

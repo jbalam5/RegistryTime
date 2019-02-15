@@ -28,7 +28,7 @@ namespace ModelLayer
         public int Id { get; set; }
         public String UserName { get; set; }
         public String Password { get; set; }
-        public String Rol { get; set; }
+        public int Rol { get; set; }
         public String Image { get; set; }
         public int _regitry { get; set; }
         public int IdUserInsert { get; set; }

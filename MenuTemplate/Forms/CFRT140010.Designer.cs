@@ -57,6 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.RegistroTimer = new System.Windows.Forms.Timer(this.components);
+            this.CheckInButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -264,6 +265,7 @@
             // groupBox1
             // 
             this.groupBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.groupBox1.Controls.Add(this.CheckInButton);
             this.groupBox1.Controls.Add(this.PerfilPictureBox);
             this.groupBox1.Controls.Add(this.TipoEmpleadoTextBox);
             this.groupBox1.Controls.Add(this.DepartamentosTextBox);
@@ -359,12 +361,11 @@
             // NoControlTextBox
             // 
             this.NoControlTextBox.BackColor = System.Drawing.Color.White;
-            this.NoControlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.NoControlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NoControlTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NoControlTextBox.Location = new System.Drawing.Point(158, 45);
             this.NoControlTextBox.Name = "NoControlTextBox";
-            this.NoControlTextBox.ReadOnly = true;
-            this.NoControlTextBox.Size = new System.Drawing.Size(134, 22);
+            this.NoControlTextBox.Size = new System.Drawing.Size(134, 29);
             this.NoControlTextBox.TabIndex = 6;
             // 
             // label3
@@ -396,6 +397,21 @@
             this.label5.Size = new System.Drawing.Size(128, 24);
             this.label5.TabIndex = 4;
             this.label5.Text = "Departamento";
+            // 
+            // CheckInButton
+            // 
+            this.CheckInButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.CheckInButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CheckInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CheckInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckInButton.ForeColor = System.Drawing.Color.White;
+            this.CheckInButton.Location = new System.Drawing.Point(311, 45);
+            this.CheckInButton.Name = "CheckInButton";
+            this.CheckInButton.Size = new System.Drawing.Size(193, 29);
+            this.CheckInButton.TabIndex = 15;
+            this.CheckInButton.Text = "Guardar";
+            this.CheckInButton.UseVisualStyleBackColor = false;
+            this.CheckInButton.Click += new System.EventHandler(this.CheckInButton_Click);
             // 
             // CFRT140010
             // 
@@ -454,5 +470,6 @@
         private System.Windows.Forms.Button Minimizebutton;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button CheckInButton;
     }
 }
