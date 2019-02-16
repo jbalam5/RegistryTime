@@ -45,6 +45,7 @@
             this.MensajePanel = new System.Windows.Forms.Panel();
             this.MensajeLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.CheckInButton = new System.Windows.Forms.Button();
             this.PerfilPictureBox = new System.Windows.Forms.PictureBox();
             this.TipoEmpleadoTextBox = new System.Windows.Forms.TextBox();
             this.DepartamentosTextBox = new System.Windows.Forms.TextBox();
@@ -57,7 +58,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.RegistroTimer = new System.Windows.Forms.Timer(this.components);
-            this.CheckInButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.TopPanel.SuspendLayout();
@@ -244,17 +244,19 @@
             // MensajePanel
             // 
             this.MensajePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MensajePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.MensajePanel.BackColor = System.Drawing.Color.Salmon;
             this.MensajePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.MensajePanel.Controls.Add(this.MensajeLabel);
             this.MensajePanel.Location = new System.Drawing.Point(159, 207);
             this.MensajePanel.Name = "MensajePanel";
             this.MensajePanel.Size = new System.Drawing.Size(509, 58);
             this.MensajePanel.TabIndex = 10;
+            this.MensajePanel.Visible = false;
             // 
             // MensajeLabel
             // 
             this.MensajeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MensajeLabel.ForeColor = System.Drawing.Color.White;
             this.MensajeLabel.Location = new System.Drawing.Point(3, 19);
             this.MensajeLabel.Name = "MensajeLabel";
             this.MensajeLabel.Size = new System.Drawing.Size(506, 22);
@@ -283,6 +285,21 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Empleado";
+            // 
+            // CheckInButton
+            // 
+            this.CheckInButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.CheckInButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.CheckInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CheckInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CheckInButton.ForeColor = System.Drawing.Color.White;
+            this.CheckInButton.Location = new System.Drawing.Point(311, 45);
+            this.CheckInButton.Name = "CheckInButton";
+            this.CheckInButton.Size = new System.Drawing.Size(193, 29);
+            this.CheckInButton.TabIndex = 15;
+            this.CheckInButton.Text = "Guardar";
+            this.CheckInButton.UseVisualStyleBackColor = false;
+            this.CheckInButton.Click += new System.EventHandler(this.CheckInButton_Click);
             // 
             // PerfilPictureBox
             // 
@@ -397,21 +414,6 @@
             this.label5.Size = new System.Drawing.Size(128, 24);
             this.label5.TabIndex = 4;
             this.label5.Text = "Departamento";
-            // 
-            // CheckInButton
-            // 
-            this.CheckInButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
-            this.CheckInButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
-            this.CheckInButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CheckInButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckInButton.ForeColor = System.Drawing.Color.White;
-            this.CheckInButton.Location = new System.Drawing.Point(311, 45);
-            this.CheckInButton.Name = "CheckInButton";
-            this.CheckInButton.Size = new System.Drawing.Size(193, 29);
-            this.CheckInButton.TabIndex = 15;
-            this.CheckInButton.Text = "Guardar";
-            this.CheckInButton.UseVisualStyleBackColor = false;
-            this.CheckInButton.Click += new System.EventHandler(this.CheckInButton_Click);
             // 
             // CFRT140010
             // 

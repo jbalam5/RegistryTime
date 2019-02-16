@@ -69,7 +69,7 @@ namespace DataLayer
         {
             try
             {
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND idUser={1}", TableName, id);
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND controlNumber={1}", TableName, id);
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
@@ -83,6 +83,34 @@ namespace DataLayer
                 if (dtEmployee != null && dtEmployee.Rows.Count > 0)
                 {
                     return GetEntity(dtEmployee.Rows[0]);
+
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEmploymentByIdUser : {1}", core, ex));
+            }
+        }
+
+        public EmployeeML GetEntityByNoControl(int NoControl, string ConnectionString)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND idUser={1}", TableName, NoControl);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtEmplotment = new DataTable();
+                cmd.Fill(dtEmplotment);
+                Conexion.Close();
+
+                if (dtEmplotment != null && dtEmplotment.Rows.Count > 0)
+                {
+                    return GetEntity(dtEmplotment.Rows[0]);
                 }
                 return null;
             }

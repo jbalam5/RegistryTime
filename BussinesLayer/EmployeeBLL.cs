@@ -61,6 +61,19 @@ namespace BussinesLayer
             }
         }
 
+        public EmployeeML GetEntityByNoControl(int NoControl)
+        {
+            try
+            {
+
+                return EmployeeDAL.GetEntityByNoControl(NoControl, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEntityByNoControl: {1}", core, ex));
+            }
+        }
+
         public int Save(EmployeeML employee)
         {
             try
