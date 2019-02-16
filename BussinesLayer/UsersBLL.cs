@@ -34,22 +34,29 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public UsersML GetEntityById(int Id)
         {
             try
             {
-                DataTable Users = new DataTable();
-                if (usersDAL.GetIdEntity(Id, ConnectionStrings).Rows.Count > 0)
-                {
-                    DataRow UserRow = usersDAL.GetIdEntity(Id, ConnectionStrings).Rows[0];
-                    UserRow["password"] = conexion.DesEncriptar(UserRow["password"].ToString());
-                    Users = UserRow.Table;
-                }               
-               return Users;
+                UsersML UsersML = usersDAL.GetEntityById(Id, ConnectionStrings);
+                UsersML.Password = conexion.DesEncriptar(UsersML.Password);
+                return UsersML;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+            }
+        }
+
+        public int UserExist(string UserName, int id)
+        {
+            try
+            {
+                return usersDAL.UserExist(UserName, id, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.UserExist: {1}", core, ex));
             }
         }
 

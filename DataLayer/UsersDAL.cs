@@ -35,7 +35,36 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public int UserExist(string UserName, int id, string ConnectionString)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND userName='{1}' AND id != {2}", TableName, UserName, id);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+
+                if (dtDepartamentos != null)
+                {
+                    return dtDepartamentos.Rows.Count;
+                }
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.All : {1}", core, ex));
+            }
+        }
+
+        public UsersML GetEntityById(int id, string ConnectionString)
         {
             try
             {
@@ -48,18 +77,25 @@ namespace DataLayer
 
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtUsers = new DataTable();
+                cmd.Fill(dtUsers);
                 Conexion.Close();
-                return dtDepartamentos;
+
+                if (dtUsers != null && dtUsers.Rows.Count > 0)
+                {
+                    return getEntity(dtUsers.Rows[0]);
+                }
+
+                return null;
+
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex));
+                throw new Exception(String.Format("{0}.GetEntityById : {1}", core, ex));
             }
         }
 
-
+        
         public int Save(UsersML User, String ConnectionString)
         {
             try
@@ -263,7 +299,8 @@ namespace DataLayer
                     {
                         Id = (row[UsersML.DataBase.Id] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Id].ToString()) : 0,
                         UserName = (row[UsersML.DataBase.UserName] != DBNull.Value) ? row[UsersML.DataBase.UserName].ToString() : string.Empty,
-                        Rol = (row[UsersML.DataBase.Rol] != DBNull.Value) ? row[UsersML.DataBase.Rol].ToString() : string.Empty,
+                        Password = (row[UsersML.DataBase.Password] != DBNull.Value) ? row[UsersML.DataBase.Password].ToString() : string.Empty,
+                        Rol = (row[UsersML.DataBase.Rol] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Rol].ToString()) : 0,
                         Image = (row[UsersML.DataBase.Image] != DBNull.Value) ? row[UsersML.DataBase.Image].ToString() : string.Empty,
                     };
 
@@ -277,3 +314,4 @@ namespace DataLayer
         }
     }
 }
+

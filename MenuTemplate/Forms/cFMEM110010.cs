@@ -41,45 +41,55 @@ namespace RegistryTime.Forms
             {
 
                 EmployeeML EmployeeML = new EmployeeML();
-                DataRow EmployeeRow;
-                DataRow UserRow;
+                EmployeeML EmployeeEntiy;
+                UsersML UserEntity;
                 
-                if(EmployeeBLL.GetIdEntity(id).Rows.Count > 0)
+                if(EmployeeBLL.GetIdEntity(id).Id > 0)
                 {
-                    EmployeeRow = EmployeeBLL.GetIdEntity(id).Rows[0];
-                    textBoxRfc.Text = EmployeeRow[EmployeeML.DataBase.Rfc].ToString();
-                    textBoxCurp.Text = EmployeeRow[EmployeeML.DataBase.Curp].ToString();
-                    textBoxNombre.Text = EmployeeRow[EmployeeML.DataBase.Name].ToString();
-                    textBoxApellidos.Text = EmployeeRow[EmployeeML.DataBase.Lastname].ToString();
-                    dateTimeFechaNacimiento.Text = Convert.ToDateTime(EmployeeRow[EmployeeML.DataBase.Birthdate]).ToString();
-                    textBoxNacionalidad.Text = EmployeeRow[EmployeeML.DataBase.Nationality].ToString();
-                    textBoxCalle.Text = EmployeeRow[EmployeeML.DataBase.Address].ToString();
-                    textBoxPais.Text = EmployeeRow[EmployeeML.DataBase.Country].ToString();
-                    textBoxMunicipio.Text = EmployeeRow[EmployeeML.DataBase.Municipality].ToString();
-                    textBoxEmail.Text = EmployeeRow[EmployeeML.DataBase.Email].ToString();
-                    textBoxColonia.Text = EmployeeRow[EmployeeML.DataBase.Colony].ToString();
-                    textBoxTelefono.Text = EmployeeRow[EmployeeML.DataBase.Telephone].ToString();
-                    textBoxCodigoPostal.Text = EmployeeRow[EmployeeML.DataBase.PostalCode].ToString();
-                    textBoxEstado.Text = EmployeeRow[EmployeeML.DataBase.StateCountry].ToString();
-                    textBoxNumControl.Text = EmployeeRow[EmployeeML.DataBase.ControlNumber].ToString();
-                    textBoxNumSeguro.Text = EmployeeRow[EmployeeML.DataBase.NumberSure].ToString();
-                    textBoxSueldo.Text = EmployeeRow[EmployeeML.DataBase.Salary].ToString();
-                    comboBoxDepartamento.SelectedValue = EmployeeRow[EmployeeML.DataBase.IdDepartament].ToString();
-                    comboBoxEscolaridad.SelectedValue = EmployeeRow[EmployeeML.DataBase.Scholarship].ToString();
-                    comboBoxPuesto.SelectedValue = EmployeeRow[EmployeeML.DataBase.IdJob].ToString(); 
-                    comboBoxEstadoCivil.SelectedValue = EmployeeRow[EmployeeML.DataBase.CivilStatus].ToString();
-                }
-                if ( UsersBLL.GetIdEntity(id).Rows.Count > 0){
-                    UserRow = UsersBLL.GetIdEntity(id).Rows[0];
-                    
-                    textBoxUsuario.Text = UserRow[UsersML.DataBase.UserName].ToString();
-                    textBoxPassword.Text =  UserRow[UsersML.DataBase.Password].ToString();
-                    comboBoxRol.SelectedValue = UserRow[UsersML.DataBase.Rol].ToString();
-                    PathFileNameTextBox.Text = UserRow[UsersML.DataBase.Image].ToString();
-                    IdUser = Convert.ToInt32( UserRow[UsersML.DataBase.Id].ToString());
-                    if (!string.IsNullOrEmpty(UserRow[UsersML.DataBase.Image].ToString()))
+                    EmployeeEntiy = EmployeeBLL.GetIdEntity(id);
+                    if(radioButtonHombre.Text == EmployeeEntiy.Gender.ToString())
                     {
-                        String FilePath = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), UserRow[UsersML.DataBase.Image].ToString());
+                        radioButtonHombre.Checked = true;
+                    }
+                    else
+                    {
+                        radioButtonMujer.Checked = true;
+                    }
+
+                    textBoxRfc.Text = EmployeeEntiy.RFC.ToString();
+                    textBoxCurp.Text = EmployeeEntiy.Curp.ToString();
+                    textBoxNombre.Text = EmployeeEntiy.Name.ToString();
+                    textBoxApellidos.Text = EmployeeEntiy.LastName.ToString();
+                    dateTimeFechaNacimiento.Text = Convert.ToDateTime(EmployeeEntiy.Birthdate).ToString();
+                    textBoxNacionalidad.Text = EmployeeEntiy.Nationality.ToString();
+                    textBoxCalle.Text = EmployeeEntiy.Address.ToString();
+                    textBoxPais.Text = EmployeeEntiy.Country.ToString();
+                    textBoxMunicipio.Text = EmployeeEntiy.Municipality.ToString();
+                    textBoxEmail.Text = EmployeeEntiy.Email.ToString();
+                    textBoxColonia.Text = EmployeeEntiy.Colony.ToString();
+                    textBoxTelefono.Text = EmployeeEntiy.Telephone.ToString();
+                    textBoxCodigoPostal.Text = EmployeeEntiy.PostalCode.ToString();
+                    textBoxEstado.Text = EmployeeEntiy.StateCountry.ToString();
+                    textBoxNumControl.Text = EmployeeEntiy.ControlNumber.ToString();
+                    textBoxNumSeguro.Text = EmployeeEntiy.NumberSure.ToString();
+                    textBoxSueldo.Text = EmployeeEntiy.Salary.ToString();
+                    comboBoxTipoSeguro.SelectedValue = EmployeeEntiy.SureType.ToString();
+                    comboBoxDepartamento.SelectedValue = EmployeeEntiy.IdDepartament.ToString();
+                    comboBoxEscolaridad.SelectedValue = EmployeeEntiy.Scholarship.ToString();
+                    comboBoxPuesto.SelectedValue = EmployeeEntiy.IdJob.ToString(); 
+                    comboBoxEstadoCivil.SelectedValue = EmployeeEntiy.CivilStatus.ToString();
+                }
+                if ( !String.IsNullOrEmpty(UsersBLL.GetEntityById(id).UserName)){
+                    UserEntity = UsersBLL.GetEntityById(id);
+                    
+                    textBoxUsuario.Text = UserEntity.UserName.ToString();
+                    textBoxPassword.Text = UserEntity.Password.ToString();
+                    comboBoxRol.SelectedValue = UserEntity.Rol.ToString();
+                    PathFileNameTextBox.Text = UserEntity.Image.ToString();
+                    IdUser = Convert.ToInt32( UserEntity.Id.ToString());
+                    if (!string.IsNullOrEmpty(UserEntity.Image.ToString()))
+                    {
+                        String FilePath = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), UserEntity.Image.ToString());
                         PathFileImageOld = FilePath;
                         if (System.IO.File.Exists(FilePath))
                             pictureBoxImage.BackgroundImage = new Bitmap(FilePath);
@@ -159,6 +169,7 @@ namespace RegistryTime.Forms
             textBoxPassword.Text = String.Empty;
             comboBoxEstadoCivil.SelectedIndex = 0;
             comboBoxEscolaridad.SelectedIndex = 0;
+            comboBoxTipoSeguro.SelectedIndex = 0;
             textBoxSueldo.Text = String.Empty;
             PathFileNameTextBox.Text = String.Empty;
         }
@@ -218,7 +229,7 @@ namespace RegistryTime.Forms
                     Valid = false;
                     throw new Exception("Debe ingresar rol");
                 }
-                else if (UsersBLL.UserExists(textBoxUsuario.Text))
+                else if (UsersBLL.UserExists(textBoxUsuario.Text) && IdUser == 0)
                 {
                     Valid = false;
                     throw new Exception("El usuario ya existe");
@@ -248,14 +259,15 @@ namespace RegistryTime.Forms
                 {
                     UserName = textBoxUsuario.Text,
                     Password = textBoxPassword.Text,
-                    Rol = comboBoxRol.SelectedValue.ToString(),
-                    Image = System.IO.Path.GetFileName(PathFileNameTextBox.Text)
+                    Image = System.IO.Path.GetFileName(PathFileNameTextBox.Text),
+                    Rol = int.Parse(comboBoxRol.SelectedValue.ToString())
+
                 };
 
                 if(IdUser > 0)
                 {
                     User.Id = IdUser;
-                    User.IdUserUpdate = 1;
+                    User.IdUserUpdate = GlobalBLL.userML.Id;
                 }
                 
                 UsersBLL UsersBALL = new UsersBLL();
@@ -266,7 +278,7 @@ namespace RegistryTime.Forms
                     Name = textBoxNombre.Text,
                     LastName = textBoxApellidos.Text,
                     Scholarship = comboBoxEscolaridad.SelectedValue.ToString(),
-                    Birthdate = dateTimeFechaNacimiento.Value.Date.ToShortDateString(),
+                    Birthdate = dateTimeFechaNacimiento.Value,
                     Nationality = textBoxNacionalidad.Text,
                     Address = textBoxCalle.Text,
                     Municipality = textBoxMunicipio.Text,
@@ -281,10 +293,10 @@ namespace RegistryTime.Forms
                     AdmissionDate = dateTimeFechaIngreso.Value,
                     IdDepartament = Int32.Parse(comboBoxDepartamento.SelectedValue.ToString()),
                     IdJob = Int32.Parse(comboBoxPuesto.SelectedValue.ToString()),
-                    SureType = textBoxNumSeguro.Text,
+                    SureType = comboBoxTipoSeguro.SelectedValue.ToString(),
                     NumberSure = textBoxNumSeguro.Text,
                     Salary= Convert.ToDecimal( textBoxSueldo.Text),
-                    IdUserInsert = 0
+                    IdUserInsert = GlobalBLL.userML.Id
                 };
 
                 if (radioButtonHombre.Checked)
@@ -312,16 +324,16 @@ namespace RegistryTime.Forms
                     {
                         IdDays = Int32.Parse(item.GetType().GetProperty("Value").GetValue(item, null).ToString()),
                         IdEmployee = IdNewEmployee,
-                        IdUserInsert = 1
+                        IdUserInsert = GlobalBLL.userML.Id
                     };
                     DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
                 }
 
-                if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
+                if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !string.IsNullOrEmpty(PathFileImage) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
                 {
                     if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
 
-                    //System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, lastImage));
+                    System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, PathFileNameTextBox.Text));
                     System.IO.File.Copy(PathFileImage, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
                 }
 

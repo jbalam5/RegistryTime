@@ -35,7 +35,7 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public EmployeeML GetIdEntity(int Id)
         {
             try
             {
@@ -45,6 +45,19 @@ namespace BussinesLayer
             catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+            }
+        }
+
+        public EmployeeML GetEmploymentByIdUser(int Id)
+        {
+            try
+            {
+
+                return EmployeeDAL.GetEmploymentByIdUser(Id, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEmploymentByIdUser: {1}", core, ex));
             }
         }
 

@@ -50,7 +50,7 @@ namespace ModelLayer
         public String Name { get; set; }
         public String LastName { get; set; }
         public String Scholarship { get; set; }
-        public String Birthdate { get; set; }
+        public DateTime Birthdate { get; set; }
         public String Gender { get; set; }
         public String Nationality { get; set; }
         public String Address { get; set; }

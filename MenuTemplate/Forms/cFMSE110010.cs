@@ -16,7 +16,9 @@ namespace RegistryTime.Forms
     {
         private String DirectoryFiles = "ImagenTMP";
         private CompanyBLL companyBLL;
+        private EmployeeBLL employeeBLL;
         private CompanyML companyML;
+        private EmployeeML employeeML;
 
         public cFMSE110010()
         {
@@ -40,7 +42,7 @@ namespace RegistryTime.Forms
                     openFileDialog.Title = "Buscar Imagen";
                     openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
                     openFileDialog.FilterIndex = 2;
-                    openFileDialog.RestoreDirectory = true;
+                    //openFileDialog.RestoreDirectory = true;
 
                     if (openFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -71,7 +73,7 @@ namespace RegistryTime.Forms
         {
             try
             {
-                if (FormValidate())
+                if (FormValidateEnterprise())
                 {
 
                     string lastImage = companyML.Image;
@@ -101,7 +103,6 @@ namespace RegistryTime.Forms
 
                         Alerts.cFAT100010 alr = new Alerts.cFAT100010("Información", "Guardado correctamente", MessageBoxIcon.Information);
                         alr.ShowDialog();
-                        clearFields();
                     }
                     else
                     {
@@ -117,7 +118,7 @@ namespace RegistryTime.Forms
             }
         } 
 
-        public bool FormValidate()
+        public bool FormValidateEnterprise()
         {
             try
             {
@@ -163,11 +164,48 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                Alerts.cFAT100010 alr = new Alerts.cFAT100010("EROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
                 alr.ShowDialog();
                 return false;
             }
 
+        }
+
+        public bool FormValidateUser()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(NameTextBox.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el RFC");
+                }
+                else if (string.IsNullOrEmpty(LastNameTextBox.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingresar la razón social");
+                }
+                else if (string.IsNullOrEmpty(UserNameTextBox.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar la calle");
+                }
+                else if (string.IsNullOrEmpty(PasswordTextBox.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingesar el Municipio");
+                }
+
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
         }
 
         public void clearFields()
@@ -187,9 +225,43 @@ namespace RegistryTime.Forms
                 LogoPictureBox.BackgroundImage = null;
                 LogoPictureBox.Update();
             }
-            catch
-            {
+            catch {}
+        }
 
+        public void LoadUser()
+        {
+            try
+            {
+                employeeBLL = new EmployeeBLL();
+                employeeML = employeeBLL.GetEmploymentByIdUser(BussinesLayer.GlobalBLL.userML.Id);
+
+                if (employeeML != null)
+                {
+                    UserNameTextBox.Text = GlobalBLL.userML.UserName;
+                    PasswordTextBox.Text = GlobalBLL.userML.Password;
+                    KeyTextBox.Text = employeeML.ControlNumber;
+                    NameTextBox.Text = employeeML.Name;
+                    LastNameTextBox.Text = employeeML.LastName;
+
+                    if (!string.IsNullOrEmpty(GlobalBLL.userML.Image))
+                    {
+                        PathFileProfileTextBox.Text = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), GlobalBLL.userML.Image);
+
+                        if (System.IO.File.Exists(PathFileProfileTextBox.Text))
+                            ProfilePictureBox.BackgroundImage = new Bitmap(PathFileProfileTextBox.Text);
+                        else
+                            throw new Exception("No se encontró la imagen");
+                    }
+                }
+                else
+                {
+                    Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", "No se encontró la información del usuarios", MessageBoxIcon.Error);
+                    alr.ShowDialog();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(string.Format("LoadUser: {0}", ex.Message));
             }
         }
 
@@ -199,6 +271,7 @@ namespace RegistryTime.Forms
             {
                 companyBLL = new CompanyBLL();
                 companyML = companyBLL.GetEntity();
+
 
                 if(companyML != null)
                 {
@@ -228,12 +301,104 @@ namespace RegistryTime.Forms
                     companyML = new CompanyML();
                 }
 
+                LoadUser();
+
+
                 if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
             }
             catch(Exception ex)
             {
                 Alerts.cFAT100010 alr = new Alerts.cFAT100010("EROR", string.Format("cFMSE110010_Load: {0}", ex.Message), MessageBoxIcon.Error);
                 alr.ShowDialog();
+            }
+        }
+
+        private void SaveUserButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (FormValidateUser())
+                {
+                    BussinesLayer.UsersBLL usersBLL = new UsersBLL();
+
+                    if (usersBLL.UserExist(UserNameTextBox.Text, GlobalBLL.userML.Id) <= 0)
+                    {
+                        if (!string.IsNullOrEmpty(PathFileProfileTextBox.Text) && !System.IO.File.Exists(PathFileProfileTextBox.Text))
+                            throw new Exception("La imagen seleccionada no existe");
+
+                        employeeML.ControlNumber = KeyTextBox.Text;
+                        employeeML.Name = NameTextBox.Text;
+                        employeeML.LastName = LastNameTextBox.Text;
+                        employeeBLL.Save(employeeML);
+
+                        GlobalBLL.userML.UserName = PasswordTextBox.Text;
+                        GlobalBLL.userML.Password = PasswordTextBox.Text;
+                        GlobalBLL.userML.Password = System.IO.Path.GetFileName(PathFileProfileTextBox.Text);
+                        if (usersBLL.Save(GlobalBLL.userML) > 0)
+                        {
+
+                            if (!string.IsNullOrEmpty(PathFileNameTextBox.Text))
+                            {
+                                if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
+
+                                System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, GlobalBLL.userML.Image));
+                                System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                            }
+
+                            Alerts.cFAT100010 alr = new Alerts.cFAT100010("Información", "Guardado correctamente", MessageBoxIcon.Information);
+                            alr.ShowDialog();
+                        }
+                    }
+                    else
+                    {
+                        Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", "El nombre de usuario se encuentra en uso.", MessageBoxIcon.Error);
+                        alr.ShowDialog();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("cFMSE110010_Load: {0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+            }
+        }
+
+        private void ClearUserButton_Click(object sender, EventArgs e)
+        {
+            LoadUser();
+        }
+
+        private void SearchProfileButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                String filePath = string.Empty;
+
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = "c:\\";
+                    openFileDialog.Title = "Buscar Imagen";
+                    openFileDialog.Filter = "Image Files (*.bmp;*.jpg;*.jpeg,*.png)|*.BMP;*.JPG;*.JPEG;*.PNG";
+                    openFileDialog.FilterIndex = 2;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        if (ProfilePictureBox.BackgroundImage != null)
+                            ProfilePictureBox.BackgroundImage.Dispose();
+                        //LogoPictureBox.BackgroundImage = null;
+                        //LogoPictureBox.Update();
+
+                        ProfilePictureBox.BackgroundImage = new Bitmap(openFileDialog.FileName);
+                        PathFileProfileTextBox.Text = openFileDialog.FileName;
+                        //openFileDialog.SafeFileName
+                        //System.IO.Path.GetFileName(openFileDialog.FileName)
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(string.Format("SearchButton_Click: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
