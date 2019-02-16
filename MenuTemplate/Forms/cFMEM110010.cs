@@ -16,6 +16,7 @@ namespace RegistryTime.Forms
 {
     public partial class cFMEM110010 : Form
     {
+        
         public int IdEmployee = 0;
         private String DirectoryFiles = "ImagenTMP/Employee";
         private String PathFileImage = String.Empty;
@@ -24,6 +25,7 @@ namespace RegistryTime.Forms
         public int DaysWorks = 0;
 
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        RegularExpressionBLL RegularExpressionBLL = new RegularExpressionBLL();
         UsersBLL UsersBLL = new UsersBLL();
         DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
         EmployeeBLL EmployeeBLL = new EmployeeBLL();
@@ -120,7 +122,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -195,6 +197,12 @@ namespace RegistryTime.Forms
                     Valid = false;
                     throw new Exception("Debe ingresar el Apellidos");
                 }
+                else if (comboBoxEscolaridad.SelectedValue.ToString() == "")
+                {
+                    Valid = false;
+                    throw new Exception("Seleccione una escolaridad");
+                }
+                
                 else if (String.IsNullOrEmpty(textBoxCalle.Text)){
                     Valid = false;
                     throw new Exception("Debe ingresar el Calle");
@@ -204,15 +212,25 @@ namespace RegistryTime.Forms
                     Valid = false;
                     throw new Exception("Debe ingesar el Telefono");
                 }
-                else if (String.IsNullOrEmpty(comboBoxDepartamento.Text))
+                else if (comboBoxEstadoCivil.SelectedValue.ToString() == "")
+                {
+                    Valid = false;
+                    throw new Exception("Seleccione estado civil");
+                }
+                else if (int.Parse(comboBoxDepartamento.SelectedValue.ToString()) == 0)
                 {
                     Valid = false;
                     throw new Exception("Debe ingresar Departamento");
                 }
-                else if (String.IsNullOrEmpty(comboBoxPuesto.Text))
+                else if (int.Parse(comboBoxPuesto.SelectedValue.ToString()) == 0)
                 {
                     Valid = false;
-                    throw new Exception("Debe ingresar Puesto");
+                    throw new Exception("Seleccione un puesto");
+                }
+                else if (comboBoxTipoSeguro.SelectedValue.ToString() == "")
+                {
+                    Valid = false;
+                    throw new Exception("Seleccione tipo de seguro");
                 }
                 else if (String.IsNullOrEmpty(textBoxUsuario.Text))
                 {
@@ -224,7 +242,7 @@ namespace RegistryTime.Forms
                     throw new Exception("Debe ingresar un Password");
                 }
                 
-                else if (String.IsNullOrEmpty(comboBoxRol.Text))
+                else if (String.IsNullOrEmpty(comboBoxRol.SelectedValue.ToString()))
                 {
                     Valid = false;
                     throw new Exception("Debe ingresar rol");
@@ -234,12 +252,27 @@ namespace RegistryTime.Forms
                     Valid = false;
                     throw new Exception("El usuario ya existe");
                 }
+                else if (!RegularExpressionBLL.SingleNumber(textBoxCodigoPostal.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese Codigo Postal Valido");
+                }
+                else if (!RegularExpressionBLL.ValidEmal(textBoxEmail.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese Correo electronico Valido");
+                }
+                else if (!RegularExpressionBLL.ValidDecimal(textBoxSueldo.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese sueldo valido");
+                }
                 
                 return Valid;
             }
             catch (Exception ex)
             {
-                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex), MessageBoxIcon.Error);
                 alr.ShowDialog();
                 return false;
             }
@@ -283,10 +316,10 @@ namespace RegistryTime.Forms
                     Address = textBoxCalle.Text,
                     Municipality = textBoxMunicipio.Text,
                     Country = textBoxPais.Text,
-                    Email = textBoxCalle.Text,
+                    Email = textBoxEmail.Text,
                     Telephone = textBoxTelefono.Text,
                     CivilStatus = comboBoxEstadoCivil.SelectedValue.ToString(),
-                    PostalCode = Int32.Parse(textBoxCodigoPostal.Text),
+                    PostalCode = (String.IsNullOrEmpty(textBoxCodigoPostal.Text))?0: int.Parse(textBoxCodigoPostal.Text),
                     Colony = textBoxColonia.Text,
                     StateCountry = textBoxEstado.Text,
                     ControlNumber = textBoxNumControl.Text,
@@ -347,7 +380,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -368,25 +401,11 @@ namespace RegistryTime.Forms
 
         }
 
-        private void materialLabel5_Click(object sender, EventArgs e)
-        {
+        
+     
+       
 
-        }
-
-        private void textBox13_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox12_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void materialLabel6_Click(object sender, EventArgs e)
         {
@@ -432,7 +451,7 @@ namespace RegistryTime.Forms
                 comboBoxEscolaridad.ValueMember = "Value";
 
                 var items = new[] {
-                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "Seleccione un opción", Value = "" },
                     new { Text = "Primaria", Value = "primaria" },
                     new { Text = "Secundaria", Value = "secundaria" },
                     new { Text = "Preparatoria", Value = "preparatoria" },
@@ -444,7 +463,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadEscolaridad: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadEscolaridad: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -456,7 +475,7 @@ namespace RegistryTime.Forms
                 comboBoxTipoSeguro.ValueMember = "Value";
 
                 var items = new[] {
-                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "Seleccione un opción", Value = "" },
                     new { Text = "IMSS", Value = "IMSS" },
                     new { Text = "IMSTE", Value = "IMSTE" }
                 };
@@ -466,7 +485,7 @@ namespace RegistryTime.Forms
             }
             catch(Exception ex)
             {
-                MessageBox.Show(String.Format("LoadTypeSure: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadTypeSure: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
             
@@ -481,7 +500,7 @@ namespace RegistryTime.Forms
                 comboBoxEstadoCivil.ValueMember = "Value";
                 
                 var items = new[] {
-                    new { Text = "Seleccione un opción", Value = "0" },
+                    new { Text = "Seleccione un opción", Value = "" },
                     new { Text = "Soltero/a", Value = "Soltero" },
                     new { Text = "Casado/a", Value = "Casado" },
                     new { Text = "Divorciado/a", Value = "Divorciado" }
@@ -492,7 +511,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadEstadoCivil: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadEstadoCivil: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public void LoadDepartaments()
@@ -519,7 +538,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadDepartaments: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadDepartaments: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -545,7 +564,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -569,7 +588,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -590,7 +609,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("LoadJobs: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("LoadJobs: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

@@ -29,13 +29,13 @@ dateDelete datetime
 
 
 
-INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Activo','Dato')
-INSERT INTO [dbo].[statusBook]([name],[type]) VALUES('Inactivo','Dato')
+INSERT INTO [dbo].[statusBook]([name],[type][_registry],[dateInsert]) VALUES('Activo','Dato',1,getDate())
+INSERT INTO [dbo].[statusBook]([name],[type],[_registry],[dateInsert]) VALUES('Inactivo','Dato',1,getDate())
            
 
 
-insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('ADMIN','ADMIN',1,1,getDate())
-insert into [registryTime].[dbo].[users](userName, password, rol,_registry,dateInsert) values('INVITADO','INVITADO',2,1,getDate())
+insert into [dbo].[users](userName, password, rol,_registry,dateInsert) values('ADMIN','ADMIN',1,1,getDate())
+insert into [dbo].[users](userName, password, rol,_registry,dateInsert) values('INVITADO','INVITADO',2,1,getDate())
 
 create table role(
 id int primary key identity(1,1) not null,

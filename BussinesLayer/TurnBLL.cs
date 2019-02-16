@@ -15,7 +15,7 @@ namespace BussinesLayer
         public TurnDAL TurnDAL = new TurnDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
         public String ConnectionStrings;
-        public String core = "BussinesLayer.AbsenteeismBLL";
+        public String core = "BussinesLayer.TurnBLL";
 
         public TurnBLL()
         {

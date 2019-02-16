@@ -633,6 +633,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(775, 348);
             this.panel5.TabIndex = 14;
+            this.panel5.TabStop = true;
             // 
             // checkedListBox1
             // 
@@ -676,10 +677,12 @@
             // 
             // textBoxSueldo
             // 
-            this.textBoxSueldo.Location = new System.Drawing.Point(371, 122);
+            this.textBoxSueldo.Location = new System.Drawing.Point(371, 119);
+            this.textBoxSueldo.Multiline = true;
             this.textBoxSueldo.Name = "textBoxSueldo";
             this.textBoxSueldo.Size = new System.Drawing.Size(335, 24);
             this.textBoxSueldo.TabIndex = 35;
+            this.textBoxSueldo.Text = "0.00";
             // 
             // dateTimeFechaIngreso
             // 

@@ -263,6 +263,7 @@ namespace DataLayer
                 {
                     if (!string.IsNullOrEmpty(user.UserName) && !string.IsNullOrEmpty(user.Password))
                     {
+                        
                         String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND userName='{1}' AND password='{2}'", TableName, user.UserName, user.Password);
                         SqlConnection Conexion = new SqlConnection
                         {
