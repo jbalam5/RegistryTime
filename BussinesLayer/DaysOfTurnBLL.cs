@@ -78,5 +78,10 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
             }
         }
+
+        public void DeleteRegistrys(int idEmployee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

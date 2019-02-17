@@ -179,7 +179,7 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", employee.Name);
                 Query.AppendFormat(" '{0}',", employee.LastName);
                 Query.AppendFormat(" '{0}',", employee.Scholarship);
-                Query.AppendFormat(" '{0}',", employee.Birthdate.ToString("yyyy-mm-dd"));
+                Query.AppendFormat(" '{0}',", employee.Birthdate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" '{0}',", employee.Gender);
                 Query.AppendFormat(" '{0}',", employee.Nationality);
                 Query.AppendFormat(" '{0}',", employee.Address);
@@ -192,7 +192,7 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", employee.Colony);
                 Query.AppendFormat(" '{0}',", employee.StateCountry);
                 Query.AppendFormat(" '{0}',", employee.ControlNumber);
-                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToString("yyyy-mm-dd"));
+                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" '{0}',", employee.SureType);
                 Query.AppendFormat(" '{0}',", employee.NumberSure);
                 Query.AppendFormat(" {0},", employee.Salary);

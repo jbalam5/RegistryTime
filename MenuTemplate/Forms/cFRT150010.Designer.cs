@@ -89,7 +89,7 @@
             this.ExitButton.Location = new System.Drawing.Point(316, 184);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(134, 36);
-            this.ExitButton.TabIndex = 8;
+            this.ExitButton.TabIndex = 4;
             this.ExitButton.Text = "Salir";
             this.ExitButton.UseVisualStyleBackColor = false;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
@@ -103,7 +103,7 @@
             this.OkButton.Location = new System.Drawing.Point(164, 184);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(135, 36);
-            this.OkButton.TabIndex = 7;
+            this.OkButton.TabIndex = 3;
             this.OkButton.Text = "Aceptar";
             this.OkButton.UseVisualStyleBackColor = false;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
@@ -146,16 +146,17 @@
             this.PasswordTextBox.Name = "PasswordTextBox";
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(286, 26);
-            this.PasswordTextBox.TabIndex = 1;
+            this.PasswordTextBox.TabIndex = 2;
             // 
             // UserNameTextBox
             // 
             this.UserNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.UserNameTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.UserNameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserNameTextBox.Location = new System.Drawing.Point(164, 79);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(285, 26);
-            this.UserNameTextBox.TabIndex = 0;
+            this.UserNameTextBox.TabIndex = 1;
             // 
             // statusStrip1
             // 

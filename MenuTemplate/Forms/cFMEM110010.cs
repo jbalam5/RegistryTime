@@ -29,6 +29,7 @@ namespace RegistryTime.Forms
         UsersBLL UsersBLL = new UsersBLL();
         DaysOfWorkEmployeeBLL DaysOfWorkEmployeeBLL = new DaysOfWorkEmployeeBLL();
         EmployeeBLL EmployeeBLL = new EmployeeBLL();
+        TurnsOfEmployeeBLL TurnsOfEmployeeBLL = new TurnsOfEmployeeBLL();
         UsersML UsersML = new UsersML();
         DaysOfWorkEmployeeML DaysOfWorkEmployeeML = new DaysOfWorkEmployeeML();
 
@@ -119,6 +120,28 @@ namespace RegistryTime.Forms
                         }
                     }
                 }
+
+
+                if (TurnsOfEmployeeBLL.GetAllEntitys(id).Rows.Count > 0)
+                {
+                    int loopTurn;
+                    foreach (DataRow TurnsOfEmployees in TurnsOfEmployeeBLL.GetAllEntitys(id).Rows)
+                    {
+                        loopTurn = 0;
+                        foreach (object item in checkedListBoxTurns.Items)
+                        {
+
+                            if (TurnsOfEmployees[TurnsOfEmployeeML.DataBase.IdTurn].ToString() == item.GetType().GetProperty("Value").GetValue(item, null).ToString())
+                            {
+                                checkedListBoxTurns.SetItemChecked(loopTurn, true);
+                                break;
+                            }
+
+                            loopTurn++;
+                        }
+                    }
+                }
+
             }
             catch (Exception ex)
             {
@@ -134,6 +157,7 @@ namespace RegistryTime.Forms
             LoadJobs();
             LoadDays();
             LoadRol();
+            LoadTurn();
             LoadTypeSure();
             if (IdEmployee > 0)
             {
@@ -362,7 +386,20 @@ namespace RegistryTime.Forms
                     DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
                 }
 
-                if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !string.IsNullOrEmpty(PathFileImage) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
+                TurnsOfEmployeeBLL TurnsOfEmployeeBLL = new TurnsOfEmployeeBLL();
+                TurnsOfEmployeeBLL.DeleteRegistrys(IdEmployee);
+                foreach (object item in checkedListBoxTurns.CheckedItems)
+                {
+                    TurnsOfEmployeeML TurnsOfEmployee = new TurnsOfEmployeeML()
+                    {
+                        IdTurn = Int32.Parse(item.GetType().GetProperty("Value").GetValue(item, null).ToString()),
+                        IdEmployee = IdNewEmployee,
+                        IdUserInsert = GlobalBLL.userML.Id
+                    };
+                    TurnsOfEmployeeBLL.Save(TurnsOfEmployee);
+                }
+
+                    if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !string.IsNullOrEmpty(PathFileImage) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
                 {
                     if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
 
@@ -394,52 +431,8 @@ namespace RegistryTime.Forms
         {
             tabControl1.Width = this.Width - 50;
             tabControl1.Height = this.Height - 180;
-        }
-
-        private void materialLabel3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
-     
-       
-
-      
-
-        private void materialLabel6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox15_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox18_TextChanged(object sender, EventArgs e)
-        {
-
+            checkedListBoxDias.Width = this.Width - 25;
+            panel5.Width = this.Width - 50;
         }
 
         public void LoadScholarship()
@@ -530,11 +523,7 @@ namespace RegistryTime.Forms
                 {
                     items.Add(new { Text = Depatamento[1].ToString(), Value = Depatamento[0].ToString() });
                 }
-
-
-
                 comboBoxDepartamento.DataSource = items;
-
             }
             catch (Exception ex)
             {
@@ -610,6 +599,26 @@ namespace RegistryTime.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("LoadJobs: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadTurn()
+        {
+            try
+            {
+                TurnBLL TurnBLL = new TurnBLL();
+                DataTable Turns;
+                Turns = TurnBLL.All();
+                checkedListBoxTurns.DisplayMember = "Text";
+                checkedListBoxTurns.ValueMember = "Value";
+                foreach (DataRow Turn in Turns.Rows)
+                {
+                    checkedListBoxTurns.Items.Add(new { Text = Turn[1].ToString(), Value = Turn[0].ToString() }, false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadTurn: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

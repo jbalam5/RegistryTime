@@ -10,7 +10,7 @@ using Connection_BLL;
 
 namespace BussinesLayer
 {
-    class TurnsOfEmployeeBLL
+    public class TurnsOfEmployeeBLL
     {
         public TurnsOfEmployeeDAL TurnsOfEmployeeDAL = new TurnsOfEmployeeDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
@@ -77,6 +77,16 @@ namespace BussinesLayer
             {
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
             }
+        }
+
+        public void DeleteRegistrys(int idEmployee)
+        {
+            TurnsOfEmployeeDAL.DeleteRegistrys(idEmployee, ConnectionStrings);
+        }
+
+        public DataTable GetAllEntitys(int id)
+        {
+            return TurnsOfEmployeeDAL.GetIdEntitys(id, ConnectionStrings);
         }
     }
 }

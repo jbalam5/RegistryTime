@@ -61,7 +61,7 @@ namespace RegistryTime.Forms
                 if (string.IsNullOrEmpty(textBoxNombre.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar el Nombre");
+                    throw new Exception("Ingrese Nombre");
                 }
                 return Valid;
             }

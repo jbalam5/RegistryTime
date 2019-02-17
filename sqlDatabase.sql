@@ -91,13 +91,17 @@ nationality nvarchar(25) null,
 address nvarchar(100) null,
 municipality nvarchar(100) null,
 country nvarchar(50) null,
+admissionDate date null,
 email nvarchar(50) null,
+telephone nvarchar(25) null,
 civilStatus  nvarchar(20) null,
 colony nvarchar(50) null,
 stateCountry nvarchar(50) null,
 postalCode int null,
 controlNumber nvarchar(max),
-sureType nvarchar(25),
+sureType nvarchar(25) null,
+numberSure nvarchar(25) null,
+salary decimal(10,2) null,
 idJob int not null,
 idDepartament int not null,
 idUser int not null,
@@ -209,6 +213,27 @@ CONSTRAINT FK_daysOfTurn_idTurn FOREIGN KEY (idTurn)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION,
 CONSTRAINT FK_daysOfTurn_idDays FOREIGN KEY (idDays)     
+    REFERENCES days(id)     
+    ON DELETE NO ACTION    
+    ON UPDATE NO ACTION,
+)
+
+create table daysOfWorkEmployee(
+id int primary key identity(1,1) not null,
+idDays int,
+idEmployee int,
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+CONSTRAINT FK_daysOfWorkEmployee_idEmployee FOREIGN KEY (idEmployee)     
+    REFERENCES employee(id)     
+    ON DELETE NO ACTION    
+    ON UPDATE NO ACTION,
+CONSTRAINT FK_daysOfWorkEmployee_idDays FOREIGN KEY (idDays)     
     REFERENCES days(id)     
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION,
