@@ -34,6 +34,8 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.PathFileNameTextBox = new System.Windows.Forms.TextBox();
+            this.buttonBuscar = new System.Windows.Forms.Button();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxApellidos = new System.Windows.Forms.TextBox();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
@@ -43,7 +45,7 @@
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxRfc = new System.Windows.Forms.TextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxImage = new System.Windows.Forms.PictureBox();
             this.comboBoxEscolaridad = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -74,7 +76,7 @@
             this.textBoxNacionalidad = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.checkedListBoxTurns = new System.Windows.Forms.CheckedListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.checkedListBoxDias = new System.Windows.Forms.CheckedListBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -102,12 +104,26 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -174,6 +190,12 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label29);
+            this.panel3.Controls.Add(this.label28);
+            this.panel3.Controls.Add(this.label27);
+            this.panel3.Controls.Add(this.label26);
+            this.panel3.Controls.Add(this.PathFileNameTextBox);
+            this.panel3.Controls.Add(this.buttonBuscar);
             this.panel3.Controls.Add(this.materialLabel6);
             this.panel3.Controls.Add(this.textBoxApellidos);
             this.panel3.Controls.Add(this.materialLabel4);
@@ -183,13 +205,39 @@
             this.panel3.Controls.Add(this.materialLabel2);
             this.panel3.Controls.Add(this.textBoxRfc);
             this.panel3.Controls.Add(this.materialLabel1);
-            this.panel3.Controls.Add(this.pictureBox1);
+            this.panel3.Controls.Add(this.pictureBoxImage);
             this.panel3.Controls.Add(this.comboBoxEscolaridad);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(767, 357);
             this.panel3.TabIndex = 13;
+            // 
+            // PathFileNameTextBox
+            // 
+            this.PathFileNameTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PathFileNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PathFileNameTextBox.Location = new System.Drawing.Point(450, 197);
+            this.PathFileNameTextBox.Multiline = true;
+            this.PathFileNameTextBox.Name = "PathFileNameTextBox";
+            this.PathFileNameTextBox.ReadOnly = true;
+            this.PathFileNameTextBox.Size = new System.Drawing.Size(211, 23);
+            this.PathFileNameTextBox.TabIndex = 54;
+            // 
+            // buttonBuscar
+            // 
+            this.buttonBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonBuscar.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBuscar.ForeColor = System.Drawing.Color.White;
+            this.buttonBuscar.Location = new System.Drawing.Point(368, 180);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(83, 40);
+            this.buttonBuscar.TabIndex = 15;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.UseVisualStyleBackColor = false;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
             // materialLabel6
             // 
@@ -203,7 +251,6 @@
             this.materialLabel6.Size = new System.Drawing.Size(88, 19);
             this.materialLabel6.TabIndex = 53;
             this.materialLabel6.Text = "Escolaridad";
-            this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
             // 
             // textBoxApellidos
             // 
@@ -244,7 +291,6 @@
             this.materialLabel3.Size = new System.Drawing.Size(81, 19);
             this.materialLabel3.TabIndex = 47;
             this.materialLabel3.Text = "Nombre(s)";
-            this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             // 
             // textBoxCurp
             // 
@@ -286,13 +332,15 @@
             this.materialLabel1.TabIndex = 43;
             this.materialLabel1.Text = "Rfc";
             // 
-            // pictureBox1
+            // pictureBoxImage
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(370, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(121, 115);
-            this.pictureBox1.TabIndex = 19;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxImage.BackColor = System.Drawing.Color.DarkGray;
+            this.pictureBoxImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBoxImage.Location = new System.Drawing.Point(370, 3);
+            this.pictureBoxImage.Name = "pictureBoxImage";
+            this.pictureBoxImage.Size = new System.Drawing.Size(185, 171);
+            this.pictureBoxImage.TabIndex = 19;
+            this.pictureBoxImage.TabStop = false;
             // 
             // comboBoxEscolaridad
             // 
@@ -315,6 +363,10 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.label33);
+            this.panel4.Controls.Add(this.label32);
+            this.panel4.Controls.Add(this.label31);
+            this.panel4.Controls.Add(this.label30);
             this.panel4.Controls.Add(this.textBoxTelefono);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.comboBoxEstadoCivil);
@@ -355,7 +407,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(364, 48);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 18);
@@ -471,7 +523,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(364, 0);
+            this.label20.Location = new System.Drawing.Point(364, 1);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(50, 18);
             this.label20.TabIndex = 27;
@@ -508,7 +560,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.Red;
+            this.label10.ForeColor = System.Drawing.Color.Black;
             this.label10.Location = new System.Drawing.Point(0, 142);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(41, 18);
@@ -579,7 +631,10 @@
             // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.checkedListBox1);
+            this.panel5.Controls.Add(this.label36);
+            this.panel5.Controls.Add(this.label35);
+            this.panel5.Controls.Add(this.label34);
+            this.panel5.Controls.Add(this.checkedListBoxTurns);
             this.panel5.Controls.Add(this.label15);
             this.panel5.Controls.Add(this.checkedListBoxDias);
             this.panel5.Controls.Add(this.label4);
@@ -601,35 +656,36 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(775, 348);
             this.panel5.TabIndex = 14;
+            this.panel5.TabStop = true;
             // 
-            // checkedListBox1
+            // checkedListBoxTurns
             // 
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 292);
-            this.checkedListBox1.MultiColumn = true;
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(699, 38);
-            this.checkedListBox1.TabIndex = 45;
+            this.checkedListBoxTurns.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBoxTurns.FormattingEnabled = true;
+            this.checkedListBoxTurns.Location = new System.Drawing.Point(6, 292);
+            this.checkedListBoxTurns.MultiColumn = true;
+            this.checkedListBoxTurns.Name = "checkedListBoxTurns";
+            this.checkedListBoxTurns.Size = new System.Drawing.Size(699, 19);
+            this.checkedListBoxTurns.TabIndex = 45;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(2, 271);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(107, 18);
+            this.label15.Size = new System.Drawing.Size(55, 18);
             this.label15.TabIndex = 44;
-            this.label15.Text = "Dias de trabajo";
+            this.label15.Text = "Turnos";
             this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // checkedListBoxDias
             // 
             this.checkedListBoxDias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxDias.FormattingEnabled = true;
-            this.checkedListBoxDias.Location = new System.Drawing.Point(4, 221);
+            this.checkedListBoxDias.Location = new System.Drawing.Point(6, 221);
             this.checkedListBoxDias.MultiColumn = true;
             this.checkedListBoxDias.Name = "checkedListBoxDias";
-            this.checkedListBoxDias.Size = new System.Drawing.Size(699, 38);
+            this.checkedListBoxDias.Size = new System.Drawing.Size(699, 19);
             this.checkedListBoxDias.TabIndex = 43;
             // 
             // label4
@@ -644,11 +700,12 @@
             // 
             // textBoxSueldo
             // 
-            this.textBoxSueldo.Location = new System.Drawing.Point(371, 122);
+            this.textBoxSueldo.Location = new System.Drawing.Point(371, 119);
+            this.textBoxSueldo.Multiline = true;
             this.textBoxSueldo.Name = "textBoxSueldo";
             this.textBoxSueldo.Size = new System.Drawing.Size(335, 24);
             this.textBoxSueldo.TabIndex = 35;
-            this.textBoxSueldo.Text = "0";
+            this.textBoxSueldo.Text = "0.00";
             // 
             // dateTimeFechaIngreso
             // 
@@ -656,18 +713,16 @@
             this.dateTimeFechaIngreso.Name = "dateTimeFechaIngreso";
             this.dateTimeFechaIngreso.Size = new System.Drawing.Size(335, 24);
             this.dateTimeFechaIngreso.TabIndex = 12;
-            this.dateTimeFechaIngreso.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(365, 0);
+            this.label3.Location = new System.Drawing.Point(365, 1);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(102, 18);
             this.label3.TabIndex = 33;
             this.label3.Text = "Fecha Ingreso";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -725,7 +780,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.Color.Red;
+            this.label17.ForeColor = System.Drawing.Color.Black;
             this.label17.Location = new System.Drawing.Point(365, 48);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(55, 18);
@@ -736,7 +791,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.ForeColor = System.Drawing.Color.Black;
             this.label18.Location = new System.Drawing.Point(0, 48);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(102, 18);
@@ -771,6 +826,9 @@
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.label39);
+            this.tabPage4.Controls.Add(this.label38);
+            this.tabPage4.Controls.Add(this.label37);
             this.tabPage4.Controls.Add(this.comboBoxRol);
             this.tabPage4.Controls.Add(this.label25);
             this.tabPage4.Controls.Add(this.textBoxPassword);
@@ -796,7 +854,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.ForeColor = System.Drawing.Color.Red;
+            this.label25.ForeColor = System.Drawing.Color.Black;
             this.label25.Location = new System.Drawing.Point(26, 119);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(31, 18);
@@ -815,7 +873,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(26, 71);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(75, 18);
@@ -826,7 +884,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.Red;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(26, 23);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(60, 18);
@@ -836,6 +894,7 @@
             // 
             // textBoxUsuario
             // 
+            this.textBoxUsuario.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxUsuario.Location = new System.Drawing.Point(29, 44);
             this.textBoxUsuario.Name = "textBoxUsuario";
             this.textBoxUsuario.Size = new System.Drawing.Size(335, 24);
@@ -886,6 +945,159 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(36, 51);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(14, 18);
+            this.label26.TabIndex = 55;
+            this.label26.Text = "*";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(76, 98);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(14, 18);
+            this.label27.TabIndex = 56;
+            this.label27.Text = "*";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(68, 148);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(14, 18);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "*";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(87, 200);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(14, 18);
+            this.label29.TabIndex = 58;
+            this.label29.Text = "*";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label30.ForeColor = System.Drawing.Color.Red;
+            this.label30.Location = new System.Drawing.Point(41, 142);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(14, 18);
+            this.label30.TabIndex = 59;
+            this.label30.Text = "*";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label31.ForeColor = System.Drawing.Color.Red;
+            this.label31.Location = new System.Drawing.Point(427, 48);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(14, 18);
+            this.label31.TabIndex = 60;
+            this.label31.Text = "*";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label32.ForeColor = System.Drawing.Color.Red;
+            this.label32.Location = new System.Drawing.Point(415, 1);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(14, 18);
+            this.label32.TabIndex = 61;
+            this.label32.Text = "*";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label33.ForeColor = System.Drawing.Color.Red;
+            this.label33.Location = new System.Drawing.Point(451, 94);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(14, 18);
+            this.label33.TabIndex = 62;
+            this.label33.Text = "*";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(101, 48);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(14, 18);
+            this.label34.TabIndex = 61;
+            this.label34.Text = "*";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label35.ForeColor = System.Drawing.Color.Red;
+            this.label35.Location = new System.Drawing.Point(415, 48);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(14, 18);
+            this.label35.TabIndex = 62;
+            this.label35.Text = "*";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label36.ForeColor = System.Drawing.Color.Red;
+            this.label36.Location = new System.Drawing.Point(87, 98);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 18);
+            this.label36.TabIndex = 63;
+            this.label36.Text = "*";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label37.ForeColor = System.Drawing.Color.Red;
+            this.label37.Location = new System.Drawing.Point(82, 24);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(14, 18);
+            this.label37.TabIndex = 61;
+            this.label37.Text = "*";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label38.ForeColor = System.Drawing.Color.Red;
+            this.label38.Location = new System.Drawing.Point(98, 71);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(14, 18);
+            this.label38.TabIndex = 62;
+            this.label38.Text = "*";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label39.ForeColor = System.Drawing.Color.Red;
+            this.label39.Location = new System.Drawing.Point(53, 119);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(14, 18);
+            this.label39.TabIndex = 63;
+            this.label39.Text = "*";
+            // 
             // cFMEM110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -903,7 +1115,7 @@
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxImage)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -938,7 +1150,7 @@
         public System.Windows.Forms.TextBox textBoxApellidos;
         public System.Windows.Forms.CheckedListBox checkedListBoxDias;
         private System.Windows.Forms.TabPage tabPage4;
-        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBoxImage;
         public System.Windows.Forms.ComboBox comboBoxEscolaridad;
         public System.Windows.Forms.ComboBox comboBoxEstadoCivil;
         public System.Windows.Forms.TextBox textBoxCodigoPostal;
@@ -990,7 +1202,23 @@
         public System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label label7;
         public System.Windows.Forms.TextBox textBoxUsuario;
-        public System.Windows.Forms.CheckedListBox checkedListBox1;
+        public System.Windows.Forms.CheckedListBox checkedListBoxTurns;
         public System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.TextBox PathFileNameTextBox;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label37;
     }
 }

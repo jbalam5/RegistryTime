@@ -11,8 +11,8 @@ namespace DataLayer
 {
     public class TurnsOfEmployeeDAL
     {
-        public String core = "DataLayer.TurnDAL";
-        public String TableName = "turnOfOfEmployye";
+        public String core = "DataLayer.TurnsOfEmployeeDAL";
+        public String TableName = "turnsOfEmployee";
 
 
         public DataTable All(String ConnectionString)
@@ -26,14 +26,14 @@ namespace DataLayer
                 Conexion.Open();
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtTurnOfOfEmployye = new DataTable();
+                cmd.Fill(dtTurnOfOfEmployye);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtTurnOfOfEmployye;
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.All : {1}", core, ex));
+                throw new Exception(String.Format("{0}.All : {1}", core, ex.Message));
             }
 
         }
@@ -50,14 +50,14 @@ namespace DataLayer
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtTurnOfOfEmployye = new DataTable();
+                cmd.Fill(dtTurnOfOfEmployye);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtTurnOfOfEmployye;
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex));
+                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex.Message));
             }
         }
 
@@ -68,22 +68,66 @@ namespace DataLayer
                 int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( idTurn,idEmployee,observation,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},'{2}',1,{3},())", turnsOfEmployee.IdTurn, turnsOfEmployee.IdEmployee, turnsOfEmployee.IdUserInsert);
+                Query.AppendLine("( idTurn,idEmployee,_registry,idUserInsert,dateInsert)");
+                Query.AppendFormat(" VALUES({0},{1},1,{2},getdate())", turnsOfEmployee.IdTurn, turnsOfEmployee.IdEmployee, turnsOfEmployee.IdUserInsert);
+                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
+                id = (Int32)cmd2.ExecuteScalar();
                 return id;
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.save : {1}", core, ex));
+                throw new Exception(String.Format("{0}.save : {1}", core, ex.Message));
             }
 
+        }
+
+        public DataTable GetIdEntitys(int id, String ConnectionString)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND idEmployee={1}", TableName, id);
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtTurnOfOfEmployye = new DataTable();
+                cmd.Fill(dtTurnOfOfEmployye);
+                Conexion.Close();
+                return dtTurnOfOfEmployye;
+            }
+            catch(Exception ex){
+                throw new Exception(String.Format("{0}.save : {1}", core, ex.Message));
+            }
+
+        }
+
+        public void DeleteRegistrys(int idEmployee,String ConnectionString)
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("Delete from {0}", TableName);
+                Query.AppendFormat(" WHERE idEmployee={0}", idEmployee);
+
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+            }catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.save : {1}", core, ex.Message));
+            }
         }
 
         public int Update(TurnsOfEmployeeML turnsOfEmployee ,String ConnectionString)
@@ -113,7 +157,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.update: {1}", core, ex));
+                throw new Exception(String.Format("{0}.update: {1}", core, ex.Message));
             }
         }
 
@@ -141,7 +185,7 @@ namespace DataLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.delete: {1}", core, ex));
+                throw new Exception(String.Format("{0}.delete: {1}", core, ex.Message));
             }
         }
 

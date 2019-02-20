@@ -35,7 +35,7 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public EmployeeML GetIdEntity(int Id)
         {
             try
             {

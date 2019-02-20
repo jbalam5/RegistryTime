@@ -23,10 +23,10 @@ namespace DataLayer
                 Conexion.Open();
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1",TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtUsers = new DataTable();
+                cmd.Fill(dtUsers);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtUsers;
             }
             catch (Exception ex)
             {
@@ -77,13 +77,13 @@ namespace DataLayer
 
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtUsers = new DataTable();
+                cmd.Fill(dtUsers);
                 Conexion.Close();
 
-                if (dtDepartamentos != null && dtDepartamentos.Rows.Count > 0)
+                if (dtUsers != null && dtUsers.Rows.Count > 0)
                 {
-                    return getEntity(dtDepartamentos.Rows[0]);
+                    return getEntity(dtUsers.Rows[0]);
                 }
 
                 return null;
@@ -95,32 +95,7 @@ namespace DataLayer
             }
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
-        {
-            try
-            {
-
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
-                SqlConnection Conexion = new SqlConnection()
-                {
-                    ConnectionString = ConnectionString
-                };
-
-                Conexion.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
-                Conexion.Close();
-
-                return dtDepartamentos;
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(String.Format("{0}.GetIdEntity : {1}", core, ex));
-            }
-        }
-
+        
         public int Save(UsersML User, String ConnectionString)
         {
             try
@@ -129,7 +104,6 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
                 Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
-                //Query.AppendFormat(" VALUES('{0}','{1}',{2},'{3}',1,{4},GETDATE())",user.UserName,user.Password,user.Rol,user.Image, user.IdUserInsert);
                 Query.AppendLine(" VALUES( ");
                 Query.AppendFormat(" '{0}', ", User.UserName);
                 Query.AppendFormat(" '{0}', ", User.Password);
@@ -240,6 +214,46 @@ namespace DataLayer
                 throw new Exception(String.Format("{0}.delete: {1}", core, ex));
             }
         }
+
+        public Boolean UserExists(String Username, String ConnectionString)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(Username))
+                {
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendFormat("select * from {0} where userName = upper('{1}')", TableName, Username);
+                    SqlConnection Conexion = new SqlConnection()
+                    {
+                        ConnectionString = ConnectionString
+                    };
+                    Conexion.Open();
+                    SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Conexion);
+                    DataTable dtUsers = new DataTable();
+                    cmd.Fill(dtUsers);
+                    Conexion.Close();
+                    if(dtUsers.Rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+
+                }
+                else
+                {
+                    throw new Exception("Variable Nombre Vacia!");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.UserExists: {1}", core, ex));
+            }
+        }
+
+
         
         public UsersML IsUser(UsersML user, String ConnectionString)
         {
@@ -249,9 +263,12 @@ namespace DataLayer
                 {
                     if (!string.IsNullOrEmpty(user.UserName) && !string.IsNullOrEmpty(user.Password))
                     {
+                        
                         String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND userName='{1}' AND password='{2}'", TableName, user.UserName, user.Password);
-                        SqlConnection Conexion = new SqlConnection();
-                        Conexion.ConnectionString = ConnectionString;
+                        SqlConnection Conexion = new SqlConnection
+                        {
+                            ConnectionString = ConnectionString
+                        };
                         Conexion.Open();
                         SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                         DataTable dtUser = new DataTable();
@@ -283,6 +300,7 @@ namespace DataLayer
                     {
                         Id = (row[UsersML.DataBase.Id] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Id].ToString()) : 0,
                         UserName = (row[UsersML.DataBase.UserName] != DBNull.Value) ? row[UsersML.DataBase.UserName].ToString() : string.Empty,
+                        Password = (row[UsersML.DataBase.Password] != DBNull.Value) ? row[UsersML.DataBase.Password].ToString() : string.Empty,
                         Rol = (row[UsersML.DataBase.Rol] != DBNull.Value) ? int.Parse(row[UsersML.DataBase.Rol].ToString()) : 0,
                         Image = (row[UsersML.DataBase.Image] != DBNull.Value) ? row[UsersML.DataBase.Image].ToString() : string.Empty,
                     };

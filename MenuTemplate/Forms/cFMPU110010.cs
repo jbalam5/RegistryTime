@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 namespace RegistryTime.Forms
 {
@@ -27,6 +28,29 @@ namespace RegistryTime.Forms
 
         }
 
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxPuesto.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese Nombre");
+                }
+                
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
+
+        }
+
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
             Clear();
@@ -41,7 +65,7 @@ namespace RegistryTime.Forms
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxPuesto.Text))
+                if (FormValidate())
                 {
                     JobML Job = new JobML();
                     if (IdJob == 0)
@@ -61,7 +85,9 @@ namespace RegistryTime.Forms
                     cFMPU100010 FrmDataGrid = this.Owner as cFMPU100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Éxito");
+                    cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+
                     Clear();
                     this.Close();
                 }

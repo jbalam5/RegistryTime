@@ -38,7 +38,7 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public EmployeeML GetIdEntity(int id, String ConnectionString)
         {
             try
             {
@@ -50,10 +50,14 @@ namespace DataLayer
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtEmployee = new DataTable();
+                cmd.Fill(dtEmployee);
                 Conexion.Close();
-                return dtDepartamentos;
+                if (dtEmployee != null && dtEmployee.Rows.Count > 0)
+                {
+                    return GetEntity(dtEmployee.Rows[0]);
+                }
+                return null;
             }
             catch (Exception ex)
             {
@@ -72,13 +76,14 @@ namespace DataLayer
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtEmplotment = new DataTable();
-                cmd.Fill(dtEmplotment);
+                DataTable dtEmployee = new DataTable();
+                cmd.Fill(dtEmployee);
                 Conexion.Close();
 
-                if (dtEmplotment != null && dtEmplotment.Rows.Count > 0)
+                if (dtEmployee != null && dtEmployee.Rows.Count > 0)
                 {
-                    return GetEntity(dtEmplotment.Rows[0]);
+                    return GetEntity(dtEmployee.Rows[0]);
+
                 }
                 return null;
             }
@@ -121,14 +126,15 @@ namespace DataLayer
             {
                 if(row != null)
                 {
-                    EmployeeML employmentML = new EmployeeML()
+                    EmployeeML EmployeeML = new EmployeeML()
                     {
+                        Id = (row[EmployeeML.DataBase.Id] != DBNull.Value) ? Convert.ToInt32(row[EmployeeML.DataBase.Id]) : 0,
                         RFC = (row[EmployeeML.DataBase.Rfc] != DBNull.Value) ? row[EmployeeML.DataBase.Rfc].ToString() : string.Empty,
                         Curp = (row[EmployeeML.DataBase.Curp] != DBNull.Value) ? row[EmployeeML.DataBase.Curp].ToString() : string.Empty,
                         Name = (row[EmployeeML.DataBase.Name] != DBNull.Value) ? row[EmployeeML.DataBase.Name].ToString() : string.Empty,
                         LastName = (row[EmployeeML.DataBase.Lastname] != DBNull.Value) ? row[EmployeeML.DataBase.Lastname].ToString() : string.Empty,
                         Scholarship = (row[EmployeeML.DataBase.Scholarship] != DBNull.Value) ? row[EmployeeML.DataBase.Scholarship].ToString() : string.Empty,
-                        Birthdate = (row[EmployeeML.DataBase.Birthdate] != DBNull.Value) ? row[EmployeeML.DataBase.Birthdate].ToString() : string.Empty,
+                        Birthdate = (row[EmployeeML.DataBase.Birthdate] != DBNull.Value) ? Convert.ToDateTime(row[EmployeeML.DataBase.Birthdate]) : Convert.ToDateTime(row[EmployeeML.DataBase.Birthdate]),
                         Gender = (row[EmployeeML.DataBase.Gender] != DBNull.Value) ? row[EmployeeML.DataBase.Gender].ToString() : string.Empty,
                         Nationality = (row[EmployeeML.DataBase.Nationality] != DBNull.Value) ? row[EmployeeML.DataBase.Nationality].ToString() : string.Empty,
                         Address = (row[EmployeeML.DataBase.Address] != DBNull.Value) ? row[EmployeeML.DataBase.Address].ToString() : string.Empty,
@@ -144,7 +150,11 @@ namespace DataLayer
                         IdJob = (row[EmployeeML.DataBase.IdJob] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdJob].ToString()) : 0,
                         IdDepartament = (row[EmployeeML.DataBase.IdDepartament] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdDepartament].ToString()) : 0,
                         IdUser = (row[EmployeeML.DataBase.IdUser] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdUser].ToString()) : 0,
+                        Telephone = (row[EmployeeML.DataBase.Telephone] != DBNull.Value) ? row[EmployeeML.DataBase.Telephone].ToString() : String.Empty,
+                        Salary = (row[EmployeeML.DataBase.Salary] != DBNull.Value) ? decimal.Parse(row[EmployeeML.DataBase.Salary].ToString()) : 0,
+                        NumberSure = (row[EmployeeML.DataBase.NumberSure] != DBNull.Value) ? row[EmployeeML.DataBase.NumberSure].ToString() : String.Empty,
                     };
+                    return EmployeeML;
                 }
                 return null;
             }
@@ -169,7 +179,7 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", employee.Name);
                 Query.AppendFormat(" '{0}',", employee.LastName);
                 Query.AppendFormat(" '{0}',", employee.Scholarship);
-                Query.AppendFormat(" '{0}',", employee.Birthdate);
+                Query.AppendFormat(" '{0}',", employee.Birthdate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" '{0}',", employee.Gender);
                 Query.AppendFormat(" '{0}',", employee.Nationality);
                 Query.AppendFormat(" '{0}',", employee.Address);
@@ -182,7 +192,7 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", employee.Colony);
                 Query.AppendFormat(" '{0}',", employee.StateCountry);
                 Query.AppendFormat(" '{0}',", employee.ControlNumber);
-                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToShortDateString());
+                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" '{0}',", employee.SureType);
                 Query.AppendFormat(" '{0}',", employee.NumberSure);
                 Query.AppendFormat(" {0},", employee.Salary);
@@ -248,7 +258,7 @@ namespace DataLayer
                 Query.AppendFormat(" name = '{0}',", employee.Name);
                 Query.AppendFormat(" lastname = '{0}',", employee.LastName);
                 Query.AppendFormat(" scholarship = '{0}',", employee.Scholarship);
-                Query.AppendFormat(" birthdate='{0}',", employee.Birthdate);
+                Query.AppendFormat(" birthdate='{0}',", employee.Birthdate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" gender= '{0}',", employee.Gender);
                 Query.AppendFormat(" nationality = '{0}',", employee.Nationality);
                 Query.AppendFormat(" address='{0}',", employee.Address);
@@ -261,7 +271,7 @@ namespace DataLayer
                 Query.AppendFormat(" colony= '{0}',", employee.Colony);
                 Query.AppendFormat(" stateCountry = '{0}',", employee.StateCountry);
                 Query.AppendFormat(" controlNumber = '{0}',", employee.ControlNumber);
-                Query.AppendFormat(" admissionDate = '{0}',", employee.AdmissionDate.ToShortDateString());
+                Query.AppendFormat(" admissionDate = '{0}',", employee.AdmissionDate.ToString("yyyy-MM-dd"));
                 Query.AppendFormat(" sureType = '{0}',", employee.SureType);
                 Query.AppendFormat(" numberSure = '{0}',", employee.NumberSure);
                 Query.AppendFormat(" salary = '{0}',", employee.Salary);
@@ -269,8 +279,8 @@ namespace DataLayer
                 Query.AppendFormat(" idDepartament = {0},", employee.IdDepartament);
                 Query.AppendFormat(" idUser = {0},", employee.IdUser);
                 Query.AppendFormat(" idUserUpdate = {0},", employee.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", employee.Id);
+                Query.AppendLine(" dateUpdate = GETDATE()");
+                Query.AppendFormat(" WHERE id={0}", employee.Id);
 
                 SqlConnection Conexion = new SqlConnection
                 {

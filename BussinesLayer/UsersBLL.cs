@@ -38,28 +38,11 @@ namespace BussinesLayer
         {
             try
             {
-                return usersDAL.GetEntityById(Id, ConnectionStrings);
+                UsersML UsersML = usersDAL.GetEntityById(Id, ConnectionStrings);
+                UsersML.Password = conexion.DesEncriptar(UsersML.Password);
+                return UsersML;
             }
             catch (Exception ex)
-            {
-                throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
-            }
-        }
-
-        public DataTable GetIdEntity(int Id)
-        {
-            try
-            {
-                DataTable Users = new DataTable();
-                if (usersDAL.GetIdEntity(Id, ConnectionStrings).Rows.Count > 0)
-                {
-                    DataRow UserRow = usersDAL.GetIdEntity(Id, ConnectionStrings).Rows[0];
-                    UserRow["password"] = conexion.DesEncriptar(UserRow["password"].ToString());
-                    Users = UserRow.Table;
-                }
-                return Users;
-            }
-            catch(Exception ex)
             {
                 throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
             }
@@ -113,6 +96,7 @@ namespace BussinesLayer
         {
             try
             {
+                user.Password = conexion.Encriptar(user.Password);
                 return usersDAL.IsUser(user, ConnectionStrings);
             }
             catch (Exception ex)
@@ -120,5 +104,18 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.IsUser: {1}", core, ex));
             }
         }
+
+        public Boolean UserExists(String Username)
+        {
+            try
+            {
+                return usersDAL.UserExists(Username, ConnectionStrings);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.UserExists: {1}", core, ex));
+            }
+        }
+
     }
 }

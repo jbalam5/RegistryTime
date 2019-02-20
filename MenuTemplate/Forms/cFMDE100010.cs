@@ -94,7 +94,8 @@ namespace RegistryTime.Forms
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Departamento", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
             }catch(Exception ex)
             {
@@ -115,11 +116,13 @@ namespace RegistryTime.Forms
                 int idDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
                 cFAT100010 Alert = new cFAT100010("Información",String.Format("¿Desea eliminar el registro {0}?",idDepartament),MessageBoxIcon.Question);
                 Alert.ShowDialog();
-                if(Alert.DialogResult == DialogResult.OK)
+                if(Alert.DialogResult == DialogResult.Yes)
                 {
-                    DepartamentML Departament = new DepartamentML();
-                    Departament.Id = idDepartament; 
-                    Departament.IdUserDelete = 1;
+                    DepartamentML Departament = new DepartamentML
+                    {
+                        Id = idDepartament,
+                        IdUserDelete = 1
+                    };
                     DepartamentBLL.Delete(Departament);
                     dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
                 }

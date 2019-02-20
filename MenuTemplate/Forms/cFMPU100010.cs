@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Forms
@@ -95,7 +96,9 @@ namespace RegistryTime.Forms
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Puesto de Trabajo", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Puesto de Trabajo", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                    
                 }
             }
             catch (Exception ex)
@@ -113,12 +116,21 @@ namespace RegistryTime.Forms
         {
             try
             {
+                
                 IdRowSelect = dataGridViewDataPuesto.CurrentRow.Index;
-                JobML Job = new JobML();
-                Job.Id = Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Job.IdUserDelete = 1;
-                JobBLL.Delete(Job);
-                dataGridViewDataPuesto.Rows.Remove(dataGridViewDataPuesto.CurrentRow);
+                int IdJob = Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells[JobML.DataBase.Id].Value.ToString());
+                cFAT100010 Alert = new cFAT100010("Información", String.Format("¿Desea eliminar el registro {0}?", IdJob), MessageBoxIcon.Question);
+                Alert.ShowDialog();
+                if (Alert.DialogResult == DialogResult.Yes)
+                {
+                    JobML Job = new JobML
+                    {
+                        Id = IdJob,
+                        IdUserDelete = GlobalBLL.userML.Id
+                    };
+                    JobBLL.Delete(Job);
+                    dataGridViewDataPuesto.Rows.Remove(dataGridViewDataPuesto.CurrentRow);
+                }
             }
             catch (Exception ex)
             {
