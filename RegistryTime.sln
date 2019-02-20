@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLayer", "DataLayer\Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayer", "ModelLayer\ModelLayer.csproj", "{685A462A-723F-4B66-BE27-BF5CE9AD7177}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiometricCore", "BiometricCore\BiometricCore.csproj", "{32209FC8-D19D-4815-A645-82F69833A5AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{685A462A-723F-4B66-BE27-BF5CE9AD7177}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685A462A-723F-4B66-BE27-BF5CE9AD7177}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685A462A-723F-4B66-BE27-BF5CE9AD7177}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32209FC8-D19D-4815-A645-82F69833A5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32209FC8-D19D-4815-A645-82F69833A5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32209FC8-D19D-4815-A645-82F69833A5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32209FC8-D19D-4815-A645-82F69833A5AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

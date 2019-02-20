@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
+            this.buttonTurno = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
@@ -47,10 +50,9 @@
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ExitButton = new System.Windows.Forms.Button();
-            this.buttonTurno = new System.Windows.Forms.Button();
+            this.test = new System.Windows.Forms.Button();
             this.MenuLeftPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
             this.TopPanel.SuspendLayout();
@@ -59,7 +61,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.ContainerPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MenuLeftPanel
@@ -80,6 +82,54 @@
             this.MenuLeftPanel.Name = "MenuLeftPanel";
             this.MenuLeftPanel.Size = new System.Drawing.Size(200, 576);
             this.MenuLeftPanel.TabIndex = 0;
+            // 
+            // buttonTurno
+            // 
+            this.buttonTurno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonTurno.FlatAppearance.BorderSize = 0;
+            this.buttonTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonTurno.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTurno.ForeColor = System.Drawing.Color.White;
+            this.buttonTurno.Image = global::RegistryTime.Properties.Resources.office32;
+            this.buttonTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonTurno.Location = new System.Drawing.Point(0, 288);
+            this.buttonTurno.Name = "buttonTurno";
+            this.buttonTurno.Size = new System.Drawing.Size(199, 40);
+            this.buttonTurno.TabIndex = 10;
+            this.buttonTurno.Text = "Puesto";
+            this.buttonTurno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonTurno.UseVisualStyleBackColor = true;
+            this.buttonTurno.Click += new System.EventHandler(this.buttonTurno_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 537);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 39);
+            this.panel1.TabIndex = 9;
+            // 
+            // ExitButton
+            // 
+            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExitButton.FlatAppearance.BorderSize = 0;
+            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExitButton.ForeColor = System.Drawing.Color.White;
+            this.ExitButton.Image = global::RegistryTime.Properties.Resources.exit32;
+            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ExitButton.Location = new System.Drawing.Point(1, -1);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(199, 40);
+            this.ExitButton.TabIndex = 9;
+            this.ExitButton.Text = "  Salir";
+            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.ExitButton.UseVisualStyleBackColor = true;
             // 
             // pictureBox1
             // 
@@ -308,7 +358,7 @@
             this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
             this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(134, 25);
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
             this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
             this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             // 
@@ -321,61 +371,24 @@
             // 
             this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
             this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Controls.Add(this.test);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
             this.ContainerPanel.Name = "ContainerPanel";
             this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
             this.ContainerPanel.TabIndex = 3;
             // 
-            // panel1
+            // test
             // 
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 39);
-            this.panel1.TabIndex = 9;
+            this.test.Location = new System.Drawing.Point(102, 61);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(75, 23);
+            this.test.TabIndex = 0;
+            this.test.Text = "Test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Click += new System.EventHandler(this.test_Click);
             // 
-            // ExitButton
-            // 
-            this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ExitButton.FlatAppearance.BorderSize = 0;
-            this.ExitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.ExitButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitButton.ForeColor = System.Drawing.Color.White;
-            this.ExitButton.Image = global::RegistryTime.Properties.Resources.exit32;
-            this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ExitButton.Location = new System.Drawing.Point(1, -1);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(199, 40);
-            this.ExitButton.TabIndex = 9;
-            this.ExitButton.Text = "  Salir";
-            this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.ExitButton.UseVisualStyleBackColor = true;
-            // 
-            // buttonTurno
-            // 
-            this.buttonTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonTurno.FlatAppearance.BorderSize = 0;
-            this.buttonTurno.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonTurno.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.buttonTurno.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonTurno.ForeColor = System.Drawing.Color.White;
-            this.buttonTurno.Image = global::RegistryTime.Properties.Resources.office32;
-            this.buttonTurno.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonTurno.Location = new System.Drawing.Point(0, 288);
-            this.buttonTurno.Name = "buttonTurno";
-            this.buttonTurno.Size = new System.Drawing.Size(199, 40);
-            this.buttonTurno.TabIndex = 10;
-            this.buttonTurno.Text = "Puesto";
-            this.buttonTurno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonTurno.UseVisualStyleBackColor = true;
-            this.buttonTurno.Click += new System.EventHandler(this.buttonTurno_Click);
-            // 
-            // cMRT100010
+            // cMRT1000101
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,10 +398,11 @@
             this.Controls.Add(this.TopPanel);
             this.Controls.Add(this.MenuLeftPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cMRT100010";
+            this.Name = "cMRT1000101";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.cMRT100010_Load);
             this.MenuLeftPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.TopPanel.ResumeLayout(false);
@@ -399,7 +413,7 @@
             this.BottomStatePanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.ContainerPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -428,6 +442,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button buttonTurno;
+        private System.Windows.Forms.Button test;
     }
 }
 

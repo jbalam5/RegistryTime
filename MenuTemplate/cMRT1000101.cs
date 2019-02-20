@@ -125,5 +125,14 @@ namespace RegistryTime
         {
             OpenFormChild(new RegistryTime.Forms.cFRT110010());
         }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+            BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
+
+            BiometricCore.UserInfo user = new BiometricCore.UserInfo();
+
+            user = obj.GetUserInfoById(1, 175);
+        }
     }
 }

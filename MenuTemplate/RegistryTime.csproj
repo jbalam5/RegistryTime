@@ -51,6 +51,10 @@
     <StartupObject>RegistryTime.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BiometricCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\BiometricCore\bin\Debug\BiometricCore.dll</HintPath>
+    </Reference>
     <Reference Include="ButtonMenuLeft">
       <HintPath>..\..\..\JBControlDLL\ButtonMenuLeft.dll</HintPath>
     </Reference>
