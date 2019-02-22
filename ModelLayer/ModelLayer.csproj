@@ -53,14 +53,17 @@
     <Compile Include="EmployeeML.cs" />
     <Compile Include="FestiveML.cs" />
     <Compile Include="JobML.cs" />
+    <Compile Include="ModelReaderML.cs" />
     <Compile Include="PermissionML.cs" />
     <Compile Include="PermissionsOfUserML.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReaderConnectionML.cs" />
     <Compile Include="RoleML.cs" />
     <Compile Include="StatusBookML.cs" />
     <Compile Include="TurnML.cs" />
     <Compile Include="TurnsOfEmployeeML.cs" />
     <Compile Include="UsersML.cs" />
+    <Compile Include="ZKTecoHourAssistanceML.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using BiometricCore;
+using ModelLayer;
 
 namespace BussinesLayer
 {
@@ -22,6 +23,24 @@ namespace BussinesLayer
             this.objZKTeko = new ZKTekoBiometric(RaiseDeviceEvent);
         }
 
+        public bool connect()
+        {
+            try
+            {
+                ReaderConnectionBLL readerConnectionBLL = new ReaderConnectionBLL();
+                ReaderConnectionML readerConnectionML = readerConnectionBLL.GetActiveConnection();
+
+                if (readerConnectionML != null)
+                    return connect(readerConnectionML.ip, int.Parse(readerConnectionML.port));
+                else
+                    throw new Exception("No se encontró una conexión valida");
+
+            }catch(Exception ex)
+            {
+                throw new Exception(string.Format("ZKTecoDeviceBLL.connect: {0}", ex.Message));
+            }
+        }
+
         public bool connect(string Ip, int port)
         {
             return objZKTeko.Connect_Net(Ip, port);
@@ -30,96 +49,109 @@ namespace BussinesLayer
         //private void RaiseDeviceEvent(object sender, string actionType)
         //{
         //}
-            public ICollection<UserInfo> GetAllUserInfo(int machineNumber)
+        /// <summary>
+        /// Obtiene la lista de usuarios registrados en el lector
+        /// </summary>
+        /// <param name="machineNumber"></param>
+        /// <returns></returns>
+        public ICollection<UserInfo> GetAllUserInfo(int machineNumber)
         {
-            string sdwEnrollNumber = string.Empty, sName = string.Empty, sPassword = string.Empty, sTmpData = string.Empty;
-            int iPrivilege = 0, iTmpLength = 0, iFlag = 0, idwFingerIndex;
-            bool bEnabled = false;
-
-            ICollection<UserInfo> lstFPTemplates = new List<UserInfo>();
-
-            objZKTeko.ReadAllUserID(machineNumber);
-            objZKTeko.ReadAllTemplate(machineNumber);
-
-            while (objZKTeko.SSR_GetAllUserInfo(machineNumber, out sdwEnrollNumber, out sName, out sPassword, out iPrivilege, out bEnabled))
+            if (connect())
             {
-                for (idwFingerIndex = 0; idwFingerIndex < 10; idwFingerIndex++)
+                string sdwEnrollNumber = string.Empty, sName = string.Empty, sPassword = string.Empty, sTmpData = string.Empty;
+                int iPrivilege = 0, iTmpLength = 0, iFlag = 0, idwFingerIndex;
+                bool bEnabled = false;
+
+                ICollection<UserInfo> lstFPTemplates = new List<UserInfo>();
+
+                objZKTeko.ReadAllUserID(machineNumber);
+                objZKTeko.ReadAllTemplate(machineNumber);
+
+                while (objZKTeko.SSR_GetAllUserInfo(machineNumber, out sdwEnrollNumber, out sName, out sPassword, out iPrivilege, out bEnabled))
                 {
-                    if (objZKTeko.GetUserTmpExStr(machineNumber, sdwEnrollNumber, idwFingerIndex, out iFlag, out sTmpData, out iTmpLength))
+                    for (idwFingerIndex = 0; idwFingerIndex < 10; idwFingerIndex++)
                     {
-                        UserInfo fpInfo = new UserInfo();
-                        fpInfo.MachineNumber = machineNumber;
-                        fpInfo.EnrollNumber = sdwEnrollNumber;
-                        fpInfo.Name = sName;
-                        fpInfo.FingerIndex = idwFingerIndex;
-                        fpInfo.TmpData = sTmpData;
-                        fpInfo.Privelage = iPrivilege;
-                        fpInfo.Password = sPassword;
-                        fpInfo.Enabled = bEnabled;
-                        fpInfo.iFlag = iFlag.ToString();
+                        if (objZKTeko.GetUserTmpExStr(machineNumber, sdwEnrollNumber, idwFingerIndex, out iFlag, out sTmpData, out iTmpLength))
+                        {
+                            UserInfo fpInfo = new UserInfo();
+                            fpInfo.MachineNumber = machineNumber;
+                            fpInfo.EnrollNumber = sdwEnrollNumber;
+                            fpInfo.Name = sName;
+                            fpInfo.FingerIndex = idwFingerIndex;
+                            fpInfo.TmpData = sTmpData;
+                            fpInfo.Privelage = iPrivilege;
+                            fpInfo.Password = sPassword;
+                            fpInfo.Enabled = bEnabled;
+                            fpInfo.iFlag = iFlag.ToString();
 
-                        lstFPTemplates.Add(fpInfo);
+                            lstFPTemplates.Add(fpInfo);
+                        }
                     }
-                }
 
+                }
+                return lstFPTemplates;
             }
-            return lstFPTemplates;
+            return null;
         }
 
         public int SetUserInfo(int machineNumber, int UserID, string Name, int iPrivilege, string Cardnumber, string Password)
         {
 
-            if (UserID == 0) throw new Exception("*Please input data first!");
-
-            bool bFlag = false;
-            if (iPrivilege == 5) throw new Exception("*User Defined Role is Error! Please Register again!");
-
-            int iPIN2Width = 0;
-            int iIsABCPinEnable = 0;
-            int iT9FunOn = 0;
-            string strTemp = "";
-            objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
-            iPIN2Width = Convert.ToInt32(strTemp);
-            objZKTeko.GetSysOption(machineNumber, "~IsABCPinEnable", out strTemp);
-            iIsABCPinEnable = Convert.ToInt32(strTemp);
-            objZKTeko.GetSysOption(machineNumber, "~T9FunOn", out strTemp);
-            iT9FunOn = Convert.ToInt32(strTemp);
-
-            if (UserID.ToString().Length > iPIN2Width) return -1022;
-
-            if (iIsABCPinEnable == 0 || iT9FunOn == 0)
+            if (connect())
             {
-                if (UserID.ToString().Substring(0, 1) == "0")
-                    throw new Exception("*User ID error! The first letter can not be as 0");
+                if (UserID == 0) throw new Exception("*Please input data first!");
 
-                foreach (char tempchar in UserID.ToString().ToCharArray())
+                bool bFlag = false;
+                if (iPrivilege == 5) throw new Exception("*User Defined Role is Error! Please Register again!");
+
+                int iPIN2Width = 0;
+                int iIsABCPinEnable = 0;
+                int iT9FunOn = 0;
+                string strTemp = "";
+                //objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
+                //iPIN2Width = Convert.ToInt32(strTemp);
+                //objZKTeko.GetSysOption(machineNumber, "~IsABCPinEnable", out strTemp);
+                //iIsABCPinEnable = Convert.ToInt32(strTemp);
+                //objZKTeko.GetSysOption(machineNumber, "~T9FunOn", out strTemp);
+                //iT9FunOn = Convert.ToInt32(strTemp);
+
+                //if (UserID.ToString().Length > iPIN2Width) return -1022;
+
+                //if (iIsABCPinEnable == 0 || iT9FunOn == 0)
+                //{
+                //    if (UserID.ToString().Substring(0, 1) == "0")
+                //        throw new Exception("*User ID error! The first letter can not be as 0");
+
+                //    foreach (char tempchar in UserID.ToString().ToCharArray())
+                //    {
+                //        if (!(char.IsDigit(tempchar)))
+                //            throw new Exception("*User ID error! User ID only support digital");
+                //    }
+                //}
+
+                int idwErrorCode = 0;
+                string sdwEnrollNumber = UserID.ToString();
+                string sName = Name.ToString();
+                string sCardnumber = Cardnumber.ToString();
+                string sPassword = Password.ToString();
+
+                bool bEnabled = true;
+
+                objZKTeko.EnableDevice(machineNumber, false);
+                //objZKTeko.SetStrCardNumber(sCardnumber);//Before you using function SetUserInfo,set the card number to make sure you can upload it to the device
+
+                if (!objZKTeko.SSR_SetUserInfo(machineNumber, sdwEnrollNumber, sName, sPassword, iPrivilege, bEnabled))//upload the user's information(card number included)
                 {
-                    if (!(char.IsDigit(tempchar)))
-                        throw new Exception("*User ID error! User ID only support digital");
+                    objZKTeko.GetLastError(ref idwErrorCode);
+                    throw new Exception("*Operation failed,ErrorCode=" + idwErrorCode.ToString());
                 }
+
+                objZKTeko.RefreshData(machineNumber);//the data in the device should be refreshed
+                objZKTeko.EnableDevice(machineNumber, true);
+
+                return 1;
             }
-
-            int idwErrorCode = 0;
-            string sdwEnrollNumber = UserID.ToString();
-            string sName = Name.ToString();
-            string sCardnumber = Cardnumber.ToString();
-            string sPassword = Password.ToString();
-
-            bool bEnabled = true;
-
-            objZKTeko.EnableDevice(machineNumber, false);
-            objZKTeko.SetStrCardNumber(sCardnumber);//Before you using function SetUserInfo,set the card number to make sure you can upload it to the device
-
-            if (!objZKTeko.SSR_SetUserInfo(machineNumber, sdwEnrollNumber, sName, sPassword, iPrivilege, bEnabled))//upload the user's information(card number included)
-            {
-                objZKTeko.GetLastError(ref idwErrorCode);
-                throw new Exception("*Operation failed,ErrorCode=" + idwErrorCode.ToString());
-            }
-
-            objZKTeko.RefreshData(machineNumber);//the data in the device should be refreshed
-            objZKTeko.EnableDevice(machineNumber, true);
-
-            return 1;
+            return 0;
         }
         
         public UserInfo GetUserInfoById(int machineNumber, int UserID)
@@ -128,28 +160,28 @@ namespace BussinesLayer
 
             int iPIN2Width = 0;
             string strTemp = "";
-            objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
-            iPIN2Width = Convert.ToInt32(strTemp);
+            //objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
+            //iPIN2Width = Convert.ToInt32(strTemp);
 
-            if (UserID.ToString().Length > iPIN2Width)
-                throw new Exception("*User ID error! The max length is " + iPIN2Width.ToString());
+            //if (UserID.ToString().Length > iPIN2Width)
+            //    throw new Exception("*User ID error! The max length is " + iPIN2Width.ToString());
             
 
             int idwErrorCode = 0;
             int iPrivilege = 0;
             string strName = "";
-            string strCardno = "";
+            string strCardno = ""; 
             string strPassword = "";
             bool bEnabled = false;
 
             objZKTeko.EnableDevice(machineNumber, false);
             if (objZKTeko.SSR_GetUserInfo(machineNumber, UserID.ToString(), out strName, out strPassword, out iPrivilege, out bEnabled))//upload the user's information(card number included)
             {
-                objZKTeko.GetStrCardNumber(out strCardno);
-                if (strCardno.Equals("0"))
-                {
-                    strCardno = "";
-                }
+                //objZKTeko.GetStrCardNumber(out strCardno);
+                //if (strCardno.Equals("0"))
+                //{
+                //    strCardno = "";
+                //}
                 UserInfo UserInfo = new UserInfo()
                 {
                     Name = strName,
@@ -169,7 +201,7 @@ namespace BussinesLayer
 
             return null;
         }
-        public ICollection<MachineInfo> GetLogData(int machineNumber)
+        public ICollection<HoursAssistanceInfo> GetLogData(int machineNumber)
         {
             string dwEnrollNumber1 = "";
             int dwVerifyMode = 0;
@@ -183,7 +215,7 @@ namespace BussinesLayer
             int dwWorkCode = 0;
 
             objZKTeko.EnableDevice(machineNumber, false);
-            ICollection<MachineInfo> lstEnrollData = new List<MachineInfo>();
+            ICollection<HoursAssistanceInfo> lstEnrollData = new List<HoursAssistanceInfo>();
 
             if (objZKTeko.ReadAllGLogData(machineNumber))
             {
@@ -191,7 +223,7 @@ namespace BussinesLayer
                 {
                     string inputDate = new DateTime(dwYear, dwMonth, dwDay, dwHour, dwMinute, dwSecond).ToString();
 
-                    MachineInfo objInfo = new MachineInfo();
+                    HoursAssistanceInfo objInfo = new HoursAssistanceInfo();
                     objInfo.MachineNumber = machineNumber;
                     objInfo.IndRegID = int.Parse(dwEnrollNumber1);
                     objInfo.DateTimeRecord = inputDate;
@@ -207,7 +239,7 @@ namespace BussinesLayer
             return lstEnrollData;
         }
 
-        public ICollection<MachineInfo> GetLogDataByDate(int machineNumber, string startDate, string endDate)
+        public ICollection<HoursAssistanceInfo> GetLogDataByDate(int machineNumber, string startDate, string endDate)
         {
             string dwEnrollNumber1 = "";
             int dwVerifyMode = 0;
@@ -222,7 +254,7 @@ namespace BussinesLayer
 
             objZKTeko.EnableDevice(machineNumber, false);
 
-            ICollection<MachineInfo> lstEnrollData = new List<MachineInfo>();
+            ICollection<HoursAssistanceInfo> lstEnrollData = new List<HoursAssistanceInfo>();
 
             if (objZKTeko.ReadGLogDataByDate(machineNumber, startDate, endDate))
             {
@@ -230,7 +262,7 @@ namespace BussinesLayer
                 {
                     string inputDate = new DateTime(dwYear, dwMonth, dwDay, dwHour, dwMinute, dwSecond).ToString();
 
-                    MachineInfo objInfo = new MachineInfo();
+                    HoursAssistanceInfo objInfo = new HoursAssistanceInfo();
                     objInfo.MachineNumber = machineNumber;
                     objInfo.IndRegID = int.Parse(dwEnrollNumber1);
                     objInfo.DateTimeRecord = inputDate;
@@ -248,25 +280,61 @@ namespace BussinesLayer
 
         public ICollection<UserIDInfo> GetAllUserID(int machineNumber)
         {
-            int dwEnrollNumber = 0;
-            int dwEMachineNumber = 0;
-            int dwBackUpNumber = 0;
-            int dwMachinePrivelage = 0;
-            int dwEnabled = 0;
-
-            ICollection<UserIDInfo> lstUserIDInfo = new List<UserIDInfo>();
-
-            while (objZKTeko.GetAllUserID(machineNumber, ref dwEnrollNumber, ref dwEMachineNumber, ref dwBackUpNumber, ref dwMachinePrivelage, ref dwEnabled))
+            if (connect())
             {
-                UserIDInfo userID = new UserIDInfo();
-                userID.BackUpNumber = dwBackUpNumber;
-                userID.Enabled = dwEnabled;
-                userID.EnrollNumber = dwEnrollNumber;
-                userID.MachineNumber = dwEMachineNumber;
-                userID.Privelage = dwMachinePrivelage;
-                lstUserIDInfo.Add(userID);
+                int dwEnrollNumber = 0;
+                int dwEMachineNumber = 0;
+                int dwBackUpNumber = 0;
+                int dwMachinePrivelage = 0;
+                int dwEnabled = 0;
+
+                ICollection<UserIDInfo> lstUserIDInfo = new List<UserIDInfo>();
+
+                while (objZKTeko.GetAllUserID(machineNumber, ref dwEnrollNumber, ref dwEMachineNumber, ref dwBackUpNumber, ref dwMachinePrivelage, ref dwEnabled))
+                {
+                    UserIDInfo userID = new UserIDInfo();
+                    userID.BackUpNumber = dwBackUpNumber;
+                    userID.Enabled = dwEnabled;
+                    userID.EnrollNumber = dwEnrollNumber;
+                    userID.MachineNumber = dwEMachineNumber;
+                    userID.Privelage = dwMachinePrivelage;
+                    lstUserIDInfo.Add(userID);
+                }
+                return lstUserIDInfo;
             }
-            return lstUserIDInfo;
+
+            return null;
+        }
+
+        public ICollection<UserInfo> GetListAllUserInfo(int machineNumber)
+        {
+            if (connect())
+            {
+                int dwEnrollNumber = 0;
+                int dwEMachineNumber = 0;
+                int dwMachinePrivelage = 0;
+                string dwname = "";
+                string dwPassword = "";
+                bool dwEnabled = false;
+
+                ICollection<UserInfo> lstUserInfo = new List<UserInfo>();
+
+                while (objZKTeko.GetAllUserInfo(dwEMachineNumber, ref dwEnrollNumber, ref dwname, ref dwPassword, ref dwMachinePrivelage, ref dwEnabled))
+                {
+                    UserInfo userInfo = new UserInfo();
+                    userInfo.MachineNumber = dwEMachineNumber;
+                    userInfo.Name = dwname;
+                    userInfo.Password = dwPassword;
+                    userInfo.Privelage = dwMachinePrivelage;
+                    userInfo.Enabled = dwEnabled;
+                    userInfo.EnrollNumber = dwEnrollNumber.ToString();
+                    
+                    lstUserInfo.Add(userInfo);
+                }
+                return lstUserInfo;
+            }
+
+            return null;
         }
 
         public void GetGeneratLog(ZKTekoBiometric objZKTeko, int machineNumber, string enrollNo)
@@ -431,7 +499,6 @@ namespace BussinesLayer
         {
             return objZKTeko.ReadAllGLogData(machineNumber);
         }
-
 
         //public bool GetGenralLogData(ZkemClient objZkeeper, int machineNumber)
         //{

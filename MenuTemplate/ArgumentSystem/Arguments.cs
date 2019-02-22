@@ -43,6 +43,9 @@ namespace RegistryTime.ArgumentSystem
                         case "test":
                             Application.Run(new cMRT1000101());
                             break;
+                        case "FCGL":
+                            Application.Run(new Forms.cFMCG100010());
+                            break;
                         default:
                             break;
                     }

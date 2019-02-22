@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityLayer\DeviceTimeInfo.cs" />
-    <Compile Include="EntityLayer\MachineInfo.cs" />
+    <Compile Include="EntityLayer\HoursAssistanceInfo.cs" />
     <Compile Include="EntityLayer\UserIDInfo.cs" />
     <Compile Include="EntityLayer\UserInfo.cs" />
     <Compile Include="Enums\ClearFlag.cs" />

@@ -109,6 +109,12 @@
     <Compile Include="Forms\cFMAA110010.Designer.cs">
       <DependentUpon>cFMAA110010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\cFMCG100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\cFMCG100010.Designer.cs">
+      <DependentUpon>cFMCG100010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\cFMSE110010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMAA110010.resx">
       <DependentUpon>cFMAA110010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\cFMCG100010.resx">
+      <DependentUpon>cFMCG100010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMSE110010.resx">
       <DependentUpon>cFMSE110010.cs</DependentUpon>

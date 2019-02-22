@@ -50,7 +50,10 @@
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.Migrarbutton = new System.Windows.Forms.Button();
             this.test = new System.Windows.Forms.Button();
+            this.NewUserbutton = new System.Windows.Forms.Button();
+            this.ListUserbutton = new System.Windows.Forms.Button();
             this.MenuLeftPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -371,6 +374,9 @@
             // 
             this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
             this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Controls.Add(this.ListUserbutton);
+            this.ContainerPanel.Controls.Add(this.NewUserbutton);
+            this.ContainerPanel.Controls.Add(this.Migrarbutton);
             this.ContainerPanel.Controls.Add(this.test);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
@@ -378,15 +384,45 @@
             this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
             this.ContainerPanel.TabIndex = 3;
             // 
+            // Migrarbutton
+            // 
+            this.Migrarbutton.Location = new System.Drawing.Point(173, 61);
+            this.Migrarbutton.Name = "Migrarbutton";
+            this.Migrarbutton.Size = new System.Drawing.Size(115, 63);
+            this.Migrarbutton.TabIndex = 1;
+            this.Migrarbutton.Text = "MigrarBD";
+            this.Migrarbutton.UseVisualStyleBackColor = true;
+            this.Migrarbutton.Click += new System.EventHandler(this.Migrarbutton_Click);
+            // 
             // test
             // 
-            this.test.Location = new System.Drawing.Point(102, 61);
+            this.test.Location = new System.Drawing.Point(52, 61);
             this.test.Name = "test";
-            this.test.Size = new System.Drawing.Size(75, 23);
+            this.test.Size = new System.Drawing.Size(115, 63);
             this.test.TabIndex = 0;
             this.test.Text = "Test";
             this.test.UseVisualStyleBackColor = true;
             this.test.Click += new System.EventHandler(this.test_Click);
+            // 
+            // NewUserbutton
+            // 
+            this.NewUserbutton.Location = new System.Drawing.Point(294, 61);
+            this.NewUserbutton.Name = "NewUserbutton";
+            this.NewUserbutton.Size = new System.Drawing.Size(115, 63);
+            this.NewUserbutton.TabIndex = 2;
+            this.NewUserbutton.Text = "New User";
+            this.NewUserbutton.UseVisualStyleBackColor = true;
+            this.NewUserbutton.Click += new System.EventHandler(this.NewUserbutton_Click);
+            // 
+            // ListUserbutton
+            // 
+            this.ListUserbutton.Location = new System.Drawing.Point(415, 61);
+            this.ListUserbutton.Name = "ListUserbutton";
+            this.ListUserbutton.Size = new System.Drawing.Size(115, 63);
+            this.ListUserbutton.TabIndex = 3;
+            this.ListUserbutton.Text = "Lista Usuarios";
+            this.ListUserbutton.UseVisualStyleBackColor = true;
+            this.ListUserbutton.Click += new System.EventHandler(this.ListUserbutton_Click);
             // 
             // cMRT1000101
             // 
@@ -443,6 +479,9 @@
         private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Button buttonTurno;
         private System.Windows.Forms.Button test;
+        private System.Windows.Forms.Button Migrarbutton;
+        private System.Windows.Forms.Button NewUserbutton;
+        private System.Windows.Forms.Button ListUserbutton;
     }
 }
 

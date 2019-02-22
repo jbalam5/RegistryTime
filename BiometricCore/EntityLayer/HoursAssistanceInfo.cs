@@ -2,7 +2,7 @@
 
 namespace BiometricCore
 {
-    public class MachineInfo
+    public class HoursAssistanceInfo
     {
         public int MachineNumber { get; set; }
         public int IndRegID { get; set; }
