@@ -72,6 +72,7 @@
     <Compile Include="ReaderConnectionBLL.cs" />
     <Compile Include="RegularExpressionBLL .cs" />
     <Compile Include="RoleBLL.cs" />
+    <Compile Include="SharedFunctionsBLL.cs" />
     <Compile Include="StatusBookBLL.cs" />
     <Compile Include="TurnBLL.cs" />
     <Compile Include="TurnsOfEmployeeBLL.cs" />
