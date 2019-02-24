@@ -40,6 +40,12 @@ namespace RegistryTime.ArgumentSystem
                         case "RTAL":
                             Application.Run(new Alerts.cFAT100010("Informacion", "Texto descripcion", MessageBoxIcon.Information));
                             break;
+                        case "test":
+                            Application.Run(new cMRT1000101());
+                            break;
+                        case "FCGL":
+                            Application.Run(new Forms.cFMCG100010());
+                            break;
                         default:
                             break;
                     }

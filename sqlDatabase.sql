@@ -350,3 +350,58 @@ CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)
     ON DELETE NO ACTION    
     ON UPDATE NO ACTION,
 )
+-- Tablas para la configuracion del lector
+create table ModelReader(
+id int primary key identity(1,1) not null,
+brand varchar(50) not null,
+model varchar(50) not null,
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime
+);
+
+convert(bit, true)
+create table ReaderConnection(
+id int primary key identity(1,1) not null,
+name varchar(50) not null,
+ip varchar(15) not null,
+port varchar(5),
+isDefault bit,
+idReader int not null,
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+CONSTRAINT FK_ReaderConnection_idReader FOREIGN KEY (idReader)     
+    REFERENCES ModelReader (id)     
+    ON DELETE NO ACTION    
+    ON UPDATE NO ACTION
+)
+
+--TABLA PARA ALMACENAR LOS HORARIOS QUE DEVUELVE EL LECTOR
+
+create table HoursAssistance(
+id int primary key identity(1,1) not null,
+machineNumer int,
+idUser int,
+verifyType int,
+verifyState int,
+workCode int,
+dateTimeRecord datetime,
+dateOnlyRecord date,
+timeOnlyRecord time,
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime
+)

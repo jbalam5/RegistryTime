@@ -125,5 +125,38 @@ namespace RegistryTime
         {
             OpenFormChild(new RegistryTime.Forms.cFRT110010());
         }
+
+        private void test_Click(object sender, EventArgs e)
+        {
+            BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
+
+            BiometricCore.UserInfo user = new BiometricCore.UserInfo();
+            user = obj.GetUserInfoById(1, 175);
+        }
+
+        private void Migrarbutton_Click(object sender, EventArgs e)
+        {
+            BussinesLayer.ZKTecoHourAssistanceBLL obj = new BussinesLayer.ZKTecoHourAssistanceBLL();
+            obj.MigrateHoursToBD();
+        }
+
+        private void NewUserbutton_Click(object sender, EventArgs e)
+        {
+            BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
+
+            BiometricCore.UserInfo user = new BiometricCore.UserInfo();
+            int id = obj.SetUserInfo(1, 176, "Felipe", 1, "", "176176176");
+            MessageBox.Show(string.Format("{0}", id));
+            
+        }
+
+        private void ListUserbutton_Click(object sender, EventArgs e)
+        {
+            BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
+
+            BiometricCore.UserInfo user = new BiometricCore.UserInfo();
+            ICollection<BiometricCore.UserInfo> users = obj.GetAllUserInfo(1);
+
+        }
     }
 }
