@@ -14,9 +14,6 @@ namespace DataLayer
         public String core = "DataLayer.TurnDAL";
         public String TableName = "turn";
 
-        
-
-
         public DataTable All(String ConnectionString)
         {
             try
@@ -76,17 +73,16 @@ namespace DataLayer
                 Query.AppendLine(" VALUES(");
                 Query.AppendFormat(" '{0}',", Turn.Name);
                 Query.AppendFormat(" '{0}',", Turn.Description);
-                Query.AppendFormat(" '{0}',", Turn.TimeEntry);
-                Query.AppendFormat(" '{0}',", Turn.StartEntry);
-                Query.AppendFormat(" '{0}',", Turn.LimitEntry);
-                Query.AppendFormat(" '{0}',", Turn.Departuretime);
-                Query.AppendFormat(" '{0}',", Turn.LimitDeparture);
+                Query.AppendFormat(" '{0}',", Turn.TimeEntry.ToString("HH:mm:ss"));
+                Query.AppendFormat(" '{0}',", Turn.StartEntry.ToString("hh:mm:ss"));
+                Query.AppendFormat(" '{0}',", Turn.LimitEntry.ToString("hh:mm:ss"));
+                Query.AppendFormat(" '{0}',", Turn.Departuretime.ToString("hh:mm:ss"));
+                Query.AppendFormat(" '{0}',", Turn.LimitDeparture.ToString("hh:mm:ss"));
                 Query.AppendFormat(" {0},", Turn.HoursJornada);
                 Query.AppendLine(" 1,");
                 Query.AppendFormat(" {0},", Turn.IdUserInsert );
                 Query.AppendLine(" getDate() )");
-                
-                //Query.AppendFormat(" VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}',{7},GETDATE(),GETDATE(),1,{13},GETDATE())", turn.Name, turn.Description, turn.TimeEntry, turn.StartEntry, turn.LimitEntry, turn.Departuretime, turn.LimitDeparture, turn.HoursJornada, turn.IdUserInsert);
+               
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString

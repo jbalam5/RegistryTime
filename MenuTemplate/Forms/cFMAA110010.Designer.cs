@@ -67,6 +67,57 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
+            // materialLabel1
+            // 
+            materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            materialLabel1.Location = new System.Drawing.Point(93, 64);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel1.Size = new System.Drawing.Size(15, 19);
+            materialLabel1.TabIndex = 80;
+            materialLabel1.Text = "*";
+            materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // materialLabel10
+            // 
+            materialLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            materialLabel10.AutoSize = true;
+            materialLabel10.Depth = 0;
+            materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
+            materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            materialLabel10.Location = new System.Drawing.Point(96, 267);
+            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel10.Name = "materialLabel10";
+            materialLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel10.Size = new System.Drawing.Size(15, 19);
+            materialLabel10.TabIndex = 81;
+            materialLabel10.Text = "*";
+            materialLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // materialLabel11
+            // 
+            materialLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            materialLabel11.AutoSize = true;
+            materialLabel11.Depth = 0;
+            materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
+            materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            materialLabel11.Location = new System.Drawing.Point(531, 266);
+            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel11.Name = "materialLabel11";
+            materialLabel11.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            materialLabel11.Size = new System.Drawing.Size(15, 19);
+            materialLabel11.TabIndex = 82;
+            materialLabel11.Text = "*";
+            materialLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
@@ -76,7 +127,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 37);
             this.panel1.TabIndex = 0;
-            //this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label1
             // 
@@ -88,7 +138,6 @@
             this.label1.Size = new System.Drawing.Size(270, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Asiganación de Ausentismo";
-            //this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // panel2
             // 
@@ -124,7 +173,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 434);
             this.panel2.TabIndex = 1;
-            //this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // textBoxDescripcion
             // 
@@ -133,7 +181,6 @@
             this.textBoxDescripcion.Name = "textBoxDescripcion";
             this.textBoxDescripcion.Size = new System.Drawing.Size(335, 72);
             this.textBoxDescripcion.TabIndex = 75;
-            //this.textBoxDescripcion.TextChanged += new System.EventHandler(this.textBoxDescripcion_TextChanged);
             // 
             // materialLabel9
             // 
@@ -147,7 +194,6 @@
             this.materialLabel9.Size = new System.Drawing.Size(89, 19);
             this.materialLabel9.TabIndex = 76;
             this.materialLabel9.Text = "Descripción";
-            //this.materialLabel9.Click += new System.EventHandler(this.materialLabel9_Click);
             // 
             // materialLabel8
             // 
@@ -161,7 +207,6 @@
             this.materialLabel8.Size = new System.Drawing.Size(155, 19);
             this.materialLabel8.TabIndex = 74;
             this.materialLabel8.Text = "Estado de Asignacion";
-            //this.materialLabel8.Click += new System.EventHandler(this.materialLabel8_Click);
             // 
             // comboBoxEstadoAsig
             // 
@@ -170,7 +215,6 @@
             this.comboBoxEstadoAsig.Name = "comboBoxEstadoAsig";
             this.comboBoxEstadoAsig.Size = new System.Drawing.Size(335, 21);
             this.comboBoxEstadoAsig.TabIndex = 73;
-            //this.comboBoxEstadoAsig.SelectedIndexChanged += new System.EventHandler(this.comboBoxEstadoAsig_SelectedIndexChanged);
             // 
             // dateTimeFechaFin
             // 
@@ -180,7 +224,6 @@
             this.dateTimeFechaFin.Name = "dateTimeFechaFin";
             this.dateTimeFechaFin.Size = new System.Drawing.Size(256, 24);
             this.dateTimeFechaFin.TabIndex = 72;
-            //this.dateTimeFechaFin.ValueChanged += new System.EventHandler(this.dateTimeFechaFin_ValueChanged);
             // 
             // label2
             // 
@@ -192,7 +235,6 @@
             this.label2.TabIndex = 71;
             this.label2.Text = "Fecha Fin";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // dateTimeFechaInicio
             // 
@@ -202,7 +244,6 @@
             this.dateTimeFechaInicio.Name = "dateTimeFechaInicio";
             this.dateTimeFechaInicio.Size = new System.Drawing.Size(256, 24);
             this.dateTimeFechaInicio.TabIndex = 70;
-            //this.dateTimeFechaInicio.ValueChanged += new System.EventHandler(this.dateTimeFechaInicio_ValueChanged);
             // 
             // label13
             // 
@@ -214,7 +255,6 @@
             this.label13.TabIndex = 69;
             this.label13.Text = "Fecha Inicio";
             this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // textBoxDepartamento
             // 
@@ -222,7 +262,6 @@
             this.textBoxDepartamento.Name = "textBoxDepartamento";
             this.textBoxDepartamento.Size = new System.Drawing.Size(335, 20);
             this.textBoxDepartamento.TabIndex = 67;
-            //this.textBoxDepartamento.TextChanged += new System.EventHandler(this.textBoxDepartamento_TextChanged);
             // 
             // materialLabel7
             // 
@@ -236,7 +275,6 @@
             this.materialLabel7.Size = new System.Drawing.Size(104, 19);
             this.materialLabel7.TabIndex = 68;
             this.materialLabel7.Text = "Departamento";
-            //this.materialLabel7.Click += new System.EventHandler(this.materialLabel7_Click);
             // 
             // materialLabel6
             // 
@@ -250,7 +288,6 @@
             this.materialLabel6.Size = new System.Drawing.Size(90, 19);
             this.materialLabel6.TabIndex = 66;
             this.materialLabel6.Text = "Ausentismo";
-            //this.materialLabel6.Click += new System.EventHandler(this.materialLabel6_Click);
             // 
             // textBoxPuesto
             // 
@@ -258,7 +295,6 @@
             this.textBoxPuesto.Name = "textBoxPuesto";
             this.textBoxPuesto.Size = new System.Drawing.Size(335, 20);
             this.textBoxPuesto.TabIndex = 64;
-            //this.textBoxPuesto.TextChanged += new System.EventHandler(this.textBoxPuesto_TextChanged);
             // 
             // materialLabel5
             // 
@@ -272,7 +308,6 @@
             this.materialLabel5.Size = new System.Drawing.Size(56, 19);
             this.materialLabel5.TabIndex = 65;
             this.materialLabel5.Text = "Puesto";
-            //this.materialLabel5.Click += new System.EventHandler(this.materialLabel5_Click);
             // 
             // textBoxApePaterno
             // 
@@ -280,7 +315,6 @@
             this.textBoxApePaterno.Name = "textBoxApePaterno";
             this.textBoxApePaterno.Size = new System.Drawing.Size(335, 20);
             this.textBoxApePaterno.TabIndex = 62;
-            //this.textBoxApePaterno.TextChanged += new System.EventHandler(this.textBoxApePaterno_TextChanged);
             // 
             // materialLabel4
             // 
@@ -294,7 +328,6 @@
             this.materialLabel4.Size = new System.Drawing.Size(72, 19);
             this.materialLabel4.TabIndex = 63;
             this.materialLabel4.Text = "Apellidos";
-            //this.materialLabel4.Click += new System.EventHandler(this.materialLabel4_Click);
             // 
             // textBoxNombre
             // 
@@ -302,7 +335,6 @@
             this.textBoxNombre.Name = "textBoxNombre";
             this.textBoxNombre.Size = new System.Drawing.Size(335, 20);
             this.textBoxNombre.TabIndex = 60;
-            //this.textBoxNombre.TextChanged += new System.EventHandler(this.textBoxNombre_TextChanged);
             // 
             // materialLabel3
             // 
@@ -316,7 +348,6 @@
             this.materialLabel3.Size = new System.Drawing.Size(81, 19);
             this.materialLabel3.TabIndex = 61;
             this.materialLabel3.Text = "Nombre(s)";
-            //this.materialLabel3.Click += new System.EventHandler(this.materialLabel3_Click);
             // 
             // textBoxNumControl
             // 
@@ -324,7 +355,7 @@
             this.textBoxNumControl.Name = "textBoxNumControl";
             this.textBoxNumControl.Size = new System.Drawing.Size(335, 20);
             this.textBoxNumControl.TabIndex = 58;
-            //this.textBoxNumControl.TextChanged += new System.EventHandler(this.textBoxNumControl_TextChanged);
+            this.textBoxNumControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxNumControl_KeyDown);
             // 
             // materialLabel2
             // 
@@ -338,7 +369,6 @@
             this.materialLabel2.Size = new System.Drawing.Size(87, 19);
             this.materialLabel2.TabIndex = 59;
             this.materialLabel2.Text = "No. Control";
-            //this.materialLabel2.Click += new System.EventHandler(this.materialLabel2_Click);
             // 
             // pictureBox1
             // 
@@ -347,7 +377,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(127, 132);
             this.pictureBox1.TabIndex = 55;
             this.pictureBox1.TabStop = false;
-            //this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // comboBoxAusentismo
             // 
@@ -356,7 +385,6 @@
             this.comboBoxAusentismo.Name = "comboBoxAusentismo";
             this.comboBoxAusentismo.Size = new System.Drawing.Size(335, 21);
             this.comboBoxAusentismo.TabIndex = 54;
-            //this.comboBoxAusentismo.SelectedIndexChanged += new System.EventHandler(this.comboBoxAusentismo_SelectedIndexChanged);
             // 
             // buttonCancelar
             // 
@@ -402,60 +430,6 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel1.ForeColor = System.Drawing.Color.Red;
-            materialLabel1.Location = new System.Drawing.Point(93, 64);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel1.Size = new System.Drawing.Size(15, 19);
-            materialLabel1.TabIndex = 80;
-            materialLabel1.Text = "*";
-            materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //materialLabel1.Click += new System.EventHandler(this.materialLabel1_Click);
-            // 
-            // materialLabel10
-            // 
-            materialLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel10.AutoSize = true;
-            materialLabel10.Depth = 0;
-            materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            materialLabel10.Location = new System.Drawing.Point(96, 267);
-            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel10.Name = "materialLabel10";
-            materialLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel10.Size = new System.Drawing.Size(15, 19);
-            materialLabel10.TabIndex = 81;
-            materialLabel10.Text = "*";
-            materialLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //materialLabel10.Click += new System.EventHandler(this.materialLabel10_Click);
-            // 
-            // materialLabel11
-            // 
-            materialLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel11.AutoSize = true;
-            materialLabel11.Depth = 0;
-            materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            materialLabel11.Location = new System.Drawing.Point(531, 266);
-            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel11.Name = "materialLabel11";
-            materialLabel11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel11.Size = new System.Drawing.Size(15, 19);
-            materialLabel11.TabIndex = 82;
-            materialLabel11.Text = "*";
-            materialLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            //materialLabel11.Click += new System.EventHandler(this.materialLabel11_Click);
             // 
             // cFMAA110010
             // 

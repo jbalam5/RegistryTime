@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    class AbsenteeismAssignmentML
+    public class AbsenteeismAssignmentML
     {
         public int Id { get; set; }
         public String controlNumber { get; set; }
