@@ -34,6 +34,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.PathFileNameTextBox = new System.Windows.Forms.TextBox();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
@@ -49,6 +53,10 @@
             this.comboBoxEscolaridad = new System.Windows.Forms.ComboBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxEstadoCivil = new System.Windows.Forms.ComboBox();
@@ -76,6 +84,9 @@
             this.textBoxNacionalidad = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.checkedListBoxTurns = new System.Windows.Forms.CheckedListBox();
             this.label15 = new System.Windows.Forms.Label();
             this.checkedListBoxDias = new System.Windows.Forms.CheckedListBox();
@@ -95,6 +106,9 @@
             this.comboBoxPuesto = new System.Windows.Forms.ComboBox();
             this.textBoxNumControl = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
             this.comboBoxRol = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -104,20 +118,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label39 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -212,6 +212,49 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(767, 357);
             this.panel3.TabIndex = 13;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label29.ForeColor = System.Drawing.Color.Red;
+            this.label29.Location = new System.Drawing.Point(87, 200);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(14, 18);
+            this.label29.TabIndex = 58;
+            this.label29.Text = "*";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label28.ForeColor = System.Drawing.Color.Red;
+            this.label28.Location = new System.Drawing.Point(68, 148);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(14, 18);
+            this.label28.TabIndex = 57;
+            this.label28.Text = "*";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label27.ForeColor = System.Drawing.Color.Red;
+            this.label27.Location = new System.Drawing.Point(76, 98);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(14, 18);
+            this.label27.TabIndex = 56;
+            this.label27.Text = "*";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(36, 51);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(14, 18);
+            this.label26.TabIndex = 55;
+            this.label26.Text = "*";
             // 
             // PathFileNameTextBox
             // 
@@ -396,6 +439,51 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(774, 291);
             this.panel4.TabIndex = 14;
+            //this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label33.ForeColor = System.Drawing.Color.Red;
+            this.label33.Location = new System.Drawing.Point(451, 94);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(14, 18);
+            this.label33.TabIndex = 62;
+            this.label33.Text = "*";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label32.ForeColor = System.Drawing.Color.Red;
+            this.label32.Location = new System.Drawing.Point(415, 1);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(14, 18);
+            this.label32.TabIndex = 61;
+            this.label32.Text = "*";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label31.ForeColor = System.Drawing.Color.Red;
+            this.label31.Location = new System.Drawing.Point(427, 48);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(14, 18);
+            this.label31.TabIndex = 60;
+            this.label31.Text = "*";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label30.ForeColor = System.Drawing.Color.Red;
+            this.label30.Location = new System.Drawing.Point(41, 142);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(14, 18);
+            this.label30.TabIndex = 59;
+            this.label30.Text = "*";
             // 
             // textBoxTelefono
             // 
@@ -658,6 +746,39 @@
             this.panel5.TabIndex = 14;
             this.panel5.TabStop = true;
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label36.ForeColor = System.Drawing.Color.Red;
+            this.label36.Location = new System.Drawing.Point(87, 98);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 18);
+            this.label36.TabIndex = 63;
+            this.label36.Text = "*";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label35.ForeColor = System.Drawing.Color.Red;
+            this.label35.Location = new System.Drawing.Point(415, 48);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(14, 18);
+            this.label35.TabIndex = 62;
+            this.label35.Text = "*";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label34.ForeColor = System.Drawing.Color.Red;
+            this.label34.Location = new System.Drawing.Point(101, 48);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(14, 18);
+            this.label34.TabIndex = 61;
+            this.label34.Text = "*";
+            // 
             // checkedListBoxTurns
             // 
             this.checkedListBoxTurns.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -756,6 +877,7 @@
             this.comboBoxDepartamento.Name = "comboBoxDepartamento";
             this.comboBoxDepartamento.Size = new System.Drawing.Size(335, 26);
             this.comboBoxDepartamento.TabIndex = 4;
+            //this.comboBoxDepartamento.SelectedIndexChanged += new System.EventHandler(this.comboBoxDepartamento_SelectedIndexChanged);
             // 
             // label14
             // 
@@ -842,6 +964,39 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Datos de Acceso";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label39.ForeColor = System.Drawing.Color.Red;
+            this.label39.Location = new System.Drawing.Point(53, 119);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(14, 18);
+            this.label39.TabIndex = 63;
+            this.label39.Text = "*";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label38.ForeColor = System.Drawing.Color.Red;
+            this.label38.Location = new System.Drawing.Point(98, 71);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(14, 18);
+            this.label38.TabIndex = 62;
+            this.label38.Text = "*";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label37.ForeColor = System.Drawing.Color.Red;
+            this.label37.Location = new System.Drawing.Point(82, 24);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(14, 18);
+            this.label37.TabIndex = 61;
+            this.label37.Text = "*";
             // 
             // comboBoxRol
             // 
@@ -944,159 +1099,6 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.ForeColor = System.Drawing.Color.Red;
-            this.label26.Location = new System.Drawing.Point(36, 51);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(14, 18);
-            this.label26.TabIndex = 55;
-            this.label26.Text = "*";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label27.ForeColor = System.Drawing.Color.Red;
-            this.label27.Location = new System.Drawing.Point(76, 98);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(14, 18);
-            this.label27.TabIndex = 56;
-            this.label27.Text = "*";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label28.ForeColor = System.Drawing.Color.Red;
-            this.label28.Location = new System.Drawing.Point(68, 148);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(14, 18);
-            this.label28.TabIndex = 57;
-            this.label28.Text = "*";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label29.ForeColor = System.Drawing.Color.Red;
-            this.label29.Location = new System.Drawing.Point(87, 200);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(14, 18);
-            this.label29.TabIndex = 58;
-            this.label29.Text = "*";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label30.ForeColor = System.Drawing.Color.Red;
-            this.label30.Location = new System.Drawing.Point(41, 142);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(14, 18);
-            this.label30.TabIndex = 59;
-            this.label30.Text = "*";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label31.ForeColor = System.Drawing.Color.Red;
-            this.label31.Location = new System.Drawing.Point(427, 48);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(14, 18);
-            this.label31.TabIndex = 60;
-            this.label31.Text = "*";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label32.ForeColor = System.Drawing.Color.Red;
-            this.label32.Location = new System.Drawing.Point(415, 1);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(14, 18);
-            this.label32.TabIndex = 61;
-            this.label32.Text = "*";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label33.ForeColor = System.Drawing.Color.Red;
-            this.label33.Location = new System.Drawing.Point(451, 94);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(14, 18);
-            this.label33.TabIndex = 62;
-            this.label33.Text = "*";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(101, 48);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(14, 18);
-            this.label34.TabIndex = 61;
-            this.label34.Text = "*";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label35.ForeColor = System.Drawing.Color.Red;
-            this.label35.Location = new System.Drawing.Point(415, 48);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(14, 18);
-            this.label35.TabIndex = 62;
-            this.label35.Text = "*";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label36.ForeColor = System.Drawing.Color.Red;
-            this.label36.Location = new System.Drawing.Point(87, 98);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(14, 18);
-            this.label36.TabIndex = 63;
-            this.label36.Text = "*";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label37.ForeColor = System.Drawing.Color.Red;
-            this.label37.Location = new System.Drawing.Point(82, 24);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(14, 18);
-            this.label37.TabIndex = 61;
-            this.label37.Text = "*";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label38.ForeColor = System.Drawing.Color.Red;
-            this.label38.Location = new System.Drawing.Point(98, 71);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(14, 18);
-            this.label38.TabIndex = 62;
-            this.label38.Text = "*";
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label39.ForeColor = System.Drawing.Color.Red;
-            this.label39.Location = new System.Drawing.Point(53, 119);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(14, 18);
-            this.label39.TabIndex = 63;
-            this.label39.Text = "*";
             // 
             // cFMEM110010
             // 

@@ -63,30 +63,23 @@ namespace RegistryTime.Forms
                     TurnML Turn = new TurnML();
                     int HoursJornada = Convert.ToInt32(textBoxHorasJornada.Text);
 
-                    if (IdTurn == 0)
-                    {
-                        Turn.Name = textBoxTurno.Text;
-                        Turn.Description = textBoxDescripcion.Text;
-                        Turn.TimeEntry = dateTimeHoraEntrada.Value.ToLongTimeString();
-                        Turn.StartEntry = dateTimeIniciaEntrada.Value.ToLongTimeString();
-                        Turn.LimitEntry = dateTimeLimiteEntrada.Value.ToLongTimeString();
-                        Turn.Departuretime = dateTimeHoraSalida.Value.ToLongTimeString();
-                        Turn.LimitDeparture = dateTimeLimiteSalida.Value.ToLongTimeString();
-                        Turn.HoursJornada = HoursJornada;
+                    Turn.Name = textBoxTurno.Text;
+                    Turn.Description = textBoxDescripcion.Text;
+                    Turn.TimeEntry = dateTimeHoraEntrada.Value;
+                    Turn.StartEntry = dateTimeIniciaEntrada.Value;
+                    Turn.LimitEntry = dateTimeLimiteEntrada.Value;
+                    Turn.Departuretime = dateTimeHoraSalida.Value;
+                    Turn.LimitDeparture = dateTimeLimiteSalida.Value;
+                    Turn.HoursJornada = HoursJornada;
 
+                    if (IdTurn > 0)
+                    {
+                        Turn.Id = IdTurn;
+                        Turn.IdUserUpdate = GlobalBLL.userML.Id; ;
                     }
                     else
                     {
-                        Turn.Id = IdTurn;
-                        Turn.Name = textBoxTurno.Text;
-                        Turn.Description = textBoxDescripcion.Text;
-                        Turn.TimeEntry = dateTimeHoraEntrada.Value.ToLongTimeString();
-                        Turn.StartEntry = dateTimeIniciaEntrada.Value.ToLongTimeString();
-                        Turn.LimitEntry = dateTimeLimiteEntrada.Value.ToLongTimeString();
-                        Turn.Departuretime = dateTimeHoraSalida.Value.ToLongTimeString();
-                        Turn.LimitDeparture = dateTimeLimiteSalida.Value.ToLongTimeString();
-                        Turn.HoursJornada = HoursJornada;
-                        Turn.IdUserUpdate = 1;
+                        Turn.IdUserInsert = GlobalBLL.userML.Id;
                     }
                     TurnBLL.Save(Turn);
 
@@ -114,6 +107,17 @@ namespace RegistryTime.Forms
         {
             tabControl1.Width = this.Width - 50;
             tabControl1.Height = this.Height - 180;
-        }       
+        }
+
+        private void dateTimeHoraEntrada_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimeIniciaEntrada.Value = dateTimeHoraEntrada.Value;
+            dateTimeLimiteEntrada.Value = dateTimeHoraEntrada.Value;
+        }
+
+        private void dateTimeHoraSalida_ValueChanged(object sender, EventArgs e)
+        {       
+            dateTimeLimiteSalida.Value = dateTimeHoraSalida.Value;
+        }
     }
 }

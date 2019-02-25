@@ -185,7 +185,8 @@
             // 
             // dateTimeLimiteSalida
             // 
-            this.dateTimeLimiteSalida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeLimiteSalida.CustomFormat = "HH:mm: ss";
+            this.dateTimeLimiteSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeLimiteSalida.Location = new System.Drawing.Point(283, 225);
             this.dateTimeLimiteSalida.Name = "dateTimeLimiteSalida";
             this.dateTimeLimiteSalida.ShowUpDown = true;
@@ -195,17 +196,20 @@
             // 
             // dateTimeHoraSalida
             // 
-            this.dateTimeHoraSalida.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeHoraSalida.CustomFormat = "HH:mm: ss";
+            this.dateTimeHoraSalida.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeHoraSalida.Location = new System.Drawing.Point(89, 225);
             this.dateTimeHoraSalida.Name = "dateTimeHoraSalida";
             this.dateTimeHoraSalida.ShowUpDown = true;
             this.dateTimeHoraSalida.Size = new System.Drawing.Size(125, 24);
             this.dateTimeHoraSalida.TabIndex = 76;
             this.dateTimeHoraSalida.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            this.dateTimeHoraSalida.ValueChanged += new System.EventHandler(this.dateTimeHoraSalida_ValueChanged);
             // 
             // dateTimeLimiteEntrada
             // 
-            this.dateTimeLimiteEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeLimiteEntrada.CustomFormat = "HH:mm: ss";
+            this.dateTimeLimiteEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeLimiteEntrada.Location = new System.Drawing.Point(475, 148);
             this.dateTimeLimiteEntrada.Name = "dateTimeLimiteEntrada";
             this.dateTimeLimiteEntrada.ShowUpDown = true;
@@ -215,8 +219,8 @@
             // 
             // dateTimeIniciaEntrada
             // 
-            this.dateTimeIniciaEntrada.CustomFormat = "HH:mm:ss";
-            this.dateTimeIniciaEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeIniciaEntrada.CustomFormat = "HH:mm: ss";
+            this.dateTimeIniciaEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimeIniciaEntrada.Location = new System.Drawing.Point(283, 148);
             this.dateTimeIniciaEntrada.Name = "dateTimeIniciaEntrada";
             this.dateTimeIniciaEntrada.ShowUpDown = true;
@@ -226,14 +230,16 @@
             // 
             // dateTimeHoraEntrada
             // 
-            this.dateTimeHoraEntrada.CustomFormat = "HH: mm: ss";
-            this.dateTimeHoraEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimeHoraEntrada.CustomFormat = "HH:mm: ss";
+            this.dateTimeHoraEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+
             this.dateTimeHoraEntrada.Location = new System.Drawing.Point(89, 148);
             this.dateTimeHoraEntrada.Name = "dateTimeHoraEntrada";
             this.dateTimeHoraEntrada.ShowUpDown = true;
             this.dateTimeHoraEntrada.Size = new System.Drawing.Size(125, 24);
             this.dateTimeHoraEntrada.TabIndex = 71;
             this.dateTimeHoraEntrada.Value = new System.DateTime(2019, 2, 4, 0, 0, 0, 0);
+            this.dateTimeHoraEntrada.ValueChanged += new System.EventHandler(this.dateTimeHoraEntrada_ValueChanged);
             // 
             // materialLabel11
             // 

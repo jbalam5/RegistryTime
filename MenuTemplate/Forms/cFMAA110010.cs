@@ -24,7 +24,8 @@ namespace RegistryTime.Forms
 
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-
+            LoadAbsenteissm();
+            LoadStatus();
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -94,6 +95,61 @@ namespace RegistryTime.Forms
             textBoxPuesto.Width = this.Width - 150;
             textBoxDescripcion.Width = this.Width - 150;
             textBoxDescripcion.Width = this.Width - 150;
+        }
+
+        private void textBoxNumControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+            {
+                MessageBox.Show("Hola");
+            }
+        }
+
+        public void LoadAbsenteissm()
+        {
+            try
+            {
+                AbsenteeismBLL AbsenteeismBLL = new AbsenteeismBLL();
+                DataTable Conceptos;
+                Conceptos = AbsenteeismBLL.All();
+                comboBoxAusentismo.DisplayMember = "Text";
+                comboBoxAusentismo.ValueMember = "Value";
+
+                List<Object> items = new List<object>();
+                items.Add(new { Text = "Seleccione una opción", Value = "0" });
+                foreach (DataRow Concepto in Conceptos.Rows)
+                {
+                    items.Add(new { Text = Concepto[1].ToString(), Value = Concepto[0].ToString() });
+                }
+                comboBoxAusentismo.DataSource = items;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadAbsenteissm: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void LoadStatus()
+        {
+            try
+            {
+
+                comboBoxEstadoAsig.DisplayMember = "Text";
+                comboBoxEstadoAsig.ValueMember = "Value";
+
+                var items = new[] {
+                    new { Text = "Seleccione una opción", Value = "" },
+                    new { Text = "Aceptada", Value = "aceptada" },
+                    new { Text = "Rechazada", Value = "rechazada" }
+                };
+
+                comboBoxEstadoAsig.DataSource = items;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadStatus: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
