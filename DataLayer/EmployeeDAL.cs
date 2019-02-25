@@ -13,9 +13,12 @@ namespace DataLayer
     {
         public String core = "DataLayer.EmployeeDAL";
         public String TableName = "employee";
+        public int IdUserSession = 0;
+        public String ConnectionString = String.Empty;
 
-       
-        public DataTable All(String ConnectionString)
+
+
+        public DataTable All()
         {
             try
             {
@@ -38,7 +41,7 @@ namespace DataLayer
 
         }
 
-        public EmployeeML GetIdEntity(int id, String ConnectionString)
+        public EmployeeML GetIdEntity(int id)
         {
             try
             {
@@ -65,7 +68,7 @@ namespace DataLayer
             }
         }
 
-        public EmployeeML GetEmploymentByIdUser(int id, String ConnectionString)
+        public EmployeeML GetEmploymentByIdUser(int id)
         {
             try
             {
@@ -93,7 +96,7 @@ namespace DataLayer
             }
         }
 
-        public EmployeeML GetEntityByNoControl(int NoControl, string ConnectionString)
+        public EmployeeML GetEntityByNoControl(int NoControl)
         {
             try
             {
@@ -164,52 +167,20 @@ namespace DataLayer
             }
         }
 
-        public int Save(EmployeeML employee, String ConnectionString)
+        public int Save(EmployeeML employee)
         {
             try
             {
                 
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( rfc,curp,name,lastname,scholarship,birthdate,gender,nationality,address,municipality,country," +
-                    "email,telephone,civilStatus,postalCode,colony,stateCountry,controlNumber,admissionDate,sureType,numberSure,salary,idJob,idDepartament,idUser,_registry,idUserInsert,dateInsert)");
-                Query.AppendLine("VALUES(");
-                Query.AppendFormat(" '{0}',", employee.RFC);
-                Query.AppendFormat(" '{0}',", employee.Curp);
-                Query.AppendFormat(" '{0}',", employee.Name);
-                Query.AppendFormat(" '{0}',", employee.LastName);
-                Query.AppendFormat(" '{0}',", employee.Scholarship);
-                Query.AppendFormat(" '{0}',", employee.Birthdate.ToString("yyyy-MM-dd"));
-                Query.AppendFormat(" '{0}',", employee.Gender);
-                Query.AppendFormat(" '{0}',", employee.Nationality);
-                Query.AppendFormat(" '{0}',", employee.Address);
-                Query.AppendFormat(" '{0}',", employee.Municipality);
-                Query.AppendFormat(" '{0}',", employee.Country);
-                Query.AppendFormat(" '{0}',", employee.Email);
-                Query.AppendFormat(" '{0}',", employee.Telephone);
-                Query.AppendFormat(" '{0}',", employee.CivilStatus);
-                Query.AppendFormat(" {0},", employee.PostalCode);
-                Query.AppendFormat(" '{0}',", employee.Colony);
-                Query.AppendFormat(" '{0}',", employee.StateCountry);
-                Query.AppendFormat(" '{0}',", employee.ControlNumber);
-                Query.AppendFormat(" '{0}',", employee.AdmissionDate.ToString("yyyy-MM-dd"));
-                Query.AppendFormat(" '{0}',", employee.SureType);
-                Query.AppendFormat(" '{0}',", employee.NumberSure);
-                Query.AppendFormat(" {0},", employee.Salary);
-                Query.AppendFormat(" {0},", employee.IdJob);
-                Query.AppendFormat(" {0},", employee.IdDepartament);
-                Query.AppendFormat(" {0},", employee.IdUser);
-                Query.AppendLine(" 1,");
-                Query.AppendFormat(" {0},", employee.IdUserInsert);
-                Query.AppendLine(" GETDATE()");
-                Query.AppendLine(")");
-                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(employee, TableName, IdUserSession);
+                
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 
-                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
                 {
                     Conexion.Open();
                     int newID = (Int32)cmd2.ExecuteScalar();
@@ -245,53 +216,20 @@ namespace DataLayer
             }
         }
 
-        public int Update(EmployeeML employee, String ConnectionString)
+        public int Update(EmployeeML Employee)
         {
             try
             {
-                
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat(" rfc = '{0}',", employee.RFC);
-                Query.AppendFormat(" curp = '{0}',", employee.Curp);
-                Query.AppendFormat(" name = '{0}',", employee.Name);
-                Query.AppendFormat(" lastname = '{0}',", employee.LastName);
-                Query.AppendFormat(" scholarship = '{0}',", employee.Scholarship);
-                Query.AppendFormat(" birthdate='{0}',", employee.Birthdate.ToString("yyyy-MM-dd"));
-                Query.AppendFormat(" gender= '{0}',", employee.Gender);
-                Query.AppendFormat(" nationality = '{0}',", employee.Nationality);
-                Query.AppendFormat(" address='{0}',", employee.Address);
-                Query.AppendFormat(" municipality = '{0}',", employee.Municipality);
-                Query.AppendFormat(" country = '{0}',", employee.Country);
-                Query.AppendFormat(" email = '{0}',", employee.Email);
-                Query.AppendFormat(" telephone = '{0}',", employee.Telephone);
-                Query.AppendFormat(" civilStatus = '{0}',", employee.CivilStatus);
-                Query.AppendFormat(" postalCode = {0},", employee.PostalCode);
-                Query.AppendFormat(" colony= '{0}',", employee.Colony);
-                Query.AppendFormat(" stateCountry = '{0}',", employee.StateCountry);
-                Query.AppendFormat(" controlNumber = '{0}',", employee.ControlNumber);
-                Query.AppendFormat(" admissionDate = '{0}',", employee.AdmissionDate.ToString("yyyy-MM-dd"));
-                Query.AppendFormat(" sureType = '{0}',", employee.SureType);
-                Query.AppendFormat(" numberSure = '{0}',", employee.NumberSure);
-                Query.AppendFormat(" salary = '{0}',", employee.Salary);
-                Query.AppendFormat(" idJob = {0},", employee.IdJob);
-                Query.AppendFormat(" idDepartament = {0},", employee.IdDepartament);
-                Query.AppendFormat(" idUser = {0},", employee.IdUser);
-                Query.AppendFormat(" idUserUpdate = {0},", employee.IdUserUpdate);
-                Query.AppendLine(" dateUpdate = GETDATE()");
-                Query.AppendFormat(" WHERE id={0}", employee.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(Employee, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
-                return employee.Id;
-
-
+                return Employee.Id;
             }
             catch (Exception ex)
             {
@@ -299,11 +237,10 @@ namespace DataLayer
             }
         }
 
-        public int Delete(EmployeeML employee, String ConnectionString)
+        public int Delete(EmployeeML employee)
         {
             try
             {
-                
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
@@ -311,7 +248,6 @@ namespace DataLayer
                 Query.AppendFormat(" idUserDelete = {0},", employee.IdUserDelete);
                 Query.AppendLine(" dateDelete = GETDATE()");
                 Query.AppendFormat(" WHERE id={0}", employee.Id);
-
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
@@ -319,7 +255,6 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 return cmd2.ExecuteNonQuery();
-                
             }
             catch (Exception ex)
             {

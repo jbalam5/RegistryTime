@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.jobDAL";
         public String TableName = "job";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -23,7 +25,6 @@ namespace DataLayer
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                //String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
                 String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Puesto,{0}.[Description] as Descripcion FROM {0} where {0}._registry = 1", TableName);
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
@@ -38,7 +39,30 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public DataTable AllTable()
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                String Query = String.Format("SELECT * FROM {0} where {0}._registry = 1", TableName);
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+                return dtDepartamentos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.All : {1}", core, ex));
+            }
+
+        }
+
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -61,21 +85,24 @@ namespace DataLayer
             }
         }
 
-        public int Save(JobML job, String ConnectionString)
+        public int Save(JobML Job)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( name,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}',1,{2},GETDATE())", job.Name, job.Description, job.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(Job, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
             }
             catch (Exception ex)
             {
@@ -84,7 +111,7 @@ namespace DataLayer
 
         }
 
-        public int Update(JobML job, String ConnectionString)
+        public int Update(JobML job)
         {
             try
             {
@@ -113,7 +140,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(JobML job, String ConnectionString)
+        public int Delete(JobML job)
         {
             try
             {

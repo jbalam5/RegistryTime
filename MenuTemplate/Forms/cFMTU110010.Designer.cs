@@ -81,7 +81,7 @@
             materialLabel7.AutoSize = true;
             materialLabel7.Depth = 0;
             materialLabel7.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel7.ForeColor = System.Drawing.Color.Red;
+            materialLabel7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             materialLabel7.Location = new System.Drawing.Point(45, 4);
             materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
@@ -215,7 +215,7 @@
             // 
             // dateTimeIniciaEntrada
             // 
-            this.dateTimeIniciaEntrada.CustomFormat = "";
+            this.dateTimeIniciaEntrada.CustomFormat = "HH:mm:ss";
             this.dateTimeIniciaEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimeIniciaEntrada.Location = new System.Drawing.Point(283, 148);
             this.dateTimeIniciaEntrada.Name = "dateTimeIniciaEntrada";
@@ -226,7 +226,7 @@
             // 
             // dateTimeHoraEntrada
             // 
-            this.dateTimeHoraEntrada.CustomFormat = "hh: mm: ss";
+            this.dateTimeHoraEntrada.CustomFormat = "HH: mm: ss";
             this.dateTimeHoraEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dateTimeHoraEntrada.Location = new System.Drawing.Point(89, 148);
             this.dateTimeHoraEntrada.Name = "dateTimeHoraEntrada";

@@ -19,15 +19,15 @@ namespace BussinesLayer
 
         public RoleBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            RoleDAL.ConnectionString = conexion.ConnectionStrings();
+            RoleDAL.IdUserSession = (GlobalBLL.userML != null) ? GlobalBLL.userML.Id : 0;
         }
 
         public DataTable All()
         {
             try
             {
-                return RoleDAL.All(ConnectionStrings);
-
+                return RoleDAL.All();
             }
             catch (Exception ex)
             {
@@ -39,8 +39,7 @@ namespace BussinesLayer
         {
             try
             {
-
-                return RoleDAL.GetIdEntity(Id, ConnectionStrings);
+                return RoleDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +53,11 @@ namespace BussinesLayer
             {
                 if (Role.Id == 0)
                 {
-                    return RoleDAL.Save(Role, ConnectionStrings);
+                    return RoleDAL.Save(Role);
                 }
                 else
                 {
-                    return RoleDAL.Update(Role, ConnectionStrings);
+                    return RoleDAL.Update(Role);
                 }
             }
             catch (Exception ex)
@@ -71,7 +70,7 @@ namespace BussinesLayer
         {
             try
             {
-                return RoleDAL.Delete(Role, ConnectionStrings);
+                return RoleDAL.Delete(Role);
             }
             catch (Exception ex)
             {

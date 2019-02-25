@@ -20,13 +20,16 @@ namespace BussinesLayer
         public DaysOfWorkEmployeeBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            DaysOfWorkEmployeeDAL.ConnectionString = conexion.ConnectionStrings();
+            DaysOfWorkEmployeeDAL.IdUserSession = GlobalBLL.userML.Id;            
+
         }
 
         public DataTable All()
         {
             try
             {
-                return DaysOfWorkEmployeeDAL.All(ConnectionStrings);
+                return DaysOfWorkEmployeeDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +43,7 @@ namespace BussinesLayer
             try
             {
 
-                return DaysOfWorkEmployeeDAL.GetIdEntity(Id, ConnectionStrings);
+                return DaysOfWorkEmployeeDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -53,7 +56,7 @@ namespace BussinesLayer
             try
             {
 
-                return DaysOfWorkEmployeeDAL.GetAllEntitys(Id, ConnectionStrings);
+                return DaysOfWorkEmployeeDAL.GetAllEntitys(Id);
             }
             catch (Exception ex)
             {
@@ -67,11 +70,11 @@ namespace BussinesLayer
             {
                 if (DaysOfWorkEmployee.Id == 0)
                 {
-                    return DaysOfWorkEmployeeDAL.Save(DaysOfWorkEmployee, ConnectionStrings);
+                    return DaysOfWorkEmployeeDAL.Save(DaysOfWorkEmployee);
                 }
                 else
                 {
-                    return DaysOfWorkEmployeeDAL.Update(DaysOfWorkEmployee, ConnectionStrings);
+                    return DaysOfWorkEmployeeDAL.Update(DaysOfWorkEmployee);
                 }
             }
             catch (Exception ex)
@@ -84,7 +87,7 @@ namespace BussinesLayer
         {
             try
             {
-                return DaysOfWorkEmployeeDAL.Delete(DaysOfWorkEmployee, ConnectionStrings);
+                return DaysOfWorkEmployeeDAL.Delete(DaysOfWorkEmployee);
             }
             catch (Exception ex)
             {
@@ -96,7 +99,7 @@ namespace BussinesLayer
         {
             try
             {
-                DaysOfWorkEmployeeDAL.DeleteRegistrys(IdEmployee, ConnectionStrings);
+                DaysOfWorkEmployeeDAL.DeleteRegistrys(IdEmployee);
             }
             catch (Exception ex)
             {

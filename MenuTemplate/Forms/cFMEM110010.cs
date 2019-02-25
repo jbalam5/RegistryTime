@@ -513,7 +513,7 @@ namespace RegistryTime.Forms
             {
                 DepartamentBLL DepartamentBLL = new DepartamentBLL();
                 DataTable Departamentos;
-                Departamentos = DepartamentBLL.All();
+                Departamentos = DepartamentBLL.All("All");
                 comboBoxDepartamento.DisplayMember = "Text";
                 comboBoxDepartamento.ValueMember = "Value";
 
@@ -521,7 +521,7 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Depatamento in Departamentos.Rows)
                 {
-                    items.Add(new { Text = Depatamento[1].ToString(), Value = Depatamento[0].ToString() });
+                    items.Add(new { Text = Depatamento[DepartamentML.DataBase.Name].ToString(), Value = Depatamento[DepartamentML.DataBase.Id].ToString() });
                 }
                 comboBoxDepartamento.DataSource = items;
             }
@@ -537,7 +537,7 @@ namespace RegistryTime.Forms
             {
                 JobBLL JobBLL = new JobBLL();
                 DataTable Jobs;
-                Jobs = JobBLL.All();
+                Jobs = JobBLL.All("All");
                 comboBoxPuesto.DisplayMember = "Text";
                 comboBoxPuesto.ValueMember = "Value";
 
@@ -545,11 +545,9 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Job in Jobs.Rows)
                 {
-                    items.Add(new { Text = Job[1].ToString(), Value = Job[0].ToString() });
+                    items.Add(new { Text = Job[JobML.DataBase.Name].ToString(), Value = Job[JobML.DataBase.Id].ToString() });
                 }
-
                 comboBoxPuesto.DataSource = items;
-
             }
             catch (Exception ex)
             {
@@ -571,7 +569,7 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Rol in Roles.Rows)
                 {
-                    items.Add(new { Text = Rol[1].ToString(), Value = Rol[0].ToString() });
+                    items.Add(new { Text = Rol[RoleML.DataBase.Name].ToString(), Value = Rol[RoleML.DataBase.Id].ToString() });
                 }
                 comboBoxRol.DataSource = items;
             }
@@ -593,7 +591,7 @@ namespace RegistryTime.Forms
                 checkedListBoxDias.ValueMember = "Value";
                 foreach (DataRow Day in Days.Rows)
                 {
-                    checkedListBoxDias.Items.Add(new { Text = Day[1].ToString(), Value = Day[0].ToString() }, false);
+                    checkedListBoxDias.Items.Add(new { Text = Day[DaysML.DataBase.Name].ToString(), Value = Day[DaysML.DataBase.Id].ToString() }, false);
                 }
             }
             catch (Exception ex)
@@ -657,4 +655,5 @@ namespace RegistryTime.Forms
         }
     }
 }
+
 

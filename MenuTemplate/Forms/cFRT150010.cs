@@ -113,7 +113,7 @@ namespace RegistryTime.Forms
 
             }catch(Exception ex)
             {
-                MessageBox.Show(String.Format("OkButton_Click: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("OkButton_Click: {0}", ex), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

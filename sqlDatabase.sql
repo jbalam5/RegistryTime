@@ -1,49 +1,46 @@
 
 create table users(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
 id int primary key identity(1,1) not null,
 userName nvarchar(25) not null,
 password nvarchar(25) not null,
 rol int not null,
-image nvarchar(max),
-_registry int,
-idUserInsert int,
-dateInsert datetime,
-idUserUpdate int, 
-dateUpdate datetime,
-idUserDelete int,
-dateDelete datetime
+image nvarchar(max)
 )
 
 create table statusBook(
-id int primary key identity(1,1) not null,
-name nvarchar(25) not null,
-type nvarchar(25) not null,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
-)
-
-INSERT INTO [dbo].[statusBook]([name],[type][_registry],[dateInsert]) VALUES('Activo','Dato',1,getDate())
-INSERT INTO [dbo].[statusBook]([name],[type],[_registry],[dateInsert]) VALUES('Inactivo','Dato',1,getDate())
-           
---insert into [dbo].[users]([userName],[password],[rol],[_registry],[dateInsert]) values('ADMIN','ADMIN',1,1,getDate())
---insert into [dbo].[users]([userName], [password], [rol],[_registry],[dateInsert]) values('INVITADO','INVITADO',2,1,getDate())
-
-create table role(
+dateDelete datetime,
 id int primary key identity(1,1) not null,
 name nvarchar(25) not null,
-description nvarchar(max),
+type nvarchar(25) not null
+)
+
+INSERT INTO [dbo].[statusBook]([name],[type],[_registry],[dateInsert]) VALUES('Activo','Dato',1,getDate())
+INSERT INTO [dbo].[statusBook]([name],[type],[_registry],[dateInsert]) VALUES('Inactivo','Dato',1,getDate())
+           
+create table role(
 _registry int,
 idUserinsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(25) not null,
+description nvarchar(max)
 )
 
 INSERT INTO [dbo].[role]([name],[description],[_registry]) VALUES('ADMIN','USUARIO PARA CONFIGURACION',1)
@@ -51,34 +48,41 @@ INSERT INTO [dbo].[role]([name],[description],[_registry]) VALUES('CAPTURA','USU
 
 
 create table job (
-id int primary key identity(1,1) not null,
-name nvarchar(50) not null,
-description nvarchar(250),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(50) not null,
+description nvarchar(250)
 )
 
 create table departament (
-id int primary key identity(1,1) not null,
-name nvarchar(50) not null,
-manager nvarchar(50) not null,
-description nvarchar(250),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(50) not null,
+manager nvarchar(50) not null,
+description nvarchar(250)
 )
 
 
 create table employee(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
 id int primary key identity(1,1) not null,
 rfc nvarchar(25),
 curp nvarchar(25),
@@ -91,27 +95,20 @@ nationality nvarchar(25) null,
 address nvarchar(100) null,
 municipality nvarchar(100) null,
 country nvarchar(50) null,
-admissionDate date null,
 email nvarchar(50) null,
 telephone nvarchar(25) null,
 civilStatus  nvarchar(20) null,
+postalCode int null,
 colony nvarchar(50) null,
 stateCountry nvarchar(50) null,
-postalCode int null,
 controlNumber nvarchar(max),
+idDepartament int not null,
 sureType nvarchar(25) null,
 numberSure nvarchar(25) null,
-salary decimal(10,2) null,
+admissionDate date null,
 idJob int not null,
-idDepartament int not null,
+salary decimal(10,2) null,
 idUser int not null,
-_registry int,
-idUserInsert int,
-dateInsert datetime,
-idUserUpdate int, 
-dateUpdate datetime,
-idUserDelete int,
-dateDelete datetime,
 CONSTRAINT FK_employee_idUser FOREIGN KEY (idUser)     
     REFERENCES users (id)     
     ON DELETE NO ACTION    
@@ -178,15 +175,15 @@ dateDelete datetime
 )
 
 create table days(
-id int primary key identity(1,1) not null,
-name nvarchar(10),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(10),
 )
 
 insert into days(name,_registry) values('Lunes',1)
@@ -198,9 +195,6 @@ insert into days(name,_registry) values('Sabado',1)
 insert into days(name,_registry) values('Domingo',1)
 
 create table daysOfTurn(
-id int primary key identity(1,1) not null,
-idDays int,
-idTurn int,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -208,6 +202,9 @@ idUserUpdate int,
 dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime,
+id int primary key identity(1,1) not null,
+idDays int,
+idTurn int,
 CONSTRAINT FK_daysOfTurn_idTurn FOREIGN KEY (idTurn)     
     REFERENCES turn(id)     
     ON DELETE NO ACTION    
@@ -219,9 +216,6 @@ CONSTRAINT FK_daysOfTurn_idDays FOREIGN KEY (idDays)
 )
 
 create table daysOfWorkEmployee(
-id int primary key identity(1,1) not null,
-idDays int,
-idEmployee int,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -229,6 +223,9 @@ idUserUpdate int,
 dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime,
+id int primary key identity(1,1) not null,
+idDays int,
+idEmployee int,
 CONSTRAINT FK_daysOfWorkEmployee_idEmployee FOREIGN KEY (idEmployee)     
     REFERENCES employee(id)     
     ON DELETE NO ACTION    
@@ -240,10 +237,6 @@ CONSTRAINT FK_daysOfWorkEmployee_idDays FOREIGN KEY (idDays)
 )
 
 create table turnsOfEmployee(
-id int primary key identity(1,1) not null,
-idTurn int,
-idEmployee int,
-observation nvarchar(max),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -251,6 +244,10 @@ idUserUpdate int,
 dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime,
+id int primary key identity(1,1) not null,
+idTurn int,
+idEmployee int,
+observation nvarchar(max),
 CONSTRAINT FK_turnsOfEmployee_idTurn FOREIGN KEY (idTurn)     
     REFERENCES turn(id)     
     ON DELETE NO ACTION    
@@ -334,10 +331,6 @@ dateDelete datetime
 )
 
 create table checkInHours(
-id int primary key identity(1,1) not null,
-date datetime not null,
-idEmployee int not null,
-type nvarchar(10),
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -345,6 +338,10 @@ idUserUpdate int,
 dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime,
+id int primary key identity(1,1) not null,
+date datetime not null,
+idEmployee int not null,
+type nvarchar(10),
 CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)     
     REFERENCES users(id)     
     ON DELETE NO ACTION    
@@ -364,7 +361,6 @@ idUserDelete int,
 dateDelete datetime
 );
 
-convert(bit, true)
 create table ReaderConnection(
 id int primary key identity(1,1) not null,
 name varchar(50) not null,

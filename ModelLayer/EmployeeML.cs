@@ -10,6 +10,13 @@ namespace ModelLayer
     {
         public class DataBase
         {
+            public const string _registry = "_registry";
+            public const string IdUserInsert = "idUserInsert";
+            public const string DateInsert = "dateInsert";
+            public const string IdUserUpdate = "idUserUpdate";
+            public const string DateUpdate = "dateUpdate";
+            public const string IdUserDelete = "idUserDelete";
+            public const string DateDelete = "dateDelete";
             public const string Id = "id";
             public const string Rfc = "rfc";
             public const string Curp = "curp";
@@ -22,6 +29,7 @@ namespace ModelLayer
             public const string Address = "address";
             public const string Municipality = "municipality";
             public const string Country = "country";
+            public const string AdmissionDate = "admissionDate";
             public const string Email = "email";
             public const string Telephone = "telephone";
             public const string CivilStatus = "civilStatus";
@@ -29,22 +37,24 @@ namespace ModelLayer
             public const string StateCountry = "stateCountry";
             public const string PostalCode = "postalCode";
             public const string ControlNumber = "controlNumber";
-            public const string AdmissionDate = "admissionDate";
             public const string SureType = "sureType";
             public const string NumberSure = "numberSure";
             public const string Salary = "salary";
             public const string IdJob = "idJob";
             public const string IdDepartament = "idDepartament";
             public const string IdUser = "idUser";
-            public const string IdUserInsert = "idUserInsert";
-            public const string DateInsert = "dateInsert";
-            public const string IdUserUpdate = "idUserUpdate";
-            public const string DateUpdate = "dateUpdate";
-            public const string IdUserDelete = "idUserDelete";
-            public const string DateDelete = "dateDelete";
         }
 
-    public int Id { get; set; }
+
+
+        public int _registry { get; set; }
+        public int IdUserInsert { get; set; }
+        public DateTime DateInsert { get; set; }
+        public int IdUserUpdate { get; set; }
+        public DateTime DateUpdate { get; set; }
+        public int IdUserDelete { get; set; }
+        public DateTime DateDelete { get; set; }
+        public int Id { get; set; }
         public String RFC { get; set; } 
         public String Curp { get; set; }
         public String Name { get; set; }
@@ -55,27 +65,21 @@ namespace ModelLayer
         public String Nationality { get; set; }
         public String Address { get; set; }
         public String Municipality { get; set; }
-        public String Colony { get; set; }
         public String Country { get; set; }
         public String Email { get; set; }
         public String Telephone { get; set; }
         public String CivilStatus { get; set; }
-        public String StateCountry { get; set; }
         public int PostalCode { get; set; }
+        public String Colony { get; set; }
+        public String StateCountry { get; set; }
         public String ControlNumber { get; set; }
-        public DateTime AdmissionDate { get; set; }
+        public int IdDepartament { get; set; }
         public String SureType { get; set; }
         public String NumberSure { get; set; }
-        public decimal Salary { get; set; }
+        public DateTime AdmissionDate { get; set; }
         public int IdJob { get; set; }
-        public int IdDepartament { get; set; }
+        public decimal Salary { get; set; }
         public int IdUser { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
+        
     }
 }

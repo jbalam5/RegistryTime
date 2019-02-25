@@ -17,16 +17,19 @@ namespace BussinesLayer
         public String ConnectionStrings;
         public String core = "BussinesLayer.DaysOfTurnBLL";
 
+
         public DaysOfTurnBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            DaysOfTurnDAL.ConnectionString = conexion.ConnectionStrings();
+            DaysOfTurnDAL.IdUserSession = GlobalBLL.userML.Id;
         }
 
         public DataTable All()
         {
             try
             {
-                return DaysOfTurnDAL.All(ConnectionStrings);
+                return DaysOfTurnDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +43,7 @@ namespace BussinesLayer
             try
             {
 
-                return DaysOfTurnDAL.GetIdEntity(Id, ConnectionStrings);
+                return DaysOfTurnDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +57,11 @@ namespace BussinesLayer
             {
                 if (daysOfTurn.Id == 0)
                 {
-                    return DaysOfTurnDAL.Save(daysOfTurn, ConnectionStrings);
+                    return DaysOfTurnDAL.Save(daysOfTurn);
                 }
                 else
                 {
-                    return DaysOfTurnDAL.Update(daysOfTurn, ConnectionStrings);
+                    return DaysOfTurnDAL.Update(daysOfTurn);
                 }
             }
             catch (Exception ex)
@@ -71,7 +74,7 @@ namespace BussinesLayer
         {
             try
             {
-                return DaysOfTurnDAL.Delete(daysOfTurn, ConnectionStrings);
+                return DaysOfTurnDAL.Delete(daysOfTurn);
             }
             catch (Exception ex)
             {
