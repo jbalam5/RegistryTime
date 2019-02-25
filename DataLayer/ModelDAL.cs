@@ -134,6 +134,11 @@ namespace DataLayer
                         {
                             Query.AppendFormat(" {0}='{1}', ", PropertyModel.Name.ToString(), DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss "));
                         }
+                        else
+                        {
+                            DateTime date = Convert.ToDateTime(PropertyModel.GetValue(ObjectModel).ToString());
+                            Query.AppendFormat(" {0}='{1}',", PropertyModel.Name.ToString(), date.ToString("yyyy-MM-dd hh:mm:ss"));
+                        }
                     }
                 }
                 else

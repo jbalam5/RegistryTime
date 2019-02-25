@@ -19,14 +19,15 @@ namespace BussinesLayer
 
         public TurnBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            TurnDAL.ConnectionString = conexion.ConnectionStrings();
+            TurnDAL.IdUserSession = GlobalBLL.userML.Id;
         }
 
         public DataTable All()
         {
             try
             {
-                return TurnDAL.All(ConnectionStrings);
+                return TurnDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +41,7 @@ namespace BussinesLayer
             try
             {
 
-                return TurnDAL.GetIdEntity(Id, ConnectionStrings);
+                return TurnDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -48,17 +49,17 @@ namespace BussinesLayer
             }
         }
 
-        public int Save(TurnML turn )
+        public int Save(TurnML Turn )
         {
             try
             {
-                if (turn.Id == 0)
+                if (Turn.Id == 0)
                 {
-                    return TurnDAL.Save(turn, ConnectionStrings);
+                    return TurnDAL.Save(Turn);
                 }
                 else
                 {
-                    return TurnDAL.Update(turn, ConnectionStrings);
+                    return TurnDAL.Update(Turn);
                 }
             }
             catch (Exception ex)
@@ -71,7 +72,7 @@ namespace BussinesLayer
         {
             try
             {
-                return TurnDAL.Delete(turn, ConnectionStrings);
+                return TurnDAL.Delete(turn);
             }
             catch (Exception ex)
             {

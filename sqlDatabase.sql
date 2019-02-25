@@ -156,22 +156,22 @@ dateDelete datetime
 )
 
 create table turn(
-id int primary key identity(1,1) not null,
-name nvarchar(50) not null,
-Description nvarchar(250),
-TimeEntry time not null,
-StartEntry time,
-LimitEntry time,
-Departuretime time not null,
-LimitDeparture time,
-HoursJornada int,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
 idUserUpdate int, 
 dateUpdate datetime,
 idUserDelete int,
-dateDelete datetime
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(50) not null,
+description nvarchar(250),
+timeEntry time not null,
+startEntry time,
+limitEntry time,
+departuretime time not null,
+limitDeparture time,
+hoursJornada time
 )
 
 create table days(

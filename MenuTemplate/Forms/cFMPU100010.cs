@@ -78,27 +78,36 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewDataPuesto.CurrentRow.Index;
-                if (IdRowSelect >= 0)
+                if (dataGridViewDataPuesto.RowCount > 0)
                 {
-                    cFMPU110010 Catalogo = new cFMPU110010();
-                    Catalogo.IdJob= Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxPuesto.Text = dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Puesto"].Value.ToString();
-                    Catalogo.textBoxDescripcion.Text = dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
-                    AddOwnedForm(Catalogo);
-                    Catalogo.FormBorderStyle = FormBorderStyle.None;
-                    Catalogo.TopLevel = false;
-                    Catalogo.Dock = DockStyle.Fill;
-                    this.Controls.Add(Catalogo);
-                    this.Tag = Catalogo;
-                    Catalogo.BringToFront();
-                    Catalogo.Show();
+
+                    IdRowSelect = dataGridViewDataPuesto.CurrentRow.Index;
+                    if (IdRowSelect >= 0)
+                    {
+                        cFMPU110010 Catalogo = new cFMPU110010();
+                        Catalogo.IdJob = Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        Catalogo.textBoxPuesto.Text = dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Puesto"].Value.ToString();
+                        Catalogo.textBoxDescripcion.Text = dataGridViewDataPuesto.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                        AddOwnedForm(Catalogo);
+                        Catalogo.FormBorderStyle = FormBorderStyle.None;
+                        Catalogo.TopLevel = false;
+                        Catalogo.Dock = DockStyle.Fill;
+                        this.Controls.Add(Catalogo);
+                        this.Tag = Catalogo;
+                        Catalogo.BringToFront();
+                        Catalogo.Show();
+                    }
+                    else
+                    {
+                        cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Puesto de Trabajo", MessageBoxIcon.Information);
+                        Alert.ShowDialog();
+
+                    }
                 }
                 else
                 {
-                    cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Puesto de Trabajo", MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
                     Alert.ShowDialog();
-                    
                 }
             }
             catch (Exception ex)
@@ -116,20 +125,27 @@ namespace RegistryTime.Forms
         {
             try
             {
-                
-                IdRowSelect = dataGridViewDataPuesto.CurrentRow.Index;
-                int IdJob = Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells[JobML.DataBase.Id].Value.ToString());
-                cFAT100010 Alert = new cFAT100010("Información", String.Format("¿Desea eliminar el registro {0}?", IdJob), MessageBoxIcon.Question);
-                Alert.ShowDialog();
-                if (Alert.DialogResult == DialogResult.Yes)
+                if (dataGridViewDataPuesto.RowCount > 0)
                 {
-                    JobML Job = new JobML
+                    IdRowSelect = dataGridViewDataPuesto.CurrentRow.Index;
+                    int IdJob = Int32.Parse(dataGridViewDataPuesto.Rows[IdRowSelect].Cells[JobML.DataBase.Id].Value.ToString());
+                    cFAT100010 Alert = new cFAT100010("Información", String.Format("¿Desea eliminar el registro {0}?", IdJob), MessageBoxIcon.Question);
+                    Alert.ShowDialog();
+                    if (Alert.DialogResult == DialogResult.Yes)
                     {
-                        Id = IdJob,
-                        IdUserDelete = GlobalBLL.userML.Id
-                    };
-                    JobBLL.Delete(Job);
-                    dataGridViewDataPuesto.Rows.Remove(dataGridViewDataPuesto.CurrentRow);
+                        JobML Job = new JobML
+                        {
+                            Id = IdJob,
+                            IdUserDelete = GlobalBLL.userML.Id
+                        };
+                        JobBLL.Delete(Job);
+                        dataGridViewDataPuesto.Rows.Remove(dataGridViewDataPuesto.CurrentRow);
+                    }
+                }
+                else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
             }
             catch (Exception ex)

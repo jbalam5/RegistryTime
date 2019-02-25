@@ -10,9 +10,6 @@ namespace ModelLayer
     {
         public class DataBase
         {
-            public const string Id = "id";
-            public const string Name = "name";
-            public const string Description = "description";
             public const string _registry = "_registry";
             public const string IdUserInsert = "idUserInsert";
             public const string DateInsert = "dateInsert";
@@ -20,6 +17,9 @@ namespace ModelLayer
             public const string DateUpdate = "dateUpdate";
             public const string IdUserDelete = "idUserDelete";
             public const string DateDelete = "dateDelete";
+            public const string Id = "id";
+            public const string Name = "name";
+            public const string Description = "description";
         }
 
         public int _registry { get; set; }

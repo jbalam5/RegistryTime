@@ -79,25 +79,33 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
-                if (IdRowSelect >= 0)
+                if (dataGridViewDataEmpleado.RowCount > 0)
                 {
-                    cFMEM110010 Catalogo = new cFMEM110010
+                    IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
+                    if (IdRowSelect >= 0)
                     {
-                        IdEmployee = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString())
-                    };
-                    AddOwnedForm(Catalogo);
-                    Catalogo.FormBorderStyle = FormBorderStyle.None;
-                    Catalogo.TopLevel = false;
-                    Catalogo.Dock = DockStyle.Fill;
-                    this.Controls.Add(Catalogo);
-                    this.Tag = Catalogo;
-                    Catalogo.BringToFront();
-                    Catalogo.Show();
+                        cFMEM110010 Catalogo = new cFMEM110010
+                        {
+                            IdEmployee = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString())
+                        };
+                        AddOwnedForm(Catalogo);
+                        Catalogo.FormBorderStyle = FormBorderStyle.None;
+                        Catalogo.TopLevel = false;
+                        Catalogo.Dock = DockStyle.Fill;
+                        this.Controls.Add(Catalogo);
+                        this.Tag = Catalogo;
+                        Catalogo.BringToFront();
+                        Catalogo.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
             }
             catch (Exception ex)
@@ -115,19 +123,27 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
-                cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
-                Alert.ShowDialog();
-                if(Alert.DialogResult == DialogResult.Yes)
+                if (dataGridViewDataEmpleado.RowCount > 0)
                 {
-                    EmployeeML Employee = new EmployeeML
+                    IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
+                    cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
+                    Alert.ShowDialog();
+                    if (Alert.DialogResult == DialogResult.Yes)
                     {
-                        Id = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
-                        IdUserDelete = 1
-                    };
-                    EmployeeBLL.Delete(Employee);
-                    dataGridViewDataEmpleado.Rows.Remove(dataGridViewDataEmpleado.CurrentRow);
-                }   
+                        EmployeeML Employee = new EmployeeML
+                        {
+                            Id = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
+                            IdUserDelete = 1
+                        };
+                        EmployeeBLL.Delete(Employee);
+                        dataGridViewDataEmpleado.Rows.Remove(dataGridViewDataEmpleado.CurrentRow);
+                    }
+                }
+                else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                }
             }
             catch (Exception ex)
             {

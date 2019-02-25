@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.TurnDAL";
         public String TableName = "turn";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -39,7 +41,7 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -62,35 +64,24 @@ namespace DataLayer
             }
         }
 
-        public int Save(TurnML Turn, String ConnectionString)
+        public int Save(TurnML Turn)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( name, Description, TimeEntry, StartEntry, LimitEntry, Departuretime, LimitDeparture, HoursJornada, _registry, idUserInsert, dateInsert)");
-                Query.AppendLine(" VALUES(");
-                Query.AppendFormat(" '{0}',", Turn.Name);
-                Query.AppendFormat(" '{0}',", Turn.Description);
-                Query.AppendFormat(" '{0}',", Turn.TimeEntry.ToString("HH:mm:ss"));
-                Query.AppendFormat(" '{0}',", Turn.StartEntry.ToString("hh:mm:ss"));
-                Query.AppendFormat(" '{0}',", Turn.LimitEntry.ToString("hh:mm:ss"));
-                Query.AppendFormat(" '{0}',", Turn.Departuretime.ToString("hh:mm:ss"));
-                Query.AppendFormat(" '{0}',", Turn.LimitDeparture.ToString("hh:mm:ss"));
-                Query.AppendFormat(" {0},", Turn.HoursJornada);
-                Query.AppendLine(" 1,");
-                Query.AppendFormat(" {0},", Turn.IdUserInsert );
-                Query.AppendLine(" getDate() )");
-               
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(Turn, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
             }
             catch (Exception ex)
             {
@@ -99,36 +90,20 @@ namespace DataLayer
 
         }
 
-        public int Update(TurnML turn, String ConnectionString)
+        public int Update(TurnML Turn)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("name = '{0}', ", turn.Name);
-                Query.AppendFormat("description = '{0}', ", turn.Description);
-                Query.AppendFormat("timeentry = '{0}', ", turn.TimeEntry);
-                Query.AppendFormat("startentry = '{0}', ", turn.StartEntry);
-                Query.AppendFormat("limitentry = '{0}', ", turn.LimitEntry);
-                Query.AppendFormat("departuretime = '{0}', ", turn.Departuretime);
-                Query.AppendFormat("limitdeparture = '{0}', ", turn.LimitDeparture);
-                Query.AppendFormat("hoursjornada = {0}, ", turn.HoursJornada);
-                Query.AppendFormat("idUserUpdate = {0}, ", turn.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", turn.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(Turn, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+                return Turn.Id;
             }
             catch (Exception ex)
             {
@@ -136,7 +111,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(TurnML turn, String ConnectionString)
+        public int Delete(TurnML turn)
         {
             try
             {
