@@ -909,9 +909,14 @@ namespace BiometricCore
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Obtiene las reglas especificadas en el lector
+        /// </summary>
+        /// <param name="dwMachineNumber"></param>
+        /// <returns></returns>
         public bool ReadAttRule(int dwMachineNumber)
         {
-            throw new NotImplementedException();
+            return objCZKEM.ReadAttRule(dwMachineNumber);
         }
 
         public bool ReadCustData(int dwMachineNumber, ref string CustData)
@@ -955,9 +960,14 @@ namespace BiometricCore
             throw new NotImplementedException();
         }
 
+       /// <summary>
+       /// Permite obtener la informacion de los turnos gua
+       /// </summary>
+       /// <param name="dwMachineNumber"></param>
+       /// <returns></returns>
         public bool ReadTurnInfo(int dwMachineNumber)
         {
-            throw new NotImplementedException();
+            return objCZKEM.ReadTurnInfo(dwMachineNumber);
         }
 
         public bool ReadUserAllTemplate(int dwMachineNumber, string dwEnrollNumber)

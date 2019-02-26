@@ -149,56 +149,60 @@ namespace BussinesLayer
                 objZKTeko.RefreshData(machineNumber);//the data in the device should be refreshed
                 objZKTeko.EnableDevice(machineNumber, true);
 
-                return 1;
+                return UserID;
             }
             return 0;
         }
         
         public UserInfo GetUserInfoById(int machineNumber, int UserID)
         {
-            if (UserID == 0) throw new Exception("*Please input user id first!");
-
-            int iPIN2Width = 0;
-            string strTemp = "";
-            //objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
-            //iPIN2Width = Convert.ToInt32(strTemp);
-
-            //if (UserID.ToString().Length > iPIN2Width)
-            //    throw new Exception("*User ID error! The max length is " + iPIN2Width.ToString());
-            
-
-            int idwErrorCode = 0;
-            int iPrivilege = 0;
-            string strName = "";
-            string strCardno = ""; 
-            string strPassword = "";
-            bool bEnabled = false;
-
-            objZKTeko.EnableDevice(machineNumber, false);
-            if (objZKTeko.SSR_GetUserInfo(machineNumber, UserID.ToString(), out strName, out strPassword, out iPrivilege, out bEnabled))//upload the user's information(card number included)
+            if (connect())
             {
-                //objZKTeko.GetStrCardNumber(out strCardno);
-                //if (strCardno.Equals("0"))
-                //{
-                //    strCardno = "";
-                //}
-                UserInfo UserInfo = new UserInfo()
+                if (UserID == 0) throw new Exception("*Please input user id first!");
+
+                int iPIN2Width = 0;
+                string strTemp = "";
+                objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
+                iPIN2Width = Convert.ToInt32(strTemp);
+
+                if (UserID.ToString().Length > iPIN2Width)
+                    throw new Exception("*User ID error! The max length is " + iPIN2Width.ToString());
+
+
+                int idwErrorCode = 0;
+                int iPrivilege = 0;
+                string strName = "";
+                string strPassword = "";
+                bool bEnabled = false;
+                UserInfo UserInfo = null;
+
+                objZKTeko.EnableDevice(machineNumber, false);
+                if (objZKTeko.SSR_GetUserInfo(machineNumber, UserID.ToString(), out strName, out strPassword, out iPrivilege, out bEnabled))//upload the user's information(card number included)
                 {
-                    Name = strName,
-                    Password = strPassword,
-                    EnrollNumber = UserID.ToString(),
-                    Privelage = iPrivilege,
-                    Enabled = bEnabled,
-                    MachineNumber = machineNumber
-                };
-            }
-            else
-            {
-                objZKTeko.GetLastError(ref idwErrorCode);
-                throw new Exception("*Operation failed,ErrorCode=" + idwErrorCode.ToString());
-            }
-            objZKTeko.EnableDevice(machineNumber, true);
+                    //objZKTeko.GetStrCardNumber(out strCardno);
+                    //if (strCardno.Equals("0"))
+                    //{
+                    //    strCardno = "";
+                    //}
+                    UserInfo = new UserInfo()
+                    {
+                        Name = strName,
+                        Password = strPassword,
+                        EnrollNumber = UserID.ToString(),
+                        Privelage = iPrivilege,
+                        Enabled = bEnabled,
+                        MachineNumber = machineNumber
+                    };
+                }
+                else
+                {
+                    objZKTeko.GetLastError(ref idwErrorCode);
+                    throw new Exception("*Operation failed,ErrorCode=" + idwErrorCode.ToString());
+                }
+                objZKTeko.EnableDevice(machineNumber, true);
 
+                return UserInfo;
+            }
             return null;
         }
         public ICollection<HoursAssistanceInfo> GetLogData(int machineNumber)

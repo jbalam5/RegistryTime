@@ -72,11 +72,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(ReaderConnectionML readerConnectionML)
+        public int Delete(int Id)
         {
             try
             {
-                return readerConnectionDAL.Delete(readerConnectionML, ConnectionStrings);
+                return readerConnectionDAL.Delete(Id, ConnectionStrings);
             }
             catch (Exception ex)
             {

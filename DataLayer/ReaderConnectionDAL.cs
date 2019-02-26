@@ -230,17 +230,16 @@ namespace DataLayer
         }
 
 
-        public int Delete(ReaderConnectionML readerConnectionML, string ConnectionString)
+        public int Delete(int id, string ConnectionString)
         {
             try
             {
-                int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} SET ", TableName);
                 Query.AppendLine("_registry = 0, ");
-                Query.AppendFormat("idUserDelete = {0}, ", readerConnectionML.idUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()) ");
-                Query.AppendFormat("WHERE id = {0}", readerConnectionML.id);
+                Query.AppendFormat("idUserDelete = {0}, ", 1);
+                Query.AppendLine("dateDelete = GETDATE() ");
+                Query.AppendFormat("WHERE id = {0}", id);
 
                 SqlConnection Conexion = new SqlConnection()
                 {
@@ -249,7 +248,7 @@ namespace DataLayer
 
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
                 return id;
             }
             catch (Exception ex)
