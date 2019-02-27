@@ -21,6 +21,7 @@ namespace BussinesLayer
         public ZKTecoHourAssistanceBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            zkTecoHourAssistanceDAL.idUser = GlobalBLL.userML.Id;
         }
 
         public DataTable All()

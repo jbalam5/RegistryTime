@@ -97,7 +97,7 @@ namespace BussinesLayer
             try
             {
                 user.Password = conexion.Encriptar(user.Password);
-                UsersDAL.IdUserSession = UsersDAL.IsUser(user).Id;
+                //UsersDAL.IdUserSession = UsersDAL.IsUser(user).Id;
                 return UsersDAL.IsUser(user);
             }
             catch (Exception ex)
