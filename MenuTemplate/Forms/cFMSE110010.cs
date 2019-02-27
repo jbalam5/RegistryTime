@@ -239,7 +239,6 @@ namespace RegistryTime.Forms
                 {
                     UserNameTextBox.Text = GlobalBLL.userML.UserName;
                     PasswordTextBox.Text = GlobalBLL.userML.Password;
-                    KeyTextBox.Text = employeeML.ControlNumber;
                     NameTextBox.Text = employeeML.Name;
                     LastNameTextBox.Text = employeeML.LastName;
 
@@ -326,7 +325,6 @@ namespace RegistryTime.Forms
                         if (!string.IsNullOrEmpty(PathFileProfileTextBox.Text) && !System.IO.File.Exists(PathFileProfileTextBox.Text))
                             throw new Exception("La imagen seleccionada no existe");
 
-                        employeeML.ControlNumber = KeyTextBox.Text;
                         employeeML.Name = NameTextBox.Text;
                         employeeML.LastName = LastNameTextBox.Text;
                         employeeBLL.Save(employeeML);

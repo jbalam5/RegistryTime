@@ -46,6 +46,7 @@
     <Compile Include="CheckInHoursML.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CompanyML.cs" />
+    <Compile Include="ControlField.cs" />
     <Compile Include="DaysML.cs" />
     <Compile Include="DaysOfTurnML.cs" />
     <Compile Include="DaysOfWorkEmployeeML.cs" />

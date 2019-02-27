@@ -99,7 +99,7 @@ namespace RegistryTime.Forms
                     }
                     else
                     {
-                        MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No tiene Seleccionado un Empleado", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
@@ -133,7 +133,6 @@ namespace RegistryTime.Forms
                         EmployeeML Employee = new EmployeeML
                         {
                             Id = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
-                            IdUserDelete = 1
                         };
                         EmployeeBLL.Delete(Employee);
                         dataGridViewDataEmpleado.Rows.Remove(dataGridViewDataEmpleado.CurrentRow);

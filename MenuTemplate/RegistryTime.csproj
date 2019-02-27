@@ -217,6 +217,12 @@
     <Compile Include="Forms\cFRT150010.Designer.cs">
       <DependentUpon>cFRT150010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TestCheck.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TestCheck.Designer.cs">
+      <DependentUpon>TestCheck.cs</DependentUpon>
+    </Compile>
     <Compile Include="Help\cFHAA100010.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +296,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT150010.resx">
       <DependentUpon>cFRT150010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TestCheck.resx">
+      <DependentUpon>TestCheck.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Help\cFHAA100010.resx">
       <DependentUpon>cFHAA100010.cs</DependentUpon>

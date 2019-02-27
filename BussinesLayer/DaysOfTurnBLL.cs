@@ -70,11 +70,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(DaysOfTurnML daysOfTurn)
+        public void Delete(DaysOfTurnML daysOfTurn)
         {
             try
             {
-                return DaysOfTurnDAL.Delete(daysOfTurn);
+                DaysOfTurnDAL.Delete(daysOfTurn);
             }
             catch (Exception ex)
             {

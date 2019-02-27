@@ -131,12 +131,20 @@ namespace RegistryTime.Forms
             {
                 if (dataGridViewData.RowCount > 0)
                 {
-                    IdRowSelect = dataGridViewData.CurrentRow.Index;
-                    TurnML Turn = new TurnML();
-                    Turn.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Turn.IdUserDelete = 1;
-                    TurnBLL.Delete(Turn);
-                    dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                    int IdTurno = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    cFAT100010 Alert = new cFAT100010("Información",String.Format("¿Desea eliminar el registro {0}?",IdTurno), MessageBoxIcon.Question);
+                    Alert.ShowDialog();
+                    if (Alert.DialogResult == DialogResult.Yes)
+                    {
+                        IdRowSelect = dataGridViewData.CurrentRow.Index;
+                            TurnML Turn = new TurnML()
+                            {
+                                Id = IdTurno
+                            };
+                        TurnBLL.Delete(Turn);
+                        dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                    }
+                    
                 }
                 else
                 {

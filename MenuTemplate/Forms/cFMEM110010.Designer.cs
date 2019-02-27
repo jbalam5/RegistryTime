@@ -102,9 +102,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
             this.comboBoxPuesto = new System.Windows.Forms.ComboBox();
-            this.textBoxNumControl = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label39 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
@@ -439,7 +437,6 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(774, 291);
             this.panel4.TabIndex = 14;
-            //this.panel4.Paint += new System.Windows.Forms.PaintEventHandler(this.panel4_Paint);
             // 
             // label33
             // 
@@ -737,9 +734,7 @@
             this.panel5.Controls.Add(this.label16);
             this.panel5.Controls.Add(this.label17);
             this.panel5.Controls.Add(this.label18);
-            this.panel5.Controls.Add(this.label19);
             this.panel5.Controls.Add(this.comboBoxPuesto);
-            this.panel5.Controls.Add(this.textBoxNumControl);
             this.panel5.Location = new System.Drawing.Point(6, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(775, 348);
@@ -751,7 +746,7 @@
             this.label36.AutoSize = true;
             this.label36.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label36.ForeColor = System.Drawing.Color.Red;
-            this.label36.Location = new System.Drawing.Point(87, 98);
+            this.label36.Location = new System.Drawing.Point(91, 49);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(14, 18);
             this.label36.TabIndex = 63;
@@ -773,7 +768,7 @@
             this.label34.AutoSize = true;
             this.label34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(101, 48);
+            this.label34.Location = new System.Drawing.Point(105, -1);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(14, 18);
             this.label34.TabIndex = 61;
@@ -783,16 +778,16 @@
             // 
             this.checkedListBoxTurns.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxTurns.FormattingEnabled = true;
-            this.checkedListBoxTurns.Location = new System.Drawing.Point(6, 292);
+            this.checkedListBoxTurns.Location = new System.Drawing.Point(9, 269);
             this.checkedListBoxTurns.MultiColumn = true;
             this.checkedListBoxTurns.Name = "checkedListBoxTurns";
             this.checkedListBoxTurns.Size = new System.Drawing.Size(699, 19);
-            this.checkedListBoxTurns.TabIndex = 45;
+            this.checkedListBoxTurns.TabIndex = 32;
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(2, 271);
+            this.label15.Location = new System.Drawing.Point(5, 248);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(55, 18);
             this.label15.TabIndex = 44;
@@ -803,11 +798,11 @@
             // 
             this.checkedListBoxDias.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.checkedListBoxDias.FormattingEnabled = true;
-            this.checkedListBoxDias.Location = new System.Drawing.Point(6, 221);
+            this.checkedListBoxDias.Location = new System.Drawing.Point(8, 200);
             this.checkedListBoxDias.MultiColumn = true;
             this.checkedListBoxDias.Name = "checkedListBoxDias";
             this.checkedListBoxDias.Size = new System.Drawing.Size(699, 19);
-            this.checkedListBoxDias.TabIndex = 43;
+            this.checkedListBoxDias.TabIndex = 28;
             // 
             // label4
             // 
@@ -825,7 +820,7 @@
             this.textBoxSueldo.Multiline = true;
             this.textBoxSueldo.Name = "textBoxSueldo";
             this.textBoxSueldo.Size = new System.Drawing.Size(335, 24);
-            this.textBoxSueldo.TabIndex = 35;
+            this.textBoxSueldo.TabIndex = 24;
             this.textBoxSueldo.Text = "0.00";
             // 
             // dateTimeFechaIngreso
@@ -833,7 +828,7 @@
             this.dateTimeFechaIngreso.Location = new System.Drawing.Point(368, 21);
             this.dateTimeFechaIngreso.Name = "dateTimeFechaIngreso";
             this.dateTimeFechaIngreso.Size = new System.Drawing.Size(335, 24);
-            this.dateTimeFechaIngreso.TabIndex = 12;
+            this.dateTimeFechaIngreso.TabIndex = 16;
             // 
             // label3
             // 
@@ -848,7 +843,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 150);
+            this.label2.Location = new System.Drawing.Point(7, 101);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 18);
             this.label2.TabIndex = 32;
@@ -857,15 +852,15 @@
             // 
             // textBoxNumSeguro
             // 
-            this.textBoxNumSeguro.Location = new System.Drawing.Point(4, 171);
+            this.textBoxNumSeguro.Location = new System.Drawing.Point(8, 122);
             this.textBoxNumSeguro.Name = "textBoxNumSeguro";
             this.textBoxNumSeguro.Size = new System.Drawing.Size(335, 24);
-            this.textBoxNumSeguro.TabIndex = 20;
+            this.textBoxNumSeguro.TabIndex = 12;
             // 
             // comboBoxTipoSeguro
             // 
             this.comboBoxTipoSeguro.FormattingEnabled = true;
-            this.comboBoxTipoSeguro.Location = new System.Drawing.Point(3, 119);
+            this.comboBoxTipoSeguro.Location = new System.Drawing.Point(7, 70);
             this.comboBoxTipoSeguro.Name = "comboBoxTipoSeguro";
             this.comboBoxTipoSeguro.Size = new System.Drawing.Size(335, 26);
             this.comboBoxTipoSeguro.TabIndex = 8;
@@ -873,16 +868,15 @@
             // comboBoxDepartamento
             // 
             this.comboBoxDepartamento.FormattingEnabled = true;
-            this.comboBoxDepartamento.Location = new System.Drawing.Point(3, 69);
+            this.comboBoxDepartamento.Location = new System.Drawing.Point(7, 20);
             this.comboBoxDepartamento.Name = "comboBoxDepartamento";
             this.comboBoxDepartamento.Size = new System.Drawing.Size(335, 26);
             this.comboBoxDepartamento.TabIndex = 4;
-            //this.comboBoxDepartamento.SelectedIndexChanged += new System.EventHandler(this.comboBoxDepartamento_SelectedIndexChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(0, 200);
+            this.label14.Location = new System.Drawing.Point(2, 179);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(107, 18);
             this.label14.TabIndex = 25;
@@ -892,7 +886,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(0, 98);
+            this.label16.Location = new System.Drawing.Point(4, 49);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(89, 18);
             this.label16.TabIndex = 23;
@@ -914,22 +908,12 @@
             // 
             this.label18.AutoSize = true;
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(0, 48);
+            this.label18.Location = new System.Drawing.Point(4, -1);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(102, 18);
             this.label18.TabIndex = 21;
             this.label18.Text = "Departamento";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(0, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(85, 18);
-            this.label19.TabIndex = 20;
-            this.label19.Text = "No. Control";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // comboBoxPuesto
             // 
@@ -937,14 +921,7 @@
             this.comboBoxPuesto.Location = new System.Drawing.Point(368, 69);
             this.comboBoxPuesto.Name = "comboBoxPuesto";
             this.comboBoxPuesto.Size = new System.Drawing.Size(335, 26);
-            this.comboBoxPuesto.TabIndex = 16;
-            // 
-            // textBoxNumControl
-            // 
-            this.textBoxNumControl.Location = new System.Drawing.Point(3, 21);
-            this.textBoxNumControl.Name = "textBoxNumControl";
-            this.textBoxNumControl.Size = new System.Drawing.Size(335, 24);
-            this.textBoxNumControl.TabIndex = 1;
+            this.comboBoxPuesto.TabIndex = 20;
             // 
             // tabPage4
             // 
@@ -1183,9 +1160,7 @@
         public System.Windows.Forms.Label label16;
         public System.Windows.Forms.Label label17;
         public System.Windows.Forms.Label label18;
-        public System.Windows.Forms.Label label19;
         public System.Windows.Forms.ComboBox comboBoxPuesto;
-        public System.Windows.Forms.TextBox textBoxNumControl;
         public MaterialSkin.Controls.MaterialLabel materialLabel3;
         public MaterialSkin.Controls.MaterialLabel materialLabel2;
         public MaterialSkin.Controls.MaterialLabel materialLabel6;

@@ -80,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(UsersML users)
+        public void Delete(UsersML users)
         {
             try
             {
-                return UsersDAL.Delete(users);
+                UsersDAL.Delete(users);
             }
             catch (Exception ex)
             {
@@ -97,7 +97,8 @@ namespace BussinesLayer
             try
             {
                 user.Password = conexion.Encriptar(user.Password);
-                UsersDAL.IdUserSession = UsersDAL.IsUser(user).Id;
+
+                //UsersDAL.IdUserSession = UsersDAL.IsUser(user).Id;
                 return UsersDAL.IsUser(user);
             }
             catch (Exception ex)

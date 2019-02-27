@@ -74,11 +74,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(DepartamentML departament)
+        public void Delete(DepartamentML departament)
         {
             try
             {
-                return DepartamentDAL.Delete(departament);
+               DepartamentDAL.Delete(departament);
             }
             catch (Exception ex)
             {

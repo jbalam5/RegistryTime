@@ -11,7 +11,7 @@ namespace DataLayer
 {
     public class JobDAL
     {
-        public String core = "DataLayer.jobDAL";
+        private String core = "DataLayer.jobDAL";
         public String TableName = "job";
         public String ConnectionString = String.Empty;
         public int IdUserSession = 0;
@@ -111,28 +111,20 @@ namespace DataLayer
 
         }
 
-        public int Update(JobML job)
+        public int Update(JobML Job)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("name = '{0}', ", job.Name);
-                Query.AppendFormat("description = '{0}', ", job.Description);
-                Query.AppendFormat("idUserUpdate = {0}, ", job.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", job.Id);
-
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(Job, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+                return Job.Id;
             }
             catch (Exception ex)
             {
@@ -140,27 +132,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(JobML job)
+        public void Delete(JobML Job)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2, ");
-                Query.AppendFormat("idUserDelete = {0}, ", job.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", job.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(Job, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
