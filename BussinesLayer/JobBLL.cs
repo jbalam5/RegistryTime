@@ -71,11 +71,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(JobML Job)
+        public void Delete(JobML Job)
         {
             try
             {
-                return JobDAL.Delete(Job);
+                JobDAL.Delete(Job);
             }
             catch (Exception ex)
             {

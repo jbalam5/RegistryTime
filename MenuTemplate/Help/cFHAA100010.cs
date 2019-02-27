@@ -95,10 +95,10 @@ namespace RegistryTime.Help
         {
             try
             {
+                
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
                 DepartamentML Departament = new DepartamentML();
                 Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Departament.IdUserDelete = 1;
                 DepartamentBLL.Delete(Departament);
                 dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
             }

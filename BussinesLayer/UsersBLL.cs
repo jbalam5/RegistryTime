@@ -80,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(UsersML users)
+        public void Delete(UsersML users)
         {
             try
             {
-                return UsersDAL.Delete(users);
+                UsersDAL.Delete(users);
             }
             catch (Exception ex)
             {

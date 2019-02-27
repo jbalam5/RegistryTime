@@ -88,7 +88,6 @@ namespace RegistryTime.Forms
                     if (IdDepartament > 0)
                     {
                         Departament.Id = IdDepartament;
-                        Departament.IdUserUpdate = 1;
                     }
                     
                     DepartamentBLL.Save(Departament);

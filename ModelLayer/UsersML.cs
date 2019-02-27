@@ -11,13 +11,6 @@ namespace ModelLayer
 
         public class DataBase
         {
-            public const string _registry = "_registry";
-            public const string IdUserInsert = "idUserInsert";
-            public const string DateInsert = "dateInsert";
-            public const string IdUserUpdate = "idUserUpdate";
-            public const string DateUpdate = "dateUpdate";
-            public const string IdUserDelete = "idUserDelete";
-            public const string DateDelete = "dateDelete";
             public const string Id = "id";
             public const string UserName = "userName";
             public const string Password = "password";
@@ -25,13 +18,6 @@ namespace ModelLayer
             public const string Image = "image";
         }
 
-        public int _registry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
         public int Id { get; set; }
         public String UserName { get; set; }
         public String Password { get; set; }

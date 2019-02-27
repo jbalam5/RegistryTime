@@ -95,11 +95,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(EmployeeML employee)
+        public void Delete(EmployeeML employee)
         {
             try
             {
-                return EmployeeDAL.Delete(employee);
+                EmployeeDAL.Delete(employee);
             }
             catch (Exception ex)
             {

@@ -148,7 +148,6 @@ namespace DataLayer
                         Colony = (row[EmployeeML.DataBase.Colony] != DBNull.Value) ? row[EmployeeML.DataBase.Colony].ToString() : string.Empty,
                         StateCountry = (row[EmployeeML.DataBase.StateCountry] != DBNull.Value) ? row[EmployeeML.DataBase.StateCountry].ToString() : string.Empty,
                         PostalCode = (row[EmployeeML.DataBase.PostalCode] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.PostalCode].ToString()) : 0,
-                        ControlNumber = (row[EmployeeML.DataBase.ControlNumber] != DBNull.Value) ? row[EmployeeML.DataBase.ControlNumber].ToString() : string.Empty,
                         SureType = (row[EmployeeML.DataBase.SureType] != DBNull.Value) ? row[EmployeeML.DataBase.SureType].ToString() : string.Empty,
                         IdJob = (row[EmployeeML.DataBase.IdJob] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdJob].ToString()) : 0,
                         IdDepartament = (row[EmployeeML.DataBase.IdDepartament] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdDepartament].ToString()) : 0,
@@ -237,24 +236,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(EmployeeML employee)
+        public void Delete(EmployeeML Employee)
         {
             try
             {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2,");
-                Query.AppendFormat(" idUserDelete = {0},", employee.IdUserDelete);
-                Query.AppendLine(" dateDelete = GETDATE()");
-                Query.AppendFormat(" WHERE id={0}", employee.Id);
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(Employee, TableName, IdUserSession);
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                return cmd2.ExecuteNonQuery();
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

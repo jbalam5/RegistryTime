@@ -242,7 +242,6 @@ namespace RegistryTime.Forms
 
                 if (employeeML != null)
                 {
-                    KeyTextBox.Text = employeeML.ControlNumber;
                     NameTextBox.Text = employeeML.Name;
                     LastNameTextBox.Text = employeeML.LastName;
 

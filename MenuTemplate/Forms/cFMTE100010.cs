@@ -33,7 +33,7 @@ namespace RegistryTime.Forms
                 Id = 0,
                 Name = textBoxNombre.Text,
                 Description = textBoxDescripcion.Text,
-                IdUserInsert = 1
+                //IdUserInsert = 1
             };
 
             JobBll.Save(job);

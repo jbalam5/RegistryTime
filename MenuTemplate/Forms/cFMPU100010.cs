@@ -136,7 +136,6 @@ namespace RegistryTime.Forms
                         JobML Job = new JobML
                         {
                             Id = IdJob,
-                            IdUserDelete = GlobalBLL.userML.Id
                         };
                         JobBLL.Delete(Job);
                         dataGridViewDataPuesto.Rows.Remove(dataGridViewDataPuesto.CurrentRow);

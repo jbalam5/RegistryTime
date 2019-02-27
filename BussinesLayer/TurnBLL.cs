@@ -68,11 +68,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(TurnML turn)
+        public void Delete(TurnML turn)
         {
             try
             {
-                return TurnDAL.Delete(turn);
+                TurnDAL.Delete(turn);
             }
             catch (Exception ex)
             {

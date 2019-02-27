@@ -10,13 +10,6 @@ namespace ModelLayer
     {
         public class DataBase
         {
-            public const string _registry = "_registry";
-            public const string IdUserInsert = "idUserInsert";
-            public const string DateInsert = "dateInsert";
-            public const string IdUserUpdate = "idUserUpdate";
-            public const string DateUpdate = "dateUpdate";
-            public const string IdUserDelete = "idUserDelete";
-            public const string DateDelete = "dateDelete";
             public const string Id = "id";
             public const string Rfc = "rfc";
             public const string Curp = "curp";
@@ -36,24 +29,14 @@ namespace ModelLayer
             public const string Colony = "colony";
             public const string StateCountry = "stateCountry";
             public const string PostalCode = "postalCode";
-            public const string ControlNumber = "controlNumber";
+            public const string IdDepartament = "idDepartament";
             public const string SureType = "sureType";
             public const string NumberSure = "numberSure";
             public const string Salary = "salary";
             public const string IdJob = "idJob";
-            public const string IdDepartament = "idDepartament";
             public const string IdUser = "idUser";
         }
 
-
-
-        public int _registry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
         public int Id { get; set; }
         public String RFC { get; set; } 
         public String Curp { get; set; }
@@ -72,7 +55,6 @@ namespace ModelLayer
         public int PostalCode { get; set; }
         public String Colony { get; set; }
         public String StateCountry { get; set; }
-        public String ControlNumber { get; set; }
         public int IdDepartament { get; set; }
         public String SureType { get; set; }
         public String NumberSure { get; set; }

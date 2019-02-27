@@ -83,11 +83,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(DaysOfWorkEmployeeML DaysOfWorkEmployee)
+        public void Delete(DaysOfWorkEmployeeML DaysOfWorkEmployee)
         {
             try
             {
-                return DaysOfWorkEmployeeDAL.Delete(DaysOfWorkEmployee);
+                DaysOfWorkEmployeeDAL.Delete(DaysOfWorkEmployee);
             }
             catch (Exception ex)
             {

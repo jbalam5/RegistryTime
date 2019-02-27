@@ -143,27 +143,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DepartamentML departament)
+        public void Delete(DepartamentML Departament)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine(" _registry = 2,");
-                Query.AppendFormat(" idUserDelete = {0}, ", departament.IdUserDelete);
-                Query.AppendLine(" dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", departament.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(Departament, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -172,9 +164,4 @@ namespace DataLayer
         }
     }
 
-    public class CPropiedadValor
-    {
-        public string Propiedad { get; set; }
-        public string Valor { get; set; }
-    }
 }

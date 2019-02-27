@@ -131,7 +131,6 @@ namespace RegistryTime.Forms
                         DepartamentML Departament = new DepartamentML
                         {
                             Id = idDepartament,
-                            IdUserDelete = 1
                         };
                         DepartamentBLL.Delete(Departament);
                         dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
