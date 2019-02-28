@@ -79,32 +79,40 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                if (IdRowSelect >= 0)
+                if (dataGridViewData.RowCount > 0)
                 {
-                    cFMAA110010 Catalogo = new cFMAA110010();
-                    //{
-                    //    IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString())
-                    //};
-                    Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNumControl.Text = dataGridViewData.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
-                    Catalogo.comboBoxAusentismo.Text = dataGridViewData.Rows[IdRowSelect].Cells["ClaveAusentismo"].Value.ToString();
-                    Catalogo.comboBoxEstadoAsig.Text = dataGridViewData.Rows[IdRowSelect].Cells["Estado"].Value.ToString();
-                    Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
-                    Catalogo.dateTimeFechaInicio.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaInicio"].Value.ToString();
-                    Catalogo.dateTimeFechaFin.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaFinal"].Value.ToString();
-                    AddOwnedForm(Catalogo);
-                    Catalogo.FormBorderStyle = FormBorderStyle.None;
-                    Catalogo.TopLevel = false;
-                    Catalogo.Dock = DockStyle.Fill;
-                    this.Controls.Add(Catalogo);
-                    this.Tag = Catalogo;
-                    Catalogo.BringToFront();
-                    Catalogo.Show();
+                    IdRowSelect = dataGridViewData.CurrentRow.Index;
+                    if (IdRowSelect >= 0)
+                    {
+                        cFMAA110010 Catalogo = new cFMAA110010//();
+                        {
+                            IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString())
+                        };
+                        //Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        //Catalogo.textBoxNumControl.Text = dataGridViewData.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
+                        //Catalogo.comboBoxAusentismo.Text = dataGridViewData.Rows[IdRowSelect].Cells["ClaveAusentismo"].Value.ToString();
+                        //Catalogo.comboBoxEstadoAsig.Text = dataGridViewData.Rows[IdRowSelect].Cells["Estado"].Value.ToString();
+                        //Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                        //Catalogo.dateTimeFechaInicio.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaInicio"].Value.ToString();
+                        //Catalogo.dateTimeFechaFin.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaFinal"].Value.ToString();
+                        AddOwnedForm(Catalogo);
+                        Catalogo.FormBorderStyle = FormBorderStyle.None;
+                        Catalogo.TopLevel = false;
+                        Catalogo.Dock = DockStyle.Fill;
+                        this.Controls.Add(Catalogo);
+                        this.Tag = Catalogo;
+                        Catalogo.BringToFront();
+                        Catalogo.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No tiene Seleccionado un Registro", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Registro", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
             }
             catch (Exception ex)
@@ -122,12 +130,32 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                AbsenteeismAssignmentML Catalogo = new AbsenteeismAssignmentML();
-                Catalogo.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Catalogo.IdUserDelete = 1;
-                AbsenteeismAssignmentBLL.Delete(Catalogo);
-                dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                if (dataGridViewData.RowCount > 0)
+                {
+                    IdRowSelect = dataGridViewData.CurrentRow.Index;
+                    cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
+                    Alert.ShowDialog();
+                    if (Alert.DialogResult == DialogResult.Yes)
+                    {
+                        AbsenteeismAssignmentML AbsenteeismAssignment = new AbsenteeismAssignmentML
+                        {
+                            Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
+                        };
+                        AbsenteeismAssignmentBLL.Delete(AbsenteeismAssignment);
+                        dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                    }
+                }
+                else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                }
+                //IdRowSelect = dataGridViewData.CurrentRow.Index;
+                //AbsenteeismAssignmentML Catalogo = new AbsenteeismAssignmentML();
+                //Catalogo.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                //Catalogo.IdUserDelete = 1;
+                //AbsenteeismAssignmentBLL.Delete(Catalogo);
+                //dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
 
                 //cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
                 //Alert.ShowDialog();

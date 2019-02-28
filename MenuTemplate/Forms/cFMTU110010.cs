@@ -75,7 +75,7 @@ namespace RegistryTime.Forms
                     if (IdTurn > 0)
                     {
                         Turn.Id = IdTurn;
-                        Turn.IdUserUpdate = GlobalBLL.userML.Id; ;
+                        Turn.IdUserUpdate = GlobalBLL.userML.Id; 
                     }
                     else
                     {
@@ -118,6 +118,7 @@ namespace RegistryTime.Forms
         private void dateTimeHoraSalida_ValueChanged(object sender, EventArgs e)
         {       
             dateTimeLimiteSalida.Value = dateTimeHoraSalida.Value;
+            //HoursJornada = dateTimeHoraEntrada.Value + dateTimeHoraSalida.Value;
         }
     }
 }

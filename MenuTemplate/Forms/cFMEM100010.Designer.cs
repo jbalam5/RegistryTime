@@ -99,7 +99,7 @@
             this.dataGridViewDataEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDataEmpleado.Size = new System.Drawing.Size(776, 339);
             this.dataGridViewDataEmpleado.TabIndex = 11;
-            this.dataGridViewDataEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDataEmpleado_CellContentClick);
+            //this.dataGridViewDataEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewData_CellContentClick);
             // 
             // buttonEliminar
             // 

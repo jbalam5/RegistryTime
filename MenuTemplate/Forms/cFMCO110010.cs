@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 namespace RegistryTime.Forms
 {
@@ -38,33 +39,55 @@ namespace RegistryTime.Forms
             textBoxDescripcion.Text = String.Empty;
         }
 
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxClave.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese una clave para el concepto");
+                }
+                else if (string.IsNullOrEmpty(textBoxConcepto.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese un nombre para el concepto");
+                }
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
+        }
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxClave.Text))
+                if (FormValidate())
                 {
                     AbsenteeismML Absenteeism = new AbsenteeismML();
-                    if (IdAbsenteeism == 0)
-                    {
+                    
                         Absenteeism.IsKey = textBoxClave.Text;
                         Absenteeism.Concept = textBoxConcepto.Text;
                         Absenteeism.description = textBoxDescripcion.Text;
-                    }
-                    else
+
+                    if (IdAbsenteeism > 0)
                     {
                         Absenteeism.Id = IdAbsenteeism;
-                        Absenteeism.IsKey = textBoxClave.Text;
-                        Absenteeism.Concept = textBoxConcepto.Text;
-                        Absenteeism.description = textBoxDescripcion.Text;
-                        Absenteeism.IdUserUpdate = 1;
                     }
+
                     AbsenteeismBLL.Save(Absenteeism);
 
                     cFMCO100010 FrmDataGrid = this.Owner as cFMCO100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Éxito");
+                    cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con éxito!!", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                     Clear();
                     this.Close();
                 }
@@ -85,10 +108,6 @@ namespace RegistryTime.Forms
         {
             textBoxDescripcion.Width = this.Width - 150;
         }
-
-        private void textBoxConcepto_TextChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
+

@@ -31,6 +31,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBoxConcepto = new System.Windows.Forms.TextBox();
+            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxClave = new System.Windows.Forms.TextBox();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -38,8 +42,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.textBoxConcepto = new System.Windows.Forms.TextBox();
-            this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -67,6 +69,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label26);
             this.panel2.Controls.Add(this.textBoxConcepto);
             this.panel2.Controls.Add(this.materialLabel2);
             this.panel2.Controls.Add(this.textBoxClave);
@@ -82,13 +86,54 @@
             this.panel2.Size = new System.Drawing.Size(800, 413);
             this.panel2.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(87, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 18);
+            this.label2.TabIndex = 57;
+            this.label2.Text = "*";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Red;
+            this.label26.Location = new System.Drawing.Point(64, 59);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(14, 18);
+            this.label26.TabIndex = 56;
+            this.label26.Text = "*";
+            // 
+            // textBoxConcepto
+            // 
+            this.textBoxConcepto.Location = new System.Drawing.Point(16, 125);
+            this.textBoxConcepto.Name = "textBoxConcepto";
+            this.textBoxConcepto.Size = new System.Drawing.Size(335, 20);
+            this.textBoxConcepto.TabIndex = 44;
+            // 
+            // materialLabel2
+            // 
+            this.materialLabel2.AutoSize = true;
+            this.materialLabel2.Depth = 0;
+            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel2.Location = new System.Drawing.Point(12, 103);
+            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel2.Name = "materialLabel2";
+            this.materialLabel2.Size = new System.Drawing.Size(74, 19);
+            this.materialLabel2.TabIndex = 45;
+            this.materialLabel2.Text = "Concepto";
+            // 
             // textBoxClave
             // 
             this.textBoxClave.Location = new System.Drawing.Point(16, 80);
             this.textBoxClave.Name = "textBoxClave";
             this.textBoxClave.Size = new System.Drawing.Size(335, 20);
             this.textBoxClave.TabIndex = 1;
-            this.textBoxClave.TextChanged += new System.EventHandler(this.textBoxConcepto_TextChanged);
             // 
             // textBoxDescripcion
             // 
@@ -169,26 +214,6 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // textBoxConcepto
-            // 
-            this.textBoxConcepto.Location = new System.Drawing.Point(16, 125);
-            this.textBoxConcepto.Name = "textBoxConcepto";
-            this.textBoxConcepto.Size = new System.Drawing.Size(335, 20);
-            this.textBoxConcepto.TabIndex = 44;
-            // 
-            // materialLabel2
-            // 
-            this.materialLabel2.AutoSize = true;
-            this.materialLabel2.Depth = 0;
-            this.materialLabel2.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel2.Location = new System.Drawing.Point(12, 103);
-            this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel2.Name = "materialLabel2";
-            this.materialLabel2.Size = new System.Drawing.Size(74, 19);
-            this.materialLabel2.TabIndex = 45;
-            this.materialLabel2.Text = "Concepto";
-            // 
             // cFMCO110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,5 +246,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         public System.Windows.Forms.TextBox textBoxConcepto;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label26;
     }
 }
