@@ -29,24 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cMRT100010));
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.BottomStatePanel = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CompanyNameToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.ContainerPanel = new System.Windows.Forms.Panel();
             this.TopPanel = new System.Windows.Forms.Panel();
+            this.MenuLeftPanel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.StateTimer = new System.Windows.Forms.Timer(this.components);
+            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ContainerPanel = new System.Windows.Forms.Panel();
             this.NormalButton = new System.Windows.Forms.Button();
             this.Closebutton = new System.Windows.Forms.Button();
             this.MaximizeButton = new System.Windows.Forms.Button();
             this.Minimizebutton = new System.Windows.Forms.Button();
-            this.MenuLeftPanel = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PuestoButton = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
@@ -56,8 +59,6 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
-            this.StateTimer = new System.Windows.Forms.Timer(this.components);
-            this.CompanyNameToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -81,7 +82,7 @@
             this.PrincipalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PrincipalPanel.Location = new System.Drawing.Point(0, 0);
             this.PrincipalPanel.Name = "PrincipalPanel";
-            this.PrincipalPanel.Size = new System.Drawing.Size(888, 576);
+            this.PrincipalPanel.Size = new System.Drawing.Size(888, 623);
             this.PrincipalPanel.TabIndex = 0;
             // 
             // BottomStatePanel
@@ -89,9 +90,9 @@
             this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
             this.BottomStatePanel.Controls.Add(this.statusStrip1);
             this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomStatePanel.Location = new System.Drawing.Point(200, 544);
+            this.BottomStatePanel.Location = new System.Drawing.Point(220, 591);
             this.BottomStatePanel.Name = "BottomStatePanel";
-            this.BottomStatePanel.Size = new System.Drawing.Size(686, 30);
+            this.BottomStatePanel.Size = new System.Drawing.Size(666, 30);
             this.BottomStatePanel.TabIndex = 6;
             // 
             // statusStrip1
@@ -104,18 +105,16 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(686, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(666, 30);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // UsertoolStripStatusLabel
+            // CompanyNameToolStripStatusLabel
             // 
-            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
-            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(82, 25);
-            this.UsertoolStripStatusLabel.Text = "UserName";
+            this.CompanyNameToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompanyNameToolStripStatusLabel.Name = "CompanyNameToolStripStatusLabel";
+            this.CompanyNameToolStripStatusLabel.Size = new System.Drawing.Size(91, 25);
+            this.CompanyNameToolStripStatusLabel.Text = "CompanyName";
             // 
             // DatetoolStripStatusLabel
             // 
@@ -130,20 +129,10 @@
             // 
             this.ContentPanel.Controls.Add(this.ContainerPanel);
             this.ContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentPanel.Location = new System.Drawing.Point(200, 30);
+            this.ContentPanel.Location = new System.Drawing.Point(220, 30);
             this.ContentPanel.Name = "ContentPanel";
-            this.ContentPanel.Size = new System.Drawing.Size(686, 544);
+            this.ContentPanel.Size = new System.Drawing.Size(666, 591);
             this.ContentPanel.TabIndex = 0;
-            // 
-            // ContainerPanel
-            // 
-            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
-            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
-            this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(686, 544);
-            this.ContainerPanel.TabIndex = 7;
             // 
             // TopPanel
             // 
@@ -153,81 +142,15 @@
             this.TopPanel.Controls.Add(this.MaximizeButton);
             this.TopPanel.Controls.Add(this.Minimizebutton);
             this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(200, 0);
+            this.TopPanel.Location = new System.Drawing.Point(220, 0);
             this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(686, 30);
+            this.TopPanel.Size = new System.Drawing.Size(666, 30);
             this.TopPanel.TabIndex = 5;
             this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            // 
-            // NormalButton
-            // 
-            this.NormalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NormalButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconSquared;
-            this.NormalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.NormalButton.FlatAppearance.BorderSize = 0;
-            this.NormalButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.NormalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.NormalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NormalButton.Location = new System.Drawing.Point(624, 0);
-            this.NormalButton.Name = "NormalButton";
-            this.NormalButton.Size = new System.Drawing.Size(30, 30);
-            this.NormalButton.TabIndex = 7;
-            this.NormalButton.UseVisualStyleBackColor = true;
-            this.NormalButton.Visible = false;
-            this.NormalButton.Click += new System.EventHandler(this.NormalButton_Click);
-            // 
-            // Closebutton
-            // 
-            this.Closebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Closebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconDel;
-            this.Closebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Closebutton.FlatAppearance.BorderSize = 0;
-            this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Closebutton.Location = new System.Drawing.Point(656, 0);
-            this.Closebutton.Name = "Closebutton";
-            this.Closebutton.Size = new System.Drawing.Size(30, 30);
-            this.Closebutton.TabIndex = 6;
-            this.Closebutton.UseVisualStyleBackColor = true;
-            this.Closebutton.Click += new System.EventHandler(this.Closebutton_Click);
-            // 
-            // MaximizeButton
-            // 
-            this.MaximizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaximizeButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconsmax15;
-            this.MaximizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.MaximizeButton.FlatAppearance.BorderSize = 0;
-            this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaximizeButton.Location = new System.Drawing.Point(625, 0);
-            this.MaximizeButton.Name = "MaximizeButton";
-            this.MaximizeButton.Size = new System.Drawing.Size(30, 30);
-            this.MaximizeButton.TabIndex = 5;
-            this.MaximizeButton.UseVisualStyleBackColor = true;
-            this.MaximizeButton.Click += new System.EventHandler(this.MaximizeButton_Click);
-            // 
-            // Minimizebutton
-            // 
-            this.Minimizebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Minimizebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconLineH;
-            this.Minimizebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Minimizebutton.FlatAppearance.BorderSize = 0;
-            this.Minimizebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Minimizebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.Minimizebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Minimizebutton.Location = new System.Drawing.Point(592, 0);
-            this.Minimizebutton.Name = "Minimizebutton";
-            this.Minimizebutton.Size = new System.Drawing.Size(30, 30);
-            this.Minimizebutton.TabIndex = 4;
-            this.Minimizebutton.UseVisualStyleBackColor = true;
-            this.Minimizebutton.Click += new System.EventHandler(this.Minimizebutton_Click);
             // 
             // MenuLeftPanel
             // 
             this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.MenuLeftPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.MenuLeftPanel.Controls.Add(this.button3);
             this.MenuLeftPanel.Controls.Add(this.button2);
             this.MenuLeftPanel.Controls.Add(this.button1);
@@ -244,8 +167,102 @@
             this.MenuLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.MenuLeftPanel.Location = new System.Drawing.Point(0, 0);
             this.MenuLeftPanel.Name = "MenuLeftPanel";
-            this.MenuLeftPanel.Size = new System.Drawing.Size(200, 574);
+            this.MenuLeftPanel.Size = new System.Drawing.Size(220, 621);
             this.MenuLeftPanel.TabIndex = 4;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 578);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(220, 43);
+            this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // UsertoolStripStatusLabel
+            // 
+            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
+            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(82, 25);
+            this.UsertoolStripStatusLabel.Text = "UserName";
+            // 
+            // ContainerPanel
+            // 
+            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
+            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(666, 591);
+            this.ContainerPanel.TabIndex = 7;
+            // 
+            // NormalButton
+            // 
+            this.NormalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.NormalButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconSquared;
+            this.NormalButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.NormalButton.FlatAppearance.BorderSize = 0;
+            this.NormalButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.NormalButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.NormalButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NormalButton.Location = new System.Drawing.Point(604, 0);
+            this.NormalButton.Name = "NormalButton";
+            this.NormalButton.Size = new System.Drawing.Size(30, 30);
+            this.NormalButton.TabIndex = 7;
+            this.NormalButton.UseVisualStyleBackColor = true;
+            this.NormalButton.Visible = false;
+            this.NormalButton.Click += new System.EventHandler(this.NormalButton_Click);
+            // 
+            // Closebutton
+            // 
+            this.Closebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Closebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconDel;
+            this.Closebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Closebutton.FlatAppearance.BorderSize = 0;
+            this.Closebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Red;
+            this.Closebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.Closebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Closebutton.Location = new System.Drawing.Point(636, 0);
+            this.Closebutton.Name = "Closebutton";
+            this.Closebutton.Size = new System.Drawing.Size(30, 30);
+            this.Closebutton.TabIndex = 6;
+            this.Closebutton.UseVisualStyleBackColor = true;
+            this.Closebutton.Click += new System.EventHandler(this.Closebutton_Click);
+            // 
+            // MaximizeButton
+            // 
+            this.MaximizeButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaximizeButton.BackgroundImage = global::RegistryTime.Properties.Resources.iconsmax15;
+            this.MaximizeButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.MaximizeButton.FlatAppearance.BorderSize = 0;
+            this.MaximizeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MaximizeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.MaximizeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.MaximizeButton.Location = new System.Drawing.Point(605, 0);
+            this.MaximizeButton.Name = "MaximizeButton";
+            this.MaximizeButton.Size = new System.Drawing.Size(30, 30);
+            this.MaximizeButton.TabIndex = 5;
+            this.MaximizeButton.UseVisualStyleBackColor = true;
+            this.MaximizeButton.Click += new System.EventHandler(this.MaximizeButton_Click);
+            // 
+            // Minimizebutton
+            // 
+            this.Minimizebutton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Minimizebutton.BackgroundImage = global::RegistryTime.Properties.Resources.iconLineH;
+            this.Minimizebutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Minimizebutton.FlatAppearance.BorderSize = 0;
+            this.Minimizebutton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Minimizebutton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.Minimizebutton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Minimizebutton.Location = new System.Drawing.Point(572, 0);
+            this.Minimizebutton.Name = "Minimizebutton";
+            this.Minimizebutton.Size = new System.Drawing.Size(30, 30);
+            this.Minimizebutton.TabIndex = 4;
+            this.Minimizebutton.UseVisualStyleBackColor = true;
+            this.Minimizebutton.Click += new System.EventHandler(this.Minimizebutton_Click);
             // 
             // button3
             // 
@@ -258,13 +275,14 @@
             this.button3.ForeColor = System.Drawing.Color.White;
             this.button3.Image = global::RegistryTime.Properties.Resources.time32;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(1, 405);
+            this.button3.Location = new System.Drawing.Point(1, 446);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(199, 40);
+            this.button3.Size = new System.Drawing.Size(221, 40);
             this.button3.TabIndex = 12;
             this.button3.Text = "  Registro";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button2
             // 
@@ -277,9 +295,9 @@
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::RegistryTime.Properties.Resources.time32;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(1, 368);
+            this.button2.Location = new System.Drawing.Point(1, 404);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(199, 40);
+            this.button2.Size = new System.Drawing.Size(221, 40);
             this.button2.TabIndex = 11;
             this.button2.Text = "  Ausentismo";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -297,9 +315,9 @@
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::RegistryTime.Properties.Resources.time32;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 331);
+            this.button1.Location = new System.Drawing.Point(0, 363);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(199, 40);
+            this.button1.Size = new System.Drawing.Size(221, 40);
             this.button1.TabIndex = 10;
             this.button1.Text = "  Concepto";
             this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -317,24 +335,14 @@
             this.PuestoButton.ForeColor = System.Drawing.Color.White;
             this.PuestoButton.Image = global::RegistryTime.Properties.Resources.office32;
             this.PuestoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PuestoButton.Location = new System.Drawing.Point(0, 259);
+            this.PuestoButton.Location = new System.Drawing.Point(0, 283);
             this.PuestoButton.Name = "PuestoButton";
-            this.PuestoButton.Size = new System.Drawing.Size(207, 40);
+            this.PuestoButton.Size = new System.Drawing.Size(222, 40);
             this.PuestoButton.TabIndex = 9;
             this.PuestoButton.Text = "  Puesto";
             this.PuestoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PuestoButton.UseVisualStyleBackColor = true;
             this.PuestoButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 529);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(198, 43);
-            this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // ExitButton
             // 
@@ -350,7 +358,7 @@
             this.ExitButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ExitButton.Location = new System.Drawing.Point(1, 3);
             this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(199, 38);
+            this.ExitButton.Size = new System.Drawing.Size(220, 38);
             this.ExitButton.TabIndex = 9;
             this.ExitButton.Text = "  Salir";
             this.ExitButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -359,11 +367,11 @@
             // 
             // LogoPictureBox
             // 
-            this.LogoPictureBox.BackColor = System.Drawing.Color.Gray;
+            this.LogoPictureBox.BackColor = System.Drawing.Color.Silver;
             this.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.LogoPictureBox.Location = new System.Drawing.Point(50, 55);
+            this.LogoPictureBox.Location = new System.Drawing.Point(6, 46);
             this.LogoPictureBox.Name = "LogoPictureBox";
-            this.LogoPictureBox.Size = new System.Drawing.Size(102, 80);
+            this.LogoPictureBox.Size = new System.Drawing.Size(208, 111);
             this.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.LogoPictureBox.TabIndex = 7;
             this.LogoPictureBox.TabStop = false;
@@ -379,9 +387,9 @@
             this.EmploymentsButton.ForeColor = System.Drawing.Color.White;
             this.EmploymentsButton.Image = global::RegistryTime.Properties.Resources.users32;
             this.EmploymentsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.EmploymentsButton.Location = new System.Drawing.Point(1, 187);
+            this.EmploymentsButton.Location = new System.Drawing.Point(1, 205);
             this.EmploymentsButton.Name = "EmploymentsButton";
-            this.EmploymentsButton.Size = new System.Drawing.Size(199, 40);
+            this.EmploymentsButton.Size = new System.Drawing.Size(221, 40);
             this.EmploymentsButton.TabIndex = 6;
             this.EmploymentsButton.Text = "  Empleado";
             this.EmploymentsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -399,9 +407,9 @@
             this.ReportsButton.ForeColor = System.Drawing.Color.White;
             this.ReportsButton.Image = global::RegistryTime.Properties.Resources.reports32;
             this.ReportsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ReportsButton.Location = new System.Drawing.Point(1, 439);
+            this.ReportsButton.Location = new System.Drawing.Point(1, 487);
             this.ReportsButton.Name = "ReportsButton";
-            this.ReportsButton.Size = new System.Drawing.Size(199, 40);
+            this.ReportsButton.Size = new System.Drawing.Size(221, 40);
             this.ReportsButton.TabIndex = 5;
             this.ReportsButton.Text = "  Reportes";
             this.ReportsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -419,9 +427,9 @@
             this.TurnosButton.ForeColor = System.Drawing.Color.White;
             this.TurnosButton.Image = global::RegistryTime.Properties.Resources.time32;
             this.TurnosButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.TurnosButton.Location = new System.Drawing.Point(-1, 294);
+            this.TurnosButton.Location = new System.Drawing.Point(-1, 322);
             this.TurnosButton.Name = "TurnosButton";
-            this.TurnosButton.Size = new System.Drawing.Size(199, 40);
+            this.TurnosButton.Size = new System.Drawing.Size(221, 40);
             this.TurnosButton.TabIndex = 4;
             this.TurnosButton.Text = "  Turno";
             this.TurnosButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -439,9 +447,9 @@
             this.DepartamentoButton.ForeColor = System.Drawing.Color.White;
             this.DepartamentoButton.Image = global::RegistryTime.Properties.Resources.office32;
             this.DepartamentoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DepartamentoButton.Location = new System.Drawing.Point(1, 224);
+            this.DepartamentoButton.Location = new System.Drawing.Point(1, 242);
             this.DepartamentoButton.Name = "DepartamentoButton";
-            this.DepartamentoButton.Size = new System.Drawing.Size(199, 40);
+            this.DepartamentoButton.Size = new System.Drawing.Size(221, 40);
             this.DepartamentoButton.TabIndex = 3;
             this.DepartamentoButton.Text = "  Departamento";
             this.DepartamentoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -459,9 +467,9 @@
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Image = global::RegistryTime.Properties.Resources.settings32;
             this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(1, 485);
+            this.SettingsButton.Location = new System.Drawing.Point(1, 528);
             this.SettingsButton.Name = "SettingsButton";
-            this.SettingsButton.Size = new System.Drawing.Size(199, 40);
+            this.SettingsButton.Size = new System.Drawing.Size(221, 40);
             this.SettingsButton.TabIndex = 2;
             this.SettingsButton.Text = "  Configuración";
             this.SettingsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -479,9 +487,9 @@
             this.HomeButton.ForeColor = System.Drawing.Color.White;
             this.HomeButton.Image = global::RegistryTime.Properties.Resources.home32;
             this.HomeButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.HomeButton.Location = new System.Drawing.Point(1, 150);
+            this.HomeButton.Location = new System.Drawing.Point(1, 166);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(199, 40);
+            this.HomeButton.Size = new System.Drawing.Size(221, 40);
             this.HomeButton.TabIndex = 1;
             this.HomeButton.Text = "  Inicio";
             this.HomeButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -493,27 +501,21 @@
             this.MenuPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.MenuPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MenuPictureBox.Image = global::RegistryTime.Properties.Resources.menu42;
-            this.MenuPictureBox.Location = new System.Drawing.Point(152, 0);
+            this.MenuPictureBox.Location = new System.Drawing.Point(174, 0);
             this.MenuPictureBox.Name = "MenuPictureBox";
             this.MenuPictureBox.Size = new System.Drawing.Size(41, 40);
             this.MenuPictureBox.TabIndex = 0;
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
-            // CompanyNameToolStripStatusLabel
-            // 
-            this.CompanyNameToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CompanyNameToolStripStatusLabel.Name = "CompanyNameToolStripStatusLabel";
-            this.CompanyNameToolStripStatusLabel.Size = new System.Drawing.Size(91, 25);
-            this.CompanyNameToolStripStatusLabel.Text = "CompanyName";
-            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 576);
+            this.ClientSize = new System.Drawing.Size(888, 623);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "cMRT100010";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "JDL RegistryTime";

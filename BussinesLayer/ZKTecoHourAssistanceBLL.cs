@@ -59,7 +59,7 @@ namespace BussinesLayer
 
                 if (zKTecoDeviceBLL.connect())
                 {
-                    ICollection<HoursAssistanceInfo> hoursAssistances = zKTecoDeviceBLL.GetLogData(1);
+                    ICollection<HoursAssistanceInfo> hoursAssistances = zKTecoDeviceBLL.GetLogData();
 
                     int count = 0;
 

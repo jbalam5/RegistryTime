@@ -242,6 +242,7 @@ namespace RegistryTime.Forms
 
                 if (employeeML != null)
                 {
+                    KeyTextBox.Text = employeeML.Id.ToString();
                     NameTextBox.Text = employeeML.Name;
                     LastNameTextBox.Text = employeeML.LastName;
 
@@ -249,8 +250,11 @@ namespace RegistryTime.Forms
 
                 if (GlobalBLL.userML != null)
                 {
-                    UserNameTextBox.Text = GlobalBLL.userML.UserName;
-                    PasswordTextBox.Text = GlobalBLL.userML.Password;
+                    UsersBLL usersBLL = new UsersBLL();
+                    UsersML usersML = usersBLL.GetEntityById(GlobalBLL.userML.Id);
+
+                    UserNameTextBox.Text = usersML.UserName;
+                    PasswordTextBox.Text = usersML.Password;
 
                     if (!string.IsNullOrEmpty(GlobalBLL.userML.Image))
                     {
@@ -338,7 +342,6 @@ namespace RegistryTime.Forms
 
                         if (employeeML != null)
                         {
-                            employeeML.ControlNumber = KeyTextBox.Text;
                             employeeML.Name = NameTextBox.Text;
                             employeeML.LastName = LastNameTextBox.Text;
                             employeeBLL.Save(employeeML);
@@ -351,15 +354,15 @@ namespace RegistryTime.Forms
                         if (usersBLL.Save(GlobalBLL.userML) > 0)
                         {
 
-                            if (!string.IsNullOrEmpty(PathFileNameTextBox.Text))
+                            if (!string.IsNullOrEmpty(PathFileProfileTextBox.Text))
                             {
                                 if (!System.IO.Directory.Exists(GlobalBLL.DirectoryFiles)) System.IO.Directory.CreateDirectory(GlobalBLL.DirectoryFiles);
 
                                 string lastPathFile = string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, lastImage);
-                                if (System.IO.Path.GetFullPath(lastPathFile) != PathFileNameTextBox.Text)
+                                if (System.IO.Path.GetFullPath(lastPathFile) != PathFileProfileTextBox.Text)
                                 {
                                     System.IO.File.Delete(lastPathFile);
-                                    System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                                    System.IO.File.Copy(PathFileProfileTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileProfileTextBox.Text)));
                                 }
                             }
 

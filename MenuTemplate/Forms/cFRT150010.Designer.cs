@@ -147,6 +147,7 @@
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(286, 26);
             this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
             // 
             // UserNameTextBox
             // 
@@ -157,6 +158,7 @@
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(285, 26);
             this.UserNameTextBox.TabIndex = 1;
+            this.UserNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameTextBox_KeyDown);
             // 
             // statusStrip1
             // 
