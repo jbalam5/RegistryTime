@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Forms
@@ -16,9 +17,10 @@ namespace RegistryTime.Forms
     public partial class cFMAA100010 : Form
     {
         #region "Declaracion Variables"
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
         public int IdRowSelect;
         #endregion
+
         public cFMAA100010()
         {
             InitializeComponent();
@@ -80,11 +82,17 @@ namespace RegistryTime.Forms
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
                 if (IdRowSelect >= 0)
                 {
-                    cFMDE110010 Catalogo = new cFMDE110010();
-                    Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNombre.Text = dataGridViewData.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
-                    Catalogo.textBoxEncargado.Text = dataGridViewData.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
+                    cFMAA110010 Catalogo = new cFMAA110010();
+                    //{
+                    //    IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString())
+                    //};
+                    Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    Catalogo.textBoxNumControl.Text = dataGridViewData.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
+                    Catalogo.comboBoxAusentismo.Text = dataGridViewData.Rows[IdRowSelect].Cells["ClaveAusentismo"].Value.ToString();
+                    Catalogo.comboBoxEstadoAsig.Text = dataGridViewData.Rows[IdRowSelect].Cells["Estado"].Value.ToString();
                     Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                    Catalogo.dateTimeFechaInicio.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaInicio"].Value.ToString();
+                    Catalogo.dateTimeFechaFin.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaFinal"].Value.ToString();
                     AddOwnedForm(Catalogo);
                     Catalogo.FormBorderStyle = FormBorderStyle.None;
                     Catalogo.TopLevel = false;
@@ -96,7 +104,7 @@ namespace RegistryTime.Forms
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Departamento", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No tiene Seleccionado un Registro", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -107,7 +115,7 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewData.DataSource = DepartamentBLL.All();
+            dataGridViewData.DataSource = AbsenteeismAssignmentBLL.All();
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
@@ -115,11 +123,24 @@ namespace RegistryTime.Forms
             try
             {
                 IdRowSelect = dataGridViewData.CurrentRow.Index;
-                DepartamentML Departament = new DepartamentML();
-                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                Departament.IdUserDelete = 1;
-                DepartamentBLL.Delete(Departament);
+                AbsenteeismAssignmentML Catalogo = new AbsenteeismAssignmentML();
+                Catalogo.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                Catalogo.IdUserDelete = 1;
+                AbsenteeismAssignmentBLL.Delete(Catalogo);
                 dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+
+                //cFAT100010 Alert = new cFAT100010("INFORMACION", String.Format("¿Desea eliminar el registro {0}?", dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString()), MessageBoxIcon.Question);
+                //Alert.ShowDialog();
+                //if (Alert.DialogResult == DialogResult.Yes)
+                //{
+                //    AbsenteeismAssignmentML AbsenteeismAssignment = new AbsenteeismAssignmentML
+                //    {
+                //        Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString()),
+                //        IdUserDelete = 1
+                //    };
+                //    AbsenteeismAssignmentBLL.Delete(AbsenteeismAssignment);
+                //    dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                //}
             }
             catch (Exception ex)
             {

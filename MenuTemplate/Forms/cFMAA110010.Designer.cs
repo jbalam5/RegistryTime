@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            MaterialSkin.Controls.MaterialLabel materialLabel1;
-            MaterialSkin.Controls.MaterialLabel materialLabel10;
-            MaterialSkin.Controls.MaterialLabel materialLabel11;
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxApellidoM = new System.Windows.Forms.TextBox();
+            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
@@ -47,7 +49,7 @@
             this.materialLabel6 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxPuesto = new System.Windows.Forms.TextBox();
             this.materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
-            this.textBoxApePaterno = new System.Windows.Forms.TextBox();
+            this.textBoxApellidoP = new System.Windows.Forms.TextBox();
             this.materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
@@ -59,64 +61,10 @@
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel11 = new MaterialSkin.Controls.MaterialLabel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // materialLabel1
-            // 
-            materialLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel1.AutoSize = true;
-            materialLabel1.Depth = 0;
-            materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            materialLabel1.Location = new System.Drawing.Point(93, 64);
-            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel1.Name = "materialLabel1";
-            materialLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel1.Size = new System.Drawing.Size(15, 19);
-            materialLabel1.TabIndex = 80;
-            materialLabel1.Text = "*";
-            materialLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // materialLabel10
-            // 
-            materialLabel10.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel10.AutoSize = true;
-            materialLabel10.Depth = 0;
-            materialLabel10.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            materialLabel10.Location = new System.Drawing.Point(96, 267);
-            materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel10.Name = "materialLabel10";
-            materialLabel10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel10.Size = new System.Drawing.Size(15, 19);
-            materialLabel10.TabIndex = 81;
-            materialLabel10.Text = "*";
-            materialLabel10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // materialLabel11
-            // 
-            materialLabel11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            materialLabel11.AutoSize = true;
-            materialLabel11.Depth = 0;
-            materialLabel11.Font = new System.Drawing.Font("Roboto", 11F);
-            materialLabel11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            materialLabel11.Location = new System.Drawing.Point(531, 266);
-            materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel11.Name = "materialLabel11";
-            materialLabel11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            materialLabel11.Size = new System.Drawing.Size(15, 19);
-            materialLabel11.TabIndex = 82;
-            materialLabel11.Text = "*";
-            materialLabel11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
@@ -141,9 +89,11 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(materialLabel11);
-            this.panel2.Controls.Add(materialLabel10);
-            this.panel2.Controls.Add(materialLabel1);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.textBoxApellidoM);
+            this.panel2.Controls.Add(this.materialLabel12);
             this.panel2.Controls.Add(this.textBoxDescripcion);
             this.panel2.Controls.Add(this.materialLabel9);
             this.panel2.Controls.Add(this.materialLabel8);
@@ -157,7 +107,7 @@
             this.panel2.Controls.Add(this.materialLabel6);
             this.panel2.Controls.Add(this.textBoxPuesto);
             this.panel2.Controls.Add(this.materialLabel5);
-            this.panel2.Controls.Add(this.textBoxApePaterno);
+            this.panel2.Controls.Add(this.textBoxApellidoP);
             this.panel2.Controls.Add(this.materialLabel4);
             this.panel2.Controls.Add(this.textBoxNombre);
             this.panel2.Controls.Add(this.materialLabel3);
@@ -173,6 +123,59 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 434);
             this.panel2.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Red;
+            this.label5.Location = new System.Drawing.Point(520, 267);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(14, 18);
+            this.label5.TabIndex = 89;
+            this.label5.Text = "*";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(98, 267);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(14, 18);
+            this.label4.TabIndex = 88;
+            this.label4.Text = "*";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(98, 64);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(14, 18);
+            this.label3.TabIndex = 87;
+            this.label3.Text = "*";
+            // 
+            // textBoxApellidoM
+            // 
+            this.textBoxApellidoM.Location = new System.Drawing.Point(383, 175);
+            this.textBoxApellidoM.Name = "textBoxApellidoM";
+            this.textBoxApellidoM.Size = new System.Drawing.Size(335, 20);
+            this.textBoxApellidoM.TabIndex = 85;
+            // 
+            // materialLabel12
+            // 
+            this.materialLabel12.AutoSize = true;
+            this.materialLabel12.Depth = 0;
+            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel12.Location = new System.Drawing.Point(379, 153);
+            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel12.Name = "materialLabel12";
+            this.materialLabel12.Size = new System.Drawing.Size(72, 19);
+            this.materialLabel12.TabIndex = 84;
+            this.materialLabel12.Text = "Apellidos";
             // 
             // textBoxDescripcion
             // 
@@ -224,6 +227,7 @@
             this.dateTimeFechaFin.Name = "dateTimeFechaFin";
             this.dateTimeFechaFin.Size = new System.Drawing.Size(256, 24);
             this.dateTimeFechaFin.TabIndex = 72;
+            this.dateTimeFechaFin.Value = new System.DateTime(2019, 2, 27, 0, 30, 27, 0);
             // 
             // label2
             // 
@@ -244,6 +248,7 @@
             this.dateTimeFechaInicio.Name = "dateTimeFechaInicio";
             this.dateTimeFechaInicio.Size = new System.Drawing.Size(256, 24);
             this.dateTimeFechaInicio.TabIndex = 70;
+            this.dateTimeFechaInicio.Value = new System.DateTime(2019, 2, 27, 0, 29, 29, 0);
             // 
             // label13
             // 
@@ -309,12 +314,12 @@
             this.materialLabel5.TabIndex = 65;
             this.materialLabel5.Text = "Puesto";
             // 
-            // textBoxApePaterno
+            // textBoxApellidoP
             // 
-            this.textBoxApePaterno.Location = new System.Drawing.Point(12, 175);
-            this.textBoxApePaterno.Name = "textBoxApePaterno";
-            this.textBoxApePaterno.Size = new System.Drawing.Size(335, 20);
-            this.textBoxApePaterno.TabIndex = 62;
+            this.textBoxApellidoP.Location = new System.Drawing.Point(12, 175);
+            this.textBoxApellidoP.Name = "textBoxApellidoP";
+            this.textBoxApellidoP.Size = new System.Drawing.Size(335, 20);
+            this.textBoxApellidoP.TabIndex = 62;
             // 
             // materialLabel4
             // 
@@ -372,7 +377,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(383, 63);
+            this.pictureBox1.Location = new System.Drawing.Point(383, 18);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 132);
             this.pictureBox1.TabIndex = 55;
@@ -460,7 +465,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel6;
         public System.Windows.Forms.TextBox textBoxPuesto;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
-        public System.Windows.Forms.TextBox textBoxApePaterno;
+        public System.Windows.Forms.TextBox textBoxApellidoP;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         public System.Windows.Forms.TextBox textBoxNombre;
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
@@ -480,5 +485,10 @@
         public System.Windows.Forms.DateTimePicker dateTimeFechaFin;
         public System.Windows.Forms.DateTimePicker dateTimeFechaInicio;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        public System.Windows.Forms.TextBox textBoxApellidoM;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
     }
 }
