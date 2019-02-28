@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.UsersDAL";
         public String TableName = "users";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -35,7 +37,7 @@ namespace DataLayer
 
         }
 
-        public int UserExist(string UserName, int id, string ConnectionString)
+        public int UserExist(string UserName, int id)
         {
             try
             {
@@ -64,7 +66,7 @@ namespace DataLayer
             }
         }
 
-        public UsersML GetEntityById(int id, string ConnectionString)
+        public UsersML GetEntityById(int id)
         {
             try
             {
@@ -96,29 +98,20 @@ namespace DataLayer
         }
 
         
-        public int Save(UsersML User, String ConnectionString)
+        public int Save(UsersML User)
         {
             try
             {
-                 
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( userName,password,rol,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendLine(" VALUES( ");
-                Query.AppendFormat(" '{0}', ", User.UserName);
-                Query.AppendFormat(" '{0}', ", User.Password);
-                Query.AppendFormat(" {0}, ", User.Rol);
-                Query.AppendFormat(" '{0}', ", User.Image);
-                Query.AppendLine(" 1, ");
-                Query.AppendFormat(" '{0}', ", User.IdUserInsert);
-                Query.AppendLine(" GETDATE()) ");
-                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(User, TableName, IdUserSession);
+
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
                 
-                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
                 {
                     Conexion.Open();
                     int  newID = (Int32)cmd2.ExecuteScalar();
@@ -156,31 +149,21 @@ namespace DataLayer
             }
         }
 
-        public int Update(UsersML user, String ConnectionString)
+        public int Update(UsersML User)
         {
             try
             {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ",TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("username = '{0}',", user.UserName);
-                Query.AppendFormat("password = '{0}',", user.Password);
-                Query.AppendFormat("rol = {0},", user.Rol);
-                Query.AppendFormat("image = '{0}',", user.Image);
-                Query.AppendFormat("idUserUpdate = {0},", user.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", user.Id);
-                
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(User, TableName, IdUserSession);
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
-
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
-                return user.Id;
 
+                return User.Id;
 
             }
             catch(Exception ex)
@@ -189,25 +172,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(UsersML user, String ConnectionString)
+        public void Delete(UsersML User)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", user.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", user.Id);
-
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(User, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -215,7 +192,7 @@ namespace DataLayer
             }
         }
 
-        public Boolean UserExists(String Username, String ConnectionString)
+        public Boolean UserExists(String Username)
         {
             try
             {
@@ -255,7 +232,7 @@ namespace DataLayer
 
 
         
-        public UsersML IsUser(UsersML user, String ConnectionString)
+        public UsersML IsUser(UsersML user)
         {
             try
             {

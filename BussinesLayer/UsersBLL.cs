@@ -12,21 +12,21 @@ namespace BussinesLayer
 {
     public class UsersBLL
     {
-        public UsersDAL usersDAL = new UsersDAL();
+        public UsersDAL UsersDAL = new UsersDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
-        public String ConnectionStrings;
         public String core = "BussinesLayer.UsersBLL";
 
         public UsersBLL()
-        {
-            ConnectionStrings = conexion.ConnectionStrings();
+        {            
+            UsersDAL.ConnectionString = conexion.ConnectionStrings();
+            UsersDAL.IdUserSession = (GlobalBLL.userML != null) ? GlobalBLL.userML.Id : 0;
         }
 
         public DataTable All()
         {
             try
             {
-                return  usersDAL.All(ConnectionStrings);
+                return  UsersDAL.All();
                 
             }catch(Exception ex)
             {
@@ -38,7 +38,7 @@ namespace BussinesLayer
         {
             try
             {
-                UsersML UsersML = usersDAL.GetEntityById(Id, ConnectionStrings);
+                UsersML UsersML = UsersDAL.GetEntityById(Id);
                 UsersML.Password = conexion.DesEncriptar(UsersML.Password);
                 return UsersML;
             }
@@ -52,7 +52,7 @@ namespace BussinesLayer
         {
             try
             {
-                return usersDAL.UserExist(UserName, id, ConnectionStrings);
+                return UsersDAL.UserExist(UserName, id);
             }
             catch (Exception ex)
             {
@@ -67,11 +67,11 @@ namespace BussinesLayer
                 users.Password = conexion.Encriptar(users.Password);
                 if (users.Id == 0)
                 {
-                    return usersDAL.Save(users, ConnectionStrings);
+                    return UsersDAL.Save(users);
                 }
                 else
                 {   
-                    return usersDAL.Update(users, ConnectionStrings);
+                    return UsersDAL.Update(users);
                 }
             }
             catch(Exception ex)
@@ -80,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(UsersML users)
+        public void Delete(UsersML users)
         {
             try
             {
-                return usersDAL.Delete(users, ConnectionStrings);
+                UsersDAL.Delete(users);
             }
             catch (Exception ex)
             {
@@ -97,7 +97,8 @@ namespace BussinesLayer
             try
             {
                 user.Password = conexion.Encriptar(user.Password);
-                return usersDAL.IsUser(user, ConnectionStrings);
+                //UsersDAL.IdUserSession = UsersDAL.IsUser(user).Id;
+                return UsersDAL.IsUser(user);
             }
             catch (Exception ex)
             {
@@ -109,7 +110,7 @@ namespace BussinesLayer
         {
             try
             {
-                return usersDAL.UserExists(Username, ConnectionStrings);
+                return UsersDAL.UserExists(Username);
             }
             catch (Exception ex)
             {

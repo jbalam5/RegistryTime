@@ -14,19 +14,26 @@ namespace BussinesLayer
     {
         public DepartamentDAL DepartamentDAL = new DepartamentDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
+        
+
         public String ConnectionStrings;
         public String core = "BussinesLayer.StatusBookBLL";
 
         public DepartamentBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            DepartamentDAL.IdUserSession = GlobalBLL.userML.Id;
+            DepartamentDAL.ConnectionString = conexion.ConnectionStrings();
         }
 
-        public DataTable All()
+        public DataTable All(String Table = "Defaul")
         {
             try
             {
-                return DepartamentDAL.All(ConnectionStrings);
+                if(Table == "All")
+                    return DepartamentDAL.AllTable();
+                else
+                    return DepartamentDAL.AllTable();
 
             }
             catch (Exception ex)
@@ -40,7 +47,7 @@ namespace BussinesLayer
             try
             {
 
-                return DepartamentDAL.GetIdEntity(Id, ConnectionStrings);
+                return DepartamentDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +61,11 @@ namespace BussinesLayer
             {
                 if (departament.Id == 0)
                 {
-                    return DepartamentDAL.Save(departament, ConnectionStrings);
+                    return DepartamentDAL.Save(departament);
                 }
                 else
                 {
-                    return DepartamentDAL.Update(departament, ConnectionStrings);
+                    return DepartamentDAL.Update(departament);
                 }
             }
             catch (Exception ex)
@@ -67,11 +74,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(DepartamentML departament)
+        public void Delete(DepartamentML departament)
         {
             try
             {
-                return DepartamentDAL.Delete(departament, ConnectionStrings);
+               DepartamentDAL.Delete(departament);
             }
             catch (Exception ex)
             {

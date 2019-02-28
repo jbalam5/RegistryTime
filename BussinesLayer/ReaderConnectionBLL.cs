@@ -20,6 +20,7 @@ namespace BussinesLayer
         public ReaderConnectionBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            readerConnectionDAL.idUser = GlobalBLL.userML.Id;
         }
 
         public DataTable All()
@@ -72,11 +73,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(ReaderConnectionML readerConnectionML)
+        public int Delete(int Id)
         {
             try
             {
-                return readerConnectionDAL.Delete(readerConnectionML, ConnectionStrings);
+                return readerConnectionDAL.Delete(Id, ConnectionStrings);
             }
             catch (Exception ex)
             {

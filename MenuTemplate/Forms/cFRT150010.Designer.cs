@@ -254,7 +254,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cFRT150010";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "cFRT150010";
+            this.Text = "Iniciar Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cFRT150010_FormClosed);
             this.Load += new System.EventHandler(this.cFRT150010_Load);
             this.PrincipalPanel.ResumeLayout(false);
             this.ContainerPanel.ResumeLayout(false);

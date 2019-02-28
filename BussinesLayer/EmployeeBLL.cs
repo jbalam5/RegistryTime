@@ -20,13 +20,15 @@ namespace BussinesLayer
         public EmployeeBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            EmployeeDAL.IdUserSession = GlobalBLL.userML.Id;
+            EmployeeDAL.ConnectionString = conexion.ConnectionStrings();
         }
 
         public DataTable All()
         {
             try
             {
-                return EmployeeDAL.All(ConnectionStrings);
+                return EmployeeDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +42,7 @@ namespace BussinesLayer
             try
             {
 
-                return EmployeeDAL.GetIdEntity(Id, ConnectionStrings);
+                return EmployeeDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -53,7 +55,7 @@ namespace BussinesLayer
             try
             {
 
-                return EmployeeDAL.GetEmploymentByIdUser(Id, ConnectionStrings);
+                return EmployeeDAL.GetEmploymentByIdUser(Id);
             }
             catch (Exception ex)
             {
@@ -66,7 +68,7 @@ namespace BussinesLayer
             try
             {
 
-                return EmployeeDAL.GetEntityByNoControl(NoControl, ConnectionStrings);
+                return EmployeeDAL.GetEntityByNoControl(NoControl);
             }
             catch (Exception ex)
             {
@@ -80,11 +82,11 @@ namespace BussinesLayer
             {
                 if (employee.Id == 0)
                 {
-                    return EmployeeDAL.Save(employee, ConnectionStrings);
+                    return EmployeeDAL.Save(employee);
                 }
                 else
                 {
-                    return EmployeeDAL.Update(employee, ConnectionStrings);
+                    return EmployeeDAL.Update(employee);
                 }
             }
             catch (Exception ex)
@@ -93,11 +95,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(EmployeeML employee)
+        public void Delete(EmployeeML employee)
         {
             try
             {
-                return EmployeeDAL.Delete(employee, ConnectionStrings);
+                EmployeeDAL.Delete(employee);
             }
             catch (Exception ex)
             {

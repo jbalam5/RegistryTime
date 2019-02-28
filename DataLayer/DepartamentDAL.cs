@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ModelLayer;
+using System.Reflection;
 
 namespace DataLayer
 {
@@ -14,8 +15,11 @@ namespace DataLayer
         public String core = "DataLayer.DepartamentDAL";
         public String TableName = "departament";
         public String TablaStatusBook = "statusBook";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
+        
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -36,8 +40,28 @@ namespace DataLayer
             }
 
         }
+         public DataTable AllTable()
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection();
+                Conexion.ConnectionString = ConnectionString;
+                Conexion.Open();
+                String Query = String.Format("SELECT * FROM {0} where {0}._registry = 1", TableName);
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+                return dtDepartamentos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.All : {1}", core, ex));
+            }
 
-        public DataTable GetIdEntity(int id ,String ConnectionString)
+        }
+
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -78,64 +102,40 @@ namespace DataLayer
             }
         }
 
-        public int Save(DepartamentML Departament, String ConnectionString)
+        public int Save(DepartamentML Departament)
         {
-            try
+            ModelDAL data = new ModelDAL();
+            String Response = data.InsertModel(Departament, TableName,IdUserSession);
+            SqlConnection Conexion = new SqlConnection
             {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( name,manager,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendLine(" VALUES( ");
-                Query.AppendFormat(" '{0}', ", Departament.Name);
-                Query.AppendFormat(" '{0}', ", Departament.Manager);
-                Query.AppendFormat(" '{0}', ", Departament.Description);
-                Query.AppendLine(" 1, ");
-                Query.AppendFormat(" {0}, ", Departament.IdUserInsert);
-                Query.AppendLine(" GETDATE()) ");
-                Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
-                {
-                    Conexion.Open();
-                    int newID = (Int32)cmd2.ExecuteScalar();
+                ConnectionString = ConnectionString
+            };
 
-                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
-                    return newID;
-                }
-            }
-            catch (Exception ex)
+            using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
             {
-                throw new Exception(String.Format("{0}.save : {1}", core, ex));
+                Conexion.Open();
+                int newID = (Int32)cmd2.ExecuteScalar();
+
+                if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                return newID;
             }
 
         }
 
-        public int Update(DepartamentML departament, String ConnectionString)
+        public int Update(DepartamentML Departament)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat(" name = '{0}',", departament.Name);
-                Query.AppendFormat(" manager = '{0}',", departament.Manager);
-                Query.AppendFormat(" description = '{0}',", departament.Description);
-                Query.AppendFormat(" idUserUpdate = {0},", departament.IdUserUpdate);
-                Query.AppendLine(" dateUpdate = GETDATE()");
-                Query.AppendFormat(" WHERE id={0}", departament.Id);
-
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(Departament, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+                return Departament.Id;
             }
             catch (Exception ex)
             {
@@ -143,27 +143,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DepartamentML departament, String ConnectionString)
+        public void Delete(DepartamentML Departament)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine(" _registry = 2,");
-                Query.AppendFormat(" idUserDelete = {0}, ", departament.IdUserDelete);
-                Query.AppendLine(" dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", departament.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(Departament, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -171,4 +163,5 @@ namespace DataLayer
             }
         }
     }
+
 }

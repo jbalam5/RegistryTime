@@ -42,7 +42,6 @@ namespace RegistryTime.Forms
         {
             try
             {
-
                 EmployeeML EmployeeML = new EmployeeML();
                 EmployeeML EmployeeEntiy;
                 UsersML UserEntity;
@@ -51,13 +50,9 @@ namespace RegistryTime.Forms
                 {
                     EmployeeEntiy = EmployeeBLL.GetIdEntity(id);
                     if(radioButtonHombre.Text == EmployeeEntiy.Gender.ToString())
-                    {
-                        radioButtonHombre.Checked = true;
-                    }
+                       radioButtonHombre.Checked = true;
                     else
-                    {
                         radioButtonMujer.Checked = true;
-                    }
 
                     textBoxRfc.Text = EmployeeEntiy.RFC.ToString();
                     textBoxCurp.Text = EmployeeEntiy.Curp.ToString();
@@ -72,8 +67,7 @@ namespace RegistryTime.Forms
                     textBoxColonia.Text = EmployeeEntiy.Colony.ToString();
                     textBoxTelefono.Text = EmployeeEntiy.Telephone.ToString();
                     textBoxCodigoPostal.Text = EmployeeEntiy.PostalCode.ToString();
-                    textBoxEstado.Text = EmployeeEntiy.StateCountry.ToString();
-                    textBoxNumControl.Text = EmployeeEntiy.ControlNumber.ToString();
+                    textBoxEstado.Text = EmployeeEntiy.StateCountry.ToString();                    
                     textBoxNumSeguro.Text = EmployeeEntiy.NumberSure.ToString();
                     textBoxSueldo.Text = EmployeeEntiy.Salary.ToString();
                     comboBoxTipoSeguro.SelectedValue = EmployeeEntiy.SureType.ToString();
@@ -81,9 +75,9 @@ namespace RegistryTime.Forms
                     comboBoxEscolaridad.SelectedValue = EmployeeEntiy.Scholarship.ToString();
                     comboBoxPuesto.SelectedValue = EmployeeEntiy.IdJob.ToString(); 
                     comboBoxEstadoCivil.SelectedValue = EmployeeEntiy.CivilStatus.ToString();
-                }
-                if ( !String.IsNullOrEmpty(UsersBLL.GetEntityById(id).UserName)){
-                    UserEntity = UsersBLL.GetEntityById(id);
+                
+                if ( !String.IsNullOrEmpty(UsersBLL.GetEntityById(Convert.ToInt32(EmployeeEntiy.IdUser.ToString())).UserName)){
+                    UserEntity = UsersBLL.GetEntityById(Convert.ToInt32(EmployeeEntiy.IdUser.ToString()));
                     
                     textBoxUsuario.Text = UserEntity.UserName.ToString();
                     textBoxPassword.Text = UserEntity.Password.ToString();
@@ -141,6 +135,7 @@ namespace RegistryTime.Forms
                         }
                     }
                 }
+             }
 
             }
             catch (Exception ex)
@@ -186,7 +181,6 @@ namespace RegistryTime.Forms
             textBoxTelefono.Text = String.Empty;
             textBoxCodigoPostal.Text = String.Empty;
             textBoxEstado.Text = String.Empty;
-            textBoxNumControl.Text = String.Empty;
             textBoxNumSeguro.Text = String.Empty;
             comboBoxDepartamento.SelectedIndex = 0;
             comboBoxPuesto.SelectedIndex = 0;
@@ -324,7 +318,6 @@ namespace RegistryTime.Forms
                 if(IdUser > 0)
                 {
                     User.Id = IdUser;
-                    User.IdUserUpdate = GlobalBLL.userML.Id;
                 }
                 
                 UsersBLL UsersBALL = new UsersBLL();
@@ -346,14 +339,12 @@ namespace RegistryTime.Forms
                     PostalCode = (String.IsNullOrEmpty(textBoxCodigoPostal.Text))?0: int.Parse(textBoxCodigoPostal.Text),
                     Colony = textBoxColonia.Text,
                     StateCountry = textBoxEstado.Text,
-                    ControlNumber = textBoxNumControl.Text,
                     AdmissionDate = dateTimeFechaIngreso.Value,
                     IdDepartament = Int32.Parse(comboBoxDepartamento.SelectedValue.ToString()),
                     IdJob = Int32.Parse(comboBoxPuesto.SelectedValue.ToString()),
                     SureType = comboBoxTipoSeguro.SelectedValue.ToString(),
                     NumberSure = textBoxNumSeguro.Text,
                     Salary= Convert.ToDecimal( textBoxSueldo.Text),
-                    IdUserInsert = GlobalBLL.userML.Id
                 };
 
                 if (radioButtonHombre.Checked)
@@ -380,8 +371,7 @@ namespace RegistryTime.Forms
                     DaysOfWorkEmployeeML DaysOfWorkEmployee = new DaysOfWorkEmployeeML()
                     {
                         IdDays = Int32.Parse(item.GetType().GetProperty("Value").GetValue(item, null).ToString()),
-                        IdEmployee = IdNewEmployee,
-                        IdUserInsert = GlobalBLL.userML.Id
+                        IdEmployee = IdNewEmployee
                     };
                     DaysOfWorkEmployeeBLL.Save(DaysOfWorkEmployee);
                 }
@@ -399,7 +389,7 @@ namespace RegistryTime.Forms
                     TurnsOfEmployeeBLL.Save(TurnsOfEmployee);
                 }
 
-                    if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !string.IsNullOrEmpty(PathFileImage) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
+                if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !string.IsNullOrEmpty(PathFileImage) && System.IO.Path.GetFileName(PathFileImageOld) != PathFileImage)
                 {
                     if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
 
@@ -407,7 +397,7 @@ namespace RegistryTime.Forms
                     System.IO.File.Copy(PathFileImage, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
                 }
 
-                    cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
+                cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();
                 cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
                 Alert.ShowDialog();
@@ -513,7 +503,7 @@ namespace RegistryTime.Forms
             {
                 DepartamentBLL DepartamentBLL = new DepartamentBLL();
                 DataTable Departamentos;
-                Departamentos = DepartamentBLL.All();
+                Departamentos = DepartamentBLL.All("All");
                 comboBoxDepartamento.DisplayMember = "Text";
                 comboBoxDepartamento.ValueMember = "Value";
 
@@ -521,7 +511,7 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Depatamento in Departamentos.Rows)
                 {
-                    items.Add(new { Text = Depatamento[1].ToString(), Value = Depatamento[0].ToString() });
+                    items.Add(new { Text = Depatamento[DepartamentML.DataBase.Name].ToString(), Value = Depatamento[DepartamentML.DataBase.Id].ToString() });
                 }
                 comboBoxDepartamento.DataSource = items;
             }
@@ -537,7 +527,7 @@ namespace RegistryTime.Forms
             {
                 JobBLL JobBLL = new JobBLL();
                 DataTable Jobs;
-                Jobs = JobBLL.All();
+                Jobs = JobBLL.All("All");
                 comboBoxPuesto.DisplayMember = "Text";
                 comboBoxPuesto.ValueMember = "Value";
 
@@ -545,11 +535,9 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Job in Jobs.Rows)
                 {
-                    items.Add(new { Text = Job[1].ToString(), Value = Job[0].ToString() });
+                    items.Add(new { Text = Job[JobML.DataBase.Name].ToString(), Value = Job[JobML.DataBase.Id].ToString() });
                 }
-
                 comboBoxPuesto.DataSource = items;
-
             }
             catch (Exception ex)
             {
@@ -571,7 +559,7 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione un opción", Value = "0" });
                 foreach (DataRow Rol in Roles.Rows)
                 {
-                    items.Add(new { Text = Rol[1].ToString(), Value = Rol[0].ToString() });
+                    items.Add(new { Text = Rol[RoleML.DataBase.Name].ToString(), Value = Rol[RoleML.DataBase.Id].ToString() });
                 }
                 comboBoxRol.DataSource = items;
             }
@@ -593,7 +581,7 @@ namespace RegistryTime.Forms
                 checkedListBoxDias.ValueMember = "Value";
                 foreach (DataRow Day in Days.Rows)
                 {
-                    checkedListBoxDias.Items.Add(new { Text = Day[1].ToString(), Value = Day[0].ToString() }, false);
+                    checkedListBoxDias.Items.Add(new { Text = Day[DaysML.DataBase.Name].ToString(), Value = Day[DaysML.DataBase.Id].ToString() }, false);
                 }
             }
             catch (Exception ex)
@@ -657,4 +645,5 @@ namespace RegistryTime.Forms
         }
     }
 }
+
 

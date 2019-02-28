@@ -78,23 +78,31 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                if (IdRowSelect >= 0)
+                if (dataGridViewData.RowCount > 0)
                 {
-                    cFMDE110010 Catalogo = new cFMDE110010();
-                    Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    AddOwnedForm(Catalogo);
-                    Catalogo.FormBorderStyle = FormBorderStyle.None;
-                    Catalogo.TopLevel = false;
-                    Catalogo.Dock = DockStyle.Fill;
-                    this.Controls.Add(Catalogo);
-                    this.Tag = Catalogo;
-                    Catalogo.BringToFront();
-                    Catalogo.Show();
+                    IdRowSelect = dataGridViewData.CurrentRow.Index;
+                    if (IdRowSelect >= 0)
+                    {
+                        cFMDE110010 Catalogo = new cFMDE110010();
+                        Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        AddOwnedForm(Catalogo);
+                        Catalogo.FormBorderStyle = FormBorderStyle.None;
+                        Catalogo.TopLevel = false;
+                        Catalogo.Dock = DockStyle.Fill;
+                        this.Controls.Add(Catalogo);
+                        this.Tag = Catalogo;
+                        Catalogo.BringToFront();
+                        Catalogo.Show();
+                    }
+                    else
+                    {
+                        cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Departamento", MessageBoxIcon.Information);
+                        Alert.ShowDialog();
+                    }
                 }
                 else
                 {
-                    cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Departamento", MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
                     Alert.ShowDialog();
                 }
             }catch(Exception ex)
@@ -112,19 +120,26 @@ namespace RegistryTime.Forms
         {
             try
             {
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                int idDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                cFAT100010 Alert = new cFAT100010("Información",String.Format("¿Desea eliminar el registro {0}?",idDepartament),MessageBoxIcon.Question);
-                Alert.ShowDialog();
-                if(Alert.DialogResult == DialogResult.Yes)
-                {
-                    DepartamentML Departament = new DepartamentML
+                if (dataGridViewData.RowCount > 0)
+                { 
+                    IdRowSelect = dataGridViewData.CurrentRow.Index;
+                    int idDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    cFAT100010 Alert = new cFAT100010("Información", String.Format("¿Desea eliminar el registro {0}?", idDepartament), MessageBoxIcon.Question);
+                    Alert.ShowDialog();
+                    if (Alert.DialogResult == DialogResult.Yes)
                     {
-                        Id = idDepartament,
-                        IdUserDelete = 1
-                    };
-                    DepartamentBLL.Delete(Departament);
-                    dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                        DepartamentML Departament = new DepartamentML
+                        {
+                            Id = idDepartament,
+                        };
+                        DepartamentBLL.Delete(Departament);
+                        dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                    }
+                }
+                else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
             }
             catch (Exception ex)

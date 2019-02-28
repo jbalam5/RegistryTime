@@ -75,6 +75,9 @@ namespace RegistryTime.Forms
                     if (IdJob > 0)
                     {
                         Job.Id = IdJob;
+                        Job.Name = textBoxPuesto.Text;
+                        Job.Description = textBoxDescripcion.Text;
+                        //Job.IdUserUpdate = 1;
                     }
 
                     JobBLL.Save(Job);

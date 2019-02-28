@@ -8,15 +8,15 @@ namespace ModelLayer
 {
     public class DaysOfTurnML
     {
+        public class DataBase
+        {
+            public const string Id = "id";
+            public const string IdDays = "idDays";
+            public const string IdTurn = "idTurn";
+        }
+
         public int Id { get; set; }
         public String IdDays { get; set; }
         public String IdTurn { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
     }
 }

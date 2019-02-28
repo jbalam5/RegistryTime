@@ -19,14 +19,18 @@ namespace BussinesLayer
 
         public JobBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            JobDAL.ConnectionString = conexion.ConnectionStrings();
+            JobDAL.IdUserSession = GlobalBLL.userML.Id;
         }
 
-        public DataTable All()
+        public DataTable All(String Table = "Default")
         {
             try
             {
-                return JobDAL.All(ConnectionStrings);
+                if(Table == "All")
+                    return JobDAL.AllTable();
+                else
+                    return JobDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +44,7 @@ namespace BussinesLayer
             try
             {
 
-                return JobDAL.GetIdEntity(Id, ConnectionStrings);
+                return JobDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +58,11 @@ namespace BussinesLayer
             {
                 if (Job.Id == 0)
                 {
-                    return JobDAL.Save(Job, ConnectionStrings);
+                    return JobDAL.Save(Job);
                 }
                 else
                 {
-                    return JobDAL.Update(Job, ConnectionStrings);
+                    return JobDAL.Update(Job);
                 }
             }
             catch (Exception ex)
@@ -67,11 +71,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(JobML Job)
+        public void Delete(JobML Job)
         {
             try
             {
-                return JobDAL.Delete(Job, ConnectionStrings);
+                JobDAL.Delete(Job);
             }
             catch (Exception ex)
             {

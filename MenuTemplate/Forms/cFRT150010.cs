@@ -50,7 +50,7 @@ namespace RegistryTime.Forms
 
         private void Closebutton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -90,18 +90,25 @@ namespace RegistryTime.Forms
                         if (roleML.Name.ToUpper() == "ADMIN")
                         {
                             //_frm = new cMRT100010();
+
                             BussinesLayer.GlobalBLL.userML = UsersML;
 
-                            cMRT100010 frm = new cMRT100010();
+                            //cMRT100010 frm = new cMRT100010();
+                            //this.Hide();
+                            //frm.Show();
                             this.Hide();
-                            frm.Show();
 
                         }
-                        else {                         
+                        else {
+
+                            Alerts.cFAT100010 frmAlert = new Alerts.cFAT100010("Información", "No cuenta con los privilegios suficientes", MessageBoxIcon.Error);
+                            frmAlert.ShowDialog();
                             //_frm = new Forms.CFRT140010();
-                            Forms.CFRT140010 frm = new Forms.CFRT140010();
-                            this.Hide();
-                            frm.Show();
+
+                            //Abre el formulario de registro
+                            //Forms.CFRT140010 frm = new Forms.CFRT140010();
+                            //this.Hide();
+                            //frm.Show();
                         }
                     }
                     else
@@ -113,13 +120,13 @@ namespace RegistryTime.Forms
 
             }catch(Exception ex)
             {
-                MessageBox.Show(String.Format("OkButton_Click: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("OkButton_Click: {0}", ex), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Close();
         }
 
         #endregion
@@ -157,5 +164,10 @@ namespace RegistryTime.Forms
             }
         }
         #endregion
+
+        private void cFRT150010_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -9,5 +9,7 @@ namespace BussinesLayer
     public static class GlobalBLL
     {
         public static ModelLayer.UsersML  userML = null;
+        public static ModelLayer.CompanyML companyML = null;
+        public static string  DirectoryFiles = "ImagenTMP";
     }
 }

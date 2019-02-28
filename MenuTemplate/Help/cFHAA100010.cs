@@ -108,7 +108,23 @@ namespace RegistryTime.Help
 
         private void Closebutton_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             this.Close();
+=======
+            try
+            {
+                
+                IdRowSelect = dataGridViewData.CurrentRow.Index;
+                DepartamentML Departament = new DepartamentML();
+                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                DepartamentBLL.Delete(Departament);
+                dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+>>>>>>> c90f21b194ef8bf6e3ae5a12bf9d940c86489d99
         }
     }
 }

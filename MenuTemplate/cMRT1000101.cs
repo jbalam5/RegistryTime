@@ -145,7 +145,7 @@ namespace RegistryTime
             BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
 
             BiometricCore.UserInfo user = new BiometricCore.UserInfo();
-            int id = obj.SetUserInfo(1, 176, "Felipe", 1, "", "176176176");
+            int id = obj.SetUserInfo(1, 177, "dchan", 1, "", "177177");
             MessageBox.Show(string.Format("{0}", id));
             
         }

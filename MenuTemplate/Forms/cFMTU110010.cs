@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 namespace RegistryTime.Forms
 {
@@ -51,18 +52,47 @@ namespace RegistryTime.Forms
 
         public void CalcHorasJornada()
         {
-            
+            try
+            {
+                var minutes = dateTimeHoraSalida.Value.Subtract(dateTimeHoraEntrada.Value);
+                textBoxHorasJornada.Text = minutes.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("CalcHorasJornada: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxTurno.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Ingrese Nombre");
+                }
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("EROR", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
+
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (!String.IsNullOrEmpty(textBoxTurno.Text))
+                if (FormValidate())
                 {
                     TurnML Turn = new TurnML();
-                    int HoursJornada = Convert.ToInt32(textBoxHorasJornada.Text);
-
+                    
                     Turn.Name = textBoxTurno.Text;
                     Turn.Description = textBoxDescripcion.Text;
                     Turn.TimeEntry = dateTimeHoraEntrada.Value;
@@ -70,23 +100,20 @@ namespace RegistryTime.Forms
                     Turn.LimitEntry = dateTimeLimiteEntrada.Value;
                     Turn.Departuretime = dateTimeHoraSalida.Value;
                     Turn.LimitDeparture = dateTimeLimiteSalida.Value;
-                    Turn.HoursJornada = HoursJornada;
+                    Turn.HoursJornada = Convert.ToDateTime(textBoxHorasJornada.Text);
 
                     if (IdTurn > 0)
                     {
                         Turn.Id = IdTurn;
-                        Turn.IdUserUpdate = GlobalBLL.userML.Id; 
                     }
-                    else
-                    {
-                        Turn.IdUserInsert = GlobalBLL.userML.Id;
-                    }
+                    
                     TurnBLL.Save(Turn);
 
                     cFMTU100010 FrmDataGrid = this.Owner as cFMTU100010;
                     FrmDataGrid.LoadDataGridView();
 
-                    MessageBox.Show("Guardado con Éxito");
+                    cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                     Clear();
                     this.Close();
                 }
@@ -113,12 +140,30 @@ namespace RegistryTime.Forms
         {
             dateTimeIniciaEntrada.Value = dateTimeHoraEntrada.Value;
             dateTimeLimiteEntrada.Value = dateTimeHoraEntrada.Value;
+            
+            if(dateTimeHoraSalida.Value > dateTimeHoraEntrada.Value)
+            {
+                CalcHorasJornada();
+            }
+            else
+            {
+                dateTimeHoraSalida.Value = dateTimeHoraEntrada.Value;
+            }
+
+
         }
 
         private void dateTimeHoraSalida_ValueChanged(object sender, EventArgs e)
         {       
             dateTimeLimiteSalida.Value = dateTimeHoraSalida.Value;
-            //HoursJornada = dateTimeHoraEntrada.Value + dateTimeHoraSalida.Value;
+            if(dateTimeHoraEntrada.Value > dateTimeLimiteSalida.Value)
+            {
+                dateTimeHoraSalida.Value = dateTimeIniciaEntrada.Value;
+            }
+            else
+            {
+                CalcHorasJornada();
+            }
         }
     }
 }

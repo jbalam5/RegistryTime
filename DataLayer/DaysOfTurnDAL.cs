@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.DaysOfTurnDAL";
         public String TableName = "daysOfTurn";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -37,7 +39,7 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -60,23 +62,19 @@ namespace DataLayer
             }
         }
 
-        public int Save(DaysOfTurnML daysOfTurn, String ConnectionString)
+        public int Save(DaysOfTurnML DaysOfTurn)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( idDays,idTurn,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},1,{3},GETDATE())", daysOfTurn.IdDays, daysOfTurn.IdTurn,  daysOfTurn.IdUserInsert);
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(DaysOfTurn, TableName, IdUserSession);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                return cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -85,29 +83,21 @@ namespace DataLayer
 
         }
 
-        public int Update(DaysOfTurnML daysOfTurn, String ConnectionString)
+        public int Update(DaysOfTurnML DaysOfTurn)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("idDays = {0}", daysOfTurn.IdDays);
-                Query.AppendFormat("idTurn = {0}", daysOfTurn.IdTurn);
-                Query.AppendFormat("idUserUpdate = {0}", daysOfTurn.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", daysOfTurn.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(DaysOfTurn, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
 
+                return DaysOfTurn.Id;
 
             }
             catch (Exception ex)
@@ -116,27 +106,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(DaysOfTurnML daysOfTurn, String ConnectionString)
+        public void Delete(DaysOfTurnML DaysOfTurn)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", daysOfTurn.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", daysOfTurn.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(DaysOfTurn, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

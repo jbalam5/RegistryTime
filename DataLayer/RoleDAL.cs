@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.roleDAL";
         public String TableName = "role";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -35,7 +37,7 @@ namespace DataLayer
 
         }
 
-        public RoleML GetIdEntity(int id, String ConnectionString)
+        public RoleML GetIdEntity(int id)
         {
             try
             {
@@ -69,8 +71,8 @@ namespace DataLayer
                 {
                     RoleML roleML = new RoleML()
                     {
-                        Name = (row[RoleML.DataBase.name] != DBNull.Value) ? row[RoleML.DataBase.name].ToString() : string.Empty,
-                        Description = (row[RoleML.DataBase.description] != DBNull.Value) ? row[RoleML.DataBase.description].ToString() : string.Empty,
+                        Name = (row[RoleML.DataBase.Name] != DBNull.Value) ? row[RoleML.DataBase.Name].ToString() : string.Empty,
+                        Description = (row[RoleML.DataBase.Description] != DBNull.Value) ? row[RoleML.DataBase.Description].ToString() : string.Empty,
                         _regitry = (row[RoleML.DataBase._registry] != DBNull.Value) ? int.Parse(row[RoleML.DataBase._registry].ToString()) : 0
                     };
 
@@ -85,7 +87,7 @@ namespace DataLayer
                 throw new Exception(String.Format("{0}.GetEntity : {1}", core, ex));
             }
         }
-        public int Save(RoleML role, String ConnectionString)
+        public int Save(RoleML role)
         {
             try
             {
@@ -108,7 +110,7 @@ namespace DataLayer
 
         }
 
-        public int Update(RoleML role, String ConnectionString)
+        public int Update(RoleML role)
         {
             try
             {
@@ -137,7 +139,7 @@ namespace DataLayer
             }
         }
 
-        public int Delete(RoleML role, String ConnectionString)
+        public int Delete(RoleML role)
         {
             try
             {

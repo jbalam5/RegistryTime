@@ -11,8 +11,14 @@ namespace DataLayer
 {
     public class ReaderConnectionDAL
     {
-        public String core = "DataLayer.ReaderConnectionDAL";
-        public String TableName = "ReaderConnection";
+        #region "PROPERTIES"
+        public int idUser { get; set; }
+        #endregion
+
+        #region "VARIABLES GLOBALES"
+        private String core = "DataLayer.ReaderConnectionDAL";
+        private String TableName = "ReaderConnection";
+        #endregion
 
         public DataTable All(String ConnectionString)
         {
@@ -146,7 +152,7 @@ namespace DataLayer
                     Query.AppendFormat(" convert(bit, '{0}'), ", readerConnectionML.isDefault);
                     Query.AppendFormat(" {0}, ", readerConnectionML.idReader);
                     Query.AppendLine(" 1, ");
-                    Query.AppendFormat(" {0}, ", readerConnectionML.idUserInsert);
+                    Query.AppendFormat(" {0}, ", idUser);
                     Query.AppendLine(" GETDATE()) ");
                     Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                     SqlConnection Conexion = new SqlConnection
@@ -206,7 +212,7 @@ namespace DataLayer
                     Query.AppendFormat("{0} = '{1}', ", ReaderConnectionML.DataBase.port, readerConnectionML.port);
                     Query.AppendFormat("{0} =  convert(bit, '{1}'), ", ReaderConnectionML.DataBase.isDefault, readerConnectionML.isDefault);
                     Query.AppendFormat("{0} = {1}, ", ReaderConnectionML.DataBase.idReader, readerConnectionML.idReader);
-                    Query.AppendFormat("idUserUpdate = {0}, ", 1);
+                    Query.AppendFormat("idUserUpdate = {0}, ", idUser);
                     Query.AppendLine("dateUpdate = GETDATE() ");
                     Query.AppendFormat("WHERE id = {0}", readerConnectionML.id);
 
@@ -230,17 +236,16 @@ namespace DataLayer
         }
 
 
-        public int Delete(ReaderConnectionML readerConnectionML, string ConnectionString)
+        public int Delete(int id, string ConnectionString)
         {
             try
             {
-                int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} SET ", TableName);
                 Query.AppendLine("_registry = 0, ");
-                Query.AppendFormat("idUserDelete = {0}, ", readerConnectionML.idUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()) ");
-                Query.AppendFormat("WHERE id = {0}", readerConnectionML.id);
+                Query.AppendFormat("idUserDelete = {0}, ", idUser);
+                Query.AppendLine("dateDelete = GETDATE() ");
+                Query.AppendFormat("WHERE id = {0}", id);
 
                 SqlConnection Conexion = new SqlConnection()
                 {
@@ -249,7 +254,7 @@ namespace DataLayer
 
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
+                cmd2.ExecuteNonQuery();
                 return id;
             }
             catch (Exception ex)
