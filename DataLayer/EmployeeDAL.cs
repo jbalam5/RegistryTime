@@ -72,7 +72,7 @@ namespace DataLayer
         {
             try
             {
-                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND controlNumber={1}", TableName, id);
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND {1} = {2}", TableName, EmployeeML.DataBase.IdUser, id);
                 SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -49,6 +49,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>RegistryTime.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AlarmClock.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BiometricCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -427,6 +430,8 @@
     <None Include="Resources\IconAlarmWarning.png" />
     <None Include="Resources\IconAlarmWarningx80.png" />
     <None Include="Resources\IconAlarmWarningx70.png" />
+    <None Include="Resources\BackgroundTime1.jpg" />
+    <Content Include="AlarmClock.ico" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />

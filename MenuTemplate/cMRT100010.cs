@@ -48,9 +48,15 @@ namespace RegistryTime
         private void MenuPictureBox_Click(object sender, EventArgs e)
         {
             if (MenuLeftPanel.Width > 50)
+            {
+                LogoPictureBox.Visible = false;
                 MenuLeftPanel.Width = 50;
+            }
             else
-                MenuLeftPanel.Width = 200;
+            {
+                LogoPictureBox.Visible = true;
+                MenuLeftPanel.Width = 220;
+            }
         }
 
         private void CloseWindowsPictureBox_Click(object sender, EventArgs e)
@@ -79,6 +85,7 @@ namespace RegistryTime
             this.Location = new Point(lx, ly);
             this.MaximizeButton.Visible = true;
             this.NormalButton.Visible = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void MetodMax()
@@ -255,9 +262,15 @@ namespace RegistryTime
 
         private void getLogin()
         {
+            ClearPanelContainer();
             Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
             //this.Hide();
             frmLogin.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void SetTimer()

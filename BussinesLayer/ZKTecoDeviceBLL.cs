@@ -16,6 +16,8 @@ namespace BussinesLayer
         public ZKTekoBiometric objZKTeko;
         public string IP;
         public int port;
+        private static int machineNumber = 1;
+
         Action<object, string> RaiseDeviceEvent;
 
         public ZKTecoDeviceBLL()
@@ -52,9 +54,8 @@ namespace BussinesLayer
         /// <summary>
         /// Obtiene la lista de usuarios registrados en el lector
         /// </summary>
-        /// <param name="machineNumber"></param>
         /// <returns></returns>
-        public ICollection<UserInfo> GetAllUserInfo(int machineNumber)
+        public ICollection<UserInfo> GetAllUserInfo()
         {
             if (connect())
             {
@@ -94,7 +95,7 @@ namespace BussinesLayer
             return null;
         }
 
-        public int SetUserInfo(int machineNumber, int UserID, string Name, int iPrivilege, string Cardnumber, string Password)
+        public int SetUserInfo(int UserID, string Name, int iPrivilege, string Cardnumber, string Password)
         {
 
             if (connect())
@@ -154,7 +155,7 @@ namespace BussinesLayer
             return 0;
         }
         
-        public UserInfo GetUserInfoById(int machineNumber, int UserID)
+        public UserInfo GetUserInfoById(int UserID)
         {
             if (connect())
             {
@@ -205,7 +206,7 @@ namespace BussinesLayer
             }
             return null;
         }
-        public ICollection<HoursAssistanceInfo> GetLogData(int machineNumber)
+        public ICollection<HoursAssistanceInfo> GetLogData()
         {
             string dwEnrollNumber1 = "";
             int dwVerifyMode = 0;
@@ -243,7 +244,7 @@ namespace BussinesLayer
             return lstEnrollData;
         }
 
-        public ICollection<HoursAssistanceInfo> GetLogDataByDate(int machineNumber, string startDate, string endDate)
+        public ICollection<HoursAssistanceInfo> GetLogDataByDate(string startDate, string endDate)
         {
             string dwEnrollNumber1 = "";
             int dwVerifyMode = 0;
@@ -282,7 +283,7 @@ namespace BussinesLayer
             return lstEnrollData;
         }
 
-        public ICollection<UserIDInfo> GetAllUserID(int machineNumber)
+        public ICollection<UserIDInfo> GetAllUserID()
         {
             if (connect())
             {
@@ -310,7 +311,7 @@ namespace BussinesLayer
             return null;
         }
 
-        public ICollection<UserInfo> GetListAllUserInfo(int machineNumber)
+        public ICollection<UserInfo> GetListAllUserInfo()
         {
             if (connect())
             {
@@ -341,7 +342,7 @@ namespace BussinesLayer
             return null;
         }
 
-        public void GetGeneratLog(ZKTekoBiometric objZKTeko, int machineNumber, string enrollNo)
+        public void GetGeneratLog(string enrollNo)
         {
             string name = null;
             string password = null;
@@ -365,7 +366,7 @@ namespace BussinesLayer
         }
 
 
-        public bool PushUserDataToDevice(ZKTekoBiometric objZKTeko, int machineNumber, string enrollNo)
+        public bool PushUserDataToDevice(string enrollNo)
         {
             string userName = string.Empty;
             string password = string.Empty;
@@ -373,7 +374,7 @@ namespace BussinesLayer
             return objZKTeko.SSR_SetUserInfo(machineNumber, enrollNo, userName, password, privelage, true);
         }
 
-        public bool UploadFTPTemplate(ZKTekoBiometric objZKTeko, int machineNumber, List<UserInfo> lstUserInfo)
+        public bool UploadFTPTemplate(List<UserInfo> lstUserInfo)
         {
             string sdwEnrollNumber = string.Empty, sName = string.Empty, sTmpData = string.Empty;
             int idwFingerIndex = 0, iPrivilege = 0, iFlag = 1, iUpdateFlag = 1;
@@ -422,7 +423,7 @@ namespace BussinesLayer
                 return false;
         }
 
-        public object ClearData(ZKTekoBiometric objZKTeko, int machineNumber, ClearFlag clearFlag)
+        public object ClearData(BiometricCore.Enums.ClearFlag clearFlag)
         {
             int iDataFlag = (int)clearFlag;
 
@@ -436,13 +437,13 @@ namespace BussinesLayer
             }
         }
 
-        public bool ClearGLog(ZKTekoBiometric objZKTeko, int machineNumber)
+        public bool ClearGLog()
         {
             return objZKTeko.ClearGLog(machineNumber);
         }
 
 
-        public string FetchDeviceInfo(ZKTekoBiometric objZKTeko, int machineNumber)
+        public string FetchDeviceInfo()
         {
             StringBuilder sb = new StringBuilder();
 
@@ -499,7 +500,7 @@ namespace BussinesLayer
             return sb.ToString();
         }
 
-        public bool ReadGeneralLogData(ZKTekoBiometric objZKTeko, int machineNumber)
+        public bool ReadGeneralLogData()
         {
             return objZKTeko.ReadAllGLogData(machineNumber);
         }
