@@ -46,6 +46,9 @@ namespace RegistryTime.ArgumentSystem
                         case "FCGL":
                             Application.Run(new Forms.cFMCG100010());
                             break;
+                        case "FCRP":
+                            Application.Run(new Forms.Reports.cFMRP100010());
+                            break;
                         default:
                             break;
                     }
