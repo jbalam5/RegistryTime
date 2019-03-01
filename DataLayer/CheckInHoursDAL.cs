@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.CheckInHoursDAL";
         public String TableName = "checkInHours";
+        public String ConnectionString = String.Empty;
+        public int IdUserSession = 0;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -37,7 +39,7 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -49,10 +51,10 @@ namespace DataLayer
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
+                DataTable dtCheckIn = new DataTable();
+                cmd.Fill(dtCheckIn);
                 Conexion.Close();
-                return dtDepartamentos;
+                return dtCheckIn;
             }
             catch (Exception ex)
             {
@@ -83,23 +85,26 @@ namespace DataLayer
 
         //}
 
-        public int Save(CheckInHoursML checkInHours, String ConnectionString)
+        public int Save(CheckInHoursML CheckInHours)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("(date,idEmployee,type,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES({0},{1},{2},1,{3},GETDATE())", checkInHours.Date, checkInHours.IdEmployee,checkInHours.Type, checkInHours.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(CheckInHours, TableName, IdUserSession);
+
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
             }
             catch (Exception ex)
             {
@@ -108,30 +113,20 @@ namespace DataLayer
 
         }
 
-        public int Update(CheckInHoursML checkInHours, String ConnectionString)
+        public int Update(CheckInHoursML CheckInHours)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("date = {0}", checkInHours.Date);
-                Query.AppendFormat("idEmployee = {0}", checkInHours.IdEmployee);
-                Query.AppendFormat("type = {0}", checkInHours.Type);
-                Query.AppendLine("dateUpdate = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", checkInHours.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(CheckInHours, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+                return CheckInHours.Id;
             }
             catch (Exception ex)
             {
@@ -139,32 +134,105 @@ namespace DataLayer
             }
         }
 
-        public int Delete(CheckInHoursML checkInHours, String ConnectionString)
+        public void Delete(CheckInHoursML CheckInHours)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", checkInHours.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", checkInHours.Id);
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(CheckInHours, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.delete: {1}", core, ex.Message));
+            }
+        }
 
+        public DataTable Migrate(DateTime Inicio , DateTime Fin)
+        {
+            try
+            {
+                String Query = String.Format("select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"));
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable Response = new DataTable();
+                cmd.Fill(Response);
+                Conexion.Close();
+
+                if(Response.Rows.Count > 0)
+                {
+                    foreach (DataRow item in Response.Rows)
+                    {
+
+                        CheckInHoursML CheckInHoursML = new CheckInHoursML()
+                        {
+                            Date = Convert.ToDateTime(item[ZKTecoHourAssistanceML.DataBase.dateTimeRecord]),
+                            IdEmployee = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.idUser]),
+                            MachineNumber = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.machineNumber]),
+                            Type = "ma"
+                        };
+                        if(!ExistCheck(CheckInHoursML))
+                            Save(CheckInHoursML);
+                    }
+                }
+
+                return Response;
+                
+            }catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
+            }
+        }
+
+        public String TypeCheck(DateTime Date)
+        {
+            try
+            {
+                return "Hola";
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.delete: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
             }
         }
+
+        public Boolean ExistCheck(CheckInHoursML checkInHours)
+        {
+            try
+            {
+                String Query = String.Format("select count(*) as count from {0} where _registry=1 and {1}='{2}' and {3}='{4}' and {5}='{6}'",TableName,CheckInHoursML.Database.date,checkInHours.Date.ToString("yyyy-MM-dd hh:mm:ss"), CheckInHoursML.Database.type, checkInHours.Type, CheckInHoursML.Database.idEmployee, checkInHours.IdEmployee);
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+                    
+                    if (newID == 0)
+                        return false;
+                    else
+                        return true;                    
+                }
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.ExistCheck: {1}", core, ex.Message));
+            }
+        }
+
+
     }
 }

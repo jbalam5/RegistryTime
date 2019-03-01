@@ -82,7 +82,7 @@ namespace RegistryTime.Forms
 
                     if (employeeML != null)
                     {
-                        checkInHours.Date = DateTime.Now.ToString();
+                        checkInHours.Date = DateTime.Now;
                         checkInHours.IdEmployee = employeeML.Id;
 
                         checkInoursBLL.Save(checkInHours);

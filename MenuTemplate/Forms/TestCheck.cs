@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BussinesLayer;
 
 namespace RegistryTime.Forms
 {
     public partial class TestCheck : Form
     {
+
         public TestCheck()
         {
             InitializeComponent();
@@ -19,6 +21,12 @@ namespace RegistryTime.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            //DateTime inicio = Convert.ToDateTime("2017-01-25");
+            //DateTime Fin = Convert.ToDateTime("2017-01-31");
+            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            dataGridViewHours.DataSource = CheckInoursBLL.Migrate(Convert.ToDateTime("2017-01-25"),Convert.ToDateTime("2017-01-31"));
+
 
         }
     }

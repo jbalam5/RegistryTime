@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 //using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Forms;
+using ModelLayer;
+using BussinesLayer;
 
 namespace RegistryTime.ArgumentSystem
 {
@@ -26,6 +28,7 @@ namespace RegistryTime.ArgumentSystem
             {
                 if (ArgumentsList.Length > 2 && VerificationUser(ArgumentsList[0], ArgumentsList[1]) == true)
                 {
+                    
                     switch (ArgumentsList[2])
                     {
                         case "FMCX":
@@ -46,9 +49,18 @@ namespace RegistryTime.ArgumentSystem
                         case "FCGL":
                             Application.Run(new Forms.cFMCG100010());
                             break;
+                        case "MIII":
+                            Application.Run(new Forms.TestCheck());
+                            break;
                         default:
+                            MessageBox.Show("Errror");
                             break;
                     }
+                }
+                else
+                {
+                    Alerts.cFAT100010 Alert = new Alerts.cFAT100010("Error", "El USUARIO O CONTRASEÑA SON INCORRECTOS", MessageBoxIcon.Error);
+                    Alert.ShowDialog();
                 }
             }catch(Exception ex)
             {
@@ -60,9 +72,18 @@ namespace RegistryTime.ArgumentSystem
         {
             try
             {
-                Boolean response = true;
-                return response; 
-            }catch(Exception ex)
+                UsersBLL UsersBLL = new UsersBLL();
+                UsersML UsersML = new UsersML() { UserName = USER, Password = PASSWORD };
+                GlobalBLL.userML = UsersBLL.IsUser(UsersML);
+                if (GlobalBLL.userML == null)
+                    return false;
+                else
+                    return true;
+
+                
+
+            }
+            catch(Exception ex)
             {
                 throw new Exception(String.Format("{0}.VerificationUser: {1}", core, ex));
             }

@@ -14,19 +14,20 @@ namespace BussinesLayer
     {
         public CheckInHoursDAL CheckInHoursDAL = new CheckInHoursDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
-        public String ConnectionStrings;
+        
         public String core = "BussinesLayer.CheckInoursBLL";
 
         public CheckInoursBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            CheckInHoursDAL.ConnectionString = conexion.ConnectionStrings();
+            CheckInHoursDAL.IdUserSession = GlobalBLL.userML.Id;
         }
 
         public DataTable All()
         {
             try
             {
-                return CheckInHoursDAL.All(ConnectionStrings);
+                return CheckInHoursDAL.All();
 
             }
             catch (Exception ex)
@@ -40,7 +41,7 @@ namespace BussinesLayer
             try
             {
 
-                return CheckInHoursDAL.GetIdEntity(Id, ConnectionStrings);
+                return CheckInHoursDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +55,11 @@ namespace BussinesLayer
             {
                 if (CheckInHours.Id == 0)
                 {
-                    return CheckInHoursDAL.Save(CheckInHours, ConnectionStrings);
+                    return CheckInHoursDAL.Save(CheckInHours);
                 }
                 else
                 {
-                    return CheckInHoursDAL.Update(CheckInHours, ConnectionStrings);
+                    return CheckInHoursDAL.Update(CheckInHours);
                 }
             }
             catch (Exception ex)
@@ -67,11 +68,23 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(CheckInHoursML CheckInHours)
+        public void Delete(CheckInHoursML CheckInHours)
         {
             try
             {
-                return CheckInHoursDAL.Delete(CheckInHours, ConnectionStrings);
+                CheckInHoursDAL.Delete(CheckInHours);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+            }
+        }
+
+        public DataTable Migrate(DateTime Inicio, DateTime Fin)
+        {
+            try
+            {
+                return CheckInHoursDAL.Migrate(Inicio,Fin);
             }
             catch (Exception ex)
             {

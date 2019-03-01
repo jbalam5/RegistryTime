@@ -9,7 +9,7 @@ idUserDelete int,
 dateDelete datetime,
 id int primary key identity(1,1) not null,
 userName nvarchar(25) not null,
-password nvarchar(25) not null,
+password nvarchar(max) not null,
 rol int not null,
 image nvarchar(max)
 )
@@ -342,6 +342,7 @@ id int primary key identity(1,1) not null,
 date datetime not null,
 idEmployee int not null,
 type nvarchar(10),
+machineNumber int null,
 CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)     
     REFERENCES users(id)     
     ON DELETE NO ACTION    

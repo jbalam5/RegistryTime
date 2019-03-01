@@ -13,25 +13,13 @@ namespace ModelLayer
             public const string date = "date";
             public const string type = "type";
             public const string idEmployee = "idEmployee";
-            public const string _registry = "_registry";
-            public const string idUserInsert = "idUserInsert";
-            public const string dateInsert = "dateInsert";
-            public const string idUserUpdate = "idUserUpdate";
-            public const string dateUpdate = "dateUpdate";
-            public const string idUserDelete = "idUserDelete";
-            public const string dateDelete = "dateDelete";
+            public const string MachineNumber = "machineNumber";
         }
 
         public int Id { get; set; }
-        public String Date { get; set; }
+        public DateTime Date { get; set; }
         public int IdEmployee { get; set; }
         public String Type { get; set; }
-        public int _regitry { get; set; }
-        public int IdUserInsert { get; set; }
-        public DateTime DateInsert { get; set; }
-        public int IdUserUpdate { get; set; }
-        public DateTime DateUpdate { get; set; }
-        public int IdUserDelete { get; set; }
-        public DateTime DateDelete { get; set; }
+        public int MachineNumber { get; set; }
     }
 }
