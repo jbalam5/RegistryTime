@@ -28,7 +28,6 @@ namespace RegistryTime.ArgumentSystem
             {
                 if (ArgumentsList.Length > 2 && VerificationUser(ArgumentsList[0], ArgumentsList[1]) == true)
                 {
-                    
                     switch (ArgumentsList[2])
                     {
                         case "FMCX":
@@ -49,8 +48,11 @@ namespace RegistryTime.ArgumentSystem
                         case "FCGL":
                             Application.Run(new Forms.cFMCG100010());
                             break;
-                        case "MIII":
+                        case "CHECK":
                             Application.Run(new Forms.TestCheck());
+                            break;
+                        case "FCRP":
+                            Application.Run(new Forms.Reports.cFMRP100010());
                             break;
                         default:
                             MessageBox.Show("Errror");

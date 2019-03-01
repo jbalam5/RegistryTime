@@ -14,7 +14,6 @@ namespace RegistryTime.Forms
 {
     public partial class cFMSE110010 : Form
     {
-        private String DirectoryFiles = "ImagenTMP";
         private CompanyBLL companyBLL;
         private EmployeeBLL employeeBLL;
         private CompanyML companyML;
@@ -94,11 +93,17 @@ namespace RegistryTime.Forms
 
                     if (companyBLL.Save(companyML) > 0)
                     {
+                        GlobalBLL.companyML = companyML;
+
                         if (!string.IsNullOrEmpty(PathFileNameTextBox.Text)){
-                            if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
-                            
-                            System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, lastImage));
-                            System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}",DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                            if (!System.IO.Directory.Exists(GlobalBLL.DirectoryFiles)) System.IO.Directory.CreateDirectory(GlobalBLL.DirectoryFiles);
+
+                            string lastPathFile = string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, lastImage);
+                            if (System.IO.Path.GetFullPath(lastPathFile) != PathFileNameTextBox.Text)
+                            {
+                                System.IO.File.Delete(lastPathFile);
+                                System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                            }
                         }
 
                         Alerts.cFAT100010 alr = new Alerts.cFAT100010("Información", "Guardado correctamente", MessageBoxIcon.Information);
@@ -180,22 +185,22 @@ namespace RegistryTime.Forms
                 if (string.IsNullOrEmpty(NameTextBox.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar el RFC");
+                    throw new Exception("Ingrese el Nombre del Usuario");
                 }
                 else if (string.IsNullOrEmpty(LastNameTextBox.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingresar la razón social");
+                    throw new Exception("Ingrese el apellido");
                 }
                 else if (string.IsNullOrEmpty(UserNameTextBox.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar la calle");
+                    throw new Exception("Ingrese un Nombre de Usuario Valido");
                 }
                 else if (string.IsNullOrEmpty(PasswordTextBox.Text))
                 {
                     Valid = false;
-                    throw new Exception("Debe ingesar el Municipio");
+                    throw new Exception("Ingrese la contraseña");
                 }
 
                 return Valid;
@@ -237,14 +242,23 @@ namespace RegistryTime.Forms
 
                 if (employeeML != null)
                 {
-                    UserNameTextBox.Text = GlobalBLL.userML.UserName;
-                    PasswordTextBox.Text = GlobalBLL.userML.Password;
+                    KeyTextBox.Text = employeeML.Id.ToString();
                     NameTextBox.Text = employeeML.Name;
                     LastNameTextBox.Text = employeeML.LastName;
 
+                }
+
+                if (GlobalBLL.userML != null)
+                {
+                    UsersBLL usersBLL = new UsersBLL();
+                    UsersML usersML = usersBLL.GetEntityById(GlobalBLL.userML.Id);
+
+                    UserNameTextBox.Text = usersML.UserName;
+                    PasswordTextBox.Text = usersML.Password;
+
                     if (!string.IsNullOrEmpty(GlobalBLL.userML.Image))
                     {
-                        PathFileProfileTextBox.Text = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), GlobalBLL.userML.Image);
+                        PathFileProfileTextBox.Text = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(GlobalBLL.DirectoryFiles), GlobalBLL.userML.Image);
 
                         if (System.IO.File.Exists(PathFileProfileTextBox.Text))
                             ProfilePictureBox.BackgroundImage = new Bitmap(PathFileProfileTextBox.Text);
@@ -252,11 +266,11 @@ namespace RegistryTime.Forms
                             throw new Exception("No se encontró la imagen");
                     }
                 }
-                else
-                {
-                    Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", "No se encontró la información del usuarios", MessageBoxIcon.Error);
-                    alr.ShowDialog();
-                }
+                //else
+                //{
+                //    Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", "No se encontró la información del usuarios", MessageBoxIcon.Error);
+                //    alr.ShowDialog();
+                //}
             }
             catch(Exception ex)
             {
@@ -287,7 +301,7 @@ namespace RegistryTime.Forms
 
                     if (!string.IsNullOrEmpty(companyML.Image))
                     {
-                        PathFileNameTextBox.Text = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(DirectoryFiles), companyML.Image);
+                        PathFileNameTextBox.Text = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(GlobalBLL.DirectoryFiles), companyML.Image);
 
                         if (System.IO.File.Exists(PathFileNameTextBox.Text))
                             LogoPictureBox.BackgroundImage = new Bitmap(PathFileNameTextBox.Text);
@@ -303,7 +317,7 @@ namespace RegistryTime.Forms
                 LoadUser();
 
 
-                if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
+                if (!System.IO.Directory.Exists(GlobalBLL.DirectoryFiles)) System.IO.Directory.CreateDirectory(GlobalBLL.DirectoryFiles);
             }
             catch(Exception ex)
             {
@@ -322,25 +336,34 @@ namespace RegistryTime.Forms
 
                     if (usersBLL.UserExist(UserNameTextBox.Text, GlobalBLL.userML.Id) <= 0)
                     {
+                        string lastImage = GlobalBLL.userML.Image;
                         if (!string.IsNullOrEmpty(PathFileProfileTextBox.Text) && !System.IO.File.Exists(PathFileProfileTextBox.Text))
                             throw new Exception("La imagen seleccionada no existe");
 
-                        employeeML.Name = NameTextBox.Text;
-                        employeeML.LastName = LastNameTextBox.Text;
-                        employeeBLL.Save(employeeML);
+                        if (employeeML != null)
+                        {
+                            employeeML.Name = NameTextBox.Text;
+                            employeeML.LastName = LastNameTextBox.Text;
+                            employeeBLL.Save(employeeML);
+                        }
 
                         GlobalBLL.userML.UserName = PasswordTextBox.Text;
                         GlobalBLL.userML.Password = PasswordTextBox.Text;
-                        GlobalBLL.userML.Password = System.IO.Path.GetFileName(PathFileProfileTextBox.Text);
+                        GlobalBLL.userML.Image = System.IO.Path.GetFileName(PathFileProfileTextBox.Text);
+
                         if (usersBLL.Save(GlobalBLL.userML) > 0)
                         {
 
-                            if (!string.IsNullOrEmpty(PathFileNameTextBox.Text))
+                            if (!string.IsNullOrEmpty(PathFileProfileTextBox.Text))
                             {
-                                if (!System.IO.Directory.Exists(DirectoryFiles)) System.IO.Directory.CreateDirectory(DirectoryFiles);
+                                if (!System.IO.Directory.Exists(GlobalBLL.DirectoryFiles)) System.IO.Directory.CreateDirectory(GlobalBLL.DirectoryFiles);
 
-                                System.IO.File.Delete(string.Format("{0}/{1}", DirectoryFiles, GlobalBLL.userML.Image));
-                                System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                                string lastPathFile = string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, lastImage);
+                                if (System.IO.Path.GetFullPath(lastPathFile) != PathFileProfileTextBox.Text)
+                                {
+                                    System.IO.File.Delete(lastPathFile);
+                                    System.IO.File.Copy(PathFileProfileTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileProfileTextBox.Text)));
+                                }
                             }
 
                             Alerts.cFAT100010 alr = new Alerts.cFAT100010("Información", "Guardado correctamente", MessageBoxIcon.Information);

@@ -8,6 +8,24 @@ namespace ModelLayer
 {
     public class AbsenteeismAssignmentML
     {
+        public class DataBase
+        {
+            public const string Id = "id";
+            public const string controlNumber = "controlNumber";
+            public const string KeyAbsenteeism = "keyAbsenteeism";
+            public const string Description = "description";
+            public const string Status = "status";
+            public const string DateStar = "dateStar";
+            public const string DateEnd = "dateEnd";
+            public const string _registry = "_registry";
+            public const string IdUserInsert = "idUserInsert";
+            public const string DateInsert = "dateInsert";
+            public const string IdUserUpdate = "idUserUpdate";
+            public const string DateUpdate = "dateUpdate";
+            public const string IdUserDelete = "idUserDelete";
+            public const string DateDelete = "dateDelete";
+        }
+
         public int Id { get; set; }
         public String controlNumber { get; set; }
         public String KeyAbsenteeism { get; set; }

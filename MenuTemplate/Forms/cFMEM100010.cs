@@ -149,10 +149,5 @@ namespace RegistryTime.Forms
                 MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void dataGridViewDataEmpleado_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

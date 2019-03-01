@@ -147,6 +147,7 @@
             this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(286, 26);
             this.PasswordTextBox.TabIndex = 2;
+            this.PasswordTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PasswordTextBox_KeyDown);
             // 
             // UserNameTextBox
             // 
@@ -157,6 +158,7 @@
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(285, 26);
             this.UserNameTextBox.TabIndex = 1;
+            this.UserNameTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UserNameTextBox_KeyDown);
             // 
             // statusStrip1
             // 
@@ -254,7 +256,8 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cFRT150010";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "cFRT150010";
+            this.Text = "Iniciar Sesión";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.cFRT150010_FormClosed);
             this.Load += new System.EventHandler(this.cFRT150010_Load);
             this.PrincipalPanel.ResumeLayout(false);
             this.ContainerPanel.ResumeLayout(false);

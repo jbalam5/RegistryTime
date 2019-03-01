@@ -131,7 +131,7 @@ namespace RegistryTime
             BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
 
             BiometricCore.UserInfo user = new BiometricCore.UserInfo();
-            user = obj.GetUserInfoById(1, 175);
+            user = obj.GetUserInfoById(175);
         }
 
         private void Migrarbutton_Click(object sender, EventArgs e)
@@ -145,7 +145,7 @@ namespace RegistryTime
             BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
 
             BiometricCore.UserInfo user = new BiometricCore.UserInfo();
-            int id = obj.SetUserInfo(1, 177, "dchan", 1, "", "177177");
+            int id = obj.SetUserInfo(177, "dchan", 1, "", "177177");
             MessageBox.Show(string.Format("{0}", id));
             
         }
@@ -155,7 +155,7 @@ namespace RegistryTime
             BussinesLayer.ZKTecoDeviceBLL obj = new BussinesLayer.ZKTecoDeviceBLL();
 
             BiometricCore.UserInfo user = new BiometricCore.UserInfo();
-            ICollection<BiometricCore.UserInfo> users = obj.GetAllUserInfo(1);
+            ICollection<BiometricCore.UserInfo> users = obj.GetAllUserInfo();
 
         }
     }

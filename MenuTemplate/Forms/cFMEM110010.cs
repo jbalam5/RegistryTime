@@ -397,6 +397,9 @@ namespace RegistryTime.Forms
                     System.IO.File.Copy(PathFileImage, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
                 }
 
+                ZKTecoDeviceBLL zKTecoDevice = new ZKTecoDeviceBLL();
+                zKTecoDevice.SetUserInfo(IdNewEmployee, Employee.Name, (int) BiometricCore.Enums.Privileges.CommonUser, "", string.Format("{0}",IdNewEmployee));
+
                 cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();
                 cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
@@ -609,7 +612,6 @@ namespace RegistryTime.Forms
                 MessageBox.Show(String.Format("LoadTurn: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {

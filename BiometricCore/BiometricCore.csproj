@@ -50,6 +50,7 @@
     <Compile Include="EntityLayer\UserIDInfo.cs" />
     <Compile Include="EntityLayer\UserInfo.cs" />
     <Compile Include="Enums\ClearFlag.cs" />
+    <Compile Include="Enums\Privileges.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UniversalStatic.cs" />
     <Compile Include="ZKTekoBiometric.cs" />

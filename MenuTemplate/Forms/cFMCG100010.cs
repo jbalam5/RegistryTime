@@ -127,6 +127,9 @@ namespace RegistryTime.Forms
         {
             try
             {
+                Forms.cFRT150010 frm = new cFRT150010();
+                frm.ShowDialog();
+
                 LoadData();
             }
             catch(Exception ex)

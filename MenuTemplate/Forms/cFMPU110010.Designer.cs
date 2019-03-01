@@ -38,7 +38,7 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.label34 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label34);
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.textBoxPuesto);
             this.panel2.Controls.Add(this.textBoxDescripcion);
             this.panel2.Controls.Add(this.materialLabel3);
@@ -166,16 +166,16 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // label34
+            // label2
             // 
-            this.label34.AutoSize = true;
-            this.label34.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label34.ForeColor = System.Drawing.Color.Red;
-            this.label34.Location = new System.Drawing.Point(62, 61);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(11, 13);
-            this.label34.TabIndex = 62;
-            this.label34.Text = "*";
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Red;
+            this.label2.Location = new System.Drawing.Point(74, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(14, 18);
+            this.label2.TabIndex = 58;
+            this.label2.Text = "*";
             // 
             // cFMPU110010
             // 
@@ -207,6 +207,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         public System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label2;
     }
 }

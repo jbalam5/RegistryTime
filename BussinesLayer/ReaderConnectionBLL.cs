@@ -20,6 +20,7 @@ namespace BussinesLayer
         public ReaderConnectionBLL()
         {
             ConnectionStrings = conexion.ConnectionStrings();
+            readerConnectionDAL.idUser = GlobalBLL.userML.Id;
         }
 
         public DataTable All()

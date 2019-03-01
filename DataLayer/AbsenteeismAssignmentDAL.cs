@@ -73,8 +73,8 @@ namespace DataLayer
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.KeyAbsenteeism);
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.Description);
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.Status);
-                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateStar);
-                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateEnd);
+                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateStar.ToString("yyyy-MM-dd"));
+                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateEnd.ToString("yyyy-MM-dd"));
                 Query.AppendLine(" 1,");
                 Query.AppendFormat(" {0},", Absenteeismassignment.IdUserInsert);
                 Query.AppendLine(" getDate() )");
@@ -106,8 +106,8 @@ namespace DataLayer
                 Query.AppendFormat("KeyAbsenteeism = '{0}', ", Absenteeismassignment.KeyAbsenteeism);
                 Query.AppendFormat("Description = '{0}', ", Absenteeismassignment.Description);
                 Query.AppendFormat("Status = '{0}', ", Absenteeismassignment.Status);
-                Query.AppendFormat("DateStar = '{0}', ", Absenteeismassignment.DateStar);
-                Query.AppendFormat("DateEnd = '{0}', ", Absenteeismassignment.DateEnd);
+                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateStar.ToString("yyyy-MM-dd"));
+                Query.AppendFormat(" '{0}',", Absenteeismassignment.DateEnd.ToString("yyyy-MM-dd"));
                 Query.AppendFormat("idUserUpdate = {0}, ", Absenteeismassignment.IdUserUpdate);
                 Query.AppendLine("dateUpdate = GETDATE() ");
                 Query.AppendFormat("WHERE id={0}", Absenteeismassignment.Id);

@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 namespace RegistryTime.Forms
 {
     public partial class cFMAA110010 : Form
     {
-        public int IdDepartament = 0;
-        AbsenteeismBLL AbsenteeismBLL = new AbsenteeismBLL();
+        public int IdAbsenteeismAssignment = 0;
+        AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
 
         public cFMAA110010()
         {
@@ -36,47 +37,89 @@ namespace RegistryTime.Forms
         {
             textBoxNumControl.Text = String.Empty;
             textBoxNombre.Text = String.Empty;
-            textBoxApePaterno.Text = String.Empty;
+            textBoxApellidoP.Text = String.Empty;
             textBoxDepartamento.Text = String.Empty;
             textBoxPuesto.Text = String.Empty;
 
-            comboBoxAusentismo.Text = String.Empty;
-            comboBoxEstadoAsig.Text = String.Empty;
+            comboBoxAusentismo.SelectedIndex = 0;
+            comboBoxEstadoAsig.SelectedIndex = 0;
             textBoxDescripcion.Text = String.Empty;
             dateTimeFechaInicio.Text = String.Empty;
             dateTimeFechaFin.Text = String.Empty;      
+        }
+
+        public bool FormValidate()
+        {
+            try
+            {
+                bool Valid = true;
+
+                if (string.IsNullOrEmpty(textBoxNumControl.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingresar un Numero de Control");
+                }
+                else if (string.IsNullOrEmpty(textBoxNombre.Text))
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingresar un Número de control válido");
+                }
+                else if (int.Parse(comboBoxAusentismo.SelectedValue.ToString()) == 0)
+                {
+                    Valid = false;
+                    throw new Exception("Debe ingresar el Concepto de Ausentismo");
+                }
+                else if (comboBoxEstadoAsig.SelectedValue.ToString() == "")
+                {
+                    Valid = false;
+                    throw new Exception("Seleccione un estatus del ausentismo");
+                }
+                else if (dateTimeFechaInicio.Value > dateTimeFechaFin.Value) 
+                {
+                    Valid = false;
+                    throw new Exception("La Fecha de inicio no debe ser menor a la fecha fin");
+                }
+
+                return Valid;
+            }
+            catch (Exception ex)
+            {
+                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex), MessageBoxIcon.Error);
+                alr.ShowDialog();
+                return false;
+            }
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
             try
             {
-                //if (!String.IsNullOrEmpty(textBoxNombre.Text) && !String.IsNullOrEmpty(textBoxEncargado.Text))
-                //{
-                //    DepartamentML Departament = new DepartamentML();
-                //    if (IdDepartament == 0)
-                //    {
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //    }
-                //    else
-                //    {
-                //        Departament.Id = IdDepartament;
-                //        Departament.Name = textBoxNombre.Text;
-                //        Departament.Manager = textBoxEncargado.Text;
-                //        Departament.Description = textBoxDescripcion.Text;
-                //        Departament.IdUserUpdate = 1;
-                //    }
-                //    DepartamentBLL.Save(Departament);
+                if (FormValidate())
+                {
+                    AbsenteeismAssignmentML AsigAusentismo = new AbsenteeismAssignmentML();
 
-                //    cFMDE100010 FrmDataGrid = this.Owner as cFMDE100010;
-                //    FrmDataGrid.LoadDataGridView();
+                    AsigAusentismo.controlNumber = textBoxNumControl.Text;
+                    AsigAusentismo.KeyAbsenteeism = comboBoxAusentismo.Text;
+                    AsigAusentismo.Status = comboBoxEstadoAsig.Text;
+                    AsigAusentismo.DateStar = dateTimeFechaInicio.Value;
+                    AsigAusentismo.DateEnd = dateTimeFechaFin.Value;
+                    AsigAusentismo.Description = textBoxDescripcion.Text;
+                    
+                    if (IdAbsenteeismAssignment > 0)
+                    {
+                        AsigAusentismo.Id = IdAbsenteeismAssignment;
+                    }
 
-                //    MessageBox.Show("Guardado con Exito");
-                //    Clear();
-                //    this.Close();
-                //}
+                    AbsenteeismAssignmentBLL.Save(AsigAusentismo);
+
+                    cFMAA100010 FrmDataGrid = this.Owner as cFMAA100010;
+                    FrmDataGrid.LoadDataGridView();
+
+                    cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con éxito!!", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                    Clear();
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -101,7 +144,8 @@ namespace RegistryTime.Forms
         {
             if (e.KeyCode == Keys.F2)
             {
-                MessageBox.Show("Hola");
+                RegistryTime.Help.cFHAA100010 frm = new Help.cFHAA100010();
+                frm.ShowDialog();
             }
         }
 

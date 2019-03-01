@@ -10,6 +10,7 @@ dateDelete datetime,
 id int primary key identity(1,1) not null,
 userName nvarchar(25) not null,
 password nvarchar(max) not null,
+email nvarchar(25) null,
 rol int not null,
 image nvarchar(max)
 )
@@ -361,6 +362,8 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 );
+
+INSERT INTO [dbo].[ModelReader]([brand],[model],[_registry]) VALUES('ZKTeco','z629C',1);
 
 create table ReaderConnection(
 id int primary key identity(1,1) not null,

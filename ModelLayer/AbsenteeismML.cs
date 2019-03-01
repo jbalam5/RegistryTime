@@ -8,6 +8,21 @@ namespace ModelLayer
 {
     public class AbsenteeismML
     {
+        public class DataBase
+        {
+            public const string Id = "id";
+            public const string IsKey = "isKey";
+            public const string Concept = "concept";
+            public const string description = "description";
+            public const string _registry = "_registry";
+            public const string IdUserInsert = "idUserInsert";
+            public const string DateInsert = "dateInsert";
+            public const string IdUserUpdate = "idUserUpdate";
+            public const string DateUpdate = "dateUpdate";
+            public const string IdUserDelete = "idUserDelete";
+            public const string DateDelete = "dateDelete";
+        }
+
         public int Id { get; set; }
         public String IsKey { get; set; }
         public String Concept { get; set; }

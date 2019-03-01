@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
+using Alerts;
 
 
 namespace RegistryTime.Help
@@ -16,7 +17,7 @@ namespace RegistryTime.Help
     public partial class cFHAA100010 : Form
     {
         #region "Declaracion Variables"
-        DepartamentBLL DepartamentBLL = new DepartamentBLL();
+        EmployeeBLL EmployeeBLL = new EmployeeBLL();
         public int IdRowSelect;
         #endregion
 
@@ -31,10 +32,10 @@ namespace RegistryTime.Help
             try
             {
                 LoadDataGridView();
-                dataGridViewData.AutoResizeColumns();
-                dataGridViewData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridViewData.ClearSelection();
-                AlterColorDataGridView(dataGridViewData);
+                dataGridViewDataEmpleado.AutoResizeColumns();
+                dataGridViewDataEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewDataEmpleado.ClearSelection();
+                AlterColorDataGridView(dataGridViewDataEmpleado);
             }
             catch (Exception ex)
             {
@@ -44,8 +45,8 @@ namespace RegistryTime.Help
 
         private void cFRT100010_Resize(object sender, EventArgs e)
         {
-            dataGridViewData.Width = this.Width - 50;
-            dataGridViewData.Height = this.Height - 170;
+            dataGridViewDataEmpleado.Width = this.Width - 50;
+            dataGridViewDataEmpleado.Height = this.Height - 170;
         }
 
         public void AlterColorDataGridView(DataGridView Dgv)
@@ -58,27 +59,41 @@ namespace RegistryTime.Help
         {
             try
             {
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                if (IdRowSelect >= 0)
+                
+                if (dataGridViewDataEmpleado.RowCount > 0)
                 {
-                    Forms.cFMAA110010 Catalogo = new Forms.cFMAA110010();
-                    Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                    Catalogo.textBoxNombre.Text = dataGridViewData.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
-                    //Catalogo.textBoxEncargado.Text = dataGridViewData.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
-                    Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
-                    AddOwnedForm(Catalogo);
-                    Catalogo.FormBorderStyle = FormBorderStyle.None;
-                    Catalogo.TopLevel = false;
-                    Catalogo.Dock = DockStyle.Fill;
-                    this.Controls.Add(Catalogo);
-                    this.Tag = Catalogo;
-                    Catalogo.BringToFront();
-                    Catalogo.Show();
+                    IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
+                    if (IdRowSelect >= 0)
+                    {
+                        Forms.cFMAA110010 Catalogo = new Forms.cFMAA110010();
+                        Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        Catalogo.textBoxNumControl.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
+                        Catalogo.textBoxNombre.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["name"].Value.ToString();
+                        Catalogo.textBoxApellidoP.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["lastname"].Value.ToString();
+                        Catalogo.textBoxApellidoM.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["lastname"].Value.ToString();
+                        Catalogo.textBoxDepartamento.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["idDepartament"].Value.ToString();
+                        Catalogo.textBoxPuesto.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["idJob"].Value.ToString();
+                        AddOwnedForm(Catalogo);
+                        Catalogo.FormBorderStyle = FormBorderStyle.None;
+                        Catalogo.TopLevel = false;
+                        Catalogo.Dock = DockStyle.Fill;
+                        this.Controls.Add(Catalogo);
+                        this.Tag = Catalogo;
+                        Catalogo.BringToFront();
+                        Catalogo.Show();
+                    }
+                    else
+                    {
+                        cFAT100010 Alert = new cFAT100010("Información", "No tiene Seleccionado un Empleado", MessageBoxIcon.Information);
+                        Alert.ShowDialog();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("No tiene Seleccionado un Empleado", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos registrados", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
                 }
+
             }
             catch (Exception ex)
             {
@@ -88,24 +103,12 @@ namespace RegistryTime.Help
 
         public void LoadDataGridView()
         {
-            dataGridViewData.DataSource = DepartamentBLL.All();
+            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All();
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void Closebutton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                
-                IdRowSelect = dataGridViewData.CurrentRow.Index;
-                DepartamentML Departament = new DepartamentML();
-                Departament.Id = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                DepartamentBLL.Delete(Departament);
-                dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            this.Close();
         }
     }
 }

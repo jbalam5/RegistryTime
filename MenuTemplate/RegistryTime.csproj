@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -49,6 +49,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>RegistryTime.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>AlarmClock.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BiometricCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,6 +117,12 @@
     </Compile>
     <Compile Include="Forms\cFMCG100010.Designer.cs">
       <DependentUpon>cFMCG100010.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Reports\cFMRP100010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\cFMRP100010.Designer.cs">
+      <DependentUpon>cFMRP100010.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\cFMSE110010.cs">
       <SubType>Form</SubType>
@@ -217,6 +226,12 @@
     <Compile Include="Forms\cFRT150010.Designer.cs">
       <DependentUpon>cFRT150010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\cFMRP110010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\cFMRP110010.Designer.cs">
+      <DependentUpon>cFMRP110010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TestCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMCG100010.resx">
       <DependentUpon>cFMCG100010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\cFMRP100010.resx">
+      <DependentUpon>cFMRP100010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMSE110010.resx">
       <DependentUpon>cFMSE110010.cs</DependentUpon>
@@ -296,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFRT150010.resx">
       <DependentUpon>cFRT150010.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\cFMRP110010.resx">
+      <DependentUpon>cFMRP110010.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestCheck.resx">
       <DependentUpon>TestCheck.cs</DependentUpon>
@@ -427,6 +448,8 @@
     <None Include="Resources\IconAlarmWarning.png" />
     <None Include="Resources\IconAlarmWarningx80.png" />
     <None Include="Resources\IconAlarmWarningx70.png" />
+    <None Include="Resources\BackgroundTime1.jpg" />
+    <Content Include="AlarmClock.ico" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />

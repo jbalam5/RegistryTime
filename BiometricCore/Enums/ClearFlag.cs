@@ -1,4 +1,4 @@
-﻿namespace BiometricCore
+﻿namespace BiometricCore.Enums
 {
     public enum ClearFlag
     {

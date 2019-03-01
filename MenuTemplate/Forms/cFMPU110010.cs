@@ -68,18 +68,18 @@ namespace RegistryTime.Forms
                 if (FormValidate())
                 {
                     JobML Job = new JobML();
-                    if (IdJob == 0)
-                    {
-                        Job.Name = textBoxPuesto.Text;
-                        Job.Description = textBoxDescripcion.Text;
-                    }
-                    else
+                    
+                    Job.Name = textBoxPuesto.Text;
+                    Job.Description = textBoxDescripcion.Text;
+
+                    if (IdJob > 0)
                     {
                         Job.Id = IdJob;
                         Job.Name = textBoxPuesto.Text;
                         Job.Description = textBoxDescripcion.Text;
                         //Job.IdUserUpdate = 1;
                     }
+
                     JobBLL.Save(Job);
 
                     cFMPU100010 FrmDataGrid = this.Owner as cFMPU100010;

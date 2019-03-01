@@ -8,7 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using BussinesLayer;
+using ModelLayer;
 
 namespace RegistryTime
 {
@@ -17,6 +18,8 @@ namespace RegistryTime
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
+
+        private CompanyBLL companyBLL;
         #endregion
 
         public cMRT100010()
@@ -33,15 +36,8 @@ namespace RegistryTime
         {
             try
             {
-                if (BussinesLayer.GlobalBLL.userML != null)
-                {
-                    UsertoolStripStatusLabel.Text = BussinesLayer.GlobalBLL.userML.UserName.ToUpper();
-                }
-                else
-                {
-                    MessageBox.Show("No ha iniciado sesión", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();
-                }
+                getLogin();
+                getCompany();
                 DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString().ToUpper();
             }
             catch (Exception ex)
@@ -52,9 +48,15 @@ namespace RegistryTime
         private void MenuPictureBox_Click(object sender, EventArgs e)
         {
             if (MenuLeftPanel.Width > 50)
+            {
+                LogoPictureBox.Visible = false;
                 MenuLeftPanel.Width = 50;
+            }
             else
-                MenuLeftPanel.Width = 200;
+            {
+                LogoPictureBox.Visible = true;
+                MenuLeftPanel.Width = 220;
+            }
         }
 
         private void CloseWindowsPictureBox_Click(object sender, EventArgs e)
@@ -83,6 +85,7 @@ namespace RegistryTime
             this.Location = new Point(lx, ly);
             this.MaximizeButton.Visible = true;
             this.NormalButton.Visible = false;
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         public void MetodMax()
@@ -119,6 +122,7 @@ namespace RegistryTime
         private void Closebutton_Click(object sender, EventArgs e)
         {
             getLogin();
+            getCompany();
         }
 
         private void TopPanel_MouseDown(object sender, MouseEventArgs e)
@@ -179,12 +183,13 @@ namespace RegistryTime
         private void ExitButton_Click_1(object sender, EventArgs e)
         {
             getLogin();
+            getCompany();
         }
 
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            //OpenFormChild(new RegistryTime.Forms.cFRT100010());
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP110010());
         }
 
         //protected override void OnSizeChanged(EventArgs e)
@@ -245,11 +250,27 @@ namespace RegistryTime
                 this.ContainerPanel.Controls.RemoveAt(0);
         }
 
+        private void cMRT100010_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void getLogin()
         {
+            ClearPanelContainer();
             Forms.cFRT150010 frmLogin = new Forms.cFRT150010();
-            this.Hide();
+            //this.Hide();
             frmLogin.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void SetTimer()
@@ -261,6 +282,55 @@ namespace RegistryTime
             };
 
             StateTimer.Start();
+        }
+
+        private void getCompany()
+        {
+            try
+            {
+                if (BussinesLayer.GlobalBLL.userML != null)
+                {
+                    UsertoolStripStatusLabel.Text = BussinesLayer.GlobalBLL.userML.UserName.ToUpper();
+
+                    companyBLL = new CompanyBLL();
+                    GlobalBLL.companyML = companyBLL.GetEntity();
+
+                    if (GlobalBLL.companyML != null)
+                    {
+                        CompanyNameToolStripStatusLabel.Text = !string.IsNullOrEmpty(GlobalBLL.companyML.BusinessName.ToUpper()) ? GlobalBLL.companyML.BusinessName.ToUpper() : string.Empty;
+                        if (!string.IsNullOrEmpty(GlobalBLL.companyML.Image))
+                        {
+                            string PathFileName = string.Format("{0}\\{1}", System.IO.Path.GetFullPath(GlobalBLL.DirectoryFiles), GlobalBLL.companyML.Image);
+
+                            if (System.IO.File.Exists(PathFileName))
+                            {
+                                if (LogoPictureBox.BackgroundImage != null)
+                                    LogoPictureBox.BackgroundImage.Dispose();
+
+                                LogoPictureBox.BackgroundImage = new Bitmap(PathFileName);
+                            }
+                            else
+                            {
+                                throw new Exception("No se encontró la imagen");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        CompanyNameToolStripStatusLabel.Text = string.Empty;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No ha iniciado sesión", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("getCompany: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 

@@ -12,9 +12,13 @@ namespace DataLayer
 {
     public class ZKTecoHourAssistanceDAL
     {
-        public String core = "DataLayer.ZKTecoHourAssistanceDAL";
-        public String TableName = "HoursAssistance";
+        #region "PROPERTIES"
+        public int idUser { get; set; }
+        #endregion
 
+        private String core = "DataLayer.ZKTecoHourAssistanceDAL";
+        private String TableName = "HoursAssistance";
+        
         public DataTable All(String ConnectionString)
         {
             try
@@ -64,7 +68,7 @@ namespace DataLayer
                     Query.AppendFormat(" Format(convert(Date, '{0}'), 'yyyy-MM-dd'), ", hoursAssistanceML.DateTimeRecord);
                     Query.AppendFormat(" convert(Time, '{0}'), ", hoursAssistanceML.DateTimeRecord);
                     Query.AppendLine(" 1, ");
-                    Query.AppendFormat(" {0}, ", 1);
+                    Query.AppendFormat(" {0}, ", idUser);
                     Query.AppendLine(" GETDATE()) ");
                     Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
                     SqlConnection Conexion = new SqlConnection
@@ -109,7 +113,7 @@ namespace DataLayer
                     Query.AppendFormat(" {0} = Format(convert(DateTime, '{1}'), 'yyyy-MM-dd HH:mm:ss'), ", ZKTecoHourAssistanceML.DataBase.dateTimeRecord, hoursAssistanceML.DateTimeRecord);
                     Query.AppendFormat(" {0} = Format(convert(Date, '{1}'), yyyy-MM-dd), ", ZKTecoHourAssistanceML.DataBase.dateOnlyRecord, hoursAssistanceML.DateTimeRecord);
                     Query.AppendFormat(" {0} = convert(Time, '{1}'), ", ZKTecoHourAssistanceML.DataBase.timeOnlyRecord, hoursAssistanceML.DateTimeRecord);
-                    Query.AppendFormat(" idUserUpdate = {0}, ", 1);
+                    Query.AppendFormat(" idUserUpdate = {0}, ", idUser);
                     Query.AppendLine(" dateUpdate = GETDATE() ");
                     Query.AppendFormat(" WHERE id = {0}' ", hoursAssistanceML.Id);
 
