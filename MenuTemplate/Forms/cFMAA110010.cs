@@ -16,6 +16,7 @@ namespace RegistryTime.Forms
     public partial class cFMAA110010 : Form
     {
         public int IdAbsenteeismAssignment = 0;
+        public int idObject = 0;
         AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
 
         public cFMAA110010()
@@ -23,10 +24,39 @@ namespace RegistryTime.Forms
             InitializeComponent();
         }
 
+        public void LoadObject()
+        {
+            try
+            {
+                EmployeeBLL EmployeeBLL = new EmployeeBLL();
+                EmployeeML Employee = EmployeeBLL.GetIdEntity(idObject);
+                textBoxNumControl.Text = Employee.Id.ToString();
+                textBoxNombre.Text = Employee.Name.ToString();
+                textBoxApellidoM.Text = Employee.LastName.ToString();
+
+                DepartamentBLL DepartamentBLL = new DepartamentBLL();
+                DepartamentML Departament = DepartamentBLL.GetIdEntity(Employee.IdDepartament);
+                textBoxDepartamento.Text = Departament.Name.ToString();
+
+                JobBLL JobBLL = new JobBLL();
+                JobML Job = JobBLL.GetIdEntity(Employee.IdJob);
+                textBoxPuesto.Text = Job.Name;
+
+
+                
+            }catch(Exception ex)
+            {
+
+            }
+        }
+
         private void cFRT140010_Load(object sender, EventArgs e)
         {
             LoadAbsenteissm();
             LoadStatus();
+
+            if (idObject > 0)
+                LoadObject();
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -135,9 +165,9 @@ namespace RegistryTime.Forms
 
         private void cFMAA110010_Resize(object sender, EventArgs e)
         {
-            textBoxPuesto.Width = this.Width - 150;
-            textBoxDescripcion.Width = this.Width - 150;
-            textBoxDescripcion.Width = this.Width - 150;
+            //textBoxPuesto.Width = this.Width - 200;
+            //textBoxDescripcion.Width = this.Width - 200;
+            
         }
 
         private void textBoxNumControl_KeyDown(object sender, KeyEventArgs e)
@@ -145,6 +175,7 @@ namespace RegistryTime.Forms
             if (e.KeyCode == Keys.F2)
             {
                 RegistryTime.Help.cFHAA100010 frm = new Help.cFHAA100010();
+                AddOwnedForm(frm);
                 frm.ShowDialog();
             }
         }

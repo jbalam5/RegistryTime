@@ -83,16 +83,11 @@ namespace RegistryTime.Forms
                     IdRowSelect = dataGridViewData.CurrentRow.Index;
                     if (IdRowSelect >= 0)
                     {
-                        cFMTU110010 Catalogo = new cFMTU110010();
-                        Catalogo.IdTurn = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        Catalogo.textBoxTurno.Text = dataGridViewData.Rows[IdRowSelect].Cells["Turno"].Value.ToString();
-                        Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
-                        Catalogo.dateTimeHoraEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["HoraEntrada"].Value.ToString();
-                        Catalogo.dateTimeIniciaEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["IniciaEntrada"].Value.ToString();
-                        Catalogo.dateTimeLimiteEntrada.Text = dataGridViewData.Rows[IdRowSelect].Cells["LimiteEntrada"].Value.ToString();
-                        Catalogo.dateTimeHoraSalida.Text = dataGridViewData.Rows[IdRowSelect].Cells["HoraSalida"].Value.ToString();
-                        Catalogo.dateTimeLimiteSalida.Text = dataGridViewData.Rows[IdRowSelect].Cells["LimiteSalida"].Value.ToString();
-                        Catalogo.textBoxHorasJornada.Text = dataGridViewData.Rows[IdRowSelect].Cells["HorasJornada"].Value.ToString();
+                        cFMTU110010 Catalogo = new cFMTU110010()
+                        {
+                            IdTurn = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells[TurnML.DataBase.Id].Value.ToString())
+                        };
+
                         AddOwnedForm(Catalogo);
                         Catalogo.FormBorderStyle = FormBorderStyle.None;
                         Catalogo.TopLevel = false;

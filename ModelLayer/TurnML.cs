@@ -15,8 +15,10 @@ namespace ModelLayer
             public const string Description = "description";
             public const string TimeEntry = "timeEntry";
             public const string StartEntry = "startEntry";
+            public const string LimitEntry = "limitEntry";
             public const string Departuretime = "departuretime";
             public const string LimitDeparture = "limitDeparture";
+            public const string HoursJornada = "HoursJornada";
 
         }
 

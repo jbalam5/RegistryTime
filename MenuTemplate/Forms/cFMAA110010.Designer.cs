@@ -161,6 +161,7 @@
             // 
             this.textBoxApellidoM.Location = new System.Drawing.Point(383, 175);
             this.textBoxApellidoM.Name = "textBoxApellidoM";
+            this.textBoxApellidoM.ReadOnly = true;
             this.textBoxApellidoM.Size = new System.Drawing.Size(335, 20);
             this.textBoxApellidoM.TabIndex = 85;
             // 
@@ -265,6 +266,7 @@
             // 
             this.textBoxDepartamento.Location = new System.Drawing.Point(12, 220);
             this.textBoxDepartamento.Name = "textBoxDepartamento";
+            this.textBoxDepartamento.ReadOnly = true;
             this.textBoxDepartamento.Size = new System.Drawing.Size(335, 20);
             this.textBoxDepartamento.TabIndex = 67;
             // 
@@ -298,6 +300,7 @@
             // 
             this.textBoxPuesto.Location = new System.Drawing.Point(383, 220);
             this.textBoxPuesto.Name = "textBoxPuesto";
+            this.textBoxPuesto.ReadOnly = true;
             this.textBoxPuesto.Size = new System.Drawing.Size(335, 20);
             this.textBoxPuesto.TabIndex = 64;
             // 
@@ -318,6 +321,7 @@
             // 
             this.textBoxApellidoP.Location = new System.Drawing.Point(12, 175);
             this.textBoxApellidoP.Name = "textBoxApellidoP";
+            this.textBoxApellidoP.ReadOnly = true;
             this.textBoxApellidoP.Size = new System.Drawing.Size(335, 20);
             this.textBoxApellidoP.TabIndex = 62;
             // 
@@ -338,6 +342,7 @@
             // 
             this.textBoxNombre.Location = new System.Drawing.Point(12, 130);
             this.textBoxNombre.Name = "textBoxNombre";
+            this.textBoxNombre.ReadOnly = true;
             this.textBoxNombre.Size = new System.Drawing.Size(335, 20);
             this.textBoxNombre.TabIndex = 60;
             // 

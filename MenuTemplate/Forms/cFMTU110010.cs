@@ -23,9 +23,33 @@ namespace RegistryTime.Forms
             InitializeComponent();
         }
 
+        public void LoadTurnId(int IdTurno)
+        {
+            try
+            {
+                TurnML Turn = TurnBLL.GetIdEntity(IdTurn);
+
+                IdTurn = Convert.ToInt32(Turn.Id.ToString());
+                textBoxTurno.Text = Turn.Name.ToString();
+                textBoxDescripcion.Text = Turn.Name.ToString();
+                dateTimeHoraEntrada.Text = Turn.TimeEntry.ToString();
+                dateTimeIniciaEntrada.Text = Turn.StartEntry.ToString();
+                dateTimeLimiteEntrada.Text = Turn.LimitEntry.ToString();
+                dateTimeHoraSalida.Text = Turn.Departuretime.ToString();
+                dateTimeLimiteSalida.Text = Turn.LimitDeparture.ToString();
+                textBoxHorasJornada.Text = Turn.HoursJornada.ToString();
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
+
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-            //dateTimeLimiteEntrada.Format = DateTimePickerFormat.Time;
+            if(IdTurn > 0)
+                LoadTurnId(IdTurn);
+
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

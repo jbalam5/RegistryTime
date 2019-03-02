@@ -42,7 +42,7 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public DepartamentML GetIdEntity(int Id)
         {
             try
             {

@@ -62,7 +62,30 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id)
+        public JobML GetEntity(DataRow row)
+        {
+            try
+            {
+                if (row != null)
+                {
+                    JobML Job = new JobML()
+                    {
+                        Id = (row[JobML.DataBase.Id] != DBNull.Value) ? int.Parse(row[JobML.DataBase.Id].ToString()) : 0,
+                        Name = (row[JobML.DataBase.Name] != DBNull.Value) ? row[JobML.DataBase.Name].ToString() : string.Empty,
+                        Description = (row[JobML.DataBase.Description] != DBNull.Value) ? row[JobML.DataBase.Description].ToString() : string.Empty
+                    };
+
+                    return Job;
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEntity : {1}", core, ex));
+            }
+        }
+
+        public JobML GetIdEntity(int id)
         {
             try
             {
@@ -77,7 +100,7 @@ namespace DataLayer
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
                 Conexion.Close();
-                return dtDepartamentos;
+                return GetEntity(dtDepartamentos.Rows[0]);
             }
             catch (Exception ex)
             {

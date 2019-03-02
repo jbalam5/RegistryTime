@@ -29,14 +29,12 @@ namespace RegistryTime.Forms
         {
             if(IdDepartament > 0)
             {
-                DataTable DepartametTable = DepartamentBLL.GetIdEntity(IdDepartament);
-                if(DepartametTable.Rows.Count > 0)
+                DepartamentML Departament = DepartamentBLL.GetIdEntity(IdDepartament);
+                if(Departament == null)
                 {
-                    DepartamentML DepartamentML = new DepartamentML();
-                    DataRow Departament = DepartametTable.Rows[0];
-                    textBoxNombre.Text = Departament[DepartamentML.DataBase.Name].ToString();
-                    textBoxEncargado.Text = Departament[DepartamentML.DataBase.Manager].ToString();
-                    textBoxDescripcion.Text = Departament[DepartamentML.DataBase.Description].ToString();
+                    textBoxNombre.Text = Departament.Name.ToString();
+                    textBoxEncargado.Text = Departament.Manager.ToString();
+                    textBoxDescripcion.Text = Departament.Description.ToString();
                 }
             }
         }

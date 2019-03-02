@@ -61,20 +61,46 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id)
+        public DepartamentML GetDepartament(DataRow row)
+        {
+            try
+            {
+                if (row != null)
+                {
+                    DepartamentML Departament = new DepartamentML()
+                    {
+                        Id = (row[DepartamentML.DataBase.Id] != DBNull.Value) ? int.Parse(row[DepartamentML.DataBase.Id].ToString()) : 0,
+                        Name = (row[DepartamentML.DataBase.Name] != DBNull.Value) ? row[DepartamentML.DataBase.Name].ToString() : string.Empty,
+                        Manager = (row[DepartamentML.DataBase.Manager] != DBNull.Value) ? row[DepartamentML.DataBase.Manager].ToString() : string.Empty,
+                        Description = (row[DepartamentML.DataBase.Description] != DBNull.Value) ? row[DepartamentML.DataBase.Description].ToString() : string.Empty
+                    };
+
+                    return Departament;
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetDepartament : {1}", core, ex));
+            }
+        }
+
+        public DepartamentML GetIdEntity(int id)
         {
             try
             {
                 
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName,id);
-                SqlConnection Conexion = new SqlConnection();
-                Conexion.ConnectionString = ConnectionString;
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);
                 Conexion.Close();
-                return dtDepartamentos;
+                return GetDepartament(dtDepartamentos.Rows[0]);
             }
             catch(Exception ex)
             {

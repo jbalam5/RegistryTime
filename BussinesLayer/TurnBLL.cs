@@ -36,7 +36,7 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public TurnML GetIdEntity(int Id)
         {
             try
             {

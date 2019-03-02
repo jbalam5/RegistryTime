@@ -122,7 +122,7 @@
             this.buttonSeleccionar.TabIndex = 63;
             this.buttonSeleccionar.Text = "Seleccionar";
             this.buttonSeleccionar.UseVisualStyleBackColor = false;
-            //this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click_1);
+            this.buttonSeleccionar.Click += new System.EventHandler(this.buttonSeleccionar_Click);
             // 
             // buttonBuscar
             // 
