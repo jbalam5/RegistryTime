@@ -16,7 +16,9 @@ namespace RegistryTime.Forms
     public partial class cFMAA110010 : Form
     {
         public int IdAbsenteeismAssignment = 0;
+        public int IdOject = 0;
         AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
+        EmployeeBLL EmployeeBLL = new EmployeeBLL();
 
         public cFMAA110010()
         {
@@ -27,6 +29,17 @@ namespace RegistryTime.Forms
         {
             LoadAbsenteissm();
             LoadStatus();
+
+            if(IdOject > 0)
+            {
+                cargardata(IdOject);
+            }
+        }
+
+        public void cargardata(int IdOject)
+        {
+            ModelLayer.EmployeeML HelpEmployee = EmployeeBLL.GetIdEntity(IdOject);
+            textBoxNumControl.Text = HelpEmployee.Id.ToString();
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

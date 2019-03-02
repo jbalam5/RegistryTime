@@ -186,10 +186,9 @@ namespace RegistryTime
             getCompany();
         }
 
-
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP110010());
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP100010());
         }
 
         //protected override void OnSizeChanged(EventArgs e)
