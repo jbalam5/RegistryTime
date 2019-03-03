@@ -39,11 +39,10 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable GetIdEntity(int Id)
+        public JobML GetIdEntity(int Id)
         {
             try
             {
-
                 return JobDAL.GetIdEntity(Id);
             }
             catch (Exception ex)

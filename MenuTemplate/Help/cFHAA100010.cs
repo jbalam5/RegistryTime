@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
 using Alerts;
+using RegistryTime.Forms;
 
 
 namespace RegistryTime.Help
@@ -86,8 +87,10 @@ namespace RegistryTime.Help
                         Catalogo.cargardata(1);
                         this.Close();
 
-                      
-
+                        //cFMAA110010 Catalogo = this.Owner as cFMAA110010;
+                        //Catalogo.idObject = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        //Catalogo.LoadObject();
+                        //this.Close();
 
                     }
                     else

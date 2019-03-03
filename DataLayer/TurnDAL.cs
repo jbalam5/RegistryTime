@@ -41,7 +41,37 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id)
+        public TurnML GetEntity(DataRow row)
+        {
+            try
+            {
+                if (row != null)
+                {
+                    TurnML TurnML = new TurnML()
+                    {
+                        Id = (row[TurnML.DataBase.Id] != DBNull.Value) ? int.Parse(row[TurnML.DataBase.Id].ToString()) : 0,
+                        Name = (row[TurnML.DataBase.Name] != DBNull.Value) ? row[TurnML.DataBase.Name].ToString() : string.Empty,
+                        Description = (row[TurnML.DataBase.Description] != DBNull.Value) ? row[TurnML.DataBase.Description].ToString() : string.Empty,
+                        TimeEntry = (row[TurnML.DataBase.TimeEntry] != DBNull.Value) ? Convert.ToDateTime( row[TurnML.DataBase.TimeEntry].ToString()):DateTime.Now,
+                        StartEntry = (row[TurnML.DataBase.StartEntry] != DBNull.Value) ? Convert.ToDateTime(row[TurnML.DataBase.StartEntry].ToString()) : DateTime.Now,
+                        LimitEntry = (row[TurnML.DataBase.LimitEntry] != DBNull.Value) ? Convert.ToDateTime(row[TurnML.DataBase.LimitEntry].ToString()) : DateTime.Now,
+                        Departuretime = (row[TurnML.DataBase.Departuretime] != DBNull.Value) ? Convert.ToDateTime(row[TurnML.DataBase.Departuretime].ToString()) : DateTime.Now,
+                        LimitDeparture = (row[TurnML.DataBase.LimitDeparture] != DBNull.Value) ? Convert.ToDateTime(row[TurnML.DataBase.LimitDeparture].ToString()) : DateTime.Now,
+                        HoursJornada = (row[TurnML.DataBase.HoursJornada] != DBNull.Value) ? Convert.ToDateTime(row[TurnML.DataBase.HoursJornada].ToString()) : DateTime.Now,
+
+                    };
+
+                    return TurnML;
+                }
+                return null;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetEntity : {1}", core, ex));
+            }
+        }
+
+        public TurnML GetIdEntity(int id)
         {
             try
             {
@@ -56,7 +86,7 @@ namespace DataLayer
                 DataTable dtTurnos = new DataTable();
                 cmd.Fill(dtTurnos);
                 Conexion.Close();
-                return dtTurnos;
+                return GetEntity(dtTurnos.Rows[0]);
             }
             catch (Exception ex)
             {
