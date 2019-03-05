@@ -68,23 +68,9 @@ namespace RegistryTime.Help
                     {
                         Forms.cFMAA110010 Catalogo = this.Owner as Forms.cFMAA110010;
                         int IdObject = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        //Catalogo.IdOject = IdObject;
-                        //Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        //Catalogo.textBoxNumControl.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
-                        //Catalogo.textBoxNombre.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["name"].Value.ToString();
-                        //Catalogo.textBoxApellidoP.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["lastname"].Value.ToString();
-                        //Catalogo.textBoxApellidoM.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["lastname"].Value.ToString();
-                        //Catalogo.textBoxDepartamento.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["idDepartament"].Value.ToString();
-                        //Catalogo.textBoxPuesto.Text = dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["idJob"].Value.ToString();
-                        //AddOwnedForm(Catalogo);
-                        //Catalogo.FormBorderStyle = FormBorderStyle.None;
-                        //Catalogo.TopLevel = false;
-                        //Catalogo.Dock = DockStyle.Fill;
-                        //this.Controls.Add(Catalogo);
-                        //this.Tag = Catalogo;
-                        //Catalogo.BringToFront();
-                        //Catalogo.Show();
-                        Catalogo.cargardata(1);
+                        Catalogo.IdOject = IdObject;
+                        
+                       
                         this.Close();
 
                         //cFMAA110010 Catalogo = this.Owner as cFMAA110010;

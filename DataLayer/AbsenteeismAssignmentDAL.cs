@@ -24,7 +24,7 @@ namespace DataLayer
                 };
                 Conexion.Open();
 
-                String Query = String.Format("SELECT {0}.[id] ,{0}.[controlNumber] as NoControl,{0}.[KeyAbsenteeism] as ClaveAusentismo,{0}.[Description] as Descripcion,{0}.[Status] as Estado,{0}.[DateStar] as FechaInicio,{0}.[DateEnd] as FechaFinal FROM {0} where {0}._registry = 1", TableName);
+                String Query = String.Format("SELECT {0}.[id],{0}.[KeyAbsenteeism] as ClaveAusentismo,{0}.[Description] as Descripcion,{0}.[Status] as Estado,{0}.[DateStar] as FechaInicio,{0}.[DateEnd] as FechaFinal FROM {0} where {0}._registry = 1", TableName);
 
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtAbsenteeismAssignment = new DataTable();
@@ -67,9 +67,9 @@ namespace DataLayer
                 int id = 0;
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( controlNumber, KeyAbsenteeism, Description, Status, DateStar, DateEnd, _registry, idUserInsert, dateInsert)");
+                Query.AppendLine("(KeyAbsenteeism, Description, Status, DateStar, DateEnd, _registry, idUserInsert, dateInsert)");
                 Query.AppendLine(" VALUES(");
-                Query.AppendFormat(" '{0}',", Absenteeismassignment.controlNumber);
+                //Query.AppendFormat(" '{0}',", Absenteeismassignment.controlNumber);
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.KeyAbsenteeism);
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.Description);
                 Query.AppendFormat(" '{0}',", Absenteeismassignment.Status);
@@ -102,7 +102,7 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
                 Query.AppendFormat("UPDATE {0} ", TableName);
                 Query.AppendLine(" SET ");
-                Query.AppendFormat("controlNumber = '{0}', ", Absenteeismassignment.controlNumber);
+                //Query.AppendFormat("id = '{0}', ", Absenteeismassignment.controlNumber);
                 Query.AppendFormat("KeyAbsenteeism = '{0}', ", Absenteeismassignment.KeyAbsenteeism);
                 Query.AppendFormat("Description = '{0}', ", Absenteeismassignment.Description);
                 Query.AppendFormat("Status = '{0}', ", Absenteeismassignment.Status);

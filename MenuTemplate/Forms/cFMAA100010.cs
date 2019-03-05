@@ -89,12 +89,12 @@ namespace RegistryTime.Forms
                             IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString())
                         };
                         //Catalogo.IdAbsenteeismAssignment = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        //Catalogo.textBoxNumControl.Text = dataGridViewData.Rows[IdRowSelect].Cells["NoControl"].Value.ToString();
-                        //Catalogo.comboBoxAusentismo.Text = dataGridViewData.Rows[IdRowSelect].Cells["ClaveAusentismo"].Value.ToString();
-                        //Catalogo.comboBoxEstadoAsig.Text = dataGridViewData.Rows[IdRowSelect].Cells["Estado"].Value.ToString();
-                        //Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
-                        //Catalogo.dateTimeFechaInicio.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaInicio"].Value.ToString();
-                        //Catalogo.dateTimeFechaFin.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaFinal"].Value.ToString();
+                        Catalogo.textBoxNumControl.Text = dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString();
+                        Catalogo.comboBoxAusentismo.Text = dataGridViewData.Rows[IdRowSelect].Cells["ClaveAusentismo"].Value.ToString();
+                        Catalogo.comboBoxEstadoAsig.Text = dataGridViewData.Rows[IdRowSelect].Cells["Estado"].Value.ToString();
+                        Catalogo.textBoxDescripcion.Text = dataGridViewData.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
+                        Catalogo.dateTimeFechaInicio.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaInicio"].Value.ToString();
+                        Catalogo.dateTimeFechaFin.Text = dataGridViewData.Rows[IdRowSelect].Cells["FechaFinal"].Value.ToString();
                         AddOwnedForm(Catalogo);
                         Catalogo.FormBorderStyle = FormBorderStyle.None;
                         Catalogo.TopLevel = false;

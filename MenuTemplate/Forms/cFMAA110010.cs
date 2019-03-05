@@ -18,7 +18,7 @@ namespace RegistryTime.Forms
         public int IdAbsenteeismAssignment = 0;
 
         public int IdOject = 0;
-        public int idObject = 0;
+        
 
         AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
         EmployeeBLL EmployeeBLL = new EmployeeBLL();
@@ -33,10 +33,10 @@ namespace RegistryTime.Forms
             try
             {
                 EmployeeBLL EmployeeBLL = new EmployeeBLL();
-                EmployeeML Employee = EmployeeBLL.GetIdEntity(idObject);
+                EmployeeML Employee = EmployeeBLL.GetIdEntity(IdOject);
                 textBoxNumControl.Text = Employee.Id.ToString();
                 textBoxNombre.Text = Employee.Name.ToString();
-                textBoxApellidoM.Text = Employee.LastName.ToString();
+                textBoxApellidoP.Text = Employee.LastName.ToString();
 
                 DepartamentBLL DepartamentBLL = new DepartamentBLL();
                 DepartamentML Departament = DepartamentBLL.GetIdEntity(Employee.IdDepartament);
@@ -45,10 +45,13 @@ namespace RegistryTime.Forms
                 JobBLL JobBLL = new JobBLL();
                 JobML Job = JobBLL.GetIdEntity(Employee.IdJob);
                 textBoxPuesto.Text = Job.Name;
+                //dateTimeFechaInicio.Value = 
+                //dateTimeFechaFin.Value = 
 
 
-                
-            }catch(Exception ex)
+
+            }
+            catch (Exception ex)
             {
 
             }
@@ -59,7 +62,7 @@ namespace RegistryTime.Forms
             LoadAbsenteissm();
             LoadStatus();
 
-            if(IdOject > 0)
+            if (IdOject > 0)
             {
                 cargardata(IdOject);
             }
@@ -68,9 +71,9 @@ namespace RegistryTime.Forms
         public void cargardata(int IdOject)
         {
             ModelLayer.EmployeeML HelpEmployee = EmployeeBLL.GetIdEntity(IdOject);
-            textBoxNumControl.Text = HelpEmployee.Id.ToString();
+            
 
-            if (idObject > 0)
+            if (IdOject > 0)
                 LoadObject();
 
         }
@@ -144,7 +147,7 @@ namespace RegistryTime.Forms
                 {
                     AbsenteeismAssignmentML AsigAusentismo = new AbsenteeismAssignmentML();
 
-                    AsigAusentismo.controlNumber = textBoxNumControl.Text;
+                    AsigAusentismo.Id = Convert.ToInt32(textBoxNumControl.Text.ToString());
                     AsigAusentismo.KeyAbsenteeism = comboBoxAusentismo.Text;
                     AsigAusentismo.Status = comboBoxEstadoAsig.Text;
                     AsigAusentismo.DateStar = dateTimeFechaInicio.Value;
@@ -194,6 +197,13 @@ namespace RegistryTime.Forms
                 AddOwnedForm(frm);
                 frm.ShowDialog();
             }
+        }
+
+        private void textBoxNumControl_DoubleClick(object sender, EventArgs e)
+        {
+            RegistryTime.Help.cFHAA100010 frm = new Help.cFHAA100010();
+            AddOwnedForm(frm);
+            frm.ShowDialog();
         }
 
         public void LoadAbsenteissm()

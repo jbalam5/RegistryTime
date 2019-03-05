@@ -194,6 +194,31 @@ namespace DataLayer
             }
         }
 
+        public DataTable GetDateReports(DateTime FechaInicio, DateTime FechaFin)
+        { 
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("SELECT * FROM {0} ", TableName);
+                Query.AppendLine("WHERE _registry = 1 ");
+                Query.AppendFormat("AND Date BETWEEN {0} AND {1} ", FechaInicio.ToString("yyyy-MM-dd"), FechaFin.ToString("yyyy-MM-dd"));
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Conexion);
+                DataTable Response = new DataTable();
+                cmd.Fill(Response);
+                Conexion.Close();
+
+                return Response;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
+            }
+        }
         public String TypeCheck(DateTime Date)
         {
             try

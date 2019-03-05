@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
+using ModelLayer;
 
 namespace RegistryTime.Forms.Reports
 {
@@ -40,7 +41,8 @@ namespace RegistryTime.Forms.Reports
         {
             ChildLeftPanel.Visible = false;
 
-
+            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();           
+            dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value);
         }
 
         public void LoadTurn()
@@ -105,7 +107,7 @@ namespace RegistryTime.Forms.Reports
                 items.Add(new { Text = "Todos", Value = "0" });
                 foreach (DataRow Empleado in Empleados.Rows)
                 {
-                    items.Add(new { Text = Empleado[2].ToString(), Value = Empleado[0].ToString() });
+                    items.Add(new { Text = string.Format("{0} {1}", Empleado[EmployeeML.DataBase.Name].ToString(), Empleado[EmployeeML.DataBase.Lastname].ToString()), Value = Empleado[EmployeeML.DataBase.Id].ToString() });
                 }
                 comboBoxEmpleado.DataSource = items;
             }
@@ -114,5 +116,6 @@ namespace RegistryTime.Forms.Reports
                 MessageBox.Show(String.Format("LoadEmployee: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }
