@@ -13,6 +13,7 @@ namespace RegistryTime
 {
     public partial class cMRT1000101 : Form
     {
+        public CustomControls.LoaderControl loader;
         public cMRT1000101()
         {
             InitializeComponent();
@@ -118,6 +119,7 @@ namespace RegistryTime
 
         private void cMRT100010_Load(object sender, EventArgs e)
         {
+            loader = new CustomControls.LoaderControl();
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -157,6 +159,20 @@ namespace RegistryTime
             BiometricCore.UserInfo user = new BiometricCore.UserInfo();
             ICollection<BiometricCore.UserInfo> users = obj.GetAllUserInfo();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            loader.title = "Espera esto es un titulo";
+            loader.description = "Procesando: esto es un titulo de procesando";
+            loader.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            loader.title = "Espera esto es un titulo2";
+            loader.description = "Procesando: esto es un titulo de procesando2";
+            loader.Visible = false;
         }
     }
 }
