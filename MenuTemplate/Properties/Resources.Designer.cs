@@ -183,6 +183,26 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Excel_icon {
+            get {
+                object obj = ResourceManager.GetObject("Excel-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ExcelIcon_ {
+            get {
+                object obj = ResourceManager.GetObject("ExcelIcon)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap exit32 {
             get {
                 object obj = ResourceManager.GetObject("exit32", resourceCulture);

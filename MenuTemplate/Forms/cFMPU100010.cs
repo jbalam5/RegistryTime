@@ -35,6 +35,9 @@ namespace RegistryTime.Forms
                 dataGridViewDataPuesto.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewDataPuesto.ClearSelection();
                 AlterColorDataGridView(dataGridViewDataPuesto);
+
+                exportExcelControl1.data = dataGridViewDataPuesto;
+                exportExcelControl1.Title = "Puestos";
             }
             catch (Exception ex)
             {

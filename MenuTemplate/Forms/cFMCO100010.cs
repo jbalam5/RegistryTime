@@ -35,6 +35,9 @@ namespace RegistryTime.Forms
                 dataGridViewData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewData.ClearSelection();
                 AlterColorDataGridView(dataGridViewData);
+
+                exportExcelControl1.data = dataGridViewData;
+                exportExcelControl1.Title = "Ausentismo";
             }
             catch (Exception ex)
             {
