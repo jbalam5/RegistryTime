@@ -80,6 +80,18 @@ namespace BussinesLayer
             }
         }
 
+        public DataTable DateReports(DateTime FechaInicio, DateTime FechaFin)
+        {
+            try
+            {
+                return CheckInHoursDAL.GetDateReports(FechaInicio, FechaFin);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+            }
+        }
+
         public DataTable Migrate(DateTime Inicio, DateTime Fin)
         {
             try

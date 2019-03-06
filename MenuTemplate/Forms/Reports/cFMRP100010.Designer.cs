@@ -37,7 +37,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.ChildContentPanel = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewReporteGeneral = new System.Windows.Forms.DataGridView();
             this.ChildLeftPanel = new System.Windows.Forms.Panel();
             this.comboBoxTurno = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.panel3.SuspendLayout();
             this.ContentPanel.SuspendLayout();
             this.ChildContentPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReporteGeneral)).BeginInit();
             this.ChildLeftPanel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +138,7 @@
             // ChildContentPanel
             // 
             this.ChildContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChildContentPanel.Controls.Add(this.dataGridView1);
+            this.ChildContentPanel.Controls.Add(this.dataGridViewReporteGeneral);
             this.ChildContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildContentPanel.Location = new System.Drawing.Point(299, 0);
             this.ChildContentPanel.Name = "ChildContentPanel";
@@ -146,14 +146,14 @@
             this.ChildContentPanel.Size = new System.Drawing.Size(545, 447);
             this.ChildContentPanel.TabIndex = 2;
             // 
-            // dataGridView1
+            // dataGridViewReporteGeneral
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(533, 435);
-            this.dataGridView1.TabIndex = 14;
+            this.dataGridViewReporteGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewReporteGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewReporteGeneral.Location = new System.Drawing.Point(5, 5);
+            this.dataGridViewReporteGeneral.Name = "dataGridViewReporteGeneral";
+            this.dataGridViewReporteGeneral.Size = new System.Drawing.Size(533, 435);
+            this.dataGridViewReporteGeneral.TabIndex = 14;
             // 
             // ChildLeftPanel
             // 
@@ -328,7 +328,7 @@
             this.panel3.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
             this.ChildContentPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReporteGeneral)).EndInit();
             this.ChildLeftPanel.ResumeLayout(false);
             this.ChildLeftPanel.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -356,7 +356,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button CloseFilterButton;
         private System.Windows.Forms.Button buttonBuscar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewReporteGeneral;
         private System.Windows.Forms.Panel ParentPanel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox comboBoxTurno;

@@ -34,8 +34,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxApellidoM = new System.Windows.Forms.TextBox();
-            this.materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxDescripcion = new System.Windows.Forms.TextBox();
             this.materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             this.materialLabel8 = new MaterialSkin.Controls.MaterialLabel();
@@ -92,8 +90,6 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.textBoxApellidoM);
-            this.panel2.Controls.Add(this.materialLabel12);
             this.panel2.Controls.Add(this.textBoxDescripcion);
             this.panel2.Controls.Add(this.materialLabel9);
             this.panel2.Controls.Add(this.materialLabel8);
@@ -156,27 +152,6 @@
             this.label3.Size = new System.Drawing.Size(14, 18);
             this.label3.TabIndex = 87;
             this.label3.Text = "*";
-            // 
-            // textBoxApellidoM
-            // 
-            this.textBoxApellidoM.Location = new System.Drawing.Point(383, 175);
-            this.textBoxApellidoM.Name = "textBoxApellidoM";
-            this.textBoxApellidoM.ReadOnly = true;
-            this.textBoxApellidoM.Size = new System.Drawing.Size(335, 20);
-            this.textBoxApellidoM.TabIndex = 85;
-            // 
-            // materialLabel12
-            // 
-            this.materialLabel12.AutoSize = true;
-            this.materialLabel12.Depth = 0;
-            this.materialLabel12.Font = new System.Drawing.Font("Roboto", 11F);
-            this.materialLabel12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialLabel12.Location = new System.Drawing.Point(379, 153);
-            this.materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel12.Name = "materialLabel12";
-            this.materialLabel12.Size = new System.Drawing.Size(72, 19);
-            this.materialLabel12.TabIndex = 84;
-            this.materialLabel12.Text = "Apellidos";
             // 
             // textBoxDescripcion
             // 
@@ -365,6 +340,7 @@
             this.textBoxNumControl.Name = "textBoxNumControl";
             this.textBoxNumControl.Size = new System.Drawing.Size(335, 20);
             this.textBoxNumControl.TabIndex = 58;
+            this.textBoxNumControl.DoubleClick += new System.EventHandler(this.textBoxNumControl_DoubleClick);
             this.textBoxNumControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxNumControl_KeyDown);
             // 
             // materialLabel2
@@ -382,7 +358,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(383, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(383, 40);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(127, 132);
             this.pictureBox1.TabIndex = 55;
@@ -490,8 +466,6 @@
         public System.Windows.Forms.DateTimePicker dateTimeFechaFin;
         public System.Windows.Forms.DateTimePicker dateTimeFechaInicio;
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private MaterialSkin.Controls.MaterialLabel materialLabel12;
-        public System.Windows.Forms.TextBox textBoxApellidoM;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;

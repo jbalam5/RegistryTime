@@ -31,6 +31,9 @@ namespace RegistryTime.Forms
         {
             try
             {
+                exportExcelControl1.data = dataGridViewDataEmpleado;
+                exportExcelControl1.Title = "EMPLEADOS";
+
                 LoadDataGridView();
                 dataGridViewDataEmpleado.AutoResizeColumns();
                 dataGridViewDataEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;

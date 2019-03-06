@@ -32,10 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.dataGridViewDataEmpleado = new System.Windows.Forms.DataGridView();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
+            this.dataGridViewDataEmpleado = new System.Windows.Forms.DataGridView();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // ContainerPanel
             // 
+            this.ContainerPanel.Controls.Add(this.exportExcelControl1);
             this.ContainerPanel.Controls.Add(this.dataGridViewDataEmpleado);
             this.ContainerPanel.Controls.Add(this.buttonEliminar);
             this.ContainerPanel.Controls.Add(this.buttonEditar);
@@ -85,21 +87,6 @@
             this.ContainerPanel.Name = "ContainerPanel";
             this.ContainerPanel.Size = new System.Drawing.Size(800, 450);
             this.ContainerPanel.TabIndex = 5;
-            // 
-            // dataGridViewDataEmpleado
-            // 
-            this.dataGridViewDataEmpleado.AllowUserToAddRows = false;
-            this.dataGridViewDataEmpleado.AllowUserToDeleteRows = false;
-            this.dataGridViewDataEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDataEmpleado.EnableHeadersVisualStyles = false;
-            this.dataGridViewDataEmpleado.Location = new System.Drawing.Point(12, 99);
-            this.dataGridViewDataEmpleado.Name = "dataGridViewDataEmpleado";
-            this.dataGridViewDataEmpleado.ReadOnly = true;
-            this.dataGridViewDataEmpleado.RowHeadersVisible = false;
-            this.dataGridViewDataEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDataEmpleado.Size = new System.Drawing.Size(776, 339);
-            this.dataGridViewDataEmpleado.TabIndex = 11;
-            //this.dataGridViewDataEmpleado.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewData_CellContentClick);
             // 
             // buttonEliminar
             // 
@@ -146,6 +133,30 @@
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
+            // dataGridViewDataEmpleado
+            // 
+            this.dataGridViewDataEmpleado.AllowUserToAddRows = false;
+            this.dataGridViewDataEmpleado.AllowUserToDeleteRows = false;
+            this.dataGridViewDataEmpleado.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDataEmpleado.EnableHeadersVisualStyles = false;
+            this.dataGridViewDataEmpleado.Location = new System.Drawing.Point(12, 99);
+            this.dataGridViewDataEmpleado.Name = "dataGridViewDataEmpleado";
+            this.dataGridViewDataEmpleado.ReadOnly = true;
+            this.dataGridViewDataEmpleado.RowHeadersVisible = false;
+            this.dataGridViewDataEmpleado.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDataEmpleado.Size = new System.Drawing.Size(776, 339);
+            this.dataGridViewDataEmpleado.TabIndex = 11;
+            // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(92, 40);
+            this.exportExcelControl1.TabIndex = 12;
+            // 
             // cFMEM100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,5 +187,6 @@
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.DataGridView dataGridViewDataEmpleado;
+        private CustomControls.ExportExcelControl exportExcelControl1;
     }
 }

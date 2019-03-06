@@ -121,20 +121,17 @@
   <data name="TimeCalendarx64" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TimeCalendarx64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconSquared" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconSquared.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="BackgroudClock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroudClock.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="reports32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\reports32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconLineH" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconLineH.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CircleSavex48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CircleSavex48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="anonimo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\anonimo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="maximizar32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\maximizar32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,20 +145,20 @@
   <data name="realtimeexpert-logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\realtimeexpert-logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="perfilEjecutivo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\perfilEjecutivo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconInformation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconInformation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconQuestionOrange" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconQuestionOrange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CicleYellowSavex48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CicleYellowSavex48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CircleEditx42" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CircleEditx42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconQuestion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconQuestion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -171,6 +168,9 @@
   </data>
   <data name="close32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\close32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BackgroundTime1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BackgroundTime1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="users32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\users32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,8 +187,14 @@
   <data name="BackgroundTime" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BackgroundTime.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconWarning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CircleDeletex42" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CircleDeletex42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconDel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconDel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimize_thewindow_theapplication_2872" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimize_thewindow_theapplication_2872.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -198,9 +204,6 @@
   </data>
   <data name="IconWarningOrnge" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconWarningOrnge.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconQuestionOrange" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconQuestionOrange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="users42" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\users42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,14 +220,11 @@
   <data name="user24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\user24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="exit32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\exit32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconWarningx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconWarningx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconAlarmWarningx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconAlarmWarningx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\IconWarning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconAlarmWarning" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconAlarmWarning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,14 +238,17 @@
   <data name="IconInformationx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconInformationx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconSquared" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconSquared.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="home32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="time32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\time32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="exit32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\exit32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconAlarmWarningx70" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconAlarmWarningx70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minimizar32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minimizar32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,16 +262,16 @@
   <data name="IconWarningOrngex70" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\IconWarningOrngex70.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="home32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\home32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="anonimo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\anonimo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="CircleEditx42" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\CircleEditx42.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="IconInformation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\IconInformation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconDel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconDel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="reports32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reports32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BackgroundTime1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BackgroundTime1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AjaxLoader" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AjaxLoader.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
