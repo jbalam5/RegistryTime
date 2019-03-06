@@ -43,8 +43,11 @@ namespace BussinesLayer
             }
         }
 
-        public bool connect(string Ip, int port)
+        public bool connect(string Ip, int port = 0)
         {
+            if (string.IsNullOrEmpty(Ip) || port <= 0)
+                throw new Exception("No se encontrarón la IP/Puerto del Lector");
+
             return objZKTeko.Connect_Net(Ip, port);
         }
 

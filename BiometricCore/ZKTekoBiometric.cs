@@ -42,24 +42,33 @@ namespace BiometricCore
         }
 
 
-        public bool Connect_Net(string IPAdd, int Port)
+        public bool Connect_Net(string IPAdd, int Port = 0)
         {
-            if (objCZKEM.Connect_Net(IPAdd, Port))
+            try
             {
-                //65535, 32767
-                if (objCZKEM.RegEvent(1, 32767))
+                if (string.IsNullOrEmpty(IPAdd) || Port <= 0)
+                    throw new Exception("No se encontrarón la IP/Puerto del Lector");
+
+                if (objCZKEM.Connect_Net(IPAdd, Port))
                 {
-                    // [ Register your events here ]
-                    // [ Go through the _IZKEMEvents_Event class for a complete list of events
-                    objCZKEM.OnConnected += ObjCZKEM_OnConnected;
-                    objCZKEM.OnDisConnected += objCZKEM_OnDisConnected;
-                    objCZKEM.OnEnrollFinger += ObjCZKEM_OnEnrollFinger;
-                    objCZKEM.OnFinger += ObjCZKEM_OnFinger;
-                    objCZKEM.OnAttTransactionEx += new _IZKEMEvents_OnAttTransactionExEventHandler(zkemClient_OnAttTransactionEx);
+                    //65535, 32767
+                    if (objCZKEM.RegEvent(1, 32767))
+                    {
+                        // [ Register your events here ]
+                        // [ Go through the _IZKEMEvents_Event class for a complete list of events
+                        objCZKEM.OnConnected += ObjCZKEM_OnConnected;
+                        objCZKEM.OnDisConnected += objCZKEM_OnDisConnected;
+                        objCZKEM.OnEnrollFinger += ObjCZKEM_OnEnrollFinger;
+                        objCZKEM.OnFinger += ObjCZKEM_OnFinger;
+                        objCZKEM.OnAttTransactionEx += new _IZKEMEvents_OnAttTransactionExEventHandler(zkemClient_OnAttTransactionEx);
+                    }
+                    return true;
                 }
-                return true;
+                return false;
+            }catch(Exception ex)
+            {
+                throw new Exception("No se ha realizado la conexión con el lector");
             }
-            return false;
         }
 
         private void ObjCZKEM_OnFinger()
