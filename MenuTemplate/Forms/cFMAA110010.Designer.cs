@@ -342,6 +342,7 @@
             this.textBoxNumControl.TabIndex = 58;
             this.textBoxNumControl.DoubleClick += new System.EventHandler(this.textBoxNumControl_DoubleClick);
             this.textBoxNumControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxNumControl_KeyDown);
+            this.textBoxNumControl.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxNumControl_KeyUp);
             // 
             // materialLabel2
             // 

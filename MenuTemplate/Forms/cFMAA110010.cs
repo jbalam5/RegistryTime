@@ -17,7 +17,7 @@ namespace RegistryTime.Forms
     {
         public int IdAbsenteeismAssignment = 0;
 
-        public int IdOject = 0;
+        //public int IdOject = 0;
         
 
         AbsenteeismAssignmentBLL AbsenteeismAssignmentBLL = new AbsenteeismAssignmentBLL();
@@ -28,32 +28,32 @@ namespace RegistryTime.Forms
             InitializeComponent();
         }
 
-        public void LoadObject()
+        public void LoadObject(int IdObject)
         {
             try
             {
                 EmployeeBLL EmployeeBLL = new EmployeeBLL();
-                EmployeeML Employee = EmployeeBLL.GetIdEntity(IdOject);
-                textBoxNumControl.Text = Employee.Id.ToString();
-                textBoxNombre.Text = Employee.Name.ToString();
-                textBoxApellidoP.Text = Employee.LastName.ToString();
-
-                DepartamentBLL DepartamentBLL = new DepartamentBLL();
-                DepartamentML Departament = DepartamentBLL.GetIdEntity(Employee.IdDepartament);
-                textBoxDepartamento.Text = Departament.Name.ToString();
-
-                JobBLL JobBLL = new JobBLL();
-                JobML Job = JobBLL.GetIdEntity(Employee.IdJob);
-                textBoxPuesto.Text = Job.Name;
-                //dateTimeFechaInicio.Value = 
-                //dateTimeFechaFin.Value = 
-
-
-
+                if(EmployeeBLL.GetIdEntity(IdObject) != null)
+                {
+                    EmployeeML Employee = EmployeeBLL.GetIdEntity(IdObject);
+                    textBoxNumControl.Text = Employee.Id.ToString();
+                    textBoxNombre.Text = Employee.Name.ToString();
+                    textBoxApellidoP.Text = Employee.LastName.ToString();
+                    DepartamentBLL DepartamentBLL = new DepartamentBLL();
+                    DepartamentML Departament = DepartamentBLL.GetIdEntity(Employee.IdDepartament);
+                    textBoxDepartamento.Text = Departament.Name.ToString();
+                    JobBLL JobBLL = new JobBLL();
+                    JobML Job = JobBLL.GetIdEntity(Employee.IdJob);
+                    textBoxPuesto.Text = Job.Name;
+                }else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "El empleado no existe", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(String.Format("LoadObject: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -62,20 +62,10 @@ namespace RegistryTime.Forms
             LoadAbsenteissm();
             LoadStatus();
 
-            if (IdOject > 0)
-            {
-                cargardata(IdOject);
-            }
-        }
-
-        public void cargardata(int IdOject)
-        {
-            ModelLayer.EmployeeML HelpEmployee = EmployeeBLL.GetIdEntity(IdOject);
-            
-
-            if (IdOject > 0)
-                LoadObject();
-
+            //if (IdOject > 0)
+            //{
+            //    LoadObject(IdOject);
+            //}
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -89,7 +79,6 @@ namespace RegistryTime.Forms
             textBoxApellidoP.Text = String.Empty;
             textBoxDepartamento.Text = String.Empty;
             textBoxPuesto.Text = String.Empty;
-
             comboBoxAusentismo.SelectedIndex = 0;
             comboBoxEstadoAsig.SelectedIndex = 0;
             textBoxDescripcion.Text = String.Empty;
@@ -191,12 +180,18 @@ namespace RegistryTime.Forms
 
         private void textBoxNumControl_KeyDown(object sender, KeyEventArgs e)
         {
+            if(!String.IsNullOrEmpty(textBoxNumControl.Text))
             if (e.KeyCode == Keys.F2)
             {
                 RegistryTime.Help.cFHAA100010 frm = new Help.cFHAA100010();
                 AddOwnedForm(frm);
                 frm.ShowDialog();
+            }else if (e.KeyCode == Keys.Enter)
+            {
+                LoadObject(Convert.ToInt32(textBoxNumControl.Text));
             }
+
+
         }
 
         private void textBoxNumControl_DoubleClick(object sender, EventArgs e)
@@ -250,6 +245,17 @@ namespace RegistryTime.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("LoadStatus: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+
+        private void textBoxNumControl_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBoxNumControl.Text))
+            {
+                if(e.KeyCode == Keys.Tab)
+                    LoadObject(Convert.ToInt32(textBoxNumControl.Text));
             }
         }
     }

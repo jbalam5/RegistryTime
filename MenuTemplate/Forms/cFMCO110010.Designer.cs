@@ -113,7 +113,7 @@
             this.textBoxConcepto.Location = new System.Drawing.Point(16, 125);
             this.textBoxConcepto.Name = "textBoxConcepto";
             this.textBoxConcepto.Size = new System.Drawing.Size(335, 20);
-            this.textBoxConcepto.TabIndex = 44;
+            this.textBoxConcepto.TabIndex = 4;
             // 
             // materialLabel2
             // 

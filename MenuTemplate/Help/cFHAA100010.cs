@@ -59,8 +59,7 @@ namespace RegistryTime.Help
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
             try
-            {
-                
+            {    
                 if (dataGridViewDataEmpleado.RowCount > 0)
                 {
                     IdRowSelect = dataGridViewDataEmpleado.CurrentRow.Index;
@@ -68,16 +67,9 @@ namespace RegistryTime.Help
                     {
                         Forms.cFMAA110010 Catalogo = this.Owner as Forms.cFMAA110010;
                         int IdObject = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        Catalogo.IdOject = IdObject;
-                        
-                       
+                        //Catalogo.IdOject = IdObject;
+                        Catalogo.LoadObject(IdObject);
                         this.Close();
-
-                        //cFMAA110010 Catalogo = this.Owner as cFMAA110010;
-                        //Catalogo.idObject = Int32.Parse(dataGridViewDataEmpleado.Rows[IdRowSelect].Cells["Id"].Value.ToString());
-                        //Catalogo.LoadObject();
-                        //this.Close();
-
                     }
                     else
                     {
