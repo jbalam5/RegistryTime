@@ -22,7 +22,13 @@ namespace BussinesLayer
 
         public ZKTecoDeviceBLL()
         {
-            this.objZKTeko = new ZKTekoBiometric(RaiseDeviceEvent);
+            try
+            {
+                this.objZKTeko = new ZKTekoBiometric(RaiseDeviceEvent);
+            }catch
+            {
+                throw new Exception("ZKTecoDeviceBLL: Ocurrio un error al iniciar el lector");
+            }
         }
 
         public bool connect()
@@ -45,10 +51,17 @@ namespace BussinesLayer
 
         public bool connect(string Ip, int port = 0)
         {
-            if (string.IsNullOrEmpty(Ip) || port <= 0)
-                throw new Exception("No se encontrarón la IP/Puerto del Lector");
+            try
+            {
+                if (string.IsNullOrEmpty(Ip) || port <= 0)
+                    throw new Exception("No se encontrarón la IP/Puerto del Lector");
 
-            return objZKTeko.Connect_Net(Ip, port);
+                return objZKTeko.Connect_Net(Ip, port);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         //private void RaiseDeviceEvent(object sender, string actionType)

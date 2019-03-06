@@ -65,7 +65,7 @@ namespace BiometricCore
                     return true;
                 }
                 return false;
-            }catch(Exception ex)
+            }catch
             {
                 throw new Exception("No se ha realizado la conexión con el lector");
             }
