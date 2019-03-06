@@ -145,14 +145,14 @@
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
-            // cFMAA180010
+            // cFMAA100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cFMAA180010";
+            this.Name = "cFMAA100010";
             this.Text = "DataGrid1";
             this.Load += new System.EventHandler(this.cFRT100010_Load);
             this.Resize += new System.EventHandler(this.cFRT100010_Resize);

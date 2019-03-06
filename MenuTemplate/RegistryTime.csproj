@@ -61,11 +61,17 @@
     <Reference Include="ButtonMenuLeft">
       <HintPath>..\..\..\JBControlDLL\ButtonMenuLeft.dll</HintPath>
     </Reference>
+    <Reference Include="ClosedXML">
+      <HintPath>..\LibPackage\ClosedXML.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Data.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v18.1.Core, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v18.1, Version=18.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DocumentFormat.OpenXml">
+      <HintPath>..\LibPackage\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\LibPackage\MaterialSkin.dll</HintPath>
     </Reference>
@@ -105,6 +111,12 @@
     </Compile>
     <Compile Include="cMRT1000101.Designer.cs">
       <DependentUpon>cMRT1000101.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControls\ExportExcelControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\ExportExcelControl.Designer.cs">
+      <DependentUpon>ExportExcelControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\cFMAA110010.cs">
       <SubType>Form</SubType>
@@ -246,6 +258,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomControls\LoaderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControls\LoaderControl.Designer.cs">
+      <DependentUpon>LoaderControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Alerts\cFAT100010.resx">
       <DependentUpon>cFAT100010.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="cMRT1000101.resx">
       <DependentUpon>cMRT1000101.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\ExportExcelControl.resx">
+      <DependentUpon>ExportExcelControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControls\LoaderControl.resx">
+      <DependentUpon>LoaderControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\cFMAA110010.resx">
       <DependentUpon>cFMAA110010.cs</DependentUpon>
@@ -450,6 +474,7 @@
     <None Include="Resources\IconAlarmWarningx70.png" />
     <None Include="Resources\BackgroundTime1.jpg" />
     <Content Include="AlarmClock.ico" />
+    <None Include="Resources\AjaxLoader.gif" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />

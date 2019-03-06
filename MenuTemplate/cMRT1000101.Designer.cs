@@ -29,8 +29,24 @@
         private void InitializeComponent()
         {
             this.MenuLeftPanel = new System.Windows.Forms.Panel();
-            this.buttonTurno = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.TopPanel = new System.Windows.Forms.Panel();
+            this.BottomStatePanel = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.ListUserbutton = new System.Windows.Forms.Button();
+            this.NewUserbutton = new System.Windows.Forms.Button();
+            this.Migrarbutton = new System.Windows.Forms.Button();
+            this.test = new System.Windows.Forms.Button();
+            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
+            this.buttonTurno = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
@@ -40,31 +56,20 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.CloseWindowsPictureBox = new System.Windows.Forms.PictureBox();
-            this.MaxWindowsPictureBox = new System.Windows.Forms.PictureBox();
-            this.MinWindowsPictureBox = new System.Windows.Forms.PictureBox();
-            this.BottomStatePanel = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.Migrarbutton = new System.Windows.Forms.Button();
-            this.test = new System.Windows.Forms.Button();
-            this.NewUserbutton = new System.Windows.Forms.Button();
-            this.ListUserbutton = new System.Windows.Forms.Button();
+            this.exportExcelControl2 = new RegistryTime.CustomControls.ExportExcelControl();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
+            this.exportExcelControl3 = new RegistryTime.CustomControls.ExportExcelControl();
             this.MenuLeftPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
             this.TopPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // MenuLeftPanel
@@ -86,6 +91,190 @@
             this.MenuLeftPanel.Size = new System.Drawing.Size(200, 576);
             this.MenuLeftPanel.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 537);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 39);
+            this.panel1.TabIndex = 9;
+            // 
+            // TopPanel
+            // 
+            this.TopPanel.BackColor = System.Drawing.Color.White;
+            this.TopPanel.Controls.Add(this.CloseWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MaxWindowsPictureBox);
+            this.TopPanel.Controls.Add(this.MinWindowsPictureBox);
+            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TopPanel.Location = new System.Drawing.Point(200, 0);
+            this.TopPanel.Name = "TopPanel";
+            this.TopPanel.Size = new System.Drawing.Size(688, 30);
+            this.TopPanel.TabIndex = 1;
+            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            // 
+            // BottomStatePanel
+            // 
+            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BottomStatePanel.Controls.Add(this.statusStrip1);
+            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.BottomStatePanel.Location = new System.Drawing.Point(200, 546);
+            this.BottomStatePanel.Name = "BottomStatePanel";
+            this.BottomStatePanel.Size = new System.Drawing.Size(688, 30);
+            this.BottomStatePanel.TabIndex = 2;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.UsertoolStripStatusLabel,
+            this.DatetoolStripStatusLabel,
+            this.toolStripProgressBar1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStrip1.Size = new System.Drawing.Size(688, 30);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // DatetoolStripStatusLabel
+            // 
+            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
+            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
+            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
+            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
+            // 
+            // ContainerPanel
+            // 
+            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
+            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Controls.Add(this.exportExcelControl3);
+            this.ContainerPanel.Controls.Add(this.exportExcelControl2);
+            this.ContainerPanel.Controls.Add(this.exportExcelControl1);
+            this.ContainerPanel.Controls.Add(this.button2);
+            this.ContainerPanel.Controls.Add(this.button1);
+            this.ContainerPanel.Controls.Add(this.ListUserbutton);
+            this.ContainerPanel.Controls.Add(this.NewUserbutton);
+            this.ContainerPanel.Controls.Add(this.Migrarbutton);
+            this.ContainerPanel.Controls.Add(this.test);
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
+            this.ContainerPanel.TabIndex = 3;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(164, 131);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(91, 49);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "change loader";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(52, 131);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 49);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "loader";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // ListUserbutton
+            // 
+            this.ListUserbutton.Location = new System.Drawing.Point(415, 61);
+            this.ListUserbutton.Name = "ListUserbutton";
+            this.ListUserbutton.Size = new System.Drawing.Size(115, 63);
+            this.ListUserbutton.TabIndex = 3;
+            this.ListUserbutton.Text = "Lista Usuarios";
+            this.ListUserbutton.UseVisualStyleBackColor = true;
+            this.ListUserbutton.Click += new System.EventHandler(this.ListUserbutton_Click);
+            // 
+            // NewUserbutton
+            // 
+            this.NewUserbutton.Location = new System.Drawing.Point(294, 61);
+            this.NewUserbutton.Name = "NewUserbutton";
+            this.NewUserbutton.Size = new System.Drawing.Size(115, 63);
+            this.NewUserbutton.TabIndex = 2;
+            this.NewUserbutton.Text = "New User";
+            this.NewUserbutton.UseVisualStyleBackColor = true;
+            this.NewUserbutton.Click += new System.EventHandler(this.NewUserbutton_Click);
+            // 
+            // Migrarbutton
+            // 
+            this.Migrarbutton.Location = new System.Drawing.Point(173, 61);
+            this.Migrarbutton.Name = "Migrarbutton";
+            this.Migrarbutton.Size = new System.Drawing.Size(115, 63);
+            this.Migrarbutton.TabIndex = 1;
+            this.Migrarbutton.Text = "MigrarBD";
+            this.Migrarbutton.UseVisualStyleBackColor = true;
+            this.Migrarbutton.Click += new System.EventHandler(this.Migrarbutton_Click);
+            // 
+            // test
+            // 
+            this.test.Location = new System.Drawing.Point(52, 61);
+            this.test.Name = "test";
+            this.test.Size = new System.Drawing.Size(115, 63);
+            this.test.TabIndex = 0;
+            this.test.Text = "Test";
+            this.test.UseVisualStyleBackColor = true;
+            this.test.Click += new System.EventHandler(this.test_Click);
+            // 
+            // UsertoolStripStatusLabel
+            // 
+            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
+            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
+            this.UsertoolStripStatusLabel.Text = "JBALAM";
+            // 
+            // CloseWindowsPictureBox
+            // 
+            this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.close32;
+            this.CloseWindowsPictureBox.Location = new System.Drawing.Point(648, 0);
+            this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
+            this.CloseWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.CloseWindowsPictureBox.TabIndex = 3;
+            this.CloseWindowsPictureBox.TabStop = false;
+            this.CloseWindowsPictureBox.Click += new System.EventHandler(this.CloseWindowsPictureBox_Click);
+            // 
+            // MaxWindowsPictureBox
+            // 
+            this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MaxWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.maximizar32;
+            this.MaxWindowsPictureBox.Location = new System.Drawing.Point(615, 0);
+            this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
+            this.MaxWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MaxWindowsPictureBox.TabIndex = 2;
+            this.MaxWindowsPictureBox.TabStop = false;
+            this.MaxWindowsPictureBox.Click += new System.EventHandler(this.MaxWindowsPictureBox_Click);
+            // 
+            // MinWindowsPictureBox
+            // 
+            this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MinWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.minimizar32;
+            this.MinWindowsPictureBox.Location = new System.Drawing.Point(582, 0);
+            this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
+            this.MinWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
+            this.MinWindowsPictureBox.TabIndex = 1;
+            this.MinWindowsPictureBox.TabStop = false;
+            this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
+            // 
             // buttonTurno
             // 
             this.buttonTurno.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -105,15 +294,6 @@
             this.buttonTurno.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonTurno.UseVisualStyleBackColor = true;
             this.buttonTurno.Click += new System.EventHandler(this.buttonTurno_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 537);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 39);
-            this.panel1.TabIndex = 9;
             // 
             // ExitButton
             // 
@@ -274,155 +454,34 @@
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
-            // TopPanel
+            // exportExcelControl2
             // 
-            this.TopPanel.BackColor = System.Drawing.Color.White;
-            this.TopPanel.Controls.Add(this.CloseWindowsPictureBox);
-            this.TopPanel.Controls.Add(this.MaxWindowsPictureBox);
-            this.TopPanel.Controls.Add(this.MinWindowsPictureBox);
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(200, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(688, 30);
-            this.TopPanel.TabIndex = 1;
-            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
+            this.exportExcelControl2.AutoSize = true;
+            this.exportExcelControl2.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl2.data = null;
+            this.exportExcelControl2.Location = new System.Drawing.Point(80, 252);
+            this.exportExcelControl2.Name = "exportExcelControl2";
+            this.exportExcelControl2.Size = new System.Drawing.Size(94, 45);
+            this.exportExcelControl2.TabIndex = 7;
             // 
-            // CloseWindowsPictureBox
+            // exportExcelControl1
             // 
-            this.CloseWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.close32;
-            this.CloseWindowsPictureBox.Location = new System.Drawing.Point(648, 0);
-            this.CloseWindowsPictureBox.Name = "CloseWindowsPictureBox";
-            this.CloseWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.CloseWindowsPictureBox.TabIndex = 3;
-            this.CloseWindowsPictureBox.TabStop = false;
-            this.CloseWindowsPictureBox.Click += new System.EventHandler(this.CloseWindowsPictureBox_Click);
+            this.exportExcelControl1.AutoSize = true;
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(52, 186);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(94, 45);
+            this.exportExcelControl1.TabIndex = 6;
             // 
-            // MaxWindowsPictureBox
+            // exportExcelControl3
             // 
-            this.MaxWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaxWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MaxWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.maximizar32;
-            this.MaxWindowsPictureBox.Location = new System.Drawing.Point(615, 0);
-            this.MaxWindowsPictureBox.Name = "MaxWindowsPictureBox";
-            this.MaxWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.MaxWindowsPictureBox.TabIndex = 2;
-            this.MaxWindowsPictureBox.TabStop = false;
-            this.MaxWindowsPictureBox.Click += new System.EventHandler(this.MaxWindowsPictureBox_Click);
-            // 
-            // MinWindowsPictureBox
-            // 
-            this.MinWindowsPictureBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.MinWindowsPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.MinWindowsPictureBox.Image = global::RegistryTime.Properties.Resources.minimizar32;
-            this.MinWindowsPictureBox.Location = new System.Drawing.Point(582, 0);
-            this.MinWindowsPictureBox.Name = "MinWindowsPictureBox";
-            this.MinWindowsPictureBox.Size = new System.Drawing.Size(33, 30);
-            this.MinWindowsPictureBox.TabIndex = 1;
-            this.MinWindowsPictureBox.TabStop = false;
-            this.MinWindowsPictureBox.Click += new System.EventHandler(this.MinWindowsPictureBox_Click);
-            // 
-            // BottomStatePanel
-            // 
-            this.BottomStatePanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.BottomStatePanel.Controls.Add(this.statusStrip1);
-            this.BottomStatePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomStatePanel.Location = new System.Drawing.Point(200, 546);
-            this.BottomStatePanel.Name = "BottomStatePanel";
-            this.BottomStatePanel.Size = new System.Drawing.Size(688, 30);
-            this.BottomStatePanel.TabIndex = 2;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.UsertoolStripStatusLabel,
-            this.DatetoolStripStatusLabel,
-            this.toolStripProgressBar1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 0);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStrip1.Size = new System.Drawing.Size(688, 30);
-            this.statusStrip1.TabIndex = 0;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // UsertoolStripStatusLabel
-            // 
-            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
-            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(69, 25);
-            this.UsertoolStripStatusLabel.Text = "JBALAM";
-            // 
-            // DatetoolStripStatusLabel
-            // 
-            this.DatetoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.DatetoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.DatetoolStripStatusLabel.Name = "DatetoolStripStatusLabel";
-            this.DatetoolStripStatusLabel.Size = new System.Drawing.Size(132, 25);
-            this.DatetoolStripStatusLabel.Text = "29/12/2018 12:40 P.M.";
-            this.DatetoolStripStatusLabel.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 24);
-            // 
-            // ContainerPanel
-            // 
-            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
-            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContainerPanel.Controls.Add(this.ListUserbutton);
-            this.ContainerPanel.Controls.Add(this.NewUserbutton);
-            this.ContainerPanel.Controls.Add(this.Migrarbutton);
-            this.ContainerPanel.Controls.Add(this.test);
-            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(200, 30);
-            this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(688, 516);
-            this.ContainerPanel.TabIndex = 3;
-            // 
-            // Migrarbutton
-            // 
-            this.Migrarbutton.Location = new System.Drawing.Point(173, 61);
-            this.Migrarbutton.Name = "Migrarbutton";
-            this.Migrarbutton.Size = new System.Drawing.Size(115, 63);
-            this.Migrarbutton.TabIndex = 1;
-            this.Migrarbutton.Text = "MigrarBD";
-            this.Migrarbutton.UseVisualStyleBackColor = true;
-            this.Migrarbutton.Click += new System.EventHandler(this.Migrarbutton_Click);
-            // 
-            // test
-            // 
-            this.test.Location = new System.Drawing.Point(52, 61);
-            this.test.Name = "test";
-            this.test.Size = new System.Drawing.Size(115, 63);
-            this.test.TabIndex = 0;
-            this.test.Text = "Test";
-            this.test.UseVisualStyleBackColor = true;
-            this.test.Click += new System.EventHandler(this.test_Click);
-            // 
-            // NewUserbutton
-            // 
-            this.NewUserbutton.Location = new System.Drawing.Point(294, 61);
-            this.NewUserbutton.Name = "NewUserbutton";
-            this.NewUserbutton.Size = new System.Drawing.Size(115, 63);
-            this.NewUserbutton.TabIndex = 2;
-            this.NewUserbutton.Text = "New User";
-            this.NewUserbutton.UseVisualStyleBackColor = true;
-            this.NewUserbutton.Click += new System.EventHandler(this.NewUserbutton_Click);
-            // 
-            // ListUserbutton
-            // 
-            this.ListUserbutton.Location = new System.Drawing.Point(415, 61);
-            this.ListUserbutton.Name = "ListUserbutton";
-            this.ListUserbutton.Size = new System.Drawing.Size(115, 63);
-            this.ListUserbutton.TabIndex = 3;
-            this.ListUserbutton.Text = "Lista Usuarios";
-            this.ListUserbutton.UseVisualStyleBackColor = true;
-            this.ListUserbutton.Click += new System.EventHandler(this.ListUserbutton_Click);
+            this.exportExcelControl3.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl3.data = null;
+            this.exportExcelControl3.Location = new System.Drawing.Point(233, 248);
+            this.exportExcelControl3.Name = "exportExcelControl3";
+            this.exportExcelControl3.Size = new System.Drawing.Size(92, 42);
+            this.exportExcelControl3.TabIndex = 8;
             // 
             // cMRT1000101
             // 
@@ -439,17 +498,18 @@
             this.Load += new System.EventHandler(this.cMRT100010_Load);
             this.MenuLeftPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.TopPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).EndInit();
             this.BottomStatePanel.ResumeLayout(false);
             this.BottomStatePanel.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ContainerPanel.ResumeLayout(false);
+            this.ContainerPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CloseWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MaxWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MinWindowsPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -482,6 +542,11 @@
         private System.Windows.Forms.Button Migrarbutton;
         private System.Windows.Forms.Button NewUserbutton;
         private System.Windows.Forms.Button ListUserbutton;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private CustomControls.ExportExcelControl exportExcelControl1;
+        private CustomControls.ExportExcelControl exportExcelControl2;
+        private CustomControls.ExportExcelControl exportExcelControl3;
     }
 }
 
