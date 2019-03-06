@@ -40,7 +40,7 @@ namespace DataLayer
                         if (!String.IsNullOrEmpty(PropertyModel.GetValue(ObjectModel).ToString()))
                         {
                             DateTime date = Convert.ToDateTime(PropertyModel.GetValue(ObjectModel).ToString());
-                            FieldsValue += String.Format("'{0}'", date.ToString("yyyy-MM-dd hh:mm:ss"));
+                            FieldsValue += String.Format("'{0}'", date.ToString("yyyy-MM-dd HH:mm:ss"));
                         }
                         else
                         {
@@ -92,7 +92,7 @@ namespace DataLayer
                 else if (PropertyModel.PropertyType == typeof(DateTime))
                 {
                     DateTime date = Convert.ToDateTime(PropertyModel.GetValue(ObjectModel).ToString());
-                    Query.AppendFormat(" {0}='{1}',", PropertyModel.Name.ToString(), date.ToString("yyyy-MM-dd hh:mm:ss"));
+                    Query.AppendFormat(" {0}='{1}',", PropertyModel.Name.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"));
                 }
                 else
                 {
@@ -159,7 +159,7 @@ namespace DataLayer
                         {
                             FieldsValue += ",";
                             Fields += PropertyModel.Name;
-                            FieldsValue += String.Format("'{0}'", DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            FieldsValue += String.Format("'{0}'", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         }
                     }
                     else if (TypeModel == "UPDATE")
@@ -174,7 +174,7 @@ namespace DataLayer
                         {
                             FieldsValue += ",";
                             Fields += PropertyModel.Name;
-                            FieldsValue += String.Format("{0}='{1}'", PropertyModel.Name, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            FieldsValue += String.Format("{0}='{1}'", PropertyModel.Name, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         }
                     }
                     else if (TypeModel == "DELETE")
@@ -194,7 +194,7 @@ namespace DataLayer
                         if (PropertyModel.Name == "DateDelete")
                         {
                             Fields += PropertyModel.Name;
-                            FieldsValue += String.Format("{0}='{1}'", PropertyModel.Name, DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss"));
+                            FieldsValue += String.Format("{0}='{1}'", PropertyModel.Name, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         }
                     }
                 }

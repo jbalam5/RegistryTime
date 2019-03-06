@@ -198,8 +198,9 @@ namespace DataLayer
         {
             try
             {
+                String Query = String.Format("");
+                return "ho";
 
-                return "Hola";
             }
             catch (Exception ex)
             {

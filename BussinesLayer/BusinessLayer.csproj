@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BiometricCore">
-      <HintPath>..\BiometricCore\bin\Debug\BiometricCore.dll</HintPath>
-    </Reference>
     <Reference Include="Connection_BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\cloneJDL\RegistryTime\BussinesLayer\bin\Debug\Connection_BLL.dll</HintPath>
@@ -81,6 +78,10 @@
     <Compile Include="ZKTecoHourAssistanceBLL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BiometricCore\BiometricCore.csproj">
+      <Project>{32209fc8-d19d-4815-a645-82f69833a5ab}</Project>
+      <Name>BiometricCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">
       <Project>{7a752e3c-ca6a-4128-a608-e830589577fd}</Project>
       <Name>DataLayer</Name>

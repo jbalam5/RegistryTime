@@ -37,11 +37,11 @@ namespace RegistryTime.Forms
                 dateTimeLimiteEntrada.Text = Turn.LimitEntry.ToString();
                 dateTimeHoraSalida.Text = Turn.Departuretime.ToString();
                 dateTimeLimiteSalida.Text = Turn.LimitDeparture.ToString();
-                textBoxHorasJornada.Text = Turn.HoursJornada.ToString();
+                textBoxHorasJornada.Text = Turn.HoursJornada.ToString("HH:mm:ss");
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show(String.Format("LoadTurnId: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -74,12 +74,23 @@ namespace RegistryTime.Forms
 
         }
 
-        public void CalcHorasJornada()
+        public void CalcHorasJornada(int hora24 = 0)
         {
             try
             {
-                var minutes = dateTimeHoraSalida.Value.Subtract(dateTimeHoraEntrada.Value);
-                textBoxHorasJornada.Text = minutes.ToString();
+                if(hora24 == 1)
+                {
+                    double ho = dateTimeHoraSalida.Value.Subtract(dateTimeHoraEntrada.Value).TotalHours;
+                    double timeS = ((24 + ho)*60)*60;
+                    DateTime Hor = new DateTime(2000, 1, 1, 0, 0, 0);
+                    textBoxHorasJornada.Text = Hor.AddSeconds(timeS).ToString("HH:mm:ss");
+                        //DateTime.Parse("00:000:00").AddHours(timeS).ToString();
+                }
+                else
+                {
+                    var minutes = dateTimeHoraSalida.Value.Subtract(dateTimeHoraEntrada.Value);
+                    textBoxHorasJornada.Text = minutes.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -115,16 +126,17 @@ namespace RegistryTime.Forms
             {
                 if (FormValidate())
                 {
-                    TurnML Turn = new TurnML();
-                    
-                    Turn.Name = textBoxTurno.Text;
-                    Turn.Description = textBoxDescripcion.Text;
-                    Turn.TimeEntry = dateTimeHoraEntrada.Value;
-                    Turn.StartEntry = dateTimeIniciaEntrada.Value;
-                    Turn.LimitEntry = dateTimeLimiteEntrada.Value;
-                    Turn.Departuretime = dateTimeHoraSalida.Value;
-                    Turn.LimitDeparture = dateTimeLimiteSalida.Value;
-                    Turn.HoursJornada = Convert.ToDateTime(textBoxHorasJornada.Text);
+                    TurnML Turn = new TurnML()
+                    {
+                        Name = textBoxTurno.Text,
+                        Description = textBoxDescripcion.Text,
+                        TimeEntry = dateTimeHoraEntrada.Value,
+                        StartEntry = dateTimeIniciaEntrada.Value,
+                        LimitEntry = dateTimeLimiteEntrada.Value,
+                        Departuretime = dateTimeHoraSalida.Value,
+                        LimitDeparture = dateTimeLimiteSalida.Value,
+                        HoursJornada = Convert.ToDateTime(textBoxHorasJornada.Text)
+                    };
 
                     if (IdTurn > 0)
                     {
@@ -167,6 +179,9 @@ namespace RegistryTime.Forms
             
             if(dateTimeHoraSalida.Value > dateTimeHoraEntrada.Value)
             {
+                if(dateTimeHoraEntrada.Value > Convert.ToDateTime("12:00:00") && dateTimeHoraSalida.Value < Convert.ToDateTime("12:00:00"))
+                    CalcHorasJornada(1);
+
                 CalcHorasJornada();
             }
             else
@@ -180,14 +195,18 @@ namespace RegistryTime.Forms
         private void dateTimeHoraSalida_ValueChanged(object sender, EventArgs e)
         {       
             dateTimeLimiteSalida.Value = dateTimeHoraSalida.Value;
-            if(dateTimeHoraEntrada.Value > dateTimeLimiteSalida.Value)
-            {
-                dateTimeHoraSalida.Value = dateTimeIniciaEntrada.Value;
-            }
+            //if(dateTimeHoraEntrada.Value > dateTimeLimiteSalida.Value)
+            //{
+            //    dateTimeHoraSalida.Value = dateTimeIniciaEntrada.Value;
+            //}
+            //else
+            //{
+            //CalcHorasJornada();
+            //}
+            if (dateTimeHoraEntrada.Value > Convert.ToDateTime("12:00:00") && dateTimeHoraSalida.Value < Convert.ToDateTime("12:00:00"))
+                CalcHorasJornada(1);
             else
-            {
                 CalcHorasJornada();
-            }
         }
     }
 }

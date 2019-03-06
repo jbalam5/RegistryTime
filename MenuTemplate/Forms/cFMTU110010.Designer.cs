@@ -232,7 +232,6 @@
             // 
             this.dateTimeHoraEntrada.CustomFormat = "HH:mm: ss";
             this.dateTimeHoraEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-
             this.dateTimeHoraEntrada.Location = new System.Drawing.Point(89, 148);
             this.dateTimeHoraEntrada.Name = "dateTimeHoraEntrada";
             this.dateTimeHoraEntrada.ShowUpDown = true;
