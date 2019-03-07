@@ -39,11 +39,14 @@
             this.ExportExcelButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExportExcelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExportExcelButton.ForeColor = System.Drawing.Color.White;
+            this.ExportExcelButton.Image = global::RegistryTime.Properties.Resources.Excel_icon;
+            this.ExportExcelButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ExportExcelButton.Location = new System.Drawing.Point(0, 0);
             this.ExportExcelButton.Name = "ExportExcelButton";
-            this.ExportExcelButton.Size = new System.Drawing.Size(92, 42);
+            this.ExportExcelButton.Size = new System.Drawing.Size(121, 42);
             this.ExportExcelButton.TabIndex = 11;
             this.ExportExcelButton.Text = "Exportar";
+            this.ExportExcelButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.ExportExcelButton.UseVisualStyleBackColor = false;
             this.ExportExcelButton.Click += new System.EventHandler(this.ExportExcelButton_Click);
             // 
@@ -54,7 +57,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.ExportExcelButton);
             this.Name = "ExportExcelControl";
-            this.Size = new System.Drawing.Size(92, 42);
+            this.Size = new System.Drawing.Size(121, 42);
             this.ResumeLayout(false);
 
         }

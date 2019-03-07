@@ -475,6 +475,8 @@
     <None Include="Resources\BackgroundTime1.jpg" />
     <Content Include="AlarmClock.ico" />
     <None Include="Resources\AjaxLoader.gif" />
+    <None Include="Resources\ExcelIcon%29.png" />
+    <None Include="Resources\Excel-icon.png" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />

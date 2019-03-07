@@ -35,6 +35,9 @@ namespace RegistryTime.Forms
                 dataGridViewDepartamento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewDepartamento.ClearSelection();
                 AlterColorDataGridView(dataGridViewDepartamento);
+
+                exportExcelControl1.data = dataGridViewDepartamento;
+                exportExcelControl1.Title = "Departamentos";
             }
             catch (Exception ex)
             {
@@ -149,6 +152,11 @@ namespace RegistryTime.Forms
             {
                 MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void exportExcelControl1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

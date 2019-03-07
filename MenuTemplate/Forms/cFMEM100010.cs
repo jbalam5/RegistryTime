@@ -31,14 +31,14 @@ namespace RegistryTime.Forms
         {
             try
             {
-                exportExcelControl1.data = dataGridViewDataEmpleado;
-                exportExcelControl1.Title = "EMPLEADOS";
-
                 LoadDataGridView();
                 dataGridViewDataEmpleado.AutoResizeColumns();
                 dataGridViewDataEmpleado.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewDataEmpleado.ClearSelection();
                 AlterColorDataGridView(dataGridViewDataEmpleado);
+
+                exportExcelControl1.data = dataGridViewDataEmpleado;
+                exportExcelControl1.Title = "EMPLEADOS";
             }
             catch (Exception ex)
             {

@@ -36,6 +36,7 @@
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
@@ -74,6 +75,7 @@
             // 
             // ContainerPanel
             // 
+            this.ContainerPanel.Controls.Add(this.exportExcelControl1);
             this.ContainerPanel.Controls.Add(this.dataGridViewDataPuesto);
             this.ContainerPanel.Controls.Add(this.buttonEliminar);
             this.ContainerPanel.Controls.Add(this.buttonEditar);
@@ -146,14 +148,25 @@
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
-            // cFMPU120010
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(257, 43);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(111, 40);
+            this.exportExcelControl1.TabIndex = 12;
+            this.exportExcelControl1.Title = null;
+            // 
+            // cFMPU100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cFMPU120010";
+            this.Name = "cFMPU100010";
             this.Text = "DataGrid1";
             this.Load += new System.EventHandler(this.cFRT100010_Load);
             this.Resize += new System.EventHandler(this.cFRT100010_Resize);
@@ -176,5 +189,6 @@
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.DataGridView dataGridViewDataPuesto;
+        private CustomControls.ExportExcelControl exportExcelControl1;
     }
 }
