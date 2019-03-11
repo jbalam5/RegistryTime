@@ -46,6 +46,17 @@ namespace RegistryTime.CustomControls
                         dt.Rows.Add();
                         foreach (DataGridViewCell cell in row.Cells)
                         {
+                            Console.WriteLine(cell.ValueType);
+
+                            if (string.IsNullOrEmpty(cell.Value.ToString()))
+                            {
+                                if (cell.ValueType == typeof(Int32)) cell.Value = 0;
+                                if (cell.ValueType == typeof(Decimal)) cell.Value = 0;
+                                if (cell.ValueType == typeof(Double)) cell.Value = 0;
+                                if (cell.ValueType == typeof(String)) cell.Value = string.Empty;
+                                if (cell.ValueType == typeof(Boolean)) cell.Value = false;
+                                if (cell.ValueType == typeof(DateTime)) cell.Value = string.Empty;
+                            }
                             dt.Rows[dt.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
                         }
                     }
