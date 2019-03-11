@@ -32,14 +32,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
-            this.dataGridViewData = new System.Windows.Forms.DataGridView();
+            this.dataGridViewDepartamento = new System.Windows.Forms.DataGridView();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDepartamento)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -74,7 +75,9 @@
             // 
             // ContainerPanel
             // 
-            this.ContainerPanel.Controls.Add(this.dataGridViewData);
+            this.ContainerPanel.Controls.Add(this.dataGridViewDepartamento);
+            this.ContainerPanel.Controls.Add(this.exportExcelControl1);
+            //this.ContainerPanel.Controls.Add(this.dataGridViewData);
             this.ContainerPanel.Controls.Add(this.buttonEliminar);
             this.ContainerPanel.Controls.Add(this.buttonEditar);
             this.ContainerPanel.Controls.Add(this.buttonNuevo);
@@ -86,19 +89,19 @@
             this.ContainerPanel.Size = new System.Drawing.Size(800, 450);
             this.ContainerPanel.TabIndex = 5;
             // 
-            // dataGridViewData
+            // dataGridViewDepartamento
             // 
-            this.dataGridViewData.AllowUserToAddRows = false;
-            this.dataGridViewData.AllowUserToDeleteRows = false;
-            this.dataGridViewData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewData.EnableHeadersVisualStyles = false;
-            this.dataGridViewData.Location = new System.Drawing.Point(12, 99);
-            this.dataGridViewData.Name = "dataGridViewData";
-            this.dataGridViewData.ReadOnly = true;
-            this.dataGridViewData.RowHeadersVisible = false;
-            this.dataGridViewData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewData.Size = new System.Drawing.Size(776, 339);
-            this.dataGridViewData.TabIndex = 11;
+            this.dataGridViewDepartamento.AllowUserToAddRows = false;
+            this.dataGridViewDepartamento.AllowUserToDeleteRows = false;
+            this.dataGridViewDepartamento.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewDepartamento.EnableHeadersVisualStyles = false;
+            this.dataGridViewDepartamento.Location = new System.Drawing.Point(12, 99);
+            this.dataGridViewDepartamento.Name = "dataGridViewDepartamento";
+            this.dataGridViewDepartamento.ReadOnly = true;
+            this.dataGridViewDepartamento.RowHeadersVisible = false;
+            this.dataGridViewDepartamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewDepartamento.Size = new System.Drawing.Size(776, 339);
+            this.dataGridViewDepartamento.TabIndex = 11;
             // 
             // buttonEliminar
             // 
@@ -145,6 +148,18 @@
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(126, 40);
+            this.exportExcelControl1.TabIndex = 12;
+            this.exportExcelControl1.Title = null;
+            this.exportExcelControl1.Load += new System.EventHandler(this.exportExcelControl1_Load);
+            // 
             // cFMDE100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,7 +175,7 @@
             this.panel1.PerformLayout();
             this.PrincipalPanel.ResumeLayout(false);
             this.ContainerPanel.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewData)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDepartamento)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,6 +189,7 @@
         private System.Windows.Forms.Button buttonEliminar;
         private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.Button buttonNuevo;
-        private System.Windows.Forms.DataGridView dataGridViewData;
+        private System.Windows.Forms.DataGridView dataGridViewDepartamento;
+        private CustomControls.ExportExcelControl exportExcelControl1;
     }
 }

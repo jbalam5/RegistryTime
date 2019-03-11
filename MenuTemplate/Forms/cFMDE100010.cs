@@ -31,10 +31,13 @@ namespace RegistryTime.Forms
             try
             {
                 LoadDataGridView();
-                dataGridViewData.AutoResizeColumns();
-                dataGridViewData.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridViewData.ClearSelection();
-                AlterColorDataGridView(dataGridViewData);
+                dataGridViewDepartamento.AutoResizeColumns();
+                dataGridViewDepartamento.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewDepartamento.ClearSelection();
+                AlterColorDataGridView(dataGridViewDepartamento);
+
+                exportExcelControl1.data = dataGridViewDepartamento;
+                exportExcelControl1.Title = "Departamentos";
             }
             catch (Exception ex)
             {
@@ -44,8 +47,8 @@ namespace RegistryTime.Forms
 
         private void cFRT100010_Resize(object sender, EventArgs e)
         {
-            dataGridViewData.Width = this.Width - 50;
-            dataGridViewData.Height = this.Height - 170;
+            dataGridViewDepartamento.Width = this.Width - 50;
+            dataGridViewDepartamento.Height = this.Height - 170;
         }
 
         public void AlterColorDataGridView(DataGridView Dgv)
@@ -78,13 +81,16 @@ namespace RegistryTime.Forms
         {
             try
             {
-                if (dataGridViewData.RowCount > 0)
+                if (dataGridViewDepartamento.RowCount > 0)
                 {
-                    IdRowSelect = dataGridViewData.CurrentRow.Index;
+                    IdRowSelect = dataGridViewDepartamento.CurrentRow.Index;
                     if (IdRowSelect >= 0)
                     {
                         cFMDE110010 Catalogo = new cFMDE110010();
-                        Catalogo.IdDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        Catalogo.IdDepartament = Int32.Parse(dataGridViewDepartamento.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                        Catalogo.textBoxNombre.Text = dataGridViewDepartamento.Rows[IdRowSelect].Cells["Nombre"].Value.ToString();
+                        Catalogo.textBoxEncargado.Text = dataGridViewDepartamento.Rows[IdRowSelect].Cells["Encargado"].Value.ToString();
+                        Catalogo.textBoxDescripcion.Text = dataGridViewDepartamento.Rows[IdRowSelect].Cells["Descripcion"].Value.ToString();
                         AddOwnedForm(Catalogo);
                         Catalogo.FormBorderStyle = FormBorderStyle.None;
                         Catalogo.TopLevel = false;
@@ -113,17 +119,17 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewData.DataSource = DepartamentBLL.All();
+            dataGridViewDepartamento.DataSource = DepartamentBLL.All();
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dataGridViewData.RowCount > 0)
+                if (dataGridViewDepartamento.RowCount > 0)
                 { 
-                    IdRowSelect = dataGridViewData.CurrentRow.Index;
-                    int idDepartament = Int32.Parse(dataGridViewData.Rows[IdRowSelect].Cells["Id"].Value.ToString());
+                    IdRowSelect = dataGridViewDepartamento.CurrentRow.Index;
+                    int idDepartament = Int32.Parse(dataGridViewDepartamento.Rows[IdRowSelect].Cells["Id"].Value.ToString());
                     cFAT100010 Alert = new cFAT100010("Información", String.Format("¿Desea eliminar el registro {0}?", idDepartament), MessageBoxIcon.Question);
                     Alert.ShowDialog();
                     if (Alert.DialogResult == DialogResult.Yes)
@@ -133,7 +139,7 @@ namespace RegistryTime.Forms
                             Id = idDepartament,
                         };
                         DepartamentBLL.Delete(Departament);
-                        dataGridViewData.Rows.Remove(dataGridViewData.CurrentRow);
+                        dataGridViewDepartamento.Rows.Remove(dataGridViewDepartamento.CurrentRow);
                     }
                 }
                 else
@@ -146,6 +152,11 @@ namespace RegistryTime.Forms
             {
                 MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void exportExcelControl1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
