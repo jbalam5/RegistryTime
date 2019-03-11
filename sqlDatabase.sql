@@ -405,3 +405,19 @@ dateUpdate datetime,
 idUserDelete int,
 dateDelete datetime
 )
+
+---TABLA PARA CONTROLAR LOS REGISTROS VALIDOS 
+CREATE TABLE timeOutCheck
+(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+name nvarchar(25),
+timeOut time
+)
+insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'checkin', 'tiempo de espera para registros validos','00:30:00')
