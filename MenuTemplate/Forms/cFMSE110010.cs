@@ -74,7 +74,6 @@ namespace RegistryTime.Forms
             {
                 if (FormValidateEnterprise())
                 {
-
                     string lastImage = companyML.Image;
                     if (!string.IsNullOrEmpty(PathFileNameTextBox.Text) && !System.IO.File.Exists(PathFileNameTextBox.Text))
                         throw new Exception("La imagen seleccionada no existe");
@@ -90,7 +89,6 @@ namespace RegistryTime.Forms
                     companyML.Telephone = TelefonoTextBox.Text;
                     companyML.Image = System.IO.Path.GetFileName(PathFileNameTextBox.Text);
                     
-
                     if (companyBLL.Save(companyML) > 0)
                     {
                         GlobalBLL.companyML = companyML;
@@ -99,10 +97,14 @@ namespace RegistryTime.Forms
                             if (!System.IO.Directory.Exists(GlobalBLL.DirectoryFiles)) System.IO.Directory.CreateDirectory(GlobalBLL.DirectoryFiles);
 
                             string lastPathFile = string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, lastImage);
+
                             if (System.IO.Path.GetFullPath(lastPathFile) != PathFileNameTextBox.Text)
                             {
-                                System.IO.File.Delete(lastPathFile);
-                                System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                                try { System.IO.File.Delete(lastPathFile); }
+                                catch { }
+                                finally {
+                                    System.IO.File.Copy(PathFileNameTextBox.Text, string.Format("{0}/{1}", GlobalBLL.DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
+                                }
                             }
                         }
 
@@ -115,7 +117,6 @@ namespace RegistryTime.Forms
                         alr.ShowDialog();
                     }
                 }
-
             } catch (Exception ex)
             {
                 Alerts.cFAT100010 alr = new Alerts.cFAT100010("EROR", string.Format("buttonNuevo_Click: {0}", ex.Message), MessageBoxIcon.Error);

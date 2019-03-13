@@ -41,6 +41,7 @@ namespace RegistryTime.Forms
         {
             BussinesLayer.GlobalBLL.userML = null;
             DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
+            UserNameTextBox.Focus();
         }
 
         private void Minimizebutton_Click(object sender, EventArgs e)

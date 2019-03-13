@@ -14,6 +14,7 @@ namespace RegistryTime.Forms.Reports
 {
     public partial class cFMRP100010 : Form
     {
+        #region "EVENTS"
         public cFMRP100010()
         {
             InitializeComponent();
@@ -21,6 +22,22 @@ namespace RegistryTime.Forms.Reports
             LoadDepartament();
             LoadEmployee();
 
+        }
+
+        private void cFMRP100010_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                loaderControl1.Visible = false;
+                QueryBackgroundWorker.DoWork += QueryBackgroundWorker_DoWork;
+                QueryBackgroundWorker.ProgressChanged += QueryBackgroundWorker_ProgressChanged;
+                QueryBackgroundWorker.RunWorkerCompleted += QueryBackgroundWorker_RunWorkerCompleted;
+                QueryBackgroundWorker.WorkerReportsProgress = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("cFMRP100010_Load: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CloseFilterButton_Click(object sender, EventArgs e)
@@ -40,11 +57,40 @@ namespace RegistryTime.Forms.Reports
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             ChildLeftPanel.Visible = false;
-
-            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();           
-            dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value);
+            QueryBackgroundWorker.RunWorkerAsync();
         }
 
+        private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                buttonBuscar.Enabled = false;
+                loaderControl1.title = "Por favor espere";
+                loaderControl1.description = "Obteniendo información";
+                loaderControl1.Visible = true;
+            }
+            ));
+
+            System.Threading.Thread.Sleep(3000);
+            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value)));
+        }
+
+        private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            Console.WriteLine(e.ProgressPercentage);
+        }
+
+        private void QueryBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Invoke(new Action(() =>
+            {
+                loaderControl1.Visible = false; buttonBuscar.Enabled = true;
+            }));
+        }
+        #endregion
+
+        #region "FUNCTIONS"
         public void LoadTurn()
         {
             try
@@ -117,5 +163,6 @@ namespace RegistryTime.Forms.Reports
             }
         }
 
+        #endregion
     }
 }

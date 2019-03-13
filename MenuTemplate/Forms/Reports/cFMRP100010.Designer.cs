@@ -52,6 +52,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.CloseFilterButton = new System.Windows.Forms.Button();
+            this.QueryBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.loaderControl1 = new RegistryTime.CustomControls.LoaderControl();
             this.TopPanel.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -138,6 +140,7 @@
             // ChildContentPanel
             // 
             this.ChildContentPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChildContentPanel.Controls.Add(this.loaderControl1);
             this.ChildContentPanel.Controls.Add(this.dataGridViewReporteGeneral);
             this.ChildContentPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ChildContentPanel.Location = new System.Drawing.Point(299, 0);
@@ -310,6 +313,19 @@
             this.CloseFilterButton.UseVisualStyleBackColor = false;
             this.CloseFilterButton.Click += new System.EventHandler(this.CloseFilterButton_Click);
             // 
+            // loaderControl1
+            // 
+            this.loaderControl1.AutoSize = true;
+            this.loaderControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.loaderControl1.description = "Procesando información....";
+            this.loaderControl1.Isvisible = false;
+            this.loaderControl1.Location = new System.Drawing.Point(109, 150);
+            this.loaderControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.loaderControl1.Name = "loaderControl1";
+            this.loaderControl1.Size = new System.Drawing.Size(311, 73);
+            this.loaderControl1.TabIndex = 15;
+            this.loaderControl1.title = "Espere";
+            // 
             // cFMRP100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -320,6 +336,7 @@
             this.Name = "cFMRP100010";
             this.Text = "cFMRP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.cFMRP100010_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.PrincipalPanel.ResumeLayout(false);
@@ -328,6 +345,7 @@
             this.panel3.ResumeLayout(false);
             this.ContentPanel.ResumeLayout(false);
             this.ChildContentPanel.ResumeLayout(false);
+            this.ChildContentPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewReporteGeneral)).EndInit();
             this.ChildLeftPanel.ResumeLayout(false);
             this.ChildLeftPanel.PerformLayout();
@@ -361,5 +379,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.ComboBox comboBoxTurno;
         private System.Windows.Forms.Label label6;
+        private System.ComponentModel.BackgroundWorker QueryBackgroundWorker;
+        private CustomControls.LoaderControl loaderControl1;
     }
 }

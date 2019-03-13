@@ -648,6 +648,7 @@
             // 
             // UserNameTextBox
             // 
+            this.UserNameTextBox.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.UserNameTextBox.Location = new System.Drawing.Point(336, 145);
             this.UserNameTextBox.Name = "UserNameTextBox";
             this.UserNameTextBox.Size = new System.Drawing.Size(224, 26);
