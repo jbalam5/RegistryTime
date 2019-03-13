@@ -158,33 +158,37 @@ namespace DataLayer
         {
             try
             {
-                String Query = String.Format("select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"));
+                //String Query = String.Format("select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"))select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"));
+                String Query = "dbo.sp_migrar_check";
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
+                cmd.SelectCommand.Parameters.Add("@date1", SqlDbType.DateTime).Value = Inicio;
+                cmd.SelectCommand.Parameters.Add("@date2", SqlDbType.DateTime).Value = Fin;
                 DataTable Response = new DataTable();
                 cmd.Fill(Response);
                 Conexion.Close();
 
-                if(Response.Rows.Count > 0)
-                {
-                    foreach (DataRow item in Response.Rows)
-                    {
+                //if(Response.Rows.Count > 0)
+                //{
+                //    foreach (DataRow item in Response.Rows)
+                //    {
 
-                        CheckInHoursML CheckInHoursML = new CheckInHoursML()
-                        {
-                            Date = Convert.ToDateTime(item[ZKTecoHourAssistanceML.DataBase.dateTimeRecord]),
-                            IdEmployee = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.idUser]),
-                            MachineNumber = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.machineNumber]),
-                            Type = "ma"
-                        };
-                        if(!ExistCheck(CheckInHoursML))
-                            Save(CheckInHoursML);
-                    }
-                }
+                //        CheckInHoursML CheckInHoursML = new CheckInHoursML()
+                //        {
+                //            Date = Convert.ToDateTime(item[ZKTecoHourAssistanceML.DataBase.dateTimeRecord]),
+                //            IdEmployee = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.idUser]),
+                //            MachineNumber = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.machineNumber]),
+                //            Type = "ma"
+                //        };
+                //        if(!ExistCheck(CheckInHoursML))
+                //            Save(CheckInHoursML);
+                //    }
+                //}
 
                 return Response;
                 

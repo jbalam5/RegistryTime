@@ -342,12 +342,18 @@ dateDelete datetime,
 id int primary key identity(1,1) not null,
 date datetime not null,
 idEmployee int not null,
-type nvarchar(10),
-machineNumber int null,
-CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)     
-    REFERENCES users(id)     
-    ON DELETE NO ACTION    
-    ON UPDATE NO ACTION,
+dateTimeRecord DATETIME null, 
+dateOnlyRecord DATE null,
+timeOnlyRecord TIME null,
+turn NVARCHAR(20) null,
+Type NVARCHAR(25) null,
+diffhours TIME null,
+totalhoursTurn TIME null,
+machineNumber int null
+--CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)     
+  --  REFERENCES users(id)     
+    --ON DELETE NO ACTION    
+    --ON UPDATE NO ACTION
 )
 -- Tablas para la configuracion del lector
 create table ModelReader(
@@ -418,6 +424,7 @@ idUserDelete int,
 dateDelete datetime,
 id int primary key identity(1,1) not null,
 name nvarchar(25),
-timeOut time
+description nvarchar(max),
+timeCheck time
 )
 insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'checkin', 'tiempo de espera para registros validos','00:30:00')

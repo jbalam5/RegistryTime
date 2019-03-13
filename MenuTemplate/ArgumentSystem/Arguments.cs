@@ -49,7 +49,9 @@ namespace RegistryTime.ArgumentSystem
                             Application.Run(new Forms.cFMCG100010());
                             break;
                         case "CHECK":
-                            Application.Run(new Forms.TestCheck());
+                            ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]));
+                            //Application.Run(new Forms.TestCheck());
+                            //MessageBox.Show("migrac")
                             break;
                         case "FCRP":
                             Application.Run(new Forms.Reports.cFMRP100010());
@@ -68,6 +70,12 @@ namespace RegistryTime.ArgumentSystem
             {
                 throw new Exception(String.Format("{0}.Verification: {1}", core, ex));
             }
+        }
+
+        public void ProcessMigrate(DateTime Inicio , DateTime Fin)
+        {
+            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            CheckInoursBLL.Migrate(Inicio, Fin);
         }
 
         public Boolean VerificationUser(String USER , String PASSWORD)
