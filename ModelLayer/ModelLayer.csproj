@@ -54,6 +54,7 @@
     <Compile Include="EmployeeML.cs" />
     <Compile Include="FestiveML.cs" />
     <Compile Include="JobML.cs" />
+    <Compile Include="MigrationHistoryML.cs" />
     <Compile Include="ModelReaderML.cs" />
     <Compile Include="PermissionML.cs" />
     <Compile Include="PermissionsOfUserML.cs" />

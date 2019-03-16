@@ -522,3 +522,20 @@ as begin
 	DROP TABLE #TMPTURNOCHECK
 end
 
+--HISTORIAL DE MIGRACION DE LECTOR
+create table MigrationHistory(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+dateStart datetime null,
+dateEnd datetime null
+)
+--Entorno de pruebas
+INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),'2017-01-01','2017-01-01')
+--INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),GETDATE(),GETDATE())
+

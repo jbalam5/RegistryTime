@@ -154,11 +154,41 @@ namespace DataLayer
             }
         }
 
-        public DataTable Migrate(DateTime Inicio , DateTime Fin)
+        public void MigrateFunction(DateTime Start , DateTime End, int dividendo)
         {
             try
             {
                 //String Query = String.Format("select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"))select * from {0} where _registry=1 and dateOnlyRecord between '{1}' and '{2}'", "HoursAssistance",Inicio.ToString("yyyy-MM-dd"), Fin.ToString("yyyy-MM-dd"));
+                DateTime StartTMP = Start;
+                DateTime StartTMP2 = Start;
+                DateTime EndTMP = End;
+                
+                TimeSpan TotalDays = EndTMP.AddDays(1) - StartTMP;
+                int ToDays = Convert.ToInt32(TotalDays.TotalDays);
+                if (ToDays > dividendo)
+                {
+                    int Part = ToDays / dividendo;
+                    for (int i =0; i < dividendo; i++)
+                    {
+                        Migrate(StartTMP, StartTMP2.AddDays(Part));
+                        StartTMP = StartTMP2;
+                    }
+                    Migrate(StartTMP, End);
+
+                }
+                //return Response;
+
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
+            }
+        }
+
+        public void Migrate(DateTime Start, DateTime End)
+        {
+            try
+            {
                 String Query = "dbo.sp_migrar_check";
                 SqlConnection Conexion = new SqlConnection
                 {
@@ -167,36 +197,18 @@ namespace DataLayer
                 Conexion.Open();
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 cmd.SelectCommand.CommandType = CommandType.StoredProcedure;
-                cmd.SelectCommand.Parameters.Add("@date1", SqlDbType.DateTime).Value = Inicio;
-                cmd.SelectCommand.Parameters.Add("@date2", SqlDbType.DateTime).Value = Fin;
+                cmd.SelectCommand.CommandTimeout = 0;
+                cmd.SelectCommand.Parameters.Add("@date1", SqlDbType.DateTime).Value = Start;
+                cmd.SelectCommand.Parameters.Add("@date2", SqlDbType.DateTime).Value = End;
                 DataTable Response = new DataTable();
                 cmd.Fill(Response);
                 Conexion.Close();
-
-                //if(Response.Rows.Count > 0)
-                //{
-                //    foreach (DataRow item in Response.Rows)
-                //    {
-
-                //        CheckInHoursML CheckInHoursML = new CheckInHoursML()
-                //        {
-                //            Date = Convert.ToDateTime(item[ZKTecoHourAssistanceML.DataBase.dateTimeRecord]),
-                //            IdEmployee = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.idUser]),
-                //            MachineNumber = Convert.ToInt32(item[ZKTecoHourAssistanceML.DataBase.machineNumber]),
-                //            Type = "ma"
-                //        };
-                //        if(!ExistCheck(CheckInHoursML))
-                //            Save(CheckInHoursML);
-                //    }
-                //}
-
-                return Response;
-                
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
             }
-        }
+}
 
         public DataTable GetDateReports(DateTime FechaInicio, DateTime FechaFin)
         { 

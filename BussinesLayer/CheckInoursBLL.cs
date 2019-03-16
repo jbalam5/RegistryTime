@@ -32,7 +32,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.All: {1}", core, ex));
+                throw new Exception(String.Format("{0}.All: {1}", core, ex.Message));
             }
         }
 
@@ -45,7 +45,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+                throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex.Message));
             }
         }
 
@@ -64,7 +64,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Save: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Save: {1}", core, ex.Message));
             }
         }
 
@@ -76,7 +76,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
             }
         }
 
@@ -88,19 +88,38 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
             }
         }
 
-        public DataTable Migrate(DateTime Inicio, DateTime Fin)
+        public void Migrate(DateTime Inicio, DateTime Fin, int dividendo)
         {
             try
             {
-                return CheckInHoursDAL.Migrate(Inicio,Fin);
+                 CheckInHoursDAL.MigrateFunction(Inicio,Fin, dividendo);
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
+            }
+        }
+
+        public void Migrate2(int dividendo)
+        {
+            try
+            {
+                MigrationHistoryBLL MigrationHistoryBLL = new MigrationHistoryBLL();
+                DateTime Start = MigrationHistoryBLL.LastRecord();
+                CheckInHoursDAL.MigrateFunction(Start, DateTime.Now, dividendo);
+
+                MigrationHistoryML MigrationHistory = new MigrationHistoryML();
+                MigrationHistory.DateStart = Start;
+                MigrationHistory.DateEnd = DateTime.Now;
+                MigrationHistoryBLL.Save(MigrationHistory);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
             }
         }
     }

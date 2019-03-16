@@ -49,9 +49,18 @@ namespace RegistryTime.ArgumentSystem
                             Application.Run(new Forms.cFMCG100010());
                             break;
                         case "CHECK":
-                            ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]));
-                            //Application.Run(new Forms.TestCheck());
-                            //MessageBox.Show("migrac")
+                            //DateTime Horaini = DateTime.Now;
+
+                            if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                               ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]),Convert.ToInt32(ArgumentsList[5]));
+                            ////Application.Run(new Forms.TestCheck());
+
+
+                            //DateTime HoraiF = DateTime.Now;
+                            //MessageBox.Show((HoraiF - Horaini).ToString());
+
+                            //Migrate2
+
                             break;
                         case "FCRP":
                             Application.Run(new Forms.Reports.cFMRP100010());
@@ -68,14 +77,22 @@ namespace RegistryTime.ArgumentSystem
                 }
             }catch(Exception ex)
             {
-                throw new Exception(String.Format("{0}.Verification: {1}", core, ex));
+                throw new Exception(String.Format("{0}.Verification: {1}", core, ex.Message));
             }
         }
 
-        public void ProcessMigrate(DateTime Inicio , DateTime Fin)
+        public void ProcessMigrate(DateTime Inicio , DateTime Fin,int dividendo)
         {
-            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
-            CheckInoursBLL.Migrate(Inicio, Fin);
+            try
+            {
+                CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+                //CheckInoursBLL.Migrate(Inicio, Fin, dividendo);
+                CheckInoursBLL.Migrate2(dividendo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Arguments->ProcessMigrate: {0}", ex.Message),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public Boolean VerificationUser(String USER , String PASSWORD)
@@ -89,13 +106,10 @@ namespace RegistryTime.ArgumentSystem
                     return false;
                 else
                     return true;
-
-                
-
             }
             catch(Exception ex)
             {
-                throw new Exception(String.Format("{0}.VerificationUser: {1}", core, ex));
+                throw new Exception(String.Format("{0}.VerificationUser: {1}", core, ex.Message));
             }
         }
     }

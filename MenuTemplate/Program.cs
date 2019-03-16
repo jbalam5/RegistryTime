@@ -30,7 +30,7 @@ namespace RegistryTime
                 }
             }catch(Exception ex)
             {
-                MessageBox.Show(String.Format("Main: {0}", ex), "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(String.Format("Main: {0}", ex.Message), "Informacion", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             
         }

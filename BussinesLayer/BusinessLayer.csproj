@@ -62,6 +62,7 @@
     <Compile Include="FestiveBLL.cs" />
     <Compile Include="GlobalBLL.cs" />
     <Compile Include="JobBLL.cs" />
+    <Compile Include="MigrationHistoryBLL.cs" />
     <Compile Include="ModelReaderBLL.cs" />
     <Compile Include="PermissionBLL.cs" />
     <Compile Include="PermissionOfUserBLL.cs" />

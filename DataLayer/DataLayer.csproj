@@ -56,6 +56,7 @@
     <Compile Include="EmployeeDAL.cs" />
     <Compile Include="FestiveDAL.cs" />
     <Compile Include="JobDAL.cs" />
+    <Compile Include="MigrationHistoryDAL.cs" />
     <Compile Include="ModelDAL.cs" />
     <Compile Include="ModelReaderDAL.cs" />
     <Compile Include="PermissionDAL.cs" />
