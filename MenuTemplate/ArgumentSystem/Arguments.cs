@@ -46,7 +46,7 @@ namespace RegistryTime.ArgumentSystem
                             Application.Run(new cMRT1000101());
                             break;
                         case "FCGL":
-                            Application.Run(new Forms.cFMCG100010());
+                            Application.Run(new Forms.Migrate.cFMCG100010());
                             break;
                         case "CHECK":
                             //DateTime Horaini = DateTime.Now;
@@ -64,6 +64,16 @@ namespace RegistryTime.ArgumentSystem
                             break;
                         case "FCRP":
                             Application.Run(new Forms.Reports.cFMRP100010());
+                            break;
+                        case "MIGRATE":
+                            if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                            {
+                                Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                Application.Run(frm);
+                            }
+                            break;
+                        case "TEST":
+                            Application.Run(new cMRT1000101());
                             break;
                         default:
                             MessageBox.Show("Errror");
@@ -86,7 +96,9 @@ namespace RegistryTime.ArgumentSystem
             try
             {
                 CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+                ZKTecoHourAssistanceBLL zKTecoHourAssistanceBLL = new ZKTecoHourAssistanceBLL();
                 //CheckInoursBLL.Migrate(Inicio, Fin, dividendo);
+                zKTecoHourAssistanceBLL.MigrateHoursToBD(Inicio, Fin);
                 CheckInoursBLL.Migrate2(dividendo);
             }
             catch (Exception ex)
