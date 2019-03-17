@@ -62,10 +62,10 @@ namespace RegistryTime.Forms
             LoadAbsenteissm();
             LoadStatus();
 
-            //if (IdOject > 0)
-            //{
-            //    LoadObject(IdOject);
-            //}
+            if (IdAbsenteeismAssignment > 0)
+            {
+                LoadAbsenteeism();
+            }
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -102,7 +102,7 @@ namespace RegistryTime.Forms
                     Valid = false;
                     throw new Exception("Debe ingresar un Número de control válido");
                 }
-                else if (int.Parse(comboBoxAusentismo.SelectedValue.ToString()) == 0)
+                else if (comboBoxAusentismo.SelectedValue.ToString() =="")
                 {
                     Valid = false;
                     throw new Exception("Debe ingresar el Concepto de Ausentismo");
@@ -134,15 +134,16 @@ namespace RegistryTime.Forms
             {
                 if (FormValidate())
                 {
-                    AbsenteeismAssignmentML AsigAusentismo = new AbsenteeismAssignmentML();
+                    AbsenteeismAssignmentML AsigAusentismo = new AbsenteeismAssignmentML
+                    {
+                        ControlNumber = textBoxNumControl.Text.ToString(),
+                        KeyAbsenteeism = comboBoxAusentismo.SelectedValue.ToString(),
+                        Status = comboBoxEstadoAsig.SelectedValue.ToString(),
+                        DateStar = dateTimeFechaInicio.Value,
+                        DateEnd = dateTimeFechaFin.Value,
+                        Description = textBoxDescripcion.Text
+                    };
 
-                    AsigAusentismo.Id = Convert.ToInt32(textBoxNumControl.Text.ToString());
-                    AsigAusentismo.KeyAbsenteeism = comboBoxAusentismo.Text;
-                    AsigAusentismo.Status = comboBoxEstadoAsig.Text;
-                    AsigAusentismo.DateStar = dateTimeFechaInicio.Value;
-                    AsigAusentismo.DateEnd = dateTimeFechaFin.Value;
-                    AsigAusentismo.Description = textBoxDescripcion.Text;
-                    
                     if (IdAbsenteeismAssignment > 0)
                     {
                         AsigAusentismo.Id = IdAbsenteeismAssignment;
@@ -207,7 +208,7 @@ namespace RegistryTime.Forms
             {
                 AbsenteeismBLL AbsenteeismBLL = new AbsenteeismBLL();
                 DataTable Conceptos;
-                Conceptos = AbsenteeismBLL.All();
+                Conceptos = AbsenteeismBLL.AllTable();
                 comboBoxAusentismo.DisplayMember = "Text";
                 comboBoxAusentismo.ValueMember = "Value";
 
@@ -215,7 +216,7 @@ namespace RegistryTime.Forms
                 items.Add(new { Text = "Seleccione una opción", Value = "0" });
                 foreach (DataRow Concepto in Conceptos.Rows)
                 {
-                    items.Add(new { Text = Concepto[1].ToString(), Value = Concepto[0].ToString() });
+                    items.Add(new { Text = Concepto[AbsenteeismML.DataBase.Concept].ToString(), Value = Concepto[AbsenteeismML.DataBase.IsKey].ToString() });
                 }
                 comboBoxAusentismo.DataSource = items;
             }
@@ -247,8 +248,27 @@ namespace RegistryTime.Forms
                 MessageBox.Show(String.Format("LoadStatus: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+            
+        public void LoadAbsenteeism()
+        {
+            try
+            {
+                //IdAbsenteeismAssignment
+                AbsenteeismAssignmentML AbsenteeismAssignment = AbsenteeismAssignmentBLL.GetEntityId(IdAbsenteeismAssignment);
+                if( !String.IsNullOrEmpty(AbsenteeismAssignment.ControlNumber))
+                    LoadObject(Convert.ToInt32(AbsenteeismAssignment.ControlNumber));
 
-       
+                comboBoxAusentismo.SelectedValue = AbsenteeismAssignment.KeyAbsenteeism.ToString();
+                comboBoxEstadoAsig.SelectedValue = AbsenteeismAssignment.Status.ToString();
+                dateTimeFechaInicio.Text = Convert.ToDateTime(AbsenteeismAssignment.DateStar).ToString();
+                dateTimeFechaFin.Text = Convert.ToDateTime(AbsenteeismAssignment.DateEnd).ToString();
+                textBoxDescripcion.Text = AbsenteeismAssignment.Description.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("LoadAbsenteeism: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void textBoxNumControl_KeyUp(object sender, KeyEventArgs e)
         {

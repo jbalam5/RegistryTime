@@ -12,10 +12,10 @@ using ModelLayer;
 
 namespace RegistryTime.Forms.Reports
 {
-    public partial class cFMRP100010 : Form
+    public partial class cFMRP120010 : Form
     {
         #region "EVENTS"
-        public cFMRP100010()
+        public cFMRP120010()
         {
             InitializeComponent();
             LoadTurn();
@@ -33,6 +33,9 @@ namespace RegistryTime.Forms.Reports
                 QueryBackgroundWorker.ProgressChanged += QueryBackgroundWorker_ProgressChanged;
                 QueryBackgroundWorker.RunWorkerCompleted += QueryBackgroundWorker_RunWorkerCompleted;
                 QueryBackgroundWorker.WorkerReportsProgress = true;
+                dataGridViewReporteGeneral.AutoResizeColumns();
+                dataGridViewReporteGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewReporteGeneral.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -58,6 +61,8 @@ namespace RegistryTime.Forms.Reports
         {
             ChildLeftPanel.Visible = false;
             QueryBackgroundWorker.RunWorkerAsync();
+
+            
         }
 
         private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -72,8 +77,11 @@ namespace RegistryTime.Forms.Reports
             ));
 
             System.Threading.Thread.Sleep(3000);
-            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
-            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value)));
+            ReportsBLL ReportsBLL = new ReportsBLL();
+
+           
+            //CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportAbsenteeism(Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -121,7 +129,7 @@ namespace RegistryTime.Forms.Reports
             {
                 DepartamentBLL DepartamentBLL = new DepartamentBLL();
                 DataTable Departamentos;
-                Departamentos = DepartamentBLL.All();
+                Departamentos = DepartamentBLL.All("ALL");
                 comboBoxDepartamento.DisplayMember = "Text";
                 comboBoxDepartamento.ValueMember = "Value";
 
@@ -129,7 +137,7 @@ namespace RegistryTime.Forms.Reports
                 items.Add(new { Text = "Todos", Value = "0" });
                 foreach (DataRow Departamento in Departamentos.Rows)
                 {
-                    items.Add(new { Text = Departamento[1].ToString(), Value = Departamento[0].ToString() });
+                    items.Add(new { Text = Departamento[DepartamentML.DataBase.Name].ToString(), Value = Departamento[DepartamentML.DataBase.Id].ToString() });
                 }
                 comboBoxDepartamento.DataSource = items;
             }
@@ -168,6 +176,12 @@ namespace RegistryTime.Forms.Reports
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void dataGridViewReporteGeneral_SizeChanged(object sender, EventArgs e)
+        {
+            //dataGridViewReporteGeneral.Width = this.Width - 50;
+            //dataGridViewReporteGeneral.Height = this.Height - 170;
         }
     }
 }

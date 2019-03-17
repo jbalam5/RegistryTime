@@ -19,15 +19,28 @@ namespace BussinesLayer
 
         public AbsenteeismBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            AbsenteeismDAL.IdUserSession = GlobalBLL.userML.Id;
+            AbsenteeismDAL.ConnectionString = conexion.ConnectionStrings();
         }
 
         public DataTable All()
         {
             try
             {
-                return AbsenteeismDAL.All(ConnectionStrings);
+                return AbsenteeismDAL.All();
 
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.All: {1}", core, ex));
+            }
+        }
+
+        public DataTable AllTable()
+        {
+            try
+            {
+                return AbsenteeismDAL.AllTable();
             }
             catch (Exception ex)
             {
@@ -40,7 +53,7 @@ namespace BussinesLayer
             try
             {
 
-                return AbsenteeismDAL.GetIdEntity(Id, ConnectionStrings);
+                return AbsenteeismDAL.GetIdEntity(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +67,11 @@ namespace BussinesLayer
             {
                 if (absenteeism.Id == 0)
                 {
-                    return AbsenteeismDAL.Save(absenteeism, ConnectionStrings);
+                    return AbsenteeismDAL.Save(absenteeism);
                 }
                 else
                 {
-                    return AbsenteeismDAL.Update(absenteeism, ConnectionStrings);
+                    return AbsenteeismDAL.Update(absenteeism);
                 }
             }
             catch (Exception ex)
@@ -67,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(AbsenteeismML absenteeism)
+        public void Delete(AbsenteeismML absenteeism)
         {
             try
             {
-                return AbsenteeismDAL.Delete(absenteeism, ConnectionStrings);
+                AbsenteeismDAL.Delete(absenteeism);
             }
             catch (Exception ex)
             {
