@@ -19,7 +19,6 @@ namespace BussinesLayer
 
         public EmployeeBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
             EmployeeDAL.IdUserSession = GlobalBLL.userML.Id;
             EmployeeDAL.ConnectionString = conexion.ConnectionStrings();
         }

@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.AbsenteeismDAL";
         public String TableName = "absenteeism";
+        public int IdUserSession = 0;
+        public String ConnectionString = String.Empty;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -38,7 +40,30 @@ namespace DataLayer
 
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public DataTable AllTable()
+        {
+            try
+            {
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtDepartamentos = new DataTable();
+                cmd.Fill(dtDepartamentos);
+                Conexion.Close();
+                return dtDepartamentos;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.All : {1}", core, ex));
+            }
+
+        }
+
+        public DataTable GetIdEntity(int id)
         {
             try
             {
@@ -61,23 +86,26 @@ namespace DataLayer
             }
         }
 
-        public int Save(AbsenteeismML absenteeism, String ConnectionString)
+        public int Save(AbsenteeismML absenteeism)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( isKey,concept,description,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}',1,{3},GETDATE())", absenteeism.IsKey, absenteeism.Concept, absenteeism.description, absenteeism.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.InsertModel(absenteeism, TableName, IdUserSession);
+
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+
+                using (SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion))
+                {
+                    Conexion.Open();
+                    int newID = (Int32)cmd2.ExecuteScalar();
+
+                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                    return newID;
+                }
             }
             catch (Exception ex)
             {
@@ -86,31 +114,20 @@ namespace DataLayer
 
         }
 
-        public int Update(AbsenteeismML absenteeism, String ConnectionString)
+        public int Update(AbsenteeismML absenteeism)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("isKey = '{0}', ", absenteeism.IsKey);
-                Query.AppendFormat("concept = '{0}', ", absenteeism.Concept);
-                Query.AppendFormat("description = '{0}', ", absenteeism.description);
-                Query.AppendFormat("idUserUpdate = {0}, ", absenteeism.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", absenteeism.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.UpdateModel(absenteeism, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
+                return absenteeism.Id;
             }
             catch (Exception ex)
             {
@@ -118,27 +135,19 @@ namespace DataLayer
             }
         }
 
-        public int Delete(AbsenteeismML absenteeism , String ConnectionString)
+        public void Delete(AbsenteeismML absenteeism)
         { 
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2, ");
-                Query.AppendFormat("idUserDelete = {0}, ", absenteeism.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", absenteeism.Id);
-
-                SqlConnection Conexion = new SqlConnection
+                ModelDAL ModelDAL = new ModelDAL();
+                String Response = ModelDAL.DeleteModel(absenteeism, TableName, IdUserSession);
+                SqlConnection Conexion = new SqlConnection()
                 {
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
+                cmd2.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

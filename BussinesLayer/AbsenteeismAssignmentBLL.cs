@@ -19,14 +19,15 @@ namespace BussinesLayer
 
         public AbsenteeismAssignmentBLL()
         {
-            ConnectionStrings = conexion.ConnectionStrings();
+            AbsenteeismAssignmentDAL.IdUserSession = GlobalBLL.userML.Id;
+            AbsenteeismAssignmentDAL.ConnectionString = conexion.ConnectionStrings();
         }
 
         public DataTable All()
         {
             try
             {
-                return AbsenteeismAssignmentDAL.All(ConnectionStrings);
+                return AbsenteeismAssignmentDAL.All();
 
             }
             catch (Exception ex)
@@ -39,8 +40,20 @@ namespace BussinesLayer
         {
             try
             {
+                return AbsenteeismAssignmentDAL.GetIdEntity(Id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetIdEntity: {1}", core, ex));
+            }
+        }
 
-                return AbsenteeismAssignmentDAL.GetIdEntity(Id, ConnectionStrings);
+
+        public AbsenteeismAssignmentML GetEntityId(int Id)
+        {
+            try
+            {
+                return AbsenteeismAssignmentDAL.GetEntityId(Id);
             }
             catch (Exception ex)
             {
@@ -54,11 +67,11 @@ namespace BussinesLayer
             {
                 if (Absenteeismassignment.Id == 0)
                 {
-                    return AbsenteeismAssignmentDAL.Save(Absenteeismassignment, ConnectionStrings);
+                    return AbsenteeismAssignmentDAL.Save(Absenteeismassignment);
                 }
                 else
                 {
-                    return AbsenteeismAssignmentDAL.Update(Absenteeismassignment, ConnectionStrings);
+                    return AbsenteeismAssignmentDAL.Update(Absenteeismassignment);
                 }
             }
             catch (Exception ex)
@@ -67,11 +80,11 @@ namespace BussinesLayer
             }
         }
 
-        public int Delete(AbsenteeismAssignmentML Absenteeismassignment)
+        public void Delete(AbsenteeismAssignmentML Absenteeismassignment)
         {
             try
             {
-                return AbsenteeismAssignmentDAL.Delete(Absenteeismassignment, ConnectionStrings);
+                 AbsenteeismAssignmentDAL.Delete(Absenteeismassignment);
             }
             catch (Exception ex)
             {

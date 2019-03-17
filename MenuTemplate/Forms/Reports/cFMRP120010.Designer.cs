@@ -1,6 +1,6 @@
 ﻿namespace RegistryTime.Forms.Reports
 {
-    partial class cFMRP100010
+    partial class cFMRP120010
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFMRP100010));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFMRP120010));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
@@ -170,6 +170,7 @@
             this.dataGridViewReporteGeneral.Name = "dataGridViewReporteGeneral";
             this.dataGridViewReporteGeneral.Size = new System.Drawing.Size(533, 435);
             this.dataGridViewReporteGeneral.TabIndex = 14;
+            this.dataGridViewReporteGeneral.SizeChanged += new System.EventHandler(this.dataGridViewReporteGeneral_SizeChanged);
             // 
             // ChildLeftPanel
             // 
@@ -327,14 +328,14 @@
             this.CloseFilterButton.UseVisualStyleBackColor = false;
             this.CloseFilterButton.Click += new System.EventHandler(this.CloseFilterButton_Click);
             // 
-            // cFMRP100010
+            // cFMRP120010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 540);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cFMRP100010";
+            this.Name = "cFMRP120010";
             this.Text = "cFMRP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.cFMRP100010_Load);
