@@ -9,7 +9,7 @@ using ModelLayer;
 
 namespace BussinesLayer
 {
-    class MigrationHistoryBLL
+    public class MigrationHistoryBLL
     {
         public MigrationHistoryDAL MigrationHistoryDAL = new MigrationHistoryDAL();
         public ConnectionBLL conexion = new ConnectionBLL();

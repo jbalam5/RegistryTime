@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BussinesLayer;
 using ModelLayer;
-namespace RegistryTime.Forms
+namespace RegistryTime.Forms.Migrate
 {
     public partial class cFMCG100010 : Form
     {

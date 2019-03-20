@@ -238,7 +238,12 @@ namespace BussinesLayer
             {
                 throw new Exception(string.Format("GetUserInfoById: {0}", ex.Message));
             }
-}
+        }
+
+        /// <summary>
+        /// Funcion que lee todos los logs de las asistencias registradas en el lector
+        /// </summary>
+        /// <returns>Lista de HoursAssistanceInfo</returns>
         public ICollection<HoursAssistanceInfo> GetLogData()
         {
             try
@@ -274,6 +279,10 @@ namespace BussinesLayer
                     }
 
                 }
+                else
+                {
+                    throw new Exception("GetLogDataByDate: No se pudo leer la información(Logs) del Lector");
+                }
 
                 objZKTeko.EnableDevice(machineNumber, true);
                 return lstEnrollData;
@@ -283,8 +292,13 @@ namespace BussinesLayer
                 throw new Exception(string.Format("GetLogData: {0}", ex.Message));
             }
         }
-
-        public ICollection<HoursAssistanceInfo> GetLogDataByDate(string startDate, string endDate)
+        /// <summary>
+        /// Funcion que lee los logs de las asistencias registradas en el lector por rango de fechas
+        /// </summary>
+        /// <param name="startDate">Fecha de Inicio</param>
+        /// <param name="endDate">Fecha Fin</param>
+        /// <returns>Lista de HoursAssistanceInfo</returns>
+        public ICollection<HoursAssistanceInfo> GetLogData(string startDate, string endDate)
         {
             try
             {
@@ -299,34 +313,47 @@ namespace BussinesLayer
                 int dwSecond = 0;
                 int dwWorkCode = 0;
 
+                //objZKTeko.EnableDevice(machineNumber, true);
                 objZKTeko.EnableDevice(machineNumber, false);
 
                 ICollection<HoursAssistanceInfo> lstEnrollData = new List<HoursAssistanceInfo>();
 
-                if (objZKTeko.ReadGLogDataByDate(machineNumber, startDate, endDate))
+                //if (objZKTeko.ReadGLogDataByDate(machineNumber, startDate, endDate))
+                if (objZKTeko.ReadAllGLogData(machineNumber))
                 {
                     while (objZKTeko.SSR_GetGeneralLogData(machineNumber, out dwEnrollNumber1, out dwVerifyMode, out dwInOutMode, out dwYear, out dwMonth, out dwDay, out dwHour, out dwMinute, out dwSecond, ref dwWorkCode))
                     {
                         string inputDate = new DateTime(dwYear, dwMonth, dwDay, dwHour, dwMinute, dwSecond).ToString();
 
-                        HoursAssistanceInfo objInfo = new HoursAssistanceInfo();
-                        objInfo.MachineNumber = machineNumber;
-                        objInfo.IndRegID = int.Parse(dwEnrollNumber1);
-                        objInfo.DateTimeRecord = inputDate;
-                        objInfo.VerifyType = dwVerifyMode;
-                        objInfo.WorkCode = dwWorkCode;
-                        objInfo.VerifyState = dwInOutMode;
-                        lstEnrollData.Add(objInfo);
+                        if (DateTime.Parse(inputDate) >= DateTime.Parse(startDate) && DateTime.Parse(inputDate) <= DateTime.Parse(endDate))
+                        {
+
+                            HoursAssistanceInfo objInfo = new HoursAssistanceInfo();
+                            objInfo.MachineNumber = machineNumber;
+                            objInfo.IndRegID = int.Parse(dwEnrollNumber1);
+                            objInfo.DateTimeRecord = inputDate;
+                            objInfo.VerifyType = dwVerifyMode;
+                            objInfo.WorkCode = dwWorkCode;
+                            objInfo.VerifyState = dwInOutMode;
+                            lstEnrollData.Add(objInfo);
+                        }
                     }
 
                 }
-
-                objZKTeko.EnableDevice(machineNumber, true);
+                else
+                {
+                    throw new Exception("GetLogDataByDate: No se pudo leer la información(Logs) del Lector");
+                }
+                
                 return lstEnrollData;
             }
             catch (Exception ex)
             {
                 throw new Exception(string.Format("GetLogDataByDate: {0}", ex.Message));
+            }
+            finally
+            {
+                objZKTeko.EnableDevice(machineNumber, true);
             }
         }
 

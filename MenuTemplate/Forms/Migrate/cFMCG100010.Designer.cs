@@ -1,4 +1,4 @@
-﻿namespace RegistryTime.Forms
+﻿namespace RegistryTime.Forms.Migrate
 {
     partial class cFMCG100010
     {
