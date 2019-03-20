@@ -64,6 +64,14 @@
     <Reference Include="ClosedXML">
       <HintPath>..\LibPackage\ClosedXML.dll</HintPath>
     </Reference>
+    <Reference Include="ConnectionDAL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\connection\Connection\Connection_BLL\bin\Debug\ConnectionDAL.dll</HintPath>
+    </Reference>
+    <Reference Include="Connection_BLL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\connection\Connection\Connection_BLL\bin\Debug\Connection_BLL.dll</HintPath>
+    </Reference>
     <Reference Include="DocumentFormat.OpenXml">
       <HintPath>..\LibPackage\DocumentFormat.OpenXml.dll</HintPath>
     </Reference>
@@ -94,6 +102,7 @@
     <Compile Include="Alerts\cFAT100010.Designer.cs">
       <DependentUpon>cFAT100010.cs</DependentUpon>
     </Compile>
+    <Compile Include="ArgumentSystem\Applications.cs" />
     <Compile Include="ArgumentSystem\Arguments.cs" />
     <Compile Include="cMRT100010.cs">
       <SubType>Form</SubType>

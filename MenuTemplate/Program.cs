@@ -20,9 +20,12 @@ namespace RegistryTime
                 ArgumentSystem.Arguments arguments = new ArgumentSystem.Arguments();
                 if(args.Length == 0)
                 {
-                    Application.EnableVisualStyles();
-                    Application.SetCompatibleTextRenderingDefault(false);
-                    Application.Run(new cMRT100010() );
+                    //if (arguments.ValidLicense())
+                    //{
+                        Application.EnableVisualStyles();
+                        Application.SetCompatibleTextRenderingDefault(false);
+                        Application.Run(new cMRT100010());
+                    //}
                 }
                 else
                 {

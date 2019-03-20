@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ModelLayer;
 using BussinesLayer;
+using Connection_BLL;
 
 namespace RegistryTime.ArgumentSystem
 {
@@ -28,59 +29,62 @@ namespace RegistryTime.ArgumentSystem
             {
                 if (ArgumentsList.Length > 2 && VerificationUser(ArgumentsList[0], ArgumentsList[1]) == true)
                 {
-                    switch (ArgumentsList[2])
+                    if (ValidLicense())
                     {
-                        case "FMCX":
-                            //Application.Run(new cFMCX000010());
-                            break;
-                        case "RTEM":
-                            Application.Run(new RegistryTime.Forms.CFRT140010());
-                            break;
-                        case "RTLG":
-                            Application.Run(new RegistryTime.Forms.cFRT150010());
-                            break;
-                        case "RTAL":
-                            Application.Run(new Alerts.cFAT100010("Informacion", "Texto descripcion", MessageBoxIcon.Information));
-                            break;
-                        case "test":
-                            Application.Run(new cMRT1000101());
-                            break;
-                        case "FCGL":
-                            Application.Run(new Forms.cFMCG100010());
-                            break;
-                        case "CHECK":
-                            //DateTime Horaini = DateTime.Now;
+                        switch (ArgumentsList[2])
+                        {
+                            case "FMCX":
+                                //Application.Run(new cFMCX000010());
+                                break;
+                            case "RTEM":
+                                Application.Run(new RegistryTime.Forms.CFRT140010());
+                                break;
+                            case "RTLG":
+                                Application.Run(new RegistryTime.Forms.cFRT150010());
+                                break;
+                            case "RTAL":
+                                Application.Run(new Alerts.cFAT100010("Informacion", "Texto descripcion", MessageBoxIcon.Information));
+                                break;
+                            case "test":
+                                Application.Run(new cMRT1000101());
+                                break;
+                            case "FCGL":
+                                Application.Run(new Forms.Migrate.cFMCG100010());
+                                break;
+                            case "CHECK":
+                                //DateTime Horaini = DateTime.Now;
 
-                            if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
-                               ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]),Convert.ToInt32(ArgumentsList[5]));
-                            ////Application.Run(new Forms.TestCheck());
+                                if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                    ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                ////Application.Run(new Forms.TestCheck());
 
 
-                            //DateTime HoraiF = DateTime.Now;
-                            //MessageBox.Show((HoraiF - Horaini).ToString());
+                                //DateTime HoraiF = DateTime.Now;
+                                //MessageBox.Show((HoraiF - Horaini).ToString());
 
-                            //Migrate2
+                                //Migrate2
 
-                            break;
-                        case "FCRP":
-                            Application.Run(new Forms.Reports.cFMRP100010());
-                            break;
-                        case "RP12":
-                            Application.Run(new Forms.Reports.cFMRP120010());
-                            break;
-                        case "MIGRATE":
-                            if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
-                            {
-                                Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
-                                Application.Run(frm);
-                            }
-                            break;
-                        case "TEST":
-                            Application.Run(new cMRT1000101());
-                            break;
-                        default:
-                            MessageBox.Show("Errror");
-                            break;
+                                break;
+                            case "FCRP":
+                                Application.Run(new Forms.Reports.cFMRP100010());
+                                break;
+                            case "RP12":
+                                Application.Run(new Forms.Reports.cFMRP120010());
+                                break;
+                            case "MIGRATE":
+                                if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                {
+                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                    Application.Run(frm);
+                                }
+                                break;
+                            case "TEST":
+                                Application.Run(new cMRT1000101());
+                                break;
+                            default:
+                                MessageBox.Show("Errror");
+                                break;
+                        }
                     }
                 }
                 else
@@ -124,6 +128,37 @@ namespace RegistryTime.ArgumentSystem
             {
                 throw new Exception(String.Format("{0}.VerificationUser: {1}", core, ex.Message));
             }
+        }
+
+        public bool ValidLicense()
+        {
+            try
+            {
+                return true;
+
+                //LicenseBLL licenseBLL = new LicenseBLL();
+                //int idLicense = licenseBLL.hasLicense();
+                //if ( idLicense > 0)
+                //{
+                //    if (licenseBLL.isExpires(idLicense))
+                //    {
+                //        MessageBox.Show("La licencia ha expirado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        return false;
+                //    }
+
+                //    return true;
+                //}
+
+                //Applications app = new Applications();
+                //app.execute("Connection.exe", "EXLIC");
+
+                //return false;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.ValidLicense: {1}", core, ex.Message));
+            }
+
         }
     }
 }
