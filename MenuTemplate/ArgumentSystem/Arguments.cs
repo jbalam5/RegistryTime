@@ -66,7 +66,7 @@ namespace RegistryTime.ArgumentSystem
                             Application.Run(new Forms.Reports.cFMRP100010());
                             break;
                         case "RP12":
-                            Application.Run(new Forms.Reports.cFMRP120010());
+                            Application.Run(new Forms.Reports.cFMRP130010());
                             break;
                         default:
                             MessageBox.Show("Errror");
