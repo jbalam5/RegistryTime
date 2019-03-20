@@ -69,7 +69,7 @@ namespace RegistryTime.ArgumentSystem
                                 Application.Run(new Forms.Reports.cFMRP100010());
                                 break;
                             case "RP12":
-                                Application.Run(new Forms.Reports.cFMRP120010());
+                                Application.Run(new Forms.Reports.cFMRP130010());
                                 break;
                             case "MIGRATE":
                                 if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
@@ -86,11 +86,11 @@ namespace RegistryTime.ArgumentSystem
                                 break;
                         }
                     }
-                }
-                else
-                {
-                    Alerts.cFAT100010 Alert = new Alerts.cFAT100010("Error", "El USUARIO O CONTRASEÑA SON INCORRECTOS", MessageBoxIcon.Error);
-                    Alert.ShowDialog();
+                    else
+                    {
+                        Alerts.cFAT100010 Alert = new Alerts.cFAT100010("Error", "El USUARIO O CONTRASEÑA SON INCORRECTOS", MessageBoxIcon.Error);
+                        Alert.ShowDialog();
+                    }
                 }
             }catch(Exception ex)
             {

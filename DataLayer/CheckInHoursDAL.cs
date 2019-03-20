@@ -208,7 +208,7 @@ namespace DataLayer
             {
                 throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
             }
-}
+        }
 
         public DataTable GetDateReports(DateTime FechaInicio, DateTime FechaFin)
         { 
