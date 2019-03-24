@@ -10,14 +10,14 @@ using Connection_BLL;
 
 namespace BussinesLayer
 {
-    public class CheckInoursBLL
+    public class CheckInHoursBLL
     {
         public CheckInHoursDAL CheckInHoursDAL = new CheckInHoursDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
         
         public String core = "BussinesLayer.CheckInoursBLL";
 
-        public CheckInoursBLL()
+        public CheckInHoursBLL()
         {
             CheckInHoursDAL.ConnectionString = conexion.ConnectionStrings();
             CheckInHoursDAL.IdUserSession = GlobalBLL.userML.Id;
@@ -110,7 +110,8 @@ namespace BussinesLayer
             {
                 MigrationHistoryBLL MigrationHistoryBLL = new MigrationHistoryBLL();
                 DateTime Start = MigrationHistoryBLL.LastRecord();
-                CheckInHoursDAL.MigrateFunction(Start, DateTime.Now, dividendo);
+                //CheckInHoursDAL.MigrateFunction(Start, DateTime.Now, dividendo);
+                MigrationHistoryBLL.ListRecord(Start, DateTime.Now);
 
                 MigrationHistoryML MigrationHistory = new MigrationHistoryML();
                 MigrationHistory.DateStart = Start;

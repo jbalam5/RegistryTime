@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModelLayer;
+using System.Data;
 
 
 
@@ -17,6 +18,8 @@ namespace DataLayer
         //public String TablaStatusBook = "statusBook";
         public String ConnectionString = String.Empty;
         public int IdUserSession = 0;
+
+        TurnDAL TurnDAL = new TurnDAL();
 
         public int Save(MigrationHistoryML MigrationHistory)
         {
@@ -84,5 +87,48 @@ namespace DataLayer
                 throw new Exception(String.Format("{0}.LastRecord: {1}", core, ex.Message));
             }
         }
+
+        
+        public void ValidRecord(DateTime DateTimeRecord, int IdUser)
+        {
+            try
+            {
+                DataTable TimeOutCheckDT = TurnDAL.TimeOutCheck("checkin");
+                //Validar si existe un valor anterior
+                if (!String.IsNullOrEmpty(TurnDAL.RecordOld(IdUser)))
+                {
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+
+        public DataTable ListRecord(DateTime Start , DateTime End)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND dateTimeRecord BETWEEN '{1}' AND '{2}'", "HoursAssistance", Start.ToString("yyyy-MM-dd HH:mm:ss"), End.ToString("yyyy-MM-dd HH:mm:ss"));
+                SqlConnection Connection = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Connection.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Connection);
+                DataTable ListRecord = new DataTable();
+                cmd.Fill(ListRecord);
+                Connection.Close();
+                return ListRecord;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.LastRecord: {1}", core, ex.Message));
+            }
+        }
+
     }
 }

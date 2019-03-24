@@ -79,5 +79,53 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
             }
         }
+
+        public DataTable TimeOutCheck(String Name)
+        {
+            try
+            {
+               return TurnDAL.TimeOutCheck(Name);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex));
+            }
+        }
+
+        public String RecordOld(int IdUser)
+        {
+            try
+            {
+               return TurnDAL.RecordOld(IdUser);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex));
+            }
+        }
+
+        public TurnML GetTurnUser(DateTime Record, int IdUser)
+        {
+            try
+            {
+                return TurnDAL.GetTurnUser(Record, IdUser);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetTurnUser: {1}", core, ex));
+            }
+        }
+
+        public TurnML GetTurnForNaMe(String NameTurn)
+        {
+            try
+            {
+                return TurnDAL.GetTurnForNaMe(NameTurn);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetTurnForNaMe: {1}", core, ex));
+            }
+        }
     }
 }

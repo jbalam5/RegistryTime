@@ -253,7 +253,7 @@ namespace DataLayer
         {
             try
             {
-                String Query = String.Format("select count(*) as count from {0} where _registry=1 and {1}='{2}' and {3}='{4}' and {5}='{6}'",TableName,CheckInHoursML.Database.date,checkInHours.Date.ToString("yyyy-MM-dd hh:mm:ss"), CheckInHoursML.Database.type, checkInHours.Type, CheckInHoursML.Database.idEmployee, checkInHours.IdEmployee);
+                String Query = String.Format("select count(*) as count from {0} where _registry=1 and {1}='{2}' and {3}='{4}' and {5}='{6}'",TableName,CheckInHoursML.Database.DateTimeRecord,checkInHours.DateTimeRecord.ToString("yyyy-MM-dd hh:mm:ss"), CheckInHoursML.Database.TypeCheck, checkInHours.TypeCheck, CheckInHoursML.Database.idEmployee, checkInHours.IdEmployee);
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString

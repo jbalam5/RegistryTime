@@ -78,7 +78,7 @@ namespace RegistryTime.Forms.Migrate
 
                 MigrateBackgroundWorker.ReportProgress(0);
                 
-                CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+                CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
                 ZKTecoHourAssistanceBLL zKTecoHourAssistanceBLL = new ZKTecoHourAssistanceBLL();
 
                 MigrateBackgroundWorker.ReportProgress(10);

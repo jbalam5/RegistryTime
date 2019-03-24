@@ -72,7 +72,7 @@ namespace RegistryTime.Forms.Reports
             ));
 
             System.Threading.Thread.Sleep(3000);
-            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
             this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value)));
         }
 

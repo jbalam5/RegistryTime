@@ -341,18 +341,12 @@ idUserDelete int,
 dateDelete datetime,
 id int primary key identity(1,1) not null,
 idEmployee int not null,
+machineNumber int null,
 dateTimeRecord DATETIME null, 
 dateOnlyRecord DATE null,
 timeOnlyRecord TIME null,
 turn NVARCHAR(20) null,
-Type NVARCHAR(25) null,
-diffhours TIME null,
-totalhoursTurn TIME null,
-machineNumber int null
---CONSTRAINT FK_checkInHours_idEmployee FOREIGN KEY (idEmployee)     
-  --  REFERENCES users(id)     
-    --ON DELETE NO ACTION    
-    --ON UPDATE NO ACTION
+typeCheck NVARCHAR(25) null
 )
 -- Tablas para la configuracion del lector
 create table ModelReader(

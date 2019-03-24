@@ -33,6 +33,9 @@ namespace RegistryTime.Forms.Reports
                 QueryBackgroundWorker.ProgressChanged += QueryBackgroundWorker_ProgressChanged;
                 QueryBackgroundWorker.RunWorkerCompleted += QueryBackgroundWorker_RunWorkerCompleted;
                 QueryBackgroundWorker.WorkerReportsProgress = true;
+                dataGridViewReporteGeneral.AutoResizeColumns();
+                dataGridViewReporteGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewReporteGeneral.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -57,38 +60,38 @@ namespace RegistryTime.Forms.Reports
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             ChildLeftPanel.Visible = false;
-            //QueryBackgroundWorker.RunWorkerAsync();
+            QueryBackgroundWorker.RunWorkerAsync();
 
-            Prueba();
-
+            //Prueba();
 
         }
 
         public void Prueba()
         {
-            DateTime fechaInicial = DateTime.Now;
+            ////DateTime fechaInicial = DateTime.Now;
             DataTable tableSumByCount = new DataTable();
             int frecuencia = 7; //int.Parse(Session["FCDFrecuencia"].ToString()); // 7 días
             int periodo = 10; // int.Parse(Session["FCDPeriodo"].ToString()); // Periodo es de 10
             int frecuenciaIncremetado = frecuencia;
             DataColumn[] column = new DataColumn[periodo];
 
-            for (int i = 0; i < periodo; i++)
-            {
-                frecuenciaIncremetado += frecuencia;
-                String columnName = fechaInicial.AddDays(frecuenciaIncremetado - 1).ToShortDateString();
-                Type columnType = Type.GetType("System.Decimal");
-                tableSumByCount.Columns.Add(new DataColumn(columnName, columnType));
 
-                //for( int e = 0; e < 10; e++)
-                //{
-                    DataRow fila = tableSumByCount.NewRow();
-                    fila[columnName] = i;
-                    tableSumByCount.Rows.InsertAt(fila, i);
-                //}
+            //for (int i = 0; i < periodo; i++)
+            //{
+            //    frecuenciaIncremetado += frecuencia;
+            //    String columnName = fechaInicial.AddDays(frecuenciaIncremetado - 1).ToShortDateString();
+            //    Type columnType = Type.GetType("System.Decimal");
+            //    tableSumByCount.Columns.Add(new DataColumn(columnName, columnType));
 
-            }
+            //    //for( int e = 0; e < 10; e++)
+            //    //{
+            //        DataRow fila = tableSumByCount.NewRow();
+            //        fila[columnName] = i;
+            //        tableSumByCount.Rows.InsertAt(fila, i);
+            //    //}
 
+            //}
+            
             dataGridViewReporteGeneral.DataSource = tableSumByCount;
         }
 
@@ -104,8 +107,9 @@ namespace RegistryTime.Forms.Reports
             ));
 
             //System.Threading.Thread.Sleep(3000);
-            //CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
-            //this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = CheckInoursBLL.DateReports(dateTimeFechaInicio.Value, dateTimeFechaFin.Value)));
+            ReportsBLL ReportsBLL = new ReportsBLL();
+
+            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportExtrasHours(dateTimeFechaInicio.Value, dateTimeFechaFin.Value)));
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

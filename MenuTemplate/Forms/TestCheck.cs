@@ -24,7 +24,7 @@ namespace RegistryTime.Forms
             
             //DateTime inicio = Convert.ToDateTime("2017-01-25");
             //DateTime Fin = Convert.ToDateTime("2017-01-31");
-            CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+            CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
             /*dataGridViewHours.DataSource = */
             //CheckInoursBLL.Migrate(Convert.ToDateTime("2017-01-25"),Convert.ToDateTime("2017-01-31"));
 

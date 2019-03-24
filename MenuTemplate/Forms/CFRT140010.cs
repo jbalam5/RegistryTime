@@ -13,7 +13,7 @@ namespace RegistryTime.Forms
     public partial class CFRT140010 : Form
     {
         #region "Variables Global"
-        private BussinesLayer.CheckInoursBLL checkInoursBLL;
+        private BussinesLayer.CheckInHoursBLL checkInoursBLL;
         private BussinesLayer.EmployeeBLL employeeBLL;
         private ModelLayer.CheckInHoursML checkInHours;
         private ModelLayer.EmployeeML employeeML;
@@ -29,7 +29,7 @@ namespace RegistryTime.Forms
         private void CFRT140010_Load(object sender, EventArgs e)
         {
             SetTimer();
-            checkInoursBLL = new BussinesLayer.CheckInoursBLL();
+            checkInoursBLL = new BussinesLayer.CheckInHoursBLL();
             employeeBLL = new BussinesLayer.EmployeeBLL();
             tmr = new Timer();
         }
@@ -82,7 +82,7 @@ namespace RegistryTime.Forms
 
                     if (employeeML != null)
                     {
-                        checkInHours.Date = DateTime.Now;
+                        checkInHours.DateTimeRecord = DateTime.Now;
                         checkInHours.IdEmployee = employeeML.Id;
 
                         checkInoursBLL.Save(checkInHours);

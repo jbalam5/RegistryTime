@@ -46,7 +46,7 @@ namespace RegistryTime.ArgumentSystem
                             Application.Run(new cMRT1000101());
                             break;
                         case "FCGL":
-                            Application.Run(new Forms.cFMCG100010());
+                            //Application.Run(new Forms.cFMCG100010());
                             break;
                         case "CHECK":
                             //DateTime Horaini = DateTime.Now;
@@ -98,7 +98,7 @@ namespace RegistryTime.ArgumentSystem
         {
             try
             {
-                CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
+                CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
                 //CheckInoursBLL.Migrate(Inicio, Fin, dividendo);
                 CheckInoursBLL.Migrate2(dividendo);
             }

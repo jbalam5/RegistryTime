@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="AbsenteeismAssignmentBLL.cs" />
     <Compile Include="AbsenteeismBLL.cs" />
-    <Compile Include="CheckInoursBLL.cs" />
+    <Compile Include="CheckInHoursBLL.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="CompanyBLL.cs" />
     <Compile Include="DaysBLL.cs" />
