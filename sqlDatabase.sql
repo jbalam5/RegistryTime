@@ -188,13 +188,13 @@ name nvarchar(10),
 nameIn nvarchar(10)
 )
 
-insert into days(name,_registry) values('Lunes',1)
-insert into days(name,_registry) values('Martes',1)
-insert into days(name,_registry) values('Miercoles',1)
-insert into days(name,_registry) values('Jueves',1)
-insert into days(name,_registry) values('Viernes',1)
-insert into days(name,_registry) values('Sabado',1)
-insert into days(name,_registry) values('Domingo',1)
+insert into days(name,nameIn,_registry) values('Lunes','Monday',1)
+insert into days(name,nameIn,_registry) values('Martes','Tuesday',1)
+insert into days(name,nameIn,_registry) values('Miercoles','Wednesday',1)
+insert into days(name,nameIn,_registry) values('Jueves','Thursday',1)
+insert into days(name,nameIn,_registry) values('Viernes','Friday',1)
+insert into days(name,nameIn,_registry) values('Sabado','Saturday',1)
+insert into days(name,nameIn,_registry) values('Domingo','Sunday',1)
 
 create table daysOfTurn(
 _registry int,
