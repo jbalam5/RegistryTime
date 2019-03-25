@@ -18,14 +18,16 @@ namespace RegistryTime.Forms.Migrate
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
+        int _type;
         int _dividendo;
         DateTime _startDate;
         DateTime _endDate;
         #endregion
 
         #region "CONSTRUCTOR"
-        public cFMMI100010(DateTime startDate, DateTime endDate, int dividendo)
+        public cFMMI100010(int _type, int dividendo, DateTime startDate, DateTime endDate )
         {
+            this._type = _type;
             this._startDate = startDate;
             this._endDate = endDate;
             this._dividendo = dividendo;
@@ -101,7 +103,17 @@ namespace RegistryTime.Forms.Migrate
                 MigrateBackgroundWorker.ReportProgress(50);
 
                 this.Invoke(new Action(() => { MessageLabel.Text = "Paso 2: Actualizando horarios de asistencia"; }));
-                CheckInoursBLL.Migrate2(_dividendo);
+                //CheckInoursBLL.Migrate2(_dividendo);
+                if (this._type == 0)
+                {
+                    //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
+                    CheckInoursBLL.Migrate2(_dividendo);
+                }
+                //if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
+                //{
+                //    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                //        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                //}
                 MigrateBackgroundWorker.ReportProgress(100);
 
                 this.Invoke(new Action(() => { MessageLabel.Text = "Finalizando proceso"; }));

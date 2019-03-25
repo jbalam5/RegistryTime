@@ -15,6 +15,7 @@ namespace DataLayer
         public String TableName = "turn";
         public String ConnectionString = String.Empty;
         public int IdUserSession = 0;
+        ModelDAL ModelDAL = new ModelDAL();
 
         public DataTable All()
         {
@@ -189,112 +190,60 @@ namespace DataLayer
             }
         }
 
-        public String RecordOld(int IdUser)
+
+        public TurnML GetTurnUser(DateTime Record, int IdUser)
         {
             try
             {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("SELECT TOP 1 dateTimeRecord FROM checkInHours WHERE idEmployee = {0} ORDER BY id DESC", IdUser);
-                SqlConnection Connection = new SqlConnection
+                if (DayOfWeekRecord(Record, IdUser) > 0)
                 {
-                    ConnectionString = ConnectionString
-                };
-                Connection.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
-                DataTable DtTimeOutRecord = new DataTable();
-                cmd.Fill(DtTimeOutRecord);
-                Connection.Close();
-                if (DtTimeOutRecord.Rows.Count > 0)
-                {
-                    return DtTimeOutRecord.Rows[0]["dateTimeRecord"].ToString();
+                    StringBuilder Query = new StringBuilder();
+                    Query.AppendFormat("DECLARE @DATETIMEHOURS DATETIME = '{0}' ", Record.ToString("yyyy-MM-dd HH:mm:ss"));
+                    Query.AppendLine("DECLARE @TIMEHOURS TIME = CONVERT(time, @DATETIMEHOURS) ");
+                    Query.AppendLine("SELECT turn.* FROM turnsOfEmployee ");
+                    Query.AppendLine("LEFT OUTER JOIN turn ON turn.id = turnsOfEmployee.idTurn ");
+                    Query.AppendLine("WHERE turn._registry = 1 ");
+                    Query.AppendLine("AND CONVERT(datetime,turn.startEntry) <= CONVERT(datetime, @TIMEHOURS) ");
+                    Query.AppendLine("AND CONVERT(datetime,@TIMEHOURS) <= CONVERT(datetime,turn.limitDeparture) ");
+                    Query.AppendFormat("AND turnsOfEmployee.idEmployee ={0} ", IdUser);
+
+                    DataTable dtTurnos = ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);
+
+                    if (dtTurnos.Rows.Count > 0)
+                        return GetEntity(dtTurnos.Rows[0]);
+                    else
+                        return null;
                 }
                 else
                 {
-                    return String.Empty;
-                }           
-
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(String.Format("{0}.RecordOld: {1}", core, ex.Message));
-            }
-        }
-
-        //public void ValidRecord(DateTime DateTimeRecord, int IdUser) {
-        //    try
-        //    {
-        //        DataTable TimeOutCheckDT = TimeOutCheck("checkin");
-        //        //Validar si existe un valor anterior
-        //        if(!String.IsNullOrEmpty(RecordOld(IdUser)))
-        //        {
-
-        //        }
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-
-        //    }
-
-        //}
-
-        public DataTable TimeOutCheck(String Name)
-        {
-            try
-            {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("SELECT * FROM timeOutCheck WHERE _registry = 1 AND name = '{0}'", Name);
-                SqlConnection Connection = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Connection.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
-                DataTable DtTimeOutRecord = new DataTable();
-                cmd.Fill(DtTimeOutRecord);
-                Connection.Close();
-
-                return DtTimeOutRecord;
-                
-            }
-            catch (Exception ex)
-            {
-                throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex.Message));
-            }
-        }
-
-        public TurnML GetTurnUser(DateTime Record , int IdUser)
-        {
-            try
-            {
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("DECLARE @DATETIMEHOURS DATETIME = '{0}' ", Record.ToString("yyyy-MM-dd HH:mm:ss"));
-                Query.AppendLine("DECLARE @TIMEHOURS TIME = CONVERT(time, @DATETIMEHOURS) ");
-                Query.AppendLine("SELECT turn.id,turn.name,turn.timeEntry,turn.startEntry,turn.limitEntry,turn.departuretime,turn.limitDeparture FROM turnsOfEmployee ");
-                Query.AppendLine("LEFT OUTER JOIN turn ON turn.id = turnsOfEmployee.idTurn ");
-                Query.AppendLine("WHERE turn._registry = 1 ");
-                Query.AppendLine("AND CONVERT(datetime,turn.startEntry) <= CONVERT(datetime, @TIMEHOURS) ");
-                Query.AppendLine("AND CONVERT(datetime,@TIMEHOURS) <= CONVERT(datetime,turn.limitDeparture) ");
-                Query.AppendFormat("AND turnsOfEmployee.idEmployee ={0} ",IdUser);
-
-                SqlConnection Connection = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Connection.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
-                DataTable dtTurnos = new DataTable();
-                cmd.Fill(dtTurnos);
-                Connection.Close();
-                if (dtTurnos.Rows.Count > 0)
-                    return GetEntity(dtTurnos.Rows[0]);
-                else
                     return null;
+                }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.GetTurnUser: {1}", core, ex.Message));
             }
         }
+
+        public int DayOfWeekRecord(DateTime DateTimeRecord, int IdUser)
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendLine("SELECT COUNT(*) FROM daysOfWorkEmployee ");
+                Query.AppendLine("Join days on days.id = daysOfWorkEmployee.idDays ");
+                Query.AppendFormat("WHERE idEmployee = {0} ",IdUser);
+                Query.AppendFormat("AND nameIn = '{0}' ", Convert.ToString(DateTimeRecord.DayOfWeek));
+                ModelDAL ModelDAL = new ModelDAL();
+                return ModelDAL.CountRecord(Query.ToString(), ConnectionString);
+
+            }catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.DayOfWeekRecord: {1}", core, ex.Message));
+            }
+        }
+
+
+
     }
 }

@@ -68,15 +68,28 @@ namespace BussinesLayer
 
 
         //--------------- NUEVA MIGRACION
+        
+
         public void ListRecord(DateTime Start, DateTime End)
         {
             try
             {
                 DataTable ListRecord = MigrationHistoryDAL.ListRecord(Start, End);
+                TimeOutCheckBLL TimeOutCheckBLL = new TimeOutCheckBLL();
                 TurnBLL TurnBLL = new TurnBLL();
-                DataTable TimeOutCheckDT = TurnBLL.TimeOutCheck("checkin");
+                DataTable TimeOutCheckDT = TimeOutCheckBLL.TimeOutCheck("checkin");
+                DataTable TimeOutCheckMax = TimeOutCheckBLL.TimeOutCheck("maxihours");
                 //String TotalAddHours;  //= new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0,0, 0);
                 TimeSpan TotalAddHours;
+                TimeSpan MaxAddHours;
+                if (TimeOutCheckMax.Rows.Count >0)
+                {
+                    MaxAddHours = TimeSpan.Parse(TimeOutCheckMax.Rows[0]["timeCheck"].ToString());
+                }
+                else
+                {
+                    MaxAddHours = TimeSpan.Parse("00:00:00");
+                }
                 bool SinHoras = false;
                 if (TimeOutCheckDT.Rows.Count > 0)
                 {
@@ -94,58 +107,63 @@ namespace BussinesLayer
                     CheckInHoursML CheckInHours = new CheckInHoursML();
                     foreach (DataRow Record in ListRecord.Rows)
                     {
-                        String RecordData = TurnBLL.RecordOld(Convert.ToInt32(Record["idUser"].ToString()));
-                        if (!String.IsNullOrEmpty(RecordData))
+                        //Verificar si es MARCACION VALIDA
+                        if (MigrationHistoryDAL.ValidRecord(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), TotalAddHours, Convert.ToInt32(Record["idUser"].ToString())))
                         {
-
-                            DateTime RecordOldTime = Convert.ToDateTime(RecordData.ToString());
-                            if (SinHoras == true)
+                            //VERIFICAR SI NO EXISTE UNA MARCACION CON LOS MISMO PARAMETROS
+                            if (MigrationHistoryDAL.IsExistRecord(Convert.ToInt32(Record["idUser"].ToString()), Convert.ToDateTime(Record["dateTimeRecord"].ToString())) == 0)
                             {
-                                if (AddHoursTo(RecordOldTime, TotalAddHours) < Convert.ToDateTime(Record["dateTimeRecord"].ToString()))
+                                TurnML TurnUser = TurnBLL.GetTurnUser(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), Convert.ToInt32(Record["idUser"].ToString()));
+                                String RecordData = MigrationHistoryDAL.RecordOld(Convert.ToInt32(Record["idUser"].ToString()));
+                                if (!String.IsNullOrEmpty(RecordData))
                                 {
+                                    DateTime RecordOldTime = Convert.ToDateTime(RecordData.ToString());
+
+                                    CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
+                                    CheckInHours.MachineNumber = 1;
+                                    CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
+                                    CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
+                                    CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
+                                    CheckInHours.Turn = (TurnUser != null) ? TurnUser.Name : "HRS EXTRA";
+                                    TimeSpan TotalDiffHours = TotalDiffTime(RecordOldTime, Convert.ToDateTime(Record["dateTimeRecord"].ToString()));
+                                    if (MaxAddHours > TotalDiffHours)
+                                    {
+                                        int Resul = MigrationHistoryDAL.NumRecordsUser(Convert.ToInt32(Record["idUser"].ToString())) % 2;
+                                        CheckInHours.TypeCheck = ( Resul == 0 )?"ENTRADA":"SALIDA";
+                                    }
+                                    else
+                                    {
+                                        CheckInHours.TypeCheck = "ENTRADA";
+                                    }
+                                }
+                                else
+                                {
+                                    if (TurnUser != null)
+                                    {
                                         CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
                                         CheckInHours.MachineNumber = 1;
                                         CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                         CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
-                                        CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["dateTimeRecord"].ToString());
+                                        CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
+                                        CheckInHours.Turn = TurnUser.Name;
+                                        CheckInHours.TypeCheck = "ENTRADA";
+                                    }
+                                    else
+                                    {
+                                        CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
+                                        CheckInHours.MachineNumber = 1;
+                                        CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
+                                        CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
+                                        CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
                                         CheckInHours.Turn = "HRS EXTRA";
-                                        CheckInHours.TypeCheck = "ENTRADA";                                    
+                                        CheckInHours.TypeCheck = "ENTRADA";
+                                    }
                                 }
-                               
+                                CheckInHoursBLL CheckInHoursBLL = new CheckInHoursBLL();
+                                CheckInHoursBLL.Save(CheckInHours);
                             }
+                        }       
 
-                        }
-                        else
-                        {
-
-                            //VERIFICAR TURNO
-                            TurnML TurnUser = TurnBLL.GetTurnUser(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), Convert.ToInt32(Record["idUser"].ToString()));
-                            if(TurnUser != null)
-                            {
-                                CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
-                                CheckInHours.MachineNumber = 1;
-                                CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
-                                CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
-                                CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["dateTimeRecord"].ToString());
-                                CheckInHours.Turn = TurnUser.Name;
-                                CheckInHours.TypeCheck = "ENTRADA";
-                            }
-                            else
-                            {
-
-                                CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
-                                CheckInHours.MachineNumber = 1;
-                                CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
-                                CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
-                                CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
-                                CheckInHours.Turn = "HRS EXTRA";
-                                CheckInHours.TypeCheck = "ENTRADA";
-                               
-                            }
-                            //nuevo registro del usuario
-                        }
-                        CheckInHoursBLL CheckInHoursBLL = new CheckInHoursBLL();
-                        CheckInHoursBLL.Save(CheckInHours);
                     }
 
                 }
@@ -156,17 +174,36 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.ListRecord: {1}", core, ex));
             }
         }
+        /// <summary>
+        /// Total diferencia en minutos
+        /// </summary>
+        /// <param name="DatetimeRecordOld"></param>
+        /// <param name="DateTimeRecord"></param>
+        public TimeSpan TotalDiffTime(DateTime DatetimeRecordOld, DateTime DateTimeRecord)
+        {
+            try
+            {
+                TimeSpan TimeDiff = DateTimeRecord - DatetimeRecordOld;
+                return TimeDiff;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.ListRecord: {1}", core, ex));
+            }
+        }
+        
 
         public DateTime AddHoursTo(DateTime RecordOld, TimeSpan TimeOutChec)
         {
             try
             {
                 DateTime TMP = RecordOld;
-                TMP.AddMilliseconds(TimeOutChec.TotalMilliseconds);
-                TMP.AddSeconds(TimeOutChec.TotalSeconds);
-                TMP.AddMinutes(TimeOutChec.TotalMinutes);
-                TMP.AddHours(TimeOutChec.TotalHours);
-
+                TMP = TMP.AddMilliseconds(TimeOutChec.TotalMilliseconds);
+                TMP = TMP.AddSeconds(TimeOutChec.TotalSeconds);
+                TMP = TMP.AddMinutes(TimeOutChec.TotalMinutes);
+                TMP = TMP.AddHours(TimeOutChec.TotalHours);
+                TimeSpan S = TimeSpan.Parse("45:00:00");
+                int F = 4 + 5;
                 return TMP;
             }
             catch (Exception ex)
@@ -175,17 +212,22 @@ namespace BussinesLayer
             }
         }
 
-        //public void FormatDateTime(DateTime DateTim)
-        //{
-        //    try
-        //    {
-                
-        //    }
-        //    catch(Exception ex)
-        //    {
-
-        //    }
-        //}
+        /// <summary>
+        /// Optener la ultima marcacion del empleado
+        /// </summary>
+        /// <param name="IdUser"></param>
+        /// <returns></returns>
+        public String RecordOld(int IdUser)
+        {
+            try
+            {
+                return MigrationHistoryDAL.RecordOld(IdUser);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex));
+            }
+        }
 
 
 

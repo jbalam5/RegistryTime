@@ -73,6 +73,7 @@
     <Compile Include="RoleBLL.cs" />
     <Compile Include="SharedFunctionsBLL.cs" />
     <Compile Include="StatusBookBLL.cs" />
+    <Compile Include="TimeOutCheckBLL.cs" />
     <Compile Include="TurnBLL.cs" />
     <Compile Include="TurnsOfEmployeeBLL.cs" />
     <Compile Include="UsersBLL.cs" />

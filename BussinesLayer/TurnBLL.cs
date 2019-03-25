@@ -80,25 +80,19 @@ namespace BussinesLayer
             }
         }
 
-        public DataTable TimeOutCheck(String Name)
+   
+     
+        /// <summary>
+        /// Obtiene numero de registros del empleado
+        /// </summary>
+        /// <param name="IdUser"></param>
+        public void CountRecorsdOld(int IdUser)
         {
             try
             {
-               return TurnDAL.TimeOutCheck(Name);
-            }
-            catch(Exception ex)
-            {
-                throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex));
-            }
-        }
 
-        public String RecordOld(int IdUser)
-        {
-            try
-            {
-               return TurnDAL.RecordOld(IdUser);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(String.Format("{0}.TimeOutCheck: {1}", core, ex));
             }

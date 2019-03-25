@@ -88,22 +88,38 @@ namespace DataLayer
             }
         }
 
-        
-        public void ValidRecord(DateTime DateTimeRecord, int IdUser)
+        /// <summary>
+        /// Verifica si registro es valido segun tiempo Checkin
+        /// </summary>
+        /// <param name="DateTimeRecord"></param>
+        /// <param name="IdUser"></param>
+        public Boolean ValidRecord(DateTime DateTimeRecord,TimeSpan TimeCheck, int IdUser)
         {
             try
             {
-                DataTable TimeOutCheckDT = TurnDAL.TimeOutCheck("checkin");
+                Boolean Valid = true;
                 //Validar si existe un valor anterior
-                if (!String.IsNullOrEmpty(TurnDAL.RecordOld(IdUser)))
+                DataTable DTRecord = DataTableOldRecord(IdUser);
+                DateTime DateTimeRecordOld;
+                if (DTRecord.Rows.Count > 0)
                 {
+                    DateTimeRecordOld = Convert.ToDateTime(DTRecord.Rows[0]["dateTimeRecord"].ToString());
+                    DateTimeRecordOld = DateTimeRecordOld.AddMilliseconds(TimeCheck.TotalMilliseconds);
+                    DateTimeRecordOld = DateTimeRecordOld.AddSeconds(TimeCheck.TotalSeconds);
+                    DateTimeRecordOld = DateTimeRecordOld.AddMinutes(TimeCheck.TotalMinutes);
+                    DateTimeRecordOld = DateTimeRecordOld.AddHours(TimeCheck.TotalHours);
 
+                    if(DateTimeRecordOld > DateTimeRecord)
+                    {
+                        Valid = false;
+                    }
                 }
 
+                return Valid;
             }
             catch (Exception ex)
             {
-
+                throw new Exception(String.Format("{0}.LastRecord: {1}", core, ex.Message));
             }
 
         }
@@ -129,6 +145,122 @@ namespace DataLayer
                 throw new Exception(String.Format("{0}.LastRecord: {1}", core, ex.Message));
             }
         }
+        /// <summary>
+        /// Verificar si existe una marcacion con los mismo parametros
+        /// </summary>
+        /// <param name="IdUser"></param>
+        /// <param name="DateTimeRecord"></param>
+        /// <returns></returns>
+        public int IsExistRecord(int IdUser, DateTime DateTimeRecord)
+        {
+            try
+            {
+                ModelDAL ModelDAL = new ModelDAL();
+                StringBuilder Query = new StringBuilder();
+                Query.AppendLine("SELECT COUNT(*) FROM checkInHours WHERE ");
+                Query.AppendLine("_registry = 1 ");
+                Query.AppendFormat("AND idEmployee = {0} ", IdUser);
+                Query.AppendFormat("AND dateTimeRecord = '{0}' ", DateTimeRecord.ToString("yyyy-MM-dd HH:mm:ss"));
 
+                return ModelDAL.CountRecord(Query.ToString(), ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.IsExistRecord: {1}", core, ex));
+            }
+        }
+
+        public int NumRecordsUser(int IdUser)
+        {
+            try
+            {
+                String Query = String.Format("SELECT COUNT(*) FROM checkInHours WHERE _registry = 1 and idEmployee = {0}", IdUser);
+                ModelDAL ModelDAL = new ModelDAL();
+                return ModelDAL.CountRecord(Query.ToString(), ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.NumRecordsUser: {1}", core, ex));
+            }
+        }
+
+
+        /// <summary>
+        /// Obtiene DateTimeRecord de la ultima Marcacion del empleado
+        /// </summary>
+        /// <param name="IdUser"></param>
+        /// <returns></returns>
+        public String RecordOld(int IdUser)
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("SELECT TOP 1 dateTimeRecord FROM checkInHours WHERE idEmployee = {0} ORDER BY id DESC", IdUser);
+                SqlConnection Connection = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+                Connection.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
+                DataTable DtTimeOutRecord = new DataTable();
+                cmd.Fill(DtTimeOutRecord);
+                Connection.Close();
+                if (DtTimeOutRecord.Rows.Count > 0)
+                {
+                    return DtTimeOutRecord.Rows[0]["dateTimeRecord"].ToString();
+                }
+                else
+                {
+                    return String.Empty;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.RecordOld: {1}", core, ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la ultima Marcacion del empleado
+        /// </summary>
+        /// <param name="IdUser"></param>
+        /// <returns></returns>
+        public DataTable DataTableOldRecord(int IdUser)
+        {
+            try
+            {
+                ModelDAL ModelDAL = new ModelDAL();
+                String Query = String.Format("SELECT TOP 1 dateTimeRecord FROM checkInHours WHERE idEmployee = {0} ORDER BY id DESC", IdUser);
+                return ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.DataTableOldRecord: {1}", core, ex.Message));
+            }
+        }
+
+
+        //public void ValidRecord(DateTime DateTimeRecord, int IdUser) {
+        //    try
+        //    {
+        //        DataTable TimeOutCheckDT = TimeOutCheck("checkin");
+        //        //Validar si existe un valor anterior
+        //        if(!String.IsNullOrEmpty(RecordOld(IdUser)))
+        //        {
+
+        //        }
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //    }
+
+        //}
+
+        
+
+        
     }
 }

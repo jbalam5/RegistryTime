@@ -66,6 +66,7 @@
     <Compile Include="ReportsDAL.cs" />
     <Compile Include="RoleDAL.cs" />
     <Compile Include="StatusBookDAL.cs" />
+    <Compile Include="TimeOutCheckDAL.cs" />
     <Compile Include="TurnDAL.cs" />
     <Compile Include="TurnsOfEmployeeDAL.cs" />
     <Compile Include="UsersDAL.cs" />
