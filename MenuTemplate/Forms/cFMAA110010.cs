@@ -236,8 +236,9 @@ namespace RegistryTime.Forms
 
                 var items = new[] {
                     new { Text = "Seleccione una opción", Value = "" },
-                    new { Text = "Aceptada", Value = "aceptada" },
-                    new { Text = "Rechazada", Value = "rechazada" }
+                    new { Text = "Aceptada", Value = "Aceptada" },
+                    new { Text = "Rechazada", Value = "Rechazada" },
+                    new { Text = "Terminada", Value = "Terminada" }
                 };
 
                 comboBoxEstadoAsig.DataSource = items;

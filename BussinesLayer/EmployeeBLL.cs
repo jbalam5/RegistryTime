@@ -75,6 +75,18 @@ namespace BussinesLayer
             }
         }
 
+        public EmployeeML GetColumnsEmployee(int IdEmployee)
+        {
+            try
+            {
+                return EmployeeDAL.GetColumnsEmployee(IdEmployee);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetSalary: {1}", core, ex));
+            }
+        }
+
         public int Save(EmployeeML employee)
         {
             try

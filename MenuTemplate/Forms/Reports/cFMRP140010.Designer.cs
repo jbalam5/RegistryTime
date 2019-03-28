@@ -1,6 +1,6 @@
 ﻿namespace RegistryTime.Forms.Reports
 {
-    partial class cFMRP120010
+    partial class cFMRP140010
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFMRP120010));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(cFMRP140010));
             this.TopPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
@@ -40,6 +40,8 @@
             this.loaderControl1 = new RegistryTime.CustomControls.LoaderControl();
             this.dataGridViewReporteGeneral = new System.Windows.Forms.DataGridView();
             this.ChildLeftPanel = new System.Windows.Forms.Panel();
+            this.comboBoxTurno = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.comboBoxEmpleado = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -73,6 +75,7 @@
             this.TopPanel.Name = "TopPanel";
             this.TopPanel.Size = new System.Drawing.Size(844, 37);
             this.TopPanel.TabIndex = 0;
+            this.TopPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.TopPanel_Paint);
             // 
             // label1
             // 
@@ -168,12 +171,13 @@
             this.dataGridViewReporteGeneral.Name = "dataGridViewReporteGeneral";
             this.dataGridViewReporteGeneral.Size = new System.Drawing.Size(533, 435);
             this.dataGridViewReporteGeneral.TabIndex = 14;
-            this.dataGridViewReporteGeneral.SizeChanged += new System.EventHandler(this.dataGridViewReporteGeneral_SizeChanged);
             // 
             // ChildLeftPanel
             // 
             this.ChildLeftPanel.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ChildLeftPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChildLeftPanel.Controls.Add(this.comboBoxTurno);
+            this.ChildLeftPanel.Controls.Add(this.label6);
             this.ChildLeftPanel.Controls.Add(this.buttonBuscar);
             this.ChildLeftPanel.Controls.Add(this.comboBoxEmpleado);
             this.ChildLeftPanel.Controls.Add(this.label5);
@@ -189,6 +193,25 @@
             this.ChildLeftPanel.Size = new System.Drawing.Size(299, 447);
             this.ChildLeftPanel.TabIndex = 1;
             // 
+            // comboBoxTurno
+            // 
+            this.comboBoxTurno.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxTurno.FormattingEnabled = true;
+            this.comboBoxTurno.Location = new System.Drawing.Point(8, 150);
+            this.comboBoxTurno.Name = "comboBoxTurno";
+            this.comboBoxTurno.Size = new System.Drawing.Size(285, 28);
+            this.comboBoxTurno.TabIndex = 11;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(4, 127);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(50, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Turno";
+            // 
             // buttonBuscar
             // 
             this.buttonBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
@@ -196,7 +219,7 @@
             this.buttonBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonBuscar.ForeColor = System.Drawing.Color.White;
-            this.buttonBuscar.Location = new System.Drawing.Point(5, 261);
+            this.buttonBuscar.Location = new System.Drawing.Point(6, 314);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(287, 40);
             this.buttonBuscar.TabIndex = 9;
@@ -208,7 +231,7 @@
             // 
             this.comboBoxEmpleado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxEmpleado.FormattingEnabled = true;
-            this.comboBoxEmpleado.Location = new System.Drawing.Point(5, 213);
+            this.comboBoxEmpleado.Location = new System.Drawing.Point(6, 266);
             this.comboBoxEmpleado.Name = "comboBoxEmpleado";
             this.comboBoxEmpleado.Size = new System.Drawing.Size(285, 28);
             this.comboBoxEmpleado.TabIndex = 7;
@@ -217,7 +240,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1, 190);
+            this.label5.Location = new System.Drawing.Point(2, 243);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(81, 20);
             this.label5.TabIndex = 6;
@@ -227,7 +250,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1, 132);
+            this.label4.Location = new System.Drawing.Point(2, 185);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 5;
@@ -263,7 +286,7 @@
             // 
             this.comboBoxDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxDepartamento.FormattingEnabled = true;
-            this.comboBoxDepartamento.Location = new System.Drawing.Point(7, 155);
+            this.comboBoxDepartamento.Location = new System.Drawing.Point(8, 208);
             this.comboBoxDepartamento.Name = "comboBoxDepartamento";
             this.comboBoxDepartamento.Size = new System.Drawing.Size(285, 28);
             this.comboBoxDepartamento.TabIndex = 1;
@@ -305,14 +328,14 @@
             this.CloseFilterButton.UseVisualStyleBackColor = false;
             this.CloseFilterButton.Click += new System.EventHandler(this.CloseFilterButton_Click);
             // 
-            // cFMRP120010
+            // cFMRP140010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(846, 540);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "cFMRP120010";
+            this.Name = "cFMRP140010";
             this.Text = "cFMRP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.cFMRP100010_Load);
@@ -356,6 +379,8 @@
         private System.Windows.Forms.DataGridView dataGridViewReporteGeneral;
         private System.Windows.Forms.Panel ParentPanel;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.ComboBox comboBoxTurno;
+        private System.Windows.Forms.Label label6;
         private System.ComponentModel.BackgroundWorker QueryBackgroundWorker;
         private CustomControls.LoaderControl loaderControl1;
     }

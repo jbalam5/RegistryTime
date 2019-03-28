@@ -123,6 +123,33 @@ namespace DataLayer
             }
         }
 
+        public EmployeeML GetColumnsEmployee(int IdEmployee)
+        {
+            try
+            {
+                String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, IdEmployee);
+                SqlConnection Conexion = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtEmplotment = new DataTable();
+                cmd.Fill(dtEmplotment);
+                Conexion.Close();
+
+                if (dtEmplotment != null && dtEmplotment.Rows.Count > 0)
+                {
+                    return GetEntity(dtEmplotment.Rows[0]);
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.GetColumnsEmployee : {1}", core, ex));
+            }
+        }
+
         public EmployeeML GetEntity(DataRow row)
         {
             try

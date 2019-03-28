@@ -13,31 +13,40 @@ namespace DataLayer
     {
         public String ConnectionString = String.Empty;
 
-        public DataTable ReportAbsenteeism(int IdDepartamnet, int IdTurn, int IdEmployee)
+        public DataTable ReportAbsenteeism(DateTime DateStart, DateTime DateEnd, int IdDepartamnet = 0, int IdEmployee = 0)
         {
             try
             {
                 StringBuilder Query = new StringBuilder();
                 AbsenteeismAssignmentDAL AbsenteeismAssignmentDAL = new AbsenteeismAssignmentDAL();
                 EmployeeDAL EmployeeDAL = new EmployeeDAL();
+                DepartamentDAL DepartamentDAL = new DepartamentDAL();
                 AbsenteeismDAL AbsenteeismDAL = new AbsenteeismDAL();
 
                 Query.AppendLine("SELECT ");
                 Query.AppendFormat("AA.{0} AS NUMCONTROL, ", AbsenteeismAssignmentML.DataBase.controlNumber);
                 Query.AppendFormat("EMP.{0} + ' ' + EMP.{1} EMPLEADO, ", EmployeeML.DataBase.Name, EmployeeML.DataBase.Lastname);
-                Query.AppendFormat("DATEDIFF(day, convert(date, AA.{0}), DATEADD(dd, 1, convert(date, AA.{1}))) DIAS, ", AbsenteeismAssignmentML.DataBase.DateStar, AbsenteeismAssignmentML.DataBase.DateEnd);
+                Query.AppendFormat("departament.{0} AS DEPARTAMENTO, ", DepartamentML.DataBase.Name);                
                 Query.AppendFormat("ABS.{0} AS CONCEPTO, ", AbsenteeismML.DataBase.Concept);
+                Query.AppendFormat("AA.{0} AS ESTADO, ", AbsenteeismAssignmentML.DataBase.Status);
+                Query.AppendFormat("DATEDIFF(day, convert(date, AA.{0}), DATEADD(dd, 1, convert(date, AA.{1}))) TOTALDIAS, ", AbsenteeismAssignmentML.DataBase.DateStar, AbsenteeismAssignmentML.DataBase.DateEnd);
                 Query.AppendFormat("CONCAT('del ', Convert(DATE, AA.{0}), ' al ', CONVERT(DATE, AA.{1})) AS FECHAS ", AbsenteeismAssignmentML.DataBase.DateStar, AbsenteeismAssignmentML.DataBase.DateEnd);
                 Query.AppendFormat("FROM {0} AA ", AbsenteeismAssignmentDAL.TableName);
-                Query.AppendFormat("LEFT OUTER JOIN {0} AS EMP ON EMP.id = AA.controlNumber ", EmployeeDAL.TableName);
-                Query.AppendFormat("LEFT OUTER JOIN {0} AS ABS ON ABS.isKey = AA.KeyAbsenteeism ", AbsenteeismDAL.TableName);
-
-                if(IdDepartamnet >0 || IdTurn > 0 || IdEmployee > 0)
-                    Query.AppendLine(" WHERE ");
+                Query.AppendFormat("LEFT OUTER JOIN {0} AS EMP ON EMP.id = AA.controlNumber AND EMP._Registry = 1 ", EmployeeDAL.TableName);
+                Query.AppendFormat("LEFT OUTER JOIN {0} ON departament.id = EMP.idDepartament AND departament._Registry = 1 ", DepartamentDAL.TableName);
+                Query.AppendFormat("LEFT OUTER JOIN {0} AS ABS ON ABS.isKey = AA.KeyAbsenteeism AND ABS._Registry = 1 ", AbsenteeismDAL.TableName);
+                Query.AppendLine(" WHERE ");
+                Query.AppendFormat("AA.dateInsert BETWEEN '{0}' and '{1}' ", DateStart.ToString("yyyy-MM-dd"), DateEnd.ToString("yyyy-MM-dd"));
+                Query.AppendLine("AND AA._registry = 1 ");
+                //Query.AppendLine("AND AA.Status = 'Aceptada' ");
 
                 if (IdDepartamnet > 0)
                 {
-                    Query.AppendFormat("EMP.{0} = {1}", EmployeeML.DataBase.IdDepartament, IdDepartamnet);
+                    Query.AppendFormat(" AND EMP.{0} = {1}", EmployeeML.DataBase.IdDepartament, IdDepartamnet);
+                }
+                if (IdEmployee > 0)
+                {
+                    Query.AppendFormat(" AND EMP.{0} = {1}", EmployeeML.DataBase.Id, IdEmployee);
                 }
 
                 SqlConnection Connection = new SqlConnection()
@@ -61,36 +70,43 @@ namespace DataLayer
                 throw new Exception(String.Format("ReportAbsenteeism: {0}", ex.Message));
             }
         }
-        public DataTable ReportExtras(DateTime DateStart, DateTime DateEnd)
+        public DataTable ReportExtras(DateTime DateStart, DateTime DateEnd, int IdTurn = 0, int IdDepartament = 0, int IdEmployee = 0)
         {
             try
             {
                 StringBuilder Query = new StringBuilder();
 
                 Query.AppendLine("SELECT ");
-                Query.AppendFormat("Tab1.id, ");
-                Query.AppendFormat("departament.name DEPARTAMENTO, ");
+                //Query.AppendFormat("Tab1.id, ");
                 Query.AppendFormat("employee.id CVE, ");
                 Query.AppendFormat("employee.name EMPLEADO, ");
+                Query.AppendFormat("departament.name DEPARTAMENTO, ");               
                 Query.AppendFormat("turn TURNO, ");
                 Query.AppendFormat("DateOnlyRecord FECHA, ");
-                Query.AppendFormat("dateTimeRecord  AS ENTRADA, ");
+                Query.AppendFormat("ISNULL(dateTimeRecord, '00:00:00')  AS ENTRADA, ");
                 Query.AppendFormat("ISNULL(( SELECT ");
                 Query.AppendFormat("dateTimeRecord ");
                 Query.AppendFormat("FROM checkInHours ");
                 Query.AppendFormat("WHERE ");
                 Query.AppendFormat("dateOnlyRecord BETWEEN '{0}' and '{1}' ", DateStart.ToString("yyyy-MM-dd HH:mm:ss"), DateEnd.ToString("yyyy-MM-dd HH:mm:ss"));
-                Query.AppendFormat("AND idEmployee = Tab1.idEmployee ");
-                Query.AppendFormat("AND turn = Tab1.turn ");
+                Query.AppendFormat("AND checkInHours.idEmployee = Tab1.idEmployee ");
+                Query.AppendFormat("AND ISNULL(checkInHours.idturn,0) = ISNULL(Tab1.idTurn,0) ");
                 Query.AppendFormat("AND typeCheck = 'SALIDA' ");
                 Query.AppendFormat("), '00:00:00') as SALIDA " );
                 Query.AppendFormat("INTO #TMPSALIDA ");
                 Query.AppendFormat("FROM checkInHours AS Tab1 ");
-                Query.AppendFormat("LEFT OUTER JOIN employee ON employee.id = Tab1.idEmployee ");
-                Query.AppendFormat("LEFT OUTER JOIN departament ON departament.id = employee.idDepartament ");
-                Query.AppendFormat("WHERE employee.id > 0 ");
+                Query.AppendFormat("LEFT OUTER JOIN employee ON employee.id = Tab1.idEmployee AND employee._Registry = 1 ");
+                Query.AppendFormat("LEFT OUTER JOIN departament ON departament.id = employee.idDepartament AND departament._Registry = 1 ");
+                Query.AppendFormat("LEFT OUTER JOIN turn TURNO ON TURNO.ID  = Tab1.idturn  AND TURNO._Registry = 1 ");
+                Query.AppendFormat("WHERE Tab1._Registry = 1 ");
                 Query.AppendFormat("AND Tab1.typeCheck = 'ENTRADA' ");
-                Query.AppendFormat("ORDER BY idDepartament, idEmployee ");
+                if (IdTurn > 0)
+                    Query.AppendFormat("AND Tab1.idTurn = {0} ", IdTurn);
+                if (IdDepartament > 0)
+                    Query.AppendFormat("AND departament.id = {0} ", IdDepartament);
+                if (IdEmployee > 0)
+                    Query.AppendFormat("AND employee.id= {0} ", IdEmployee);          
+                Query.AppendFormat("ORDER BY employee.id ");
                 Query.AppendFormat("SELECT * FROM #TMPSALIDA ");
                 Query.AppendFormat("DROP TABLE #TMPSALIDA ");
                 
