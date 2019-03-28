@@ -4,13 +4,73 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace DataLayer
 {
     public class ModelDAL
     {
+        /// <summary>
+        /// Obtiene una lista de Registros
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ConnectionString"></param>
+        /// <returns></returns>
+        public DataTable DataTableRecord(String Query, String ConnectionString)
+        {
+            try
+            {
+                SqlConnection Connection = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Connection.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Connection);
+                DataTable ListRecord = new DataTable();
+                cmd.Fill(ListRecord);
+                Connection.Close();
+                return ListRecord;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("DataTableRecord: {0}", ex.Message));
+            }
+        }
 
-        
+
+        /// <summary>
+        /// Obtiene el numero de registro
+        /// </summary>
+        /// <param name="Query"></param>
+        /// <param name="ConnectionString"></param>
+        /// <returns></returns>
+        public int CountRecord(String Query, String ConnectionString)
+        {
+            try
+            {
+                int Count = 0;
+                SqlConnection Connection = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                
+                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Connection))
+                {
+                    Connection.Open();
+                    Count = (int)cmd2.ExecuteScalar();
+
+                    if (Connection.State == System.Data.ConnectionState.Open) Connection.Close();
+                    return Count;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("CountRecord: {0}", ex.Message));
+            }
+        }
+
+
         public String InsertModel(Object ObjectModel, String TableName, int IdUserSession)
         {
             StringBuilder Query = new StringBuilder();

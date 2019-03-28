@@ -52,19 +52,15 @@ namespace RegistryTime.ArgumentSystem
                                 //Application.Run(new Forms.Migrate.cFMCG100010()); Se comenta para subir cambios favor de revisar
                                 break;
                             case "CHECK":
-                                //DateTime Horaini = DateTime.Now;
-
-
-                                if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
-                                    ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
-                                ////Application.Run(new Forms.TestCheck());
-
-
-                                //DateTime HoraiF = DateTime.Now;
-                                //MessageBox.Show((HoraiF - Horaini).ToString());
-
-                                //Migrate2
-
+                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
+                                {
+                                    ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
+                                }
+                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
+                                {
+                                    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                }                  
                                 break;
                             case "FCRP":
                                 Application.Run(new Forms.Reports.cFMRP100010());
@@ -73,17 +69,28 @@ namespace RegistryTime.ArgumentSystem
                                 Application.Run(new Forms.Reports.cFMRP140010());
                                 break;
                             case "MIGRATE":
-                                if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                //if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                //{
+                                //    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                //    Application.Run(frm);
+                                //}
+                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
                                 {
-                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
-                                    Application.Run(frm);
+                                    //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
+                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToInt32(ArgumentsList[3]), Convert.ToInt32(ArgumentsList[4]),Convert.ToDateTime(ArgumentsList[5]), Convert.ToDateTime(ArgumentsList[6]));
+                                     Application.Run(frm);
+                                }
+                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
+                                {
+                                    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                                        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
                                 }
                                 break;
                             case "TEST":
                                 Application.Run(new cMRT1000101());
                                 break;
                             default:
-                                MessageBox.Show("Errror");
+                                MessageBox.Show("Error");
                                 break;
                         }
                     }
@@ -99,6 +106,12 @@ namespace RegistryTime.ArgumentSystem
             }
         }
 
+        public void ProcessMigrate(int dividendo)
+        {
+            CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
+            CheckInoursBLL.Migrate2(dividendo);
+        }
+
         public void ProcessMigrate(DateTime Inicio , DateTime Fin,int dividendo)
         {
             try
@@ -109,7 +122,7 @@ namespace RegistryTime.ArgumentSystem
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("Arguments->ProcessMigrate: {0}", ex.Message),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("ProcessMigrate: {0}", ex.Message),"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

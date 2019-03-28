@@ -290,7 +290,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                cFAT100010 alr = new Alerts.cFAT100010("ERROR", string.Format("{0}", ex), MessageBoxIcon.Error);
+                cFAT100010 alr = new Alerts.cFAT100010("Informacón", string.Format("{0}", ex.Message), MessageBoxIcon.Error);
                 alr.ShowDialog();
                 return false;
             }

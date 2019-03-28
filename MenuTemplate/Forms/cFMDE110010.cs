@@ -102,7 +102,7 @@ namespace RegistryTime.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("buttonGuardar_Click: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

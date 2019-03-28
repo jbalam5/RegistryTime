@@ -15,7 +15,7 @@ namespace BussinesLayer
         public CheckInHoursDAL CheckInHoursDAL = new CheckInHoursDAL();
         public ConnectionBLL conexion = new ConnectionBLL();
         
-        public String core = "BussinesLayer.CheckInoursBLL";
+        public String core = "BussinesLayer.CheckInhHoursBLL";
 
         public CheckInHoursBLL()
         {
@@ -88,7 +88,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
+                throw new Exception(String.Format("{0}.DateReports: {1}", core, ex.Message));
             }
         }
 
@@ -100,7 +100,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
+                throw new Exception(String.Format("{0}.Migrate: {1}", core, ex.Message));
             }
         }
 
@@ -120,7 +120,7 @@ namespace BussinesLayer
             }
             catch (Exception ex)
             {
-                throw new Exception(String.Format("{0}.Delete: {1}", core, ex.Message));
+                throw new Exception(String.Format("{0}.Migrate2: {1}", core, ex.Message));
             }
         }
     }

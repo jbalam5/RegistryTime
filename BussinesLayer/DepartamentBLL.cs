@@ -33,7 +33,7 @@ namespace BussinesLayer
                 if(Table == "All")
                     return DepartamentDAL.AllTable();
                 else
-                    return DepartamentDAL.AllTable();
+                    return DepartamentDAL.All();
 
             }
             catch (Exception ex)
