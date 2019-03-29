@@ -124,7 +124,7 @@ namespace BussinesLayer
                                     CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                     CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
                                     CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
-                                    CheckInHours.Turn = (TurnUser != null) ? TurnUser.Name : "HRS EXTRA";
+                                    CheckInHours.IdTurn = (TurnUser != null) ? TurnUser.Id : 0;
                                     TimeSpan TotalDiffHours = TotalDiffTime(RecordOldTime, Convert.ToDateTime(Record["dateTimeRecord"].ToString()));
                                     if (MaxAddHours > TotalDiffHours)
                                     {
