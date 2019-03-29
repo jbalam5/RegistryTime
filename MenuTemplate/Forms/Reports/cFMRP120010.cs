@@ -18,7 +18,7 @@ namespace RegistryTime.Forms.Reports
         public cFMRP120010()
         {
             InitializeComponent();
-            LoadTurn();
+            //LoadTurn();
             LoadDepartament();
             LoadEmployee();
 
@@ -81,7 +81,7 @@ namespace RegistryTime.Forms.Reports
 
            
             //CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
-            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportAbsenteeism(Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
+            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportAbsenteeism(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -99,29 +99,29 @@ namespace RegistryTime.Forms.Reports
         #endregion
 
         #region "FUNCTIONS"
-        public void LoadTurn()
-        {
-            try
-            {
-                TurnBLL TurnBLL = new TurnBLL();
-                DataTable Turnos;
-                Turnos = TurnBLL.All();
-                comboBoxTurno.DisplayMember = "Text";
-                comboBoxTurno.ValueMember = "Value";
+        //public void LoadTurn()
+        //{
+        //    try
+        //    {
+        //        TurnBLL TurnBLL = new TurnBLL();
+        //        DataTable Turnos;
+        //        Turnos = TurnBLL.All();
+        //        comboBoxTurno.DisplayMember = "Text";
+        //        comboBoxTurno.ValueMember = "Value";
 
-                List<Object> items = new List<object>();
-                items.Add(new { Text = "Todos", Value = "0" });
-                foreach (DataRow Turno in Turnos.Rows)
-                {
-                    items.Add(new { Text = Turno[1].ToString(), Value = Turno[0].ToString() });
-                }
-                comboBoxTurno.DataSource = items;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format("LoadTurn: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        List<Object> items = new List<object>();
+        //        items.Add(new { Text = "Todos", Value = "0" });
+        //        foreach (DataRow Turno in Turnos.Rows)
+        //        {
+        //            items.Add(new { Text = Turno[1].ToString(), Value = Turno[0].ToString() });
+        //        }
+        //        comboBoxTurno.DataSource = items;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(String.Format("LoadTurn: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         public void LoadDepartament()
         {

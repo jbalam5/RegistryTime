@@ -18,6 +18,7 @@ namespace RegistryTime
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
+        Boolean Visible = false;
 
         private CompanyBLL companyBLL;
         #endregion
@@ -39,6 +40,9 @@ namespace RegistryTime
                 getLogin();
                 getCompany();
                 DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString().ToUpper();
+                //ReportsButton_Click
+                //panelSubMenu.Visible = !Visible;
+
             }
             catch (Exception ex)
             {
@@ -188,7 +192,9 @@ namespace RegistryTime
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP100010());
+            //OpenFormChild(new RegistryTime.Forms.Reports.cFMRP100010());
+            panelSubMenu.Visible = !Visible;
+            Visible = !Visible;
         }
 
         //protected override void OnSizeChanged(EventArgs e)
@@ -269,7 +275,33 @@ namespace RegistryTime
 
         private void button3_Click(object sender, EventArgs e)
         {
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP120010());
+            panelSubMenu.Visible = !Visible;
 
+            Visible = !Visible;
+        }
+
+        private void buttonReporteHrsExtras_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP130010());
+            panelSubMenu.Visible = !Visible;
+
+            Visible = !Visible;
+        }
+
+        private void buttonReporteHrsJornadas_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP140010());
+            panelSubMenu.Visible = !Visible;
+
+            Visible = !Visible;
+        }
+
+        private void panelSubMenu_ChangeUICues(object sender, UICuesEventArgs e)
+        {
+            panelSubMenu.Visible = !Visible;
+
+            Visible = !Visible;
         }
 
         private void SetTimer()

@@ -809,9 +809,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(368, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 18);
+            this.label4.Size = new System.Drawing.Size(117, 18);
             this.label4.TabIndex = 36;
-            this.label4.Text = "Sueldo por Día";
+            this.label4.Text = "Sueldo por Hora";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSueldo

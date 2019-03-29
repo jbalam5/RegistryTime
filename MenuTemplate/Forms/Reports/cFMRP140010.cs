@@ -12,10 +12,10 @@ using ModelLayer;
 
 namespace RegistryTime.Forms.Reports
 {
-    public partial class cFMRP130010 : Form
+    public partial class cFMRP140010 : Form
     {
         #region "EVENTS"
-        public cFMRP130010()
+        public cFMRP140010()
         {
             InitializeComponent();
             LoadTurn();
@@ -61,39 +61,37 @@ namespace RegistryTime.Forms.Reports
         {
             ChildLeftPanel.Visible = false;
             QueryBackgroundWorker.RunWorkerAsync();
-
         }
 
         public void Prueba()
         {
-            ////DateTime fechaInicial = DateTime.Now;
+            DateTime fechaInicial = DateTime.Now;
             DataTable tableSumByCount = new DataTable();
             int frecuencia = 7; //int.Parse(Session["FCDFrecuencia"].ToString()); // 7 días
             int periodo = 10; // int.Parse(Session["FCDPeriodo"].ToString()); // Periodo es de 10
             int frecuenciaIncremetado = frecuencia;
             DataColumn[] column = new DataColumn[periodo];
 
+            for (int i = 0; i < periodo; i++)
+            {
+                frecuenciaIncremetado += frecuencia;
+                String columnName = fechaInicial.AddDays(frecuenciaIncremetado - 1).ToShortDateString();
+                Type columnType = Type.GetType("System.Decimal");
+                tableSumByCount.Columns.Add(new DataColumn(columnName, columnType));
 
-            //for (int i = 0; i < periodo; i++)
-            //{
-            //    frecuenciaIncremetado += frecuencia;
-            //    String columnName = fechaInicial.AddDays(frecuenciaIncremetado - 1).ToShortDateString();
-            //    Type columnType = Type.GetType("System.Decimal");
-            //    tableSumByCount.Columns.Add(new DataColumn(columnName, columnType));
+                //for( int e = 0; e < 10; e++)
+                //{
+                DataRow fila = tableSumByCount.NewRow();
+                fila[columnName] = i;
+                tableSumByCount.Rows.InsertAt(fila, i);
+                //}
 
-            //    //for( int e = 0; e < 10; e++)
-            //    //{
-            //        DataRow fila = tableSumByCount.NewRow();
-            //        fila[columnName] = i;
-            //        tableSumByCount.Rows.InsertAt(fila, i);
-            //    //}
+            }
 
-            //}
-            
             dataGridViewReporteGeneral.DataSource = tableSumByCount;
         }
 
-            private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             this.Invoke(new Action(() =>
             {
@@ -107,7 +105,7 @@ namespace RegistryTime.Forms.Reports
             //System.Threading.Thread.Sleep(3000);
             ReportsBLL ReportsBLL = new ReportsBLL();
 
-            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportExtrasHours(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()), Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
+            this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportHoursJob(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()), Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)

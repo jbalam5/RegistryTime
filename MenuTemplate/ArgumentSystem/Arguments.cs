@@ -66,7 +66,7 @@ namespace RegistryTime.ArgumentSystem
                                 Application.Run(new Forms.Reports.cFMRP100010());
                                 break;
                             case "RP12":
-                                Application.Run(new Forms.Reports.cFMRP130010());
+                                Application.Run(new Forms.Reports.cFMRP140010());
                                 break;
                             case "MIGRATE":
                                 //if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))

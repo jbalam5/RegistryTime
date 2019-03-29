@@ -31,7 +31,7 @@ namespace RegistryTime.Forms
 
                 IdTurn = Convert.ToInt32(Turn.Id.ToString());
                 textBoxTurno.Text = Turn.Name.ToString();
-                textBoxDescripcion.Text = Turn.Name.ToString();
+                textBoxDescripcion.Text = Turn.Description.ToString();
                 dateTimeHoraEntrada.Text = Turn.TimeEntry.ToString();
                 dateTimeIniciaEntrada.Text = Turn.StartEntry.ToString();
                 dateTimeLimiteEntrada.Text = Turn.LimitEntry.ToString();
