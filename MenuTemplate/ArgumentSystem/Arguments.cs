@@ -49,7 +49,7 @@ namespace RegistryTime.ArgumentSystem
                                 Application.Run(new cMRT1000101());
                                 break;
                             case "FCGL":
-                                //Application.Run(new Forms.Migrate.cFMCG100010()); Se comenta para subir cambios favor de revisar
+                                Application.Run(new Forms.Migrate.cFMCG100010());
                                 break;
                             case "CHECK":
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
@@ -60,7 +60,7 @@ namespace RegistryTime.ArgumentSystem
                                 {
                                     if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
                                         ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
-                                }                  
+                                }
                                 break;
                             case "FCRP":
                                 Application.Run(new Forms.Reports.cFMRP100010());
@@ -77,8 +77,8 @@ namespace RegistryTime.ArgumentSystem
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
                                 {
                                     //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
-                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToInt32(ArgumentsList[3]), Convert.ToInt32(ArgumentsList[4]),Convert.ToDateTime(ArgumentsList[5]), Convert.ToDateTime(ArgumentsList[6]));
-                                     Application.Run(frm);
+                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToInt32(ArgumentsList[3]), Convert.ToInt32(ArgumentsList[4]), Convert.ToDateTime(ArgumentsList[5]), Convert.ToDateTime(ArgumentsList[6]));
+                                    Application.Run(frm);
                                 }
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
                                 {
@@ -94,12 +94,13 @@ namespace RegistryTime.ArgumentSystem
                                 break;
                         }
                     }
-                    else
-                    {
-                        Alerts.cFAT100010 Alert = new Alerts.cFAT100010("Error", "El USUARIO O CONTRASEÑA SON INCORRECTOS", MessageBoxIcon.Error);
-                        Alert.ShowDialog();
-                    }
                 }
+                else
+                {
+                    Alerts.cFAT100010 Alert = new Alerts.cFAT100010("Error", "El USUARIO O CONTRASEÑA SON INCORRECTOS", MessageBoxIcon.Error);
+                    Alert.ShowDialog();
+                }
+                
             }catch(Exception ex)
             {
                 throw new Exception(String.Format("{0}.Verification: {1}", core, ex.Message));
@@ -148,25 +149,24 @@ namespace RegistryTime.ArgumentSystem
         {
             try
             {
-                return true;
 
-                //LicenseBLL licenseBLL = new LicenseBLL();
-                //int idLicense = licenseBLL.hasLicense();
-                //if ( idLicense > 0)
-                //{
-                //    if (licenseBLL.isExpires(idLicense))
-                //    {
-                //        MessageBox.Show("La licencia ha expirado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //        return false;
-                //    }
+                LicenseBLL licenseBLL = new LicenseBLL();
+                int idLicense = licenseBLL.hasLicense();
+                if ( idLicense > 0)
+                {
+                    if (licenseBLL.isExpires(idLicense))
+                    {
+                        MessageBox.Show("La licencia ha expirado", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
 
-                //    return true;
-                //}
+                    return true;
+                }
 
-                //Applications app = new Applications();
-                //app.execute("Connection.exe", "EXLIC");
+                Applications app = new Applications();
+                app.execute("Connection.exe", "EXLIC");
 
-                //return false;
+                return false;
             }
             catch(Exception ex)
             {
