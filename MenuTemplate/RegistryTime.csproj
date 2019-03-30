@@ -426,7 +426,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="RegistryTime_TemporaryKey.pfx" />
     <None Include="Resources\minimizar32.png" />
   </ItemGroup>
   <ItemGroup>
