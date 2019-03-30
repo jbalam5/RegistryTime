@@ -145,7 +145,7 @@ namespace BussinesLayer
                                         CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                         CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
                                         CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
-                                        CheckInHours.Turn = TurnUser.Name;
+                                        CheckInHours.IdTurn = TurnUser.Id;
                                         CheckInHours.TypeCheck = "ENTRADA";
                                     }
                                     else
@@ -155,7 +155,7 @@ namespace BussinesLayer
                                         CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                         CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
                                         CheckInHours.TimeOnlyRecord = TimeSpan.Parse(Record["timeOnlyRecord"].ToString());
-                                        CheckInHours.Turn = "HRS EXTRA";
+                                        CheckInHours.IdTurn = 0;
                                         CheckInHours.TypeCheck = "ENTRADA";
                                     }
                                 }
