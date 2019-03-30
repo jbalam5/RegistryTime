@@ -340,10 +340,6 @@ namespace RegistryTime
 
                                 LogoPictureBox.BackgroundImage = new Bitmap(PathFileName);
                             }
-                            else
-                            {
-                                throw new Exception("No se encontró la imagen");
-                            }
                         }
                     }
                     else

@@ -34,6 +34,9 @@
     <Reference Include="BiometricCore">
       <HintPath>..\BiometricCore\bin\Debug\BiometricCore.dll</HintPath>
     </Reference>
+    <Reference Include="ModelLayer">
+      <HintPath>..\ModelLayer\bin\Debug\ModelLayer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -71,12 +74,6 @@
     <Compile Include="TurnsOfEmployeeDAL.cs" />
     <Compile Include="UsersDAL.cs" />
     <Compile Include="ZKTecoHourAssistanceDAL.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ModelLayer\ModelLayer.csproj">
-      <Project>{685a462a-723f-4b66-be27-bf5ce9ad7177}</Project>
-      <Name>ModelLayer</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,7 +15,7 @@ namespace ModelLayer
             public const string DateTimeRecord = "dateTimeRecord";
             public const string DateOnlyRecord = "dateOnlyRecord";
             public const string TimeOnlyRecord = "timeOnlyRecord";
-            public const string Turn = "turn";
+            public const string IdTurn = "idTurn";
             public const string TypeCheck = "typeCheck";
 
         }
@@ -26,7 +26,7 @@ namespace ModelLayer
         public DateTime DateTimeRecord { get; set; }
         public DateTime DateOnlyRecord { get; set; }
         public TimeSpan TimeOnlyRecord { get; set; }
-        public String Turn { get; set; }
+        public int IdTurn { get; set; }
         public String TypeCheck { get; set; }
 
 

@@ -39,9 +39,17 @@ namespace RegistryTime.Forms
 
         private void cFRT150010_Load(object sender, EventArgs e)
         {
-            BussinesLayer.GlobalBLL.userML = null;
-            DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
-            UserNameTextBox.Focus();
+            ArgumentSystem.Arguments arg = new ArgumentSystem.Arguments();
+            if (arg.ValidLicense())
+            {
+                BussinesLayer.GlobalBLL.userML = null;
+                DatetoolStripStatusLabel.Text = DateTime.Now.ToLongDateString();
+                UserNameTextBox.Focus();
+            }
+            else
+            {
+                Application.Exit();
+            }
         }
 
         private void Minimizebutton_Click(object sender, EventArgs e)
