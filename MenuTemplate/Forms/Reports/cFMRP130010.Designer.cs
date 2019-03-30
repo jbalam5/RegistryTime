@@ -54,6 +54,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.CloseFilterButton = new System.Windows.Forms.Button();
             this.QueryBackgroundWorker = new System.ComponentModel.BackgroundWorker();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.TopPanel.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -304,6 +305,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.exportExcelControl1);
             this.panel1.Controls.Add(this.CloseFilterButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -328,6 +330,17 @@
             this.CloseFilterButton.UseVisualStyleBackColor = false;
             this.CloseFilterButton.Click += new System.EventHandler(this.CloseFilterButton_Click);
             // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(141, 6);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(13, 12, 13, 12);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(105, 42);
+            this.exportExcelControl1.TabIndex = 14;
+            this.exportExcelControl1.Title = null;
+            // 
             // cFMRP130010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,7 +351,7 @@
             this.Name = "cFMRP130010";
             this.Text = "cFMRP";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.cFMRP100010_Load);
+            this.Load += new System.EventHandler(this.cFMRP130010_Load);
             this.TopPanel.ResumeLayout(false);
             this.TopPanel.PerformLayout();
             this.PrincipalPanel.ResumeLayout(false);
@@ -383,5 +396,6 @@
         private System.Windows.Forms.Label label6;
         private System.ComponentModel.BackgroundWorker QueryBackgroundWorker;
         private CustomControls.LoaderControl loaderControl1;
+        private CustomControls.ExportExcelControl exportExcelControl1;
     }
 }

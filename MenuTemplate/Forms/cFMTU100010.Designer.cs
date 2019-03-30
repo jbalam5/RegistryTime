@@ -32,11 +32,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.dataGridViewData = new System.Windows.Forms.DataGridView();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
-            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
@@ -88,6 +88,18 @@
             this.ContainerPanel.Size = new System.Drawing.Size(800, 450);
             this.ContainerPanel.TabIndex = 5;
             this.ContainerPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ContainerPanel_Paint);
+            // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(111, 40);
+            this.exportExcelControl1.TabIndex = 12;
+            this.exportExcelControl1.Title = null;
+            this.exportExcelControl1.Load += new System.EventHandler(this.exportExcelControl1_Load);
             // 
             // dataGridViewData
             // 
@@ -147,17 +159,6 @@
             this.buttonNuevo.Text = "Nuevo";
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
-            // 
-            // exportExcelControl1
-            // 
-            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
-            this.exportExcelControl1.data = null;
-            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
-            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.exportExcelControl1.Name = "exportExcelControl1";
-            this.exportExcelControl1.Size = new System.Drawing.Size(111, 40);
-            this.exportExcelControl1.TabIndex = 12;
-            this.exportExcelControl1.Title = null;
             // 
             // cFMTU100010
             // 

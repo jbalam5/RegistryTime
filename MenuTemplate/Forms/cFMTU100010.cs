@@ -160,5 +160,10 @@ namespace RegistryTime.Forms
         {
 
         }
+
+        private void exportExcelControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

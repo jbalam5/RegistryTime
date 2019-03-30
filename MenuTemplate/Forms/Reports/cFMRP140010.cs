@@ -24,7 +24,7 @@ namespace RegistryTime.Forms.Reports
 
         }
 
-        private void cFMRP100010_Load(object sender, EventArgs e)
+        private void cFMRP140010_Load(object sender, EventArgs e)
         {
             try
             {
@@ -36,10 +36,13 @@ namespace RegistryTime.Forms.Reports
                 dataGridViewReporteGeneral.AutoResizeColumns();
                 dataGridViewReporteGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewReporteGeneral.ClearSelection();
+
+                exportExcelControl1.data = dataGridViewReporteGeneral;
+                exportExcelControl1.Title = "ReporteHorasJornadas";
             }
             catch (Exception ex)
             {
-                MessageBox.Show(String.Format("cFMRP100010_Load: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("cFMRP140010_Load: {0}", ex.Message), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
