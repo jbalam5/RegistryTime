@@ -44,7 +44,6 @@
             this.Closebutton = new System.Windows.Forms.Button();
             this.Minimizebutton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.TopPanel = new System.Windows.Forms.Panel();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -56,11 +55,10 @@
             // 
             this.PrincipalPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PrincipalPanel.Controls.Add(this.ContainerPanel);
-            this.PrincipalPanel.Controls.Add(this.TopPanel);
             this.PrincipalPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PrincipalPanel.Location = new System.Drawing.Point(0, 0);
             this.PrincipalPanel.Name = "PrincipalPanel";
-            this.PrincipalPanel.Size = new System.Drawing.Size(480, 285);
+            this.PrincipalPanel.Size = new System.Drawing.Size(480, 260);
             this.PrincipalPanel.TabIndex = 0;
             // 
             // ContainerPanel
@@ -75,9 +73,9 @@
             this.ContainerPanel.Controls.Add(this.statusStrip1);
             this.ContainerPanel.Controls.Add(this.panel1);
             this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(0, 30);
+            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
             this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(478, 253);
+            this.ContainerPanel.Size = new System.Drawing.Size(478, 258);
             this.ContainerPanel.TabIndex = 5;
             // 
             // ExitButton
@@ -86,6 +84,7 @@
             this.ExitButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ExitButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.ExitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitButton.Location = new System.Drawing.Point(316, 184);
             this.ExitButton.Name = "ExitButton";
             this.ExitButton.Size = new System.Drawing.Size(134, 36);
@@ -100,6 +99,7 @@
             this.OkButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OkButton.FlatAppearance.BorderColor = System.Drawing.Color.Silver;
             this.OkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OkButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OkButton.Location = new System.Drawing.Point(164, 184);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(135, 36);
@@ -165,7 +165,7 @@
             this.statusStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.DatetoolStripStatusLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 231);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 236);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(478, 22);
             this.statusStrip1.TabIndex = 1;
@@ -236,22 +236,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Iniciar Sesión";
             // 
-            // TopPanel
-            // 
-            this.TopPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.TopPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TopPanel.Location = new System.Drawing.Point(0, 0);
-            this.TopPanel.Name = "TopPanel";
-            this.TopPanel.Size = new System.Drawing.Size(478, 30);
-            this.TopPanel.TabIndex = 4;
-            this.TopPanel.Visible = false;
-            this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            // 
             // cFRT150010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 285);
+            this.ClientSize = new System.Drawing.Size(480, 260);
             this.Controls.Add(this.PrincipalPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "cFRT150010";
@@ -277,7 +266,6 @@
         private System.Windows.Forms.Panel ContainerPanel;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel TopPanel;
         private System.Windows.Forms.Button Closebutton;
         private System.Windows.Forms.Button Minimizebutton;
         private System.Windows.Forms.StatusStrip statusStrip1;

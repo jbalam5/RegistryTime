@@ -39,6 +39,9 @@ namespace RegistryTime
                 {
                     Alerts.cFAT100010 alrt = new Alerts.cFAT100010("Información", "No se ha encontrado la conexión a la Base de datos", MessageBoxIcon.Error);
                     alrt.ShowDialog();
+
+                    //ArgumentSystem.Applications execApp = new ArgumentSystem.Applications();
+                    //execApp.execute("Connection.exe", "SERVER");
                 }
             }catch(Exception ex)
             {
