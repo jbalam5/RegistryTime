@@ -109,6 +109,29 @@ namespace BussinesLayer
             }
         }
 
+        public DataTable DateReportsStartEntry(DateTime DateIn, DateTime DateEnd, String Turn, String Departament)
+        {
+            try
+            {
+                DataTable Response = ReportsDAL.AdmissionDateEmployee(DateIn, DateEnd);
+
+                if (String.IsNullOrEmpty(Turn) && String.IsNullOrEmpty(Departament))
+                    return Response;
+
+                if (!String.IsNullOrEmpty(Turn))
+                    Response.Select(String.Format("Departamento = '{0}'", Turn));
+
+                if (!String.IsNullOrEmpty(Departament))
+                    Response.Select(String.Format("Departamento = '{0}'", Departament));
+
+                return Response;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("ReportHoursJob: {0}", ex.Message));
+            }
+        }
+
         public DataTable ReportHoursJob(DateTime DateStart, DateTime DateEnd, int IdTurn = 0, int IdDepartament = 0, int IdEmployee = 0)
         {
             try

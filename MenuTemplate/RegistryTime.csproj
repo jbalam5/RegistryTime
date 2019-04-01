@@ -74,10 +74,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BiometricCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BiometricCore\bin\Debug\BiometricCore.dll</HintPath>
-    </Reference>
     <Reference Include="ButtonMenuLeft">
       <HintPath>..\..\..\JBControlDLL\ButtonMenuLeft.dll</HintPath>
     </Reference>
@@ -292,6 +288,12 @@
     <Compile Include="Forms\Reports\cFMRP140010.Designer.cs">
       <DependentUpon>cFMRP140010.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Reports\cFMRP150010.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Reports\cFMRP150010.Designer.cs">
+      <DependentUpon>cFMRP150010.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TestCheck.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -402,6 +404,9 @@
     <EmbeddedResource Include="Forms\Reports\cFMRP140010.resx">
       <DependentUpon>cFMRP140010.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Reports\cFMRP150010.resx">
+      <DependentUpon>cFMRP150010.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TestCheck.resx">
       <DependentUpon>TestCheck.cs</DependentUpon>
     </EmbeddedResource>
@@ -509,6 +514,10 @@
     <None Include="Resources\CircleDeletex421.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BiometricCore\BiometricCore.csproj">
+      <Project>{32209fc8-d19d-4815-a645-82f69833a5ab}</Project>
+      <Name>BiometricCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BussinesLayer\BusinessLayer.csproj">
       <Project>{c3955e83-a7d3-4a42-afd0-d13923f55e41}</Project>
       <Name>BusinessLayer</Name>

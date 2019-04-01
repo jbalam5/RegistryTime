@@ -12,6 +12,8 @@ namespace DataLayer
     public class ReportsDAL
     {
         public String ConnectionString = String.Empty;
+        ModelDAL  ModelDAL = new ModelDAL();
+
 
         public DataTable ReportAbsenteeism(DateTime DateStart, DateTime DateEnd, int IdDepartamnet = 0, int IdEmployee = 0)
         {
@@ -128,6 +130,30 @@ namespace DataLayer
             catch (Exception ex)
             {
                 throw new Exception(String.Format("ReportExtras: {0}", ex.Message));
+            }
+        }
+
+        public DataTable AdmissionDateEmployee(DateTime value1, DateTime value2)
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+                Query.AppendLine("SELECT ");
+                Query.AppendLine("employee.id, ");
+                Query.AppendLine("CONCAT(employee.name, ' ', employee.lastname) as Nombre, ");
+                Query.AppendLine("departament.name as Departamento, ");
+                Query.AppendLine("employee.birthdate as Cumpleanios,");
+                Query.AppendLine("employee.admissionDate as FechaIngreso");
+                Query.AppendFormat("FROM {0} ", "employee");
+                Query.AppendLine("JOIN departament ON departament.id = employee.idDepartament ");
+                Query.AppendLine(" WHERE ");
+                Query.AppendFormat("employee._registry = {0} ", 1);
+                Query.AppendFormat("and admissionDate BETWEEN '{0}' AND '{1}'", value1.ToString("yyyy-MM-dd"), value2.ToString("yyyy-MM-dd"));
+                return ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("AdmissionDateEmployee: {0}", ex.Message));
             }
         }
     }

@@ -80,6 +80,7 @@ namespace RegistryTime.Forms
             {
                 if(hora24 == 1)
                 {
+                    //MessageBox.Show("2");
                     double ho = dateTimeHoraSalida.Value.Subtract(dateTimeHoraEntrada.Value).TotalHours;
                     double timeS = ((24 + ho)*60)*60;
                     DateTime Hor = new DateTime(2000, 1, 1, 0, 0, 0);
@@ -203,7 +204,11 @@ namespace RegistryTime.Forms
             //{
             //CalcHorasJornada();
             //}
-            if (dateTimeHoraEntrada.Value > Convert.ToDateTime("12:00:00") && dateTimeHoraSalida.Value < Convert.ToDateTime("12:00:00"))
+            TimeSpan HEnt = TimeSpan.Parse(dateTimeHoraEntrada.Value.ToString("HH:mm:ss"));
+            TimeSpan HSal = TimeSpan.Parse(dateTimeHoraSalida.Value.ToString("HH:mm:ss"));
+            TimeSpan ti = TimeSpan.Parse("12:00:00");
+            //if (dateTimeHoraEntrada.Value > Convert.ToDateTime("12:00:00") && dateTimeHoraSalida.Value < Convert.ToDateTime("12:00:00"))
+            if(HEnt > ti && HSal < ti)
                 CalcHorasJornada(1);
             else
                 CalcHorasJornada();

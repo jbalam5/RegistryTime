@@ -18,7 +18,7 @@ namespace RegistryTime
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
-        Boolean Visible = false;
+        private new bool Visible = false;
 
         private CompanyBLL companyBLL;
         #endregion
@@ -55,28 +55,17 @@ namespace RegistryTime
             {
                 LogoPictureBox.Visible = false;
                 MenuLeftPanel.Width = 50;
+                panelSubMenu.Left = panelSubMenu.Left - 165;
             }
             else
             {
+                panelSubMenu.Left = panelSubMenu.Left + 165;
                 LogoPictureBox.Visible = true;
                 MenuLeftPanel.Width = 220;
             }
         }
 
-        private void CloseWindowsPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MaxWindowsPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MinWindowsPictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
+    
 
         private void Minimizebutton_Click(object sender, EventArgs e)
         {
@@ -165,7 +154,7 @@ namespace RegistryTime
 
         private void button1_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new RegistryTime.Forms.cFMPU100010());
+            
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -275,10 +264,10 @@ namespace RegistryTime
 
         private void button3_Click(object sender, EventArgs e)
         {
-            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP120010());
-            panelSubMenu.Visible = !Visible;
+            //OpenFormChild(new RegistryTime.Forms.Reports.cFMRP120010());
+            //panelSubMenu.Visible = !Visible;
 
-            Visible = !Visible;
+            //Visible = !Visible;
         }
 
         private void buttonReporteHrsExtras_Click(object sender, EventArgs e)
@@ -299,6 +288,22 @@ namespace RegistryTime
 
         private void panelSubMenu_ChangeUICues(object sender, UICuesEventArgs e)
         {
+            //panelSubMenu.Visible = !Visible;
+
+            //Visible = !Visible;
+        }
+
+        private void buttonReporteAusentimos_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP120010());
+            panelSubMenu.Visible = !Visible;
+
+            Visible = !Visible;
+        }
+
+        private void buttonAdmissionDate_Click(object sender, EventArgs e)
+        {
+            OpenFormChild(new RegistryTime.Forms.Reports.cFMRP150010());
             panelSubMenu.Visible = !Visible;
 
             Visible = !Visible;
