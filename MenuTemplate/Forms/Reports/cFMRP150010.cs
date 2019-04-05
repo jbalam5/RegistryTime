@@ -14,6 +14,7 @@ namespace RegistryTime.Forms.Reports
 {
     public partial class cFMRP150010 : Form
     {
+        DataTable TMPTABLE;
         #region "EVENTS"
         public cFMRP150010()
         {
@@ -66,8 +67,10 @@ namespace RegistryTime.Forms.Reports
                 ChildLeftPanel.Visible = false;
                 
                 QueryBackgroundWorker.RunWorkerAsync();
-                
-            }catch(Exception ex)
+                dataGridViewReporteGeneral.DataSource = TMPTABLE;
+
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(String.Format("{0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -90,9 +93,11 @@ namespace RegistryTime.Forms.Reports
                 System.Threading.Thread.Sleep(3000);
                 ReportsBLL ReportsBLL = new ReportsBLL();
                 
-                this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.DateReportsStartEntry(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, (Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()) == 0) ? "" : comboBoxTurno.Text.ToString(), (Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()) == 0) ? "" : comboBoxDepartamento.Text.ToString())));
+                this.Invoke(new Action(() => TMPTABLE = ReportsBLL.DateReportsStartEntry(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, (Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()) == 0) ? "" : comboBoxTurno.Text.ToString(), (Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()) == 0) ? "" : comboBoxDepartamento.Text.ToString())));
+                
 
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(String.Format("{0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -190,6 +195,56 @@ namespace RegistryTime.Forms.Reports
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void comboBoxDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Ho");
+            if (TMPTABLE != null)
+                FilterGrid();
+        }
+
+        public void FilterGrid()
+        {
+            try
+            {
+                String Departamento = comboBoxDepartamento.Text;
+                String Employee = comboBoxEmpleado.Text;
+                //String Turno = comboBoxTurno.Text;
+                if (Departamento == "Todos" && Employee == "Todos")
+                {
+                    dataGridViewReporteGeneral.DataSource = TMPTABLE;
+                }
+                else
+                {
+                                    
+                    StringBuilder Query = new StringBuilder();
+                    if (Departamento != "Todos")
+                        Query.AppendFormat("Departamento = '{0}' ", Departamento.ToString());
+                    else
+                        Query.AppendLine("1 = 1 ");
+
+                     Query.AppendLine(" AND ");
+
+                    if (Employee != "Todos")
+                        Query.AppendFormat("nombre = '{0}' ", Employee.ToString());
+                    else
+                        Query.AppendLine("1 = 1 ");
+
+                    dataGridViewReporteGeneral.DataSource = (DataTable)TMPTABLE.Select(Query.ToString()).CopyToDataTable();                    
+                }
+            }
+            catch(Exception ex)
+            {
+                //MessageBox.Show(String.Format("{0}",ex.Message),"Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Verifica tus Filtros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void comboBoxEmpleado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (TMPTABLE != null)
+                FilterGrid();
         }
     }
 }
