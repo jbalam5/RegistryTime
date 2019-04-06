@@ -27,16 +27,16 @@ namespace RegistryTime.Forms
 
         private void cFRT140010_Load(object sender, EventArgs e)
         {
-            if(IdDepartament > 0)
-            {
-                DepartamentML Departament = DepartamentBLL.GetIdEntity(IdDepartament);
-                if(Departament == null)
-                {
-                    textBoxNombre.Text = Departament.Name.ToString();
-                    textBoxEncargado.Text = Departament.Manager.ToString();
-                    textBoxDescripcion.Text = Departament.Description.ToString();
-                }
-            }
+            //if(IdDepartament > 0)
+            //{
+            //    DepartamentML Departament = DepartamentBLL.GetIdEntity(IdDepartament);
+            //    if(Departament == null)
+            //    {
+            //        textBoxNombre.Text = Departament.Name.ToString();
+            //        textBoxEncargado.Text = Departament.Manager.ToString();
+            //        textBoxDescripcion.Text = Departament.Description.ToString();
+            //    }
+            //}
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

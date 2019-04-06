@@ -28,6 +28,7 @@ namespace RegistryTime.Forms.Reports
         {
             try
             {
+                LoadDataGridView();
                 loaderControl1.Visible = false;
                 QueryBackgroundWorker.DoWork += QueryBackgroundWorker_DoWork;
                 QueryBackgroundWorker.ProgressChanged += QueryBackgroundWorker_ProgressChanged;
@@ -85,6 +86,15 @@ namespace RegistryTime.Forms.Reports
            
             //CheckInoursBLL CheckInoursBLL = new CheckInoursBLL();
             this.Invoke(new Action(() => dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportAbsenteeism(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()))));
+            //LoadDataGridView();
+            //exportExcelControl1.data = dataGridViewReporteGeneral;
+            //exportExcelControl1.Title = "ReporteAusentismo";
+        }
+
+        public void LoadDataGridView()
+        {
+            ReportsBLL ReportsBLL = new ReportsBLL();
+            dataGridViewReporteGeneral.DataSource = ReportsBLL.ReportAbsenteeism(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()), Convert.ToInt32(comboBoxEmpleado.SelectedValue.ToString()));
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -189,7 +199,6 @@ namespace RegistryTime.Forms.Reports
 
         private void exportExcelControl1_Load(object sender, EventArgs e)
         {
-
-        }
+        }     
     }
 }

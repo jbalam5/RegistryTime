@@ -85,7 +85,9 @@ namespace DataLayer
                 Query.AppendFormat("departament.name DEPARTAMENTO, ");               
                 Query.AppendFormat("turn TURNO, ");
                 Query.AppendFormat("DateOnlyRecord FECHA, ");
-                Query.AppendFormat("ISNULL(dateTimeRecord, '00:00:00')  AS ENTRADA, ");
+                Query.AppendFormat("TURNO.timeEntry ENTRADA, ");
+                Query.AppendFormat("ISNULL(dateTimeRecord, '00:00:00')  AS ENTRADA_MARCADA, ");
+                Query.AppendFormat("TURNO.departuretime SALIDA, ");
                 Query.AppendFormat("ISNULL(( SELECT ");
                 Query.AppendFormat("dateTimeRecord ");
                 Query.AppendFormat("FROM checkInHours ");
@@ -94,12 +96,13 @@ namespace DataLayer
                 Query.AppendFormat("AND checkInHours.idEmployee = Tab1.idEmployee ");
                 Query.AppendFormat("AND ISNULL(checkInHours.idturn,0) = ISNULL(Tab1.idTurn,0) ");
                 Query.AppendFormat("AND typeCheck = 'SALIDA' ");
-                Query.AppendFormat("), '00:00:00') as SALIDA " );
+                Query.AppendFormat("), '00:00:00') as SALIDA_MARCADA " );
                 Query.AppendFormat("INTO #TMPSALIDA ");
                 Query.AppendFormat("FROM checkInHours AS Tab1 ");
                 Query.AppendFormat("LEFT OUTER JOIN employee ON employee.id = Tab1.idEmployee AND employee._Registry = 1 ");
                 Query.AppendFormat("LEFT OUTER JOIN departament ON departament.id = employee.idDepartament AND departament._Registry = 1 ");
                 Query.AppendFormat("LEFT OUTER JOIN turn TURNO ON TURNO.ID  = Tab1.idturn  AND TURNO._Registry = 1 ");
+                Query.AppendFormat("LEFT OUTER JOIN turnsofemployee ON turnsofemployee.idEmployee = Tab1.idEmployee AND turnsofemployee.idTurn = Tab1.idturn ");
                 Query.AppendFormat("WHERE Tab1._Registry = 1 ");
                 Query.AppendFormat("AND Tab1.typeCheck = 'ENTRADA' ");
                 if (IdTurn > 0)

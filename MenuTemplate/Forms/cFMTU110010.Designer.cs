@@ -53,14 +53,6 @@
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.textBoxTurno = new System.Windows.Forms.TextBox();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.comboBoxDepartamento = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.dateTimeFecha = new System.Windows.Forms.DateTimePicker();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
@@ -70,8 +62,6 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // materialLabel7
@@ -127,7 +117,6 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.tabControl1.Location = new System.Drawing.Point(12, 61);
             this.tabControl1.Name = "tabControl1";
@@ -385,86 +374,6 @@
             this.materialLabel1.TabIndex = 43;
             this.materialLabel1.Text = "Turno";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(792, 318);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Dia Festivo";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.comboBoxDepartamento);
-            this.panel4.Controls.Add(this.label24);
-            this.panel4.Controls.Add(this.dateTimeFecha);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.textBoxNombre);
-            this.panel4.Location = new System.Drawing.Point(6, 12);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(774, 291);
-            this.panel4.TabIndex = 14;
-            // 
-            // comboBoxDepartamento
-            // 
-            this.comboBoxDepartamento.FormattingEnabled = true;
-            this.comboBoxDepartamento.Location = new System.Drawing.Point(3, 115);
-            this.comboBoxDepartamento.Name = "comboBoxDepartamento";
-            this.comboBoxDepartamento.Size = new System.Drawing.Size(335, 26);
-            this.comboBoxDepartamento.TabIndex = 40;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(0, 96);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(102, 18);
-            this.label24.TabIndex = 34;
-            this.label24.Text = "Departamento";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // dateTimeFecha
-            // 
-            this.dateTimeFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateTimeFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeFecha.Location = new System.Drawing.Point(3, 21);
-            this.dateTimeFecha.Name = "dateTimeFecha";
-            this.dateTimeFecha.Size = new System.Drawing.Size(196, 24);
-            this.dateTimeFecha.TabIndex = 26;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(-1, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(62, 18);
-            this.label11.TabIndex = 22;
-            this.label11.Text = "Nombre";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(0, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 18);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "Fecha";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBoxNombre
-            // 
-            this.textBoxNombre.Location = new System.Drawing.Point(2, 69);
-            this.textBoxNombre.Name = "textBoxNombre";
-            this.textBoxNombre.Size = new System.Drawing.Size(335, 24);
-            this.textBoxNombre.TabIndex = 15;
-            // 
             // buttonCancelar
             // 
             this.buttonCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
@@ -527,9 +436,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -550,14 +456,6 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
         public System.Windows.Forms.TextBox textBoxTurno;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.ComboBox comboBoxDepartamento;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.DateTimePicker dateTimeFecha;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBoxNombre;
         private MaterialSkin.Controls.MaterialLabel materialLabel11;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;

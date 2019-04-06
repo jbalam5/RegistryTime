@@ -317,7 +317,6 @@
             this.exportExcelControl1.Size = new System.Drawing.Size(105, 42);
             this.exportExcelControl1.TabIndex = 13;
             this.exportExcelControl1.Title = null;
-            this.exportExcelControl1.Load += new System.EventHandler(this.exportExcelControl1_Load);
             // 
             // cFMRP120010
             // 

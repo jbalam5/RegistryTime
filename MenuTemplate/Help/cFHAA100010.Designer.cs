@@ -137,6 +137,7 @@
             this.buttonBuscar.TabIndex = 62;
             this.buttonBuscar.Text = "Buscar";
             this.buttonBuscar.UseVisualStyleBackColor = false;
+            this.buttonBuscar.Visible = false;
             // 
             // textBoxFiltro
             // 
@@ -144,6 +145,7 @@
             this.textBoxFiltro.Name = "textBoxFiltro";
             this.textBoxFiltro.Size = new System.Drawing.Size(335, 26);
             this.textBoxFiltro.TabIndex = 60;
+            this.textBoxFiltro.Visible = false;
             // 
             // materialLabel2
             // 
@@ -157,6 +159,7 @@
             this.materialLabel2.Size = new System.Drawing.Size(44, 19);
             this.materialLabel2.TabIndex = 61;
             this.materialLabel2.Text = "Filtro";
+            this.materialLabel2.Visible = false;
             // 
             // dataGridViewDataEmpleado
             // 
