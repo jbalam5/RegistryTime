@@ -164,6 +164,9 @@
             // 
             // dataGridViewReporteGeneral
             // 
+            this.dataGridViewReporteGeneral.AllowUserToAddRows = false;
+            this.dataGridViewReporteGeneral.AllowUserToDeleteRows = false;
+            this.dataGridViewReporteGeneral.AllowUserToOrderColumns = true;
             this.dataGridViewReporteGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReporteGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReporteGeneral.Location = new System.Drawing.Point(5, 5);
@@ -201,6 +204,7 @@
             this.comboBoxTurno.Name = "comboBoxTurno";
             this.comboBoxTurno.Size = new System.Drawing.Size(285, 28);
             this.comboBoxTurno.TabIndex = 11;
+            this.comboBoxTurno.Visible = false;
             // 
             // label6
             // 
@@ -211,6 +215,7 @@
             this.label6.Size = new System.Drawing.Size(50, 20);
             this.label6.TabIndex = 10;
             this.label6.Text = "Turno";
+            this.label6.Visible = false;
             // 
             // buttonBuscar
             // 
@@ -235,6 +240,7 @@
             this.comboBoxEmpleado.Name = "comboBoxEmpleado";
             this.comboBoxEmpleado.Size = new System.Drawing.Size(285, 28);
             this.comboBoxEmpleado.TabIndex = 7;
+            this.comboBoxEmpleado.SelectedIndexChanged += new System.EventHandler(this.comboBoxEmpleado_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -290,6 +296,7 @@
             this.comboBoxDepartamento.Name = "comboBoxDepartamento";
             this.comboBoxDepartamento.Size = new System.Drawing.Size(285, 28);
             this.comboBoxDepartamento.TabIndex = 1;
+            this.comboBoxDepartamento.SelectedIndexChanged += new System.EventHandler(this.comboBoxDepartamento_SelectedIndexChanged);
             // 
             // label2
             // 
