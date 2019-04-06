@@ -164,6 +164,9 @@
             // 
             // dataGridViewReporteGeneral
             // 
+            this.dataGridViewReporteGeneral.AllowUserToAddRows = false;
+            this.dataGridViewReporteGeneral.AllowUserToDeleteRows = false;
+            this.dataGridViewReporteGeneral.AllowUserToOrderColumns = true;
             this.dataGridViewReporteGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReporteGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReporteGeneral.Location = new System.Drawing.Point(5, 5);

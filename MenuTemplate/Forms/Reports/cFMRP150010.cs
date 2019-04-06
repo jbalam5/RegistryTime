@@ -38,6 +38,7 @@ namespace RegistryTime.Forms.Reports
                 dataGridViewReporteGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewReporteGeneral.ClearSelection();
                 dataGridViewReporteGeneral.ReadOnly = true;
+                
 
             }
             catch (Exception ex)
@@ -91,16 +92,22 @@ namespace RegistryTime.Forms.Reports
                 ));
 
                 System.Threading.Thread.Sleep(3000);
-                ReportsBLL ReportsBLL = new ReportsBLL();
-                
-                this.Invoke(new Action(() => TMPTABLE = ReportsBLL.DateReportsStartEntry(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, (Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()) == 0) ? "" : comboBoxTurno.Text.ToString(), (Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()) == 0) ? "" : comboBoxDepartamento.Text.ToString())));
-                
 
+                this.Invoke(new Action(() => LoadDataTable() ));
+                
             }
             catch(Exception ex)
             {
                 MessageBox.Show(String.Format("{0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void LoadDataTable()
+        {
+            ReportsBLL ReportsBLL = new ReportsBLL();
+            TMPTABLE = ReportsBLL.DateReportsStartEntry(dateTimeFechaInicio.Value, dateTimeFechaFin.Value, (Convert.ToInt32(comboBoxTurno.SelectedValue.ToString()) == 0) ? "" : comboBoxTurno.Text.ToString(), (Convert.ToInt32(comboBoxDepartamento.SelectedValue.ToString()) == 0) ? "" : comboBoxDepartamento.Text.ToString());
+            dataGridViewReporteGeneral.DataSource = TMPTABLE;
+
         }
 
         private void QueryBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -199,7 +206,6 @@ namespace RegistryTime.Forms.Reports
 
         private void comboBoxDepartamento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //MessageBox.Show("Ho");
             if (TMPTABLE != null)
                 FilterGrid();
         }
@@ -230,8 +236,10 @@ namespace RegistryTime.Forms.Reports
                         Query.AppendFormat("nombre = '{0}' ", Employee.ToString());
                     else
                         Query.AppendLine("1 = 1 ");
-
-                    dataGridViewReporteGeneral.DataSource = (DataTable)TMPTABLE.Select(Query.ToString()).CopyToDataTable();                    
+                    if (TMPTABLE.Select(Query.ToString()).Length > 0)
+                        dataGridViewReporteGeneral.DataSource = (DataTable)TMPTABLE.Select(Query.ToString()).CopyToDataTable();
+                    else
+                        dataGridViewReporteGeneral.DataSource = null;
                 }
             }
             catch(Exception ex)

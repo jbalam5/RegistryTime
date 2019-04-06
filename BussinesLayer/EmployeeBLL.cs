@@ -117,5 +117,6 @@ namespace BussinesLayer
                 throw new Exception(String.Format("{0}.Delete: {1}", core, ex));
             }
         }
+
     }
 }
