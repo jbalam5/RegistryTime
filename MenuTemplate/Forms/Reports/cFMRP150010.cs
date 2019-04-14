@@ -38,7 +38,9 @@ namespace RegistryTime.Forms.Reports
                 dataGridViewReporteGeneral.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewReporteGeneral.ClearSelection();
                 dataGridViewReporteGeneral.ReadOnly = true;
-                
+
+                exportExcelControl.data = dataGridViewReporteGeneral;
+                exportExcelControl.Title = "Fecha de Ingreso";
 
             }
             catch (Exception ex)

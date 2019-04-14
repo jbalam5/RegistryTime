@@ -303,7 +303,7 @@ namespace RegistryTime.Forms
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            try
+              try
             {
                 if (FormValidate())
                 {

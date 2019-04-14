@@ -5,7 +5,7 @@ namespace BiometricCore
 {
     public class ZKTekoBiometric
     {
-        Action<object, string> RaiseDeviceEvent;
+        private Action<object, string> RaiseDeviceEvent;
 
         public ZKTekoBiometric(Action<object, string> RaiseDeviceEvent)
         { this.RaiseDeviceEvent = RaiseDeviceEvent; }

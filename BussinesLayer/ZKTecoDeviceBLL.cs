@@ -17,8 +17,7 @@ namespace BussinesLayer
         public string IP;
         public int port;
         private static int machineNumber = 1;
-
-        Action<object, string> RaiseDeviceEvent;
+        private Action<object, string> RaiseDeviceEvent;
 
         public ZKTecoDeviceBLL()
         {

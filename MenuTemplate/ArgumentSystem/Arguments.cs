@@ -83,7 +83,7 @@ namespace RegistryTime.ArgumentSystem
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
                                 {
                                     if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
-                                        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                                        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[5]), Convert.ToInt32(ArgumentsList[4]));
                                 }
                                 break;
                             case "TEST":

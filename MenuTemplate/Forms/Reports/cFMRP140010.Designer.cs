@@ -52,9 +52,9 @@
             this.comboBoxDepartamento = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.CloseFilterButton = new System.Windows.Forms.Button();
             this.QueryBackgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.TopPanel.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.MainPanel.SuspendLayout();
@@ -85,9 +85,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(4, 8);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 24);
+            this.label1.Size = new System.Drawing.Size(246, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Reportes";
+            this.label1.Text = "Reporte Horas trabajadas";
             // 
             // PrincipalPanel
             // 
@@ -166,6 +166,8 @@
             // 
             // dataGridViewReporteGeneral
             // 
+            this.dataGridViewReporteGeneral.AllowUserToAddRows = false;
+            this.dataGridViewReporteGeneral.AllowUserToDeleteRows = false;
             this.dataGridViewReporteGeneral.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewReporteGeneral.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewReporteGeneral.Location = new System.Drawing.Point(5, 5);
@@ -314,6 +316,17 @@
             this.panel1.TabIndex = 11;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(114, 6);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(22, 18, 22, 18);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(116, 42);
+            this.exportExcelControl1.TabIndex = 15;
+            this.exportExcelControl1.Title = null;
+            // 
             // CloseFilterButton
             // 
             this.CloseFilterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
@@ -329,17 +342,6 @@
             this.CloseFilterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.CloseFilterButton.UseVisualStyleBackColor = false;
             this.CloseFilterButton.Click += new System.EventHandler(this.CloseFilterButton_Click);
-            // 
-            // exportExcelControl1
-            // 
-            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
-            this.exportExcelControl1.data = null;
-            this.exportExcelControl1.Location = new System.Drawing.Point(139, 6);
-            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(22, 18, 22, 18);
-            this.exportExcelControl1.Name = "exportExcelControl1";
-            this.exportExcelControl1.Size = new System.Drawing.Size(105, 42);
-            this.exportExcelControl1.TabIndex = 15;
-            this.exportExcelControl1.Title = null;
             // 
             // cFMRP140010
             // 
