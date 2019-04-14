@@ -84,6 +84,10 @@
             this.textBoxNacionalidad = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label41 = new System.Windows.Forms.Label();
+            this.textBoxTotalhrsDia = new System.Windows.Forms.TextBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -116,7 +120,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -717,6 +720,9 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label41);
+            this.panel5.Controls.Add(this.textBoxTotalhrsDia);
+            this.panel5.Controls.Add(this.label40);
             this.panel5.Controls.Add(this.label19);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Controls.Add(this.label35);
@@ -742,6 +748,45 @@
             this.panel5.Size = new System.Drawing.Size(775, 348);
             this.panel5.TabIndex = 14;
             this.panel5.TabStop = true;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(369, 152);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(101, 18);
+            this.label41.TabIndex = 68;
+            this.label41.Text = "Horas por Día";
+            this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxTotalhrsDia
+            // 
+            this.textBoxTotalhrsDia.Location = new System.Drawing.Point(372, 170);
+            this.textBoxTotalhrsDia.Multiline = true;
+            this.textBoxTotalhrsDia.Name = "textBoxTotalhrsDia";
+            this.textBoxTotalhrsDia.Size = new System.Drawing.Size(335, 24);
+            this.textBoxTotalhrsDia.TabIndex = 67;
+            this.textBoxTotalhrsDia.Text = "0.00";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(7, 293);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(130, 18);
+            this.label40.TabIndex = 66;
+            this.label40.Text = "Total hrs por turno";
+            this.label40.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Red;
+            this.label19.Location = new System.Drawing.Point(502, 101);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(14, 18);
+            this.label19.TabIndex = 64;
+            this.label19.Text = "*";
             // 
             // label36
             // 
@@ -785,6 +830,7 @@
             this.checkedListBoxTurns.Name = "checkedListBoxTurns";
             this.checkedListBoxTurns.Size = new System.Drawing.Size(699, 19);
             this.checkedListBoxTurns.TabIndex = 32;
+            this.checkedListBoxTurns.SelectedIndexChanged += new System.EventHandler(this.checkedListBoxTurns_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -811,9 +857,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(368, 101);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 18);
+            this.label4.Size = new System.Drawing.Size(136, 18);
             this.label4.TabIndex = 36;
-            this.label4.Text = "Sueldo por Hora";
+            this.label4.Text = "Sueldo por Periodo";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // textBoxSueldo
@@ -1079,16 +1125,6 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Red;
-            this.label19.Location = new System.Drawing.Point(482, 101);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(14, 18);
-            this.label19.TabIndex = 64;
-            this.label19.Text = "*";
-            // 
             // cFMEM110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1210,5 +1246,8 @@
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label label19;
+        public System.Windows.Forms.Label label40;
+        public System.Windows.Forms.Label label41;
+        public System.Windows.Forms.TextBox textBoxTotalhrsDia;
     }
 }

@@ -33,6 +33,7 @@ namespace ModelLayer
             public const string SureType = "sureType";
             public const string NumberSure = "numberSure";
             public const string Salary = "salary";
+            public const string HoursOfDay = "hoursDay";
             public const string IdJob = "idJob";
             public const string IdUser = "idUser";
         }
@@ -61,6 +62,7 @@ namespace ModelLayer
         public DateTime AdmissionDate { get; set; }
         public int IdJob { get; set; }
         public decimal Salary { get; set; }
+        public decimal HoursOfDay { get; set; }
         public int IdUser { get; set; }
         
     }
