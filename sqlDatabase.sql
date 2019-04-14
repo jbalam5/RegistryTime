@@ -456,3 +456,24 @@ code nvarchar(max) not null,
 codeAuth nvarchar(max) not null,
 statusAuth nvarchar(max) not null
 )
+
+
+create table usersEmployee(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+idEmployee int not null,
+idUser int null,
+head int null 
+)
+
+
+--agregar correo en users
+alter table dbo.users add email nvarchar(25) null
+--agregar numControl
+alter table dbo.users add numControl int null
