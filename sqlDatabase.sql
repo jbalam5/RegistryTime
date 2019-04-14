@@ -469,11 +469,10 @@ dateDelete datetime,
 id int primary key identity(1,1) not null,
 idEmployee int not null,
 idUser int null,
-head int null 
+numControl int null 
 )
-
 
 --agregar correo en users
 alter table dbo.users add email nvarchar(25) null
---agregar numControl
-alter table dbo.users add numControl int null
+
+
