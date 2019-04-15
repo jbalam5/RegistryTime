@@ -64,6 +64,7 @@
     <Compile Include="StatusBookML.cs" />
     <Compile Include="TurnML.cs" />
     <Compile Include="TurnsOfEmployeeML.cs" />
+    <Compile Include="UsersEmployeeML.cs" />
     <Compile Include="UsersML.cs" />
     <Compile Include="ZKTecoHourAssistanceML.cs" />
   </ItemGroup>

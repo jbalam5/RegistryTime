@@ -73,6 +73,7 @@
     <Compile Include="TurnDAL.cs" />
     <Compile Include="TurnsOfEmployeeDAL.cs" />
     <Compile Include="UsersDAL.cs" />
+    <Compile Include="UsersEmployeeDAL.cs" />
     <Compile Include="ZKTecoHourAssistanceDAL.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

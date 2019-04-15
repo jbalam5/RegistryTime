@@ -79,6 +79,7 @@ namespace RegistryTime.ArgumentSystem
                                     //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
                                     Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToInt32(ArgumentsList[3]), Convert.ToInt32(ArgumentsList[4]), Convert.ToDateTime(ArgumentsList[5]), Convert.ToDateTime(ArgumentsList[6]));
                                     Application.Run(frm);
+                                    frm.Dispose();
                                 }
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
                                 {
