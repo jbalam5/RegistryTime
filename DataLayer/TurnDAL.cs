@@ -17,22 +17,19 @@ namespace DataLayer
         public int IdUserSession = 0;
         ModelDAL ModelDAL = new ModelDAL();
 
-        public DataTable All()
+        public DataTable All(String Type)
         {
             try
             {
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                //String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
-                String Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Turno,{0}.[Description] as Descripcion,{0}.[TimeEntry] as HoraEntrada,{0}.[StartEntry] as IniciaEntrada,{0}.[LimitEntry] as LimiteEntrada,{0}.[Departuretime] as HoraSalida,{0}.[LimitDeparture] as LimiteSalida, {0}.[HoursJornada] as HorasJornada  FROM {0} where {0}._registry = 1", TableName);
+                ModelDAL ModelDAL = new ModelDAL();
+                String Query = "";
+                if (Type == "All" )
+                   Query = String.Format("SELECT * FROM {0} WHERE _registry = 1", TableName);
+                else 
+                   Query = String.Format("SELECT {0}.[id] ,{0}.[name] as Turno,{0}.[Description] as Descripcion,{0}.[TimeEntry] as HoraEntrada,{0}.[StartEntry] as IniciaEntrada,{0}.[LimitEntry] as LimiteEntrada,{0}.[Departuretime] as HoraSalida,{0}.[LimitDeparture] as LimiteSalida, {0}.[HoursJornada] as HorasJornada  FROM {0} where {0}._registry = 1", TableName);
 
-                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtTurnos = new DataTable();
-                cmd.Fill(dtTurnos);
-                Conexion.Close();
+                DataTable dtTurnos = ModelDAL.DataTableRecord(Query, ConnectionString);
+                
                 return dtTurnos;
             }
             catch (Exception ex)

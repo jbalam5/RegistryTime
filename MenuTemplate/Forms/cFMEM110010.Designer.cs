@@ -120,6 +120,8 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.textBoxNumHours = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -163,7 +165,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 37);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 468);
+            this.panel2.Size = new System.Drawing.Size(800, 482);
             this.panel2.TabIndex = 1;
             // 
             // tabControl1
@@ -176,7 +178,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 62);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(781, 394);
+            this.tabControl1.Size = new System.Drawing.Size(781, 417);
             this.tabControl1.TabIndex = 14;
             // 
             // tabPage1
@@ -713,13 +715,15 @@
             this.tabPage3.Controls.Add(this.panel5);
             this.tabPage3.Location = new System.Drawing.Point(4, 27);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(773, 363);
+            this.tabPage3.Size = new System.Drawing.Size(773, 386);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Datos Trabajo";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.label42);
+            this.panel5.Controls.Add(this.textBoxNumHours);
             this.panel5.Controls.Add(this.label41);
             this.panel5.Controls.Add(this.textBoxTotalhrsDia);
             this.panel5.Controls.Add(this.label40);
@@ -745,7 +749,7 @@
             this.panel5.Controls.Add(this.comboBoxPuesto);
             this.panel5.Location = new System.Drawing.Point(6, 12);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(775, 348);
+            this.panel5.Size = new System.Drawing.Size(775, 369);
             this.panel5.TabIndex = 14;
             this.panel5.TabStop = true;
             // 
@@ -1125,11 +1129,29 @@
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // textBoxNumHours
+            // 
+            this.textBoxNumHours.Enabled = false;
+            this.textBoxNumHours.Location = new System.Drawing.Point(146, 339);
+            this.textBoxNumHours.Name = "textBoxNumHours";
+            this.textBoxNumHours.Size = new System.Drawing.Size(100, 24);
+            this.textBoxNumHours.TabIndex = 69;
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(7, 342);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(137, 18);
+            this.label42.TabIndex = 70;
+            this.label42.Text = "Total hrs Empleado";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // cFMEM110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 505);
+            this.ClientSize = new System.Drawing.Size(800, 519);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "cFMEM110010";
@@ -1249,5 +1271,7 @@
         public System.Windows.Forms.Label label40;
         public System.Windows.Forms.Label label41;
         public System.Windows.Forms.TextBox textBoxTotalhrsDia;
+        private System.Windows.Forms.TextBox textBoxNumHours;
+        public System.Windows.Forms.Label label42;
     }
 }

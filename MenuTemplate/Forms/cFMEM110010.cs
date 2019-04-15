@@ -23,6 +23,7 @@ namespace RegistryTime.Forms
         private String PathFileImageOld = String.Empty;
         public int IdUser = 0;
         public int DaysWorks = 0;
+        DataTable Turns;
 
         DepartamentBLL DepartamentBLL = new DepartamentBLL();
         RegularExpressionBLL RegularExpressionBLL = new RegularExpressionBLL();
@@ -158,6 +159,7 @@ namespace RegistryTime.Forms
             if (IdEmployee > 0)
             {
                 LoadGetEmployee(IdEmployee);
+                CountHours();
             }
         }
 
@@ -407,6 +409,7 @@ namespace RegistryTime.Forms
                 FrmDataGrid.LoadDataGridView();
                 cFAT100010 Alert = new cFAT100010("Información", "Información Guardado con exito!!", MessageBoxIcon.Information);
                 Alert.ShowDialog();
+                Alert.Dispose();
                 Clear();
                 this.Close();
                 }
@@ -604,20 +607,24 @@ namespace RegistryTime.Forms
                 int i = 1;
                 int y = 10;
 
-                DataTable Turns;
-                Turns = TurnBLL.All();
+                
+                Turns = TurnBLL.All("All");
                 checkedListBoxTurns.DisplayMember = "Text";
                 checkedListBoxTurns.ValueMember = "Value";
                 foreach (DataRow Turn in Turns.Rows)
                 {
-                    checkedListBoxTurns.Items.Add(new { Text = Turn[1].ToString(), Value = Turn[0].ToString() }, false);
-               
-                    TextBox _textbox = new TextBox();
-                    _textbox.Name = i.ToString();
-                    _textbox.Text = Turn[8].ToString();
-                    _textbox.Location = new Point(y, 311);
+                    checkedListBoxTurns.Items.Add(new { Text = Turn[TurnML.DataBase.Name].ToString(), Value = Turn[TurnML.DataBase.Id].ToString() }, false);
+
+                    TextBox _textbox = new TextBox
+                    {
+                        Name = i.ToString(),
+                        Text = Turn[TurnML.DataBase.HoursJornada].ToString(),
+                        Location = new Point(y, 311),
+                        Visible = true,
+                        Enabled = false
+                    };
                     y += 120;
-                    _textbox.Visible = true;
+                    
                     this.panel5.Controls.Add(_textbox);
                     i += 1;
 
@@ -627,6 +634,28 @@ namespace RegistryTime.Forms
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("LoadTurn: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void CountHours()
+        {
+            try{
+                TimeSpan NumHours = TimeSpan.Parse("00:00:00");
+                foreach (object item in checkedListBoxTurns.CheckedItems)
+                {
+                    foreach(DataRow TurnGet in Turns.Rows)
+                    {
+                        if(Convert.ToInt32(TurnGet[TurnML.DataBase.Id].ToString()) == Convert.ToInt32(item.GetType().GetProperty("Value").GetValue(item, null).ToString()))
+                        {
+                            NumHours = NumHours.Add(TimeSpan.Parse(TurnGet[TurnML.DataBase.HoursJornada].ToString()));   
+                        }
+                    }
+                }
+                textBoxNumHours.Text = NumHours.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("CountHours: {0}", ex.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -687,37 +716,36 @@ namespace RegistryTime.Forms
 
         private void checkedListBoxTurns_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TurnBLL TurnBLL = new TurnBLL();
+            //TurnBLL TurnBLL = new TurnBLL();
 
-            String CveTurno;
-            DataTable Turns;
-            Turns = TurnBLL.All();
+            //String CveTurno;
+            //DataTable Turns;
+            //Turns = TurnBLL.All();
 
-            foreach (DataRow Turn in Turns.Rows)
-            {
-                CveTurno = Turn[0].ToString();
+            //foreach (DataRow Turn in Turns.Rows)
+            //{
+            //    CveTurno = Turn[0].ToString();
 
-                if (TurnsOfEmployeeBLL.GetAllEntitys(Int32.Parse(CveTurno)).Rows.Count > 0)
-                {
-                    foreach (DataRow TurnsOfEmployees in TurnsOfEmployeeBLL.GetAllEntitys(Int32.Parse(CveTurno)).Rows)
-                    {
-                        foreach (object item in checkedListBoxTurns.Items)
-                        {
+            //    if (TurnsOfEmployeeBLL.GetAllEntitys(Int32.Parse(CveTurno)).Rows.Count > 0)
+            //    {
+            //        foreach (DataRow TurnsOfEmployees in TurnsOfEmployeeBLL.GetAllEntitys(Int32.Parse(CveTurno)).Rows)
+            //        {
+            //            foreach (object item in checkedListBoxTurns.Items)
+            //            {
 
-                            if (TurnsOfEmployees[TurnsOfEmployeeML.DataBase.IdTurn].ToString() == item.GetType().GetProperty("Value").GetValue(item, null).ToString())
-                            {
-                                textBoxTotalhrsDia = ;
-                            }
-                        }
-                    }
-                }
-            }
+            //                if (TurnsOfEmployees[TurnsOfEmployeeML.DataBase.IdTurn].ToString() == item.GetType().GetProperty("Value").GetValue(item, null).ToString())
+            //                {
+            //                    textBoxTotalhrsDia.Text = "5" ;
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+            CountHours();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+    
     }
 }
 

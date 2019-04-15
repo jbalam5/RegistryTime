@@ -476,4 +476,7 @@ numControl int null
 --agregar correo en users
 alter table dbo.users add email nvarchar(25) null
 
+--agregar columna HoursDay en empleado
+alter table dbo.employee add HoursDay decimal(10, 2) null
+
 
