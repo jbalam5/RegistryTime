@@ -304,7 +304,7 @@ namespace RegistryTime.Forms
               try
             {
                 if (FormValidate())
-                {
+                { 
 
                 UsersML User = new UsersML
                 {
@@ -397,8 +397,17 @@ namespace RegistryTime.Forms
                     System.IO.File.Copy(PathFileImage, string.Format("{0}/{1}", DirectoryFiles, System.IO.Path.GetFileName(PathFileNameTextBox.Text)));
                 }
 
-                ZKTecoDeviceBLL zKTecoDevice = new ZKTecoDeviceBLL();
-                zKTecoDevice.SetUserInfo(IdNewEmployee, Employee.Name, (int) BiometricCore.Enums.Privileges.CommonUser, "", string.Format("{0}",IdNewEmployee));
+                    ZKTecoDeviceBLL zKTecoDevice = new ZKTecoDeviceBLL();
+                    BiometricCore.UserInfo _userInfo = new BiometricCore.UserInfo()
+                    {
+                        EnrollNumber = string.Format("{0}", IdNewEmployee),
+                        Name = Employee.Name,
+                        Privelage = (int)BiometricCore.Enums.Privileges.CommonUser,
+                        TmpData = "",
+                        Password = string.Format("{0}", IdNewEmployee)
+
+                    };
+                    zKTecoDevice.SetUserInfo(_userInfo, 3);
 
                 cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();

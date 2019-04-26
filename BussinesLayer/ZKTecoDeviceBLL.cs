@@ -116,6 +116,41 @@ namespace BussinesLayer
             }
         }
 
+        /// <summary>
+        /// Función que recibe una lista de usuario para guardar al lector
+        /// </summary>
+        /// <param name="ListUser"></param>
+        /// <returns></returns>
+        public int SetUserInfo(BiometricCore.UserInfo UserInfo, int NumUser)
+        {
+            try
+            {
+                for (int index = 1; index < NumUser+1; index++)
+                {
+                    try
+                    {
+                        string id = string.Format("{0}00{1}", UserInfo.EnrollNumber, index);
+                        SetUserInfo(int.Parse(id), UserInfo.Name, UserInfo.Privelage, "", id);
+                    }
+                    catch { }
+                }
+
+                return 0;
+            }catch(Exception ex)
+            {
+                throw new Exception(string.Format("setUserInfo: {0}", ex.Message));
+            }
+        }
+
+        /// <summary>
+        /// Función que recibe información de los empleados y crea usuario en el lector
+        /// </summary>
+        /// <param name="UserID"></param>
+        /// <param name="Name"></param>
+        /// <param name="iPrivilege"></param>
+        /// <param name="Cardnumber"></param>
+        /// <param name="Password"></param>
+        /// <returns></returns>
         public int SetUserInfo(int UserID, string Name, int iPrivilege, string Cardnumber, string Password)
         {
             try
