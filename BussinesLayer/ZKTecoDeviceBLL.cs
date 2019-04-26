@@ -131,6 +131,24 @@ namespace BussinesLayer
                     {
                         string id = string.Format("{0}00{1}", UserInfo.EnrollNumber, index);
                         SetUserInfo(int.Parse(id), UserInfo.Name, UserInfo.Privelage, "", id);
+
+                        UsersEmployeeBLL usersEmployeeBLL = new UsersEmployeeBLL();
+                        if (usersEmployeeBLL.UserExists(int.Parse(id)))
+                        {
+                            UsersEmployeeML usersEmployeeML = usersEmployeeBLL.GetEntityByIdUser(int.Parse(UserInfo.EnrollNumber));
+
+                            if (usersEmployeeML == null)
+                            {
+                                usersEmployeeML = new UsersEmployeeML()
+                                {
+                                    id = 0,
+                                    idUser = int.Parse(id),
+                                    idEmployee = int.Parse(UserInfo.EnrollNumber)
+                                };
+                            }
+
+                            usersEmployeeBLL.Save(usersEmployeeML);
+                        }
                     }
                     catch { }
                 }

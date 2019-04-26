@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer
 {
-    class UsersEmployeeML
+    public class UsersEmployeeML
     {
         public class DataBase
         {
