@@ -23,11 +23,11 @@ namespace BussinesLayer
             TurnDAL.IdUserSession = GlobalBLL.userML.Id;
         }
 
-        public DataTable All()
+        public DataTable All(String Type = "All")
         {
             try
             {
-                return TurnDAL.All();
+                return TurnDAL.All(Type);
 
             }
             catch (Exception ex)

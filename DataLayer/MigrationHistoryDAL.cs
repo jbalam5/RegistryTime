@@ -124,6 +124,36 @@ namespace DataLayer
 
         }
 
+        public int getUserDialing(String idUser)
+        {
+            try
+            {
+                ModelDAL ModelDAL = new ModelDAL();
+                StringBuilder Query = new StringBuilder();
+                UsersDAL UsersDAL = new UsersDAL();
+                UsersEmployeeDAL UsersEmployeeDAL = new UsersEmployeeDAL();
+                
+                Query.AppendLine("select ");
+                Query.AppendFormat("{0} ", UsersEmployeeML.DataBase.IdEmployee);
+                Query.AppendLine("from ");
+                Query.AppendFormat("{0} ", UsersDAL.TableName);
+                Query.AppendFormat("left join {0} on ", UsersEmployeeDAL.TableName);
+                Query.AppendFormat("{0}.{1} = {2}.{3} ", UsersDAL.TableName, UsersML.DataBase.Id, UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.IdUser);
+                Query.AppendLine("where ");
+                Query.AppendFormat("{0}.{1} = {2}", UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.NumControl, idUser);
+
+                DataTable Response = ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);
+                if (Response.Rows.Count > 0)
+                    return (int)Response.Rows[0][UsersEmployeeML.DataBase.IdEmployee];
+                else
+                    return 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.getUserDialing: {1}", core, ex.Message));
+            }
+        }
+
         public DataTable ListRecord(DateTime Start , DateTime End)
         {
             try

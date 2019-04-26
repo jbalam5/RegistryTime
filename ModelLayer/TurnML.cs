@@ -18,7 +18,7 @@ namespace ModelLayer
             public const string LimitEntry = "limitEntry";
             public const string Departuretime = "departuretime";
             public const string LimitDeparture = "limitDeparture";
-            public const string HoursJornada = "HoursJornada";
+            public const string HoursJornada = "hoursJornada";
 
         }
 

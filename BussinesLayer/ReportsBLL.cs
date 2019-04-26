@@ -167,7 +167,9 @@ namespace BussinesLayer
                     SalidaAntes = TimeSpan.Parse("00:00:00");
 
                     EmployeeML SalaryEmployeeML = EmployeeBLL.GetColumnsEmployee(Int32.Parse(Horas["CVE"].ToString()));
-                    Decimal SalarioHora = Decimal.Parse(SalaryEmployeeML.Salary.ToString());
+                    
+                    Decimal Salario = Decimal.Parse(SalaryEmployeeML.Salary.ToString());
+                    Decimal horasxDias = Decimal.Parse(SalaryEmployeeML.HoursOfDay.ToString());
 
                     if (Horas["TURNO"].ToString() != "HRS EXTRA")
                     {
@@ -215,7 +217,8 @@ namespace BussinesLayer
                     Horas["TOTAL_HRS"] = SumToTime(HrsJornadas, HrsExtras);
                     TotalHrsDia = SumToTime(HrsJornadas, HrsExtras);
                     TotalHrs = Convert.ToDecimal(Convert.ToDecimal(TotalHrsDia.Hours) + (Convert.ToDecimal(TotalHrsDia.Minutes))).ToString("#.00");
-                    Horas["SUELDO_TOTAL"] = SalarioHora * Convert.ToDecimal(TotalHrs);
+
+                    Horas["SUELDO_TOTAL"] = (Salario/15/horasxDias) * Convert.ToDecimal(TotalHrs);
                 }
 
                 return HoursExtras;

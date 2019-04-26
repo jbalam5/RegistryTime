@@ -134,7 +134,7 @@ namespace RegistryTime.Forms.Reports
             {
                 TurnBLL TurnBLL = new TurnBLL();
                 DataTable Turnos;
-                Turnos = TurnBLL.All();
+                Turnos = TurnBLL.All("All");
                 comboBoxTurno.DisplayMember = "Text";
                 comboBoxTurno.ValueMember = "Value";
 
@@ -142,7 +142,7 @@ namespace RegistryTime.Forms.Reports
                 items.Add(new { Text = "Todos", Value = "0" });
                 foreach (DataRow Turno in Turnos.Rows)
                 {
-                    items.Add(new { Text = Turno[1].ToString(), Value = Turno[0].ToString() });
+                    items.Add(new { Text = Turno[TurnML.DataBase.Name].ToString(), Value = Turno[TurnML.DataBase.Id].ToString() });
                 }
                 comboBoxTurno.DataSource = items;
             }

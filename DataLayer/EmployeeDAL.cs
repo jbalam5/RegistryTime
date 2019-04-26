@@ -181,6 +181,7 @@ namespace DataLayer
                         IdUser = (row[EmployeeML.DataBase.IdUser] != DBNull.Value) ? int.Parse(row[EmployeeML.DataBase.IdUser].ToString()) : 0,
                         Telephone = (row[EmployeeML.DataBase.Telephone] != DBNull.Value) ? row[EmployeeML.DataBase.Telephone].ToString() : String.Empty,
                         Salary = (row[EmployeeML.DataBase.Salary] != DBNull.Value) ? decimal.Parse(row[EmployeeML.DataBase.Salary].ToString()) : 0,
+                        HoursOfDay = (row[EmployeeML.DataBase.HoursOfDay] != DBNull.Value) ? decimal.Parse(row[EmployeeML.DataBase.HoursOfDay].ToString()) : 0,
                         NumberSure = (row[EmployeeML.DataBase.NumberSure] != DBNull.Value) ? row[EmployeeML.DataBase.NumberSure].ToString() : String.Empty,
                     };
                     return EmployeeML;

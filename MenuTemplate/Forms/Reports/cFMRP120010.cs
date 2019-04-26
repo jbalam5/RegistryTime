@@ -64,9 +64,7 @@ namespace RegistryTime.Forms.Reports
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
             ChildLeftPanel.Visible = false;
-            QueryBackgroundWorker.RunWorkerAsync();
-
-            
+            QueryBackgroundWorker.RunWorkerAsync();            
         }
 
         private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)

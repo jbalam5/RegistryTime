@@ -82,6 +82,8 @@ namespace BussinesLayer
                 //String TotalAddHours;  //= new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 0,0, 0);
                 TimeSpan TotalAddHours;
                 TimeSpan MaxAddHours;
+                int idGetUser = 0;
+              
                 if (TimeOutCheckMax.Rows.Count >0)
                 {
                     MaxAddHours = TimeSpan.Parse(TimeOutCheckMax.Rows[0]["timeCheck"].ToString());
@@ -90,12 +92,12 @@ namespace BussinesLayer
                 {
                     MaxAddHours = TimeSpan.Parse("00:00:00");
                 }
-                bool SinHoras = false;
+                //bool SinHoras = false;
                 if (TimeOutCheckDT.Rows.Count > 0)
                 {
                     //TotalAddHours = TimeOutCheckDT.Rows[0]["timeCheck"].ToString();
                     TotalAddHours = TimeSpan.Parse( TimeOutCheckDT.Rows[0]["timeCheck"].ToString());
-                    SinHoras = true;
+                    //SinHoras = true;
                 }
                 else
                 {
@@ -107,19 +109,20 @@ namespace BussinesLayer
                     CheckInHoursML CheckInHours = new CheckInHoursML();
                     foreach (DataRow Record in ListRecord.Rows)
                     {
+                        idGetUser = MigrationHistoryDAL.getUserDialing(Record["idUser"].ToString());
                         //Verificar si es MARCACION VALIDA
-                        if (MigrationHistoryDAL.ValidRecord(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), TotalAddHours, Convert.ToInt32(Record["idUser"].ToString())))
+                        if (MigrationHistoryDAL.ValidRecord(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), TotalAddHours, idGetUser) && idGetUser != 0)
                         {
                             //VERIFICAR SI NO EXISTE UNA MARCACION CON LOS MISMO PARAMETROS
-                            if (MigrationHistoryDAL.IsExistRecord(Convert.ToInt32(Record["idUser"].ToString()), Convert.ToDateTime(Record["dateTimeRecord"].ToString())) == 0)
+                            if (MigrationHistoryDAL.IsExistRecord(idGetUser, Convert.ToDateTime(Record["dateTimeRecord"].ToString())) == 0)
                             {
-                                TurnML TurnUser = TurnBLL.GetTurnUser(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), Convert.ToInt32(Record["idUser"].ToString()));
-                                String RecordData = MigrationHistoryDAL.RecordOld(Convert.ToInt32(Record["idUser"].ToString()));
+                                TurnML TurnUser = TurnBLL.GetTurnUser(Convert.ToDateTime(Record["dateTimeRecord"].ToString()), idGetUser);
+                                String RecordData = MigrationHistoryDAL.RecordOld(idGetUser);
                                 if (!String.IsNullOrEmpty(RecordData))
                                 {
                                     DateTime RecordOldTime = Convert.ToDateTime(RecordData.ToString());
 
-                                    CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
+                                    CheckInHours.IdEmployee = idGetUser;
                                     CheckInHours.MachineNumber = 1;
                                     CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                     CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
@@ -128,7 +131,7 @@ namespace BussinesLayer
                                     TimeSpan TotalDiffHours = TotalDiffTime(RecordOldTime, Convert.ToDateTime(Record["dateTimeRecord"].ToString()));
                                     if (MaxAddHours > TotalDiffHours)
                                     {
-                                        int Resul = MigrationHistoryDAL.NumRecordsUser(Convert.ToInt32(Record["idUser"].ToString())) % 2;
+                                        int Resul = MigrationHistoryDAL.NumRecordsUser(idGetUser) % 2;
                                         CheckInHours.TypeCheck = ( Resul == 0 )?"ENTRADA":"SALIDA";
                                     }
                                     else
@@ -140,7 +143,7 @@ namespace BussinesLayer
                                 {
                                     if (TurnUser != null)
                                     {
-                                        CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
+                                        CheckInHours.IdEmployee = idGetUser;
                                         CheckInHours.MachineNumber = 1;
                                         CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                         CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());
@@ -150,7 +153,7 @@ namespace BussinesLayer
                                     }
                                     else
                                     {
-                                        CheckInHours.IdEmployee = Convert.ToInt32(Record["idUser"].ToString());
+                                        CheckInHours.IdEmployee = idGetUser;
                                         CheckInHours.MachineNumber = 1;
                                         CheckInHours.DateTimeRecord = Convert.ToDateTime(Record["dateTimeRecord"].ToString());
                                         CheckInHours.DateOnlyRecord = Convert.ToDateTime(Record["dateOnlyRecord"].ToString());

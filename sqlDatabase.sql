@@ -109,6 +109,7 @@ numberSure nvarchar(25) null,
 admissionDate date null,
 idJob int not null,
 salary decimal(10,2) null,
+HoursDay decimal(10, 2) null,
 idUser int not null,
 CONSTRAINT FK_employee_idUser FOREIGN KEY (idUser)     
     REFERENCES users (id)     
@@ -456,3 +457,26 @@ code nvarchar(max) not null,
 codeAuth nvarchar(max) not null,
 statusAuth nvarchar(max) not null
 )
+
+
+create table usersEmployee(
+_registry int,
+idUserInsert int,
+dateInsert datetime,
+idUserUpdate int, 
+dateUpdate datetime,
+idUserDelete int,
+dateDelete datetime,
+id int primary key identity(1,1) not null,
+idEmployee int not null,
+idUser int null,
+numControl int null 
+)
+
+--agregar correo en users
+alter table dbo.users add email nvarchar(25) null
+
+--agregar columna HoursDay en empleado
+alter table dbo.employee add HoursDay decimal(10, 2) null
+
+
