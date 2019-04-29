@@ -134,17 +134,17 @@ namespace DataLayer
                 UsersEmployeeDAL UsersEmployeeDAL = new UsersEmployeeDAL();
                 
                 Query.AppendLine("select ");
-                Query.AppendFormat("{0} ", UsersEmployeeML.DataBase.IdEmployee);
+                Query.AppendFormat("{0} ", UsersEmployeeML.DataBase.idEmployee);
                 Query.AppendLine("from ");
                 Query.AppendFormat("{0} ", UsersDAL.TableName);
                 Query.AppendFormat("left join {0} on ", UsersEmployeeDAL.TableName);
-                Query.AppendFormat("{0}.{1} = {2}.{3} ", UsersDAL.TableName, UsersML.DataBase.Id, UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.IdUser);
+                Query.AppendFormat("{0}.{1} = {2}.{3} ", UsersDAL.TableName, UsersML.DataBase.Id, UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.idUser);
                 Query.AppendLine("where ");
-                Query.AppendFormat("{0}.{1} = {2}", UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.NumControl, idUser);
+                Query.AppendFormat("{0}.{1} = {2}", UsersEmployeeDAL.TableName, UsersEmployeeML.DataBase.numControl, idUser);
 
                 DataTable Response = ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);
                 if (Response.Rows.Count > 0)
-                    return (int)Response.Rows[0][UsersEmployeeML.DataBase.IdEmployee];
+                    return (int)Response.Rows[0][UsersEmployeeML.DataBase.idEmployee];
                 else
                     return 0;
             }

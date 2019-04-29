@@ -87,6 +87,7 @@ namespace RegistryTime.Forms
                     companyML.State = EstadoTextBox.Text;
                     companyML.PostalCode = CodigoPostalTextBox.Text;
                     companyML.Telephone = TelefonoTextBox.Text;
+                    companyML.NumberUserEmploye = textBoxNumberUsers.Text;
                     companyML.Image = System.IO.Path.GetFileName(PathFileNameTextBox.Text);
                     
                     if (companyBLL.Save(companyML) > 0)
@@ -227,6 +228,7 @@ namespace RegistryTime.Forms
                 EstadoTextBox.Text = string.Empty;
                 CodigoPostalTextBox.Text = string.Empty;
                 TelefonoTextBox.Text = string.Empty;
+                textBoxNumberUsers.Text = string.Empty;
                 PathFileNameTextBox.Text = string.Empty;
                 LogoPictureBox.BackgroundImage = null;
                 LogoPictureBox.Update();
@@ -298,6 +300,7 @@ namespace RegistryTime.Forms
                     EstadoTextBox.Text = companyML.State;
                     CodigoPostalTextBox.Text = companyML.PostalCode;
                     TelefonoTextBox.Text = companyML.Telephone;
+                    textBoxNumberUsers.Text = companyML.NumberUserEmploye;
 
 
                     if (!string.IsNullOrEmpty(companyML.Image))
@@ -376,6 +379,11 @@ namespace RegistryTime.Forms
                         Alerts.cFAT100010 alr = new Alerts.cFAT100010("ERROR", "El nombre de usuario se encuentra en uso.", MessageBoxIcon.Error);
                         alr.ShowDialog();
                     }
+                }
+
+                if( textBoxNumberUsers.Text != String.Empty && Convert.ToInt32(textBoxNumberUsers.Text) > 0 )
+                {
+
                 }
 
             }

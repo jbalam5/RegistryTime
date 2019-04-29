@@ -25,7 +25,7 @@ namespace BussinesLayer
         {
             try
             {
-                return usersEmployeeDAL.getEntityObject(Id);
+                return usersEmployeeDAL.GetEntityByIdUser(Id);
             }
             catch (Exception ex)
             {

@@ -308,7 +308,9 @@ namespace RegistryTime.Forms
               try
             {
                 if (FormValidate())
-                { 
+                {
+                    CompanyBLL CompanyBLL = new CompanyBLL();
+                    CompanyML Company = CompanyBLL.GetEntity();
 
                 UsersML User = new UsersML
                 {
@@ -412,7 +414,7 @@ namespace RegistryTime.Forms
                         Password = string.Format("{0}", IdNewEmployee)
 
                     };
-                    zKTecoDevice.SetUserInfo(_userInfo, 3);
+                    zKTecoDevice.SetUserInfo(_userInfo, Convert.ToInt32(Company.NumberUserEmploye));
 
                 cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;
                 FrmDataGrid.LoadDataGridView();

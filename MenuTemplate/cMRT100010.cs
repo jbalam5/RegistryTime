@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using BussinesLayer;
 using ModelLayer;
+using System.Configuration;
 
 namespace RegistryTime
 {
@@ -327,7 +328,7 @@ namespace RegistryTime
                 if (BussinesLayer.GlobalBLL.userML != null)
                 {
                     UsertoolStripStatusLabel.Text = BussinesLayer.GlobalBLL.userML.UserName.ToUpper();
-
+                    toolStripStatusLabelVersion.Text = String.Format("V.O. {0}", ConfigurationManager.AppSettings.Get("version"));
                     companyBLL = new CompanyBLL();
                     GlobalBLL.companyML = companyBLL.GetEntity();
 

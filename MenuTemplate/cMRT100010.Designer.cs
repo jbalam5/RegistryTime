@@ -63,6 +63,7 @@
             this.buttonReporteHrsExtras = new System.Windows.Forms.Button();
             this.buttonReporteHrsJornadas = new System.Windows.Forms.Button();
             this.buttonReporteAusentimos = new System.Windows.Forms.Button();
+            this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -104,6 +105,7 @@
             // 
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelVersion,
             this.UsertoolStripStatusLabel,
             this.CompanyNameToolStripStatusLabel,
             this.DatetoolStripStatusLabel});
@@ -502,7 +504,7 @@
             this.panelSubMenu.Controls.Add(this.buttonReporteAusentimos);
             this.panelSubMenu.Location = new System.Drawing.Point(220, 448);
             this.panelSubMenu.Name = "panelSubMenu";
-            this.panelSubMenu.Size = new System.Drawing.Size(200, 171);
+            this.panelSubMenu.Size = new System.Drawing.Size(200, 128);
             this.panelSubMenu.TabIndex = 14;
             this.panelSubMenu.Visible = false;
             // 
@@ -586,6 +588,13 @@
             this.buttonReporteAusentimos.UseVisualStyleBackColor = true;
             this.buttonReporteAusentimos.Click += new System.EventHandler(this.buttonReporteAusentimos_Click);
             // 
+            // toolStripStatusLabelVersion
+            // 
+            this.toolStripStatusLabelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabelVersion.Name = "toolStripStatusLabelVersion";
+            this.toolStripStatusLabelVersion.Size = new System.Drawing.Size(49, 25);
+            this.toolStripStatusLabelVersion.Text = "Version";
+            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -651,6 +660,7 @@
         private System.Windows.Forms.Button buttonReporteHrsJornadas;
         private System.Windows.Forms.Button buttonReporteAusentimos;
         private System.Windows.Forms.Button buttonAdmissionDate;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelVersion;
     }
 }
 

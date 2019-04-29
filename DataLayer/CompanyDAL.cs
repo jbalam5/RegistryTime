@@ -13,8 +13,10 @@ namespace DataLayer
     {
         public String core = "DataLayer.CompanyDAL";
         public String TableName = "company";
+        public int IdUserSession = 0;
+        public String ConnectionString = String.Empty;
 
-        public DataTable All(String ConnectionString)
+        public DataTable All()
         {
             try
             {
@@ -37,7 +39,7 @@ namespace DataLayer
 
         }
 
-        public CompanyML GetEntity(String ConnectionString)
+        public CompanyML GetEntity()
         {
             try
             {
@@ -84,35 +86,43 @@ namespace DataLayer
                         PostalCode = (row[CompanyML.DataBase.poltalCode] != DBNull.Value) ? row[CompanyML.DataBase.poltalCode].ToString() : string.Empty,
                         Telephone = (row[CompanyML.DataBase.telephone] != DBNull.Value) ? row[CompanyML.DataBase.telephone].ToString() : string.Empty,
                         Image = (row[CompanyML.DataBase.image] != DBNull.Value) ? row[CompanyML.DataBase.image].ToString() : string.Empty,
-                        _regitry = (row[CompanyML.DataBase._registry] != DBNull.Value) ? int.Parse(row[CompanyML.DataBase._registry].ToString()) : 0,
-                        IdUserInsert = (row[CompanyML.DataBase.idUserInsert] != DBNull.Value) ? int.Parse(row[CompanyML.DataBase.idUserInsert].ToString()) : 0
+                        NumberUserEmploye = (row[CompanyML.DataBase.numberUserEmploye] != DBNull.Value) ? row[CompanyML.DataBase.numberUserEmploye].ToString() : string.Empty,
+
                     };
 
                     return company;
                 }
                 return null;
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(string.Format("GetEntity: {0}", ex.Message));
             }
         }
 
-        public DataTable GetIdEntity(int id, String ConnectionString)
+        public void InsertNumUser(int number)
+        {
+            try
+            {
+                ModelDAL ModelDAL = new ModelDAL();
+                //String Query = String.Format("Update")
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(string.Format("InsertNumUser: {0}", ex.Message));
+            }
+
+        }
+
+        public DataTable GetIdEntity(int id)
         {
             try
             {
 
                 String Query = String.Format("SELECT * FROM {0} WHERE _registry = 1 AND id={1}", TableName, id);
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
-                DataTable dtDepartamentos = new DataTable();
-                cmd.Fill(dtDepartamentos);
-                Conexion.Close();
-                return dtDepartamentos;
+                ModelDAL ModelDAL = new ModelDAL();
+                return ModelDAL.DataTableRecord(Query, ConnectionString);
             }
             catch (Exception ex)
             {
@@ -120,23 +130,13 @@ namespace DataLayer
             }
         }
 
-        public int Save(CompanyML company, String ConnectionString)
+        public int Save(CompanyML company)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("INSERT INTO {0}", TableName);
-                Query.AppendLine("( rfc,businessName,street,municipality,state,country,email,postalCode,telephone,image,_registry,idUserInsert,dateInsert)");
-                Query.AppendFormat(" VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}',1,{10},GETDATE())",company.Rfc, company.BusinessName, company.Street, company.Municipality, company.State, company.Country, company.Email, company.PostalCode, company.Telephone, company.Image ,company.IdUserInsert);
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                ModelDAL ModelDAL = new ModelDAL();
+                return Convert.ToInt32(ModelDAL.InsertModel(company, TableName, IdUserSession, ConnectionString));
+  
             }
             catch (Exception ex)
             {
@@ -145,38 +145,13 @@ namespace DataLayer
 
         }
 
-        public int Update(CompanyML company, String ConnectionString)
+        public int Update(CompanyML Company)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendFormat("rfc = '{0}', ", company.Rfc);
-                Query.AppendFormat("businessName = '{0}', ", company.BusinessName);
-                Query.AppendFormat("street = '{0}', ", company.Street);
-                Query.AppendFormat("municipality = '{0}', ", company.Municipality);
-                Query.AppendFormat("state = '{0}', ", company.State);
-                Query.AppendFormat("country = '{0}', ", company.Country);
-                Query.AppendFormat("email = '{0}', ", company.Email);
-                Query.AppendFormat("postalCode = '{0}', ", company.PostalCode);
-                Query.AppendFormat("telephone = '{0}', ", company.Telephone);
-                Query.AppendFormat("image = '{0}', ", company.Image);
-                Query.AppendFormat("idUserUpdate = {0}, ", company.IdUserUpdate);
-                Query.AppendLine("dateUpdate = GETDATE() ");
-                Query.AppendFormat("WHERE id={0}", company.Id);
-
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
-
-
+                ModelDAL ModelDAL = new ModelDAL();
+                ModelDAL.UpdateModel(Company, TableName, IdUserSession, ConnectionString);
+                return Company.Id;
             }
             catch (Exception ex)
             {
@@ -184,27 +159,13 @@ namespace DataLayer
             }
         }
 
-        public int Delete(CompanyML company, String ConnectionString)
+        public int Delete(CompanyML Company)
         {
             try
             {
-                int id = 0;
-                StringBuilder Query = new StringBuilder();
-                Query.AppendFormat("UPDATE {0} ", TableName);
-                Query.AppendLine(" SET ");
-                Query.AppendLine("_registry = 2");
-                Query.AppendFormat("idUserDelete = {0}", company.IdUserDelete);
-                Query.AppendLine("dateDelete = GETDATE()");
-                Query.AppendFormat("WHERE id={0}", company.Id);
-
-                SqlConnection Conexion = new SqlConnection
-                {
-                    ConnectionString = ConnectionString
-                };
-                Conexion.Open();
-                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
-                id = cmd2.ExecuteNonQuery();
-                return id;
+                ModelDAL ModelDAL = new ModelDAL();
+                ModelDAL.DeleteModel(Company, TableName, IdUserSession, ConnectionString);
+                return Company.Id;
             }
             catch (Exception ex)
             {
