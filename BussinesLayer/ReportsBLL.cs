@@ -230,6 +230,18 @@ namespace BussinesLayer
             }
         }
 
+        public DataTable ReportUsers()
+        {
+            try
+            {           
+                return ReportsDAL.ReportUsers();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("ReportUsers: {0}", ex.Message));
+            }
+        }
+
         public TimeSpan SumToTime(TimeSpan Dif1, TimeSpan Dif2)
         {
             try

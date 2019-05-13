@@ -72,6 +72,7 @@ namespace DataLayer
                 throw new Exception(String.Format("ReportAbsenteeism: {0}", ex.Message));
             }
         }
+
         public DataTable ReportExtras(DateTime DateStart, DateTime DateEnd, int IdTurn = 0, int IdDepartament = 0, int IdEmployee = 0)
         {
             try
@@ -157,6 +158,48 @@ namespace DataLayer
             catch(Exception ex)
             {
                 throw new Exception(String.Format("AdmissionDateEmployee: {0}", ex.Message));
+            }
+        }
+
+        public DataTable ReportUsers()
+        {
+            try
+            {
+                StringBuilder Query = new StringBuilder();
+
+                Query.AppendLine("SELECT ");
+                Query.AppendFormat("employee.id as Cve_Empleado, ");
+                Query.AppendFormat("employee.name +' '+ employee.lastname as Empleado, ");
+                Query.AppendFormat("employee.controlNumber as Num_Control, ");
+                Query.AppendFormat("users.id as Cve_Usuario, ");
+                Query.AppendFormat("users.userName as Usuario, ");
+                Query.AppendFormat("users.password as Contraseña, ");
+                Query.AppendFormat("users.email as Correo, ");
+                Query.AppendFormat("role.name as Rol ");
+                Query.AppendFormat("FROM users ");
+                Query.AppendFormat("INNER JOIN role ON role.id = users.rol AND role._registry > 0 ");
+                Query.AppendFormat("INNER JOIN usersEmployee ON usersEmployee.idUser = users.id ");
+                Query.AppendFormat("INNER JOIN employee ON employee.id = usersEmployee.idEmployee ");
+                Query.AppendFormat("ORDER BY ");
+                Query.AppendFormat("employee.id, employee.name ");
+                SqlConnection Connection = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Connection.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
+                DataTable dtReportUsers = new DataTable();
+                cmd.Fill(dtReportUsers);
+                Connection.Close();
+                if (dtReportUsers != null && dtReportUsers.Rows.Count > 0)
+                {
+                    return dtReportUsers;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("ReportExtras: {0}", ex.Message));
             }
         }
     }

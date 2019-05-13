@@ -96,7 +96,7 @@ namespace RegistryTime.Forms.Reports
             dataGridViewReporteGeneral.DataSource = tableSumByCount;
         }
 
-            private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void QueryBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             this.Invoke(new Action(() =>
             {
