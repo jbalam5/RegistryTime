@@ -33,7 +33,7 @@ namespace ModelLayer
             public const string SureType = "sureType";
             public const string NumberSure = "numberSure";
             public const string Salary = "salary";
-            public const string HoursOfDay = "hoursDay";
+            public const string HoursOfDay = "HoursOfDay";
             public const string IdJob = "idJob";
             public const string IdUser = "idUser";
         }
