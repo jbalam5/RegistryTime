@@ -168,13 +168,13 @@ namespace DataLayer
                 StringBuilder Query = new StringBuilder();
 
                 Query.AppendLine("SELECT ");
-                Query.AppendFormat("employee.id as Cve_Empleado, ");
-                Query.AppendFormat("employee.name +' '+ employee.lastname as Empleado, ");
+                Query.AppendFormat("employee.id as Clave, ");
+                Query.AppendFormat("employee.name +' '+ employee.lastname as NombreEmpleado, ");
                 Query.AppendFormat("employee.controlNumber as Num_Control, ");
-                Query.AppendFormat("users.id as Cve_Usuario, ");
+                //Query.AppendFormat("users.id as Cve_Usuario, ");
                 Query.AppendFormat("users.userName as Usuario, ");
-                Query.AppendFormat("users.password as Contraseña, ");
-                Query.AppendFormat("users.email as Correo, ");
+                Query.AppendFormat("users.id as Contraseña, ");
+                //Query.AppendFormat("users.email as Correo, ");
                 Query.AppendFormat("role.name as Rol ");
                 Query.AppendFormat("FROM users ");
                 Query.AppendFormat("INNER JOIN role ON role.id = users.rol AND role._registry > 0 ");
