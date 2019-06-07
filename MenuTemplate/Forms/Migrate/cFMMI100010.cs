@@ -92,8 +92,8 @@ namespace RegistryTime.Forms.Migrate
                     MigrationHistoryBLL migrationHistoryBLL = new MigrationHistoryBLL();
                     DateTime start = migrationHistoryBLL.LastRecord();
                     MigrateBackgroundWorker.ReportProgress(20);
-
-                    //zKTecoHourAssistanceBLL.MigrateHoursToBD(start, DateTime.Now);
+                    //descomentar antes de subir
+                    zKTecoHourAssistanceBLL.MigrateHoursToBD(start, DateTime.Now);
                 }
                 catch
                 {

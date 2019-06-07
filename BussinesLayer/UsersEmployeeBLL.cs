@@ -37,7 +37,7 @@ namespace BussinesLayer
         {
             try
             {
-                return (usersEmployeeML.id > 0) ? usersEmployeeDAL.Update(usersEmployeeML) : usersEmployeeDAL.Insert(usersEmployeeML);       
+                return (usersEmployeeML.Id > 0) ? usersEmployeeDAL.Update(usersEmployeeML) : usersEmployeeDAL.Insert(usersEmployeeML);       
             }
             catch (Exception ex)
             {
@@ -51,7 +51,7 @@ namespace BussinesLayer
             {
                 UsersEmployeeML usersEmployee = new UsersEmployeeML()
                 {
-                    id = Id
+                    Id = Id
                 };
 
                 usersEmployeeDAL.Delete(usersEmployee);

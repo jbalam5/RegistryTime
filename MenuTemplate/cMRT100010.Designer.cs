@@ -33,6 +33,7 @@
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.BottomStatePanel = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.CompanyNameToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -63,7 +64,6 @@
             this.buttonReporteHrsExtras = new System.Windows.Forms.Button();
             this.buttonReporteHrsJornadas = new System.Windows.Forms.Button();
             this.buttonReporteAusentimos = new System.Windows.Forms.Button();
-            this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -115,6 +115,13 @@
             this.statusStrip1.Size = new System.Drawing.Size(666, 30);
             this.statusStrip1.TabIndex = 0;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabelVersion
+            // 
+            this.toolStripStatusLabelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabelVersion.Name = "toolStripStatusLabelVersion";
+            this.toolStripStatusLabelVersion.Size = new System.Drawing.Size(49, 25);
+            this.toolStripStatusLabelVersion.Text = "Version";
             // 
             // UsertoolStripStatusLabel
             // 
@@ -504,7 +511,7 @@
             this.panelSubMenu.Controls.Add(this.buttonReporteAusentimos);
             this.panelSubMenu.Location = new System.Drawing.Point(220, 448);
             this.panelSubMenu.Name = "panelSubMenu";
-            this.panelSubMenu.Size = new System.Drawing.Size(200, 128);
+            this.panelSubMenu.Size = new System.Drawing.Size(200, 163);
             this.panelSubMenu.TabIndex = 14;
             this.panelSubMenu.Visible = false;
             // 
@@ -587,13 +594,6 @@
             this.buttonReporteAusentimos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.buttonReporteAusentimos.UseVisualStyleBackColor = true;
             this.buttonReporteAusentimos.Click += new System.EventHandler(this.buttonReporteAusentimos_Click);
-            // 
-            // toolStripStatusLabelVersion
-            // 
-            this.toolStripStatusLabelVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.toolStripStatusLabelVersion.Name = "toolStripStatusLabelVersion";
-            this.toolStripStatusLabelVersion.Size = new System.Drawing.Size(49, 25);
-            this.toolStripStatusLabelVersion.Text = "Version";
             // 
             // cMRT100010
             // 

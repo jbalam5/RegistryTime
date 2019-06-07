@@ -201,7 +201,8 @@ namespace DataLayer
                     Query.AppendLine("LEFT OUTER JOIN turn ON turn.id = turnsOfEmployee.idTurn ");
                     Query.AppendLine("WHERE turn._registry = 1 ");
                     Query.AppendLine("AND CONVERT(datetime,turn.startEntry) <= CONVERT(datetime, @TIMEHOURS) ");
-                    Query.AppendLine("AND CONVERT(datetime,@TIMEHOURS) <= CONVERT(datetime,turn.limitDeparture) ");
+                    //Query.AppendLine("AND CONVERT(datetime,@TIMEHOURS) <= CONVERT(datetime,turn.limitDeparture) ");
+                    Query.AppendLine("AND CONVERT(datetime,@TIMEHOURS) <= dateadd(HOUR,DATEPART(HOUR,turn.hoursJornada ), cast( dateadd(minute, DATEPART(MINUTE,turn.hoursJornada ), cast( (DATEADD(SECOND,DATEPART(SECOND,turn.hoursJornada ),cast(turn.timeEntry as datetime) )) as datetime)) as datetime)) ");
                     Query.AppendFormat("AND turnsOfEmployee.idEmployee ={0} ", IdUser);
 
                     DataTable dtTurnos = ModelDAL.DataTableRecord(Query.ToString(), ConnectionString);

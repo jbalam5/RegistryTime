@@ -114,6 +114,8 @@ namespace BussinesLayer
 
                 if (startDate == null || endDate == null) throw new Exception("MigrateHoursToBD: No se encontró la Fecha Inicio/Fecha Fin");
 
+                //string _startDate =  startDate.ToString("yyyy-MM-dd hh:mm:ss");
+                //string _endDate = endDate.ToString("yyyy-MM-dd hh:mm:ss");
                 string _startDate = string.Format("{0} 00:00:00", startDate.ToString("yyyy-MM-dd"));
                 string _endDate = string.Format("{0} 23:59:00", endDate.ToString("yyyy-MM-dd"));
 

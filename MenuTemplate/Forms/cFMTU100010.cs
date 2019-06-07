@@ -120,7 +120,7 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewData.DataSource = TurnBLL.All();
+            dataGridViewData.DataSource = TurnBLL.All("No");
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)

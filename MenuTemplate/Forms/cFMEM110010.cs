@@ -351,7 +351,8 @@ namespace RegistryTime.Forms
                     SureType = comboBoxTipoSeguro.SelectedValue.ToString(),
                     NumberSure = textBoxNumSeguro.Text,
                     Salary= Convert.ToDecimal( textBoxSueldo.Text),
-                    HoursOfDay = Convert.ToDecimal(textBoxTotalhrsDia.Text),
+                    HoursOfDay = Convert.ToDecimal(textBoxNumHours.Text),
+                    //HoursOfDay = Convert.ToDecimal(textBoxTotalhrsDia.Text),
                 };
 
                 if (radioButtonHombre.Checked)
