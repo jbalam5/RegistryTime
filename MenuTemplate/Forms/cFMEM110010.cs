@@ -71,7 +71,7 @@ namespace RegistryTime.Forms
                     textBoxEstado.Text = EmployeeEntiy.StateCountry.ToString();                    
                     textBoxNumSeguro.Text = EmployeeEntiy.NumberSure.ToString();
                     textBoxSueldo.Text = EmployeeEntiy.Salary.ToString();
-                    textBoxTotalhrsDia.Text = EmployeeEntiy.HoursOfDay.ToString();
+                    textBoxNumHours.Text = EmployeeEntiy.HoursDay.ToString();
                     comboBoxTipoSeguro.SelectedValue = EmployeeEntiy.SureType.ToString();
                     comboBoxDepartamento.SelectedValue = EmployeeEntiy.IdDepartament.ToString();
                     comboBoxEscolaridad.SelectedValue = EmployeeEntiy.Scholarship.ToString();
@@ -194,7 +194,7 @@ namespace RegistryTime.Forms
             comboBoxEscolaridad.SelectedIndex = 0;
             comboBoxTipoSeguro.SelectedIndex = 0;
             textBoxSueldo.Text = String.Empty;
-            textBoxTotalhrsDia.Text = String.Empty;
+            textBoxNumHours.Text = String.Empty;
             PathFileNameTextBox.Text = String.Empty;
         }
 
@@ -351,7 +351,7 @@ namespace RegistryTime.Forms
                     SureType = comboBoxTipoSeguro.SelectedValue.ToString(),
                     NumberSure = textBoxNumSeguro.Text,
                     Salary= Convert.ToDecimal( textBoxSueldo.Text),
-                    HoursOfDay = Convert.ToDecimal(textBoxTotalhrsDia.Text),
+                    HoursDay = Convert.ToDecimal(textBoxNumHours.Text),
                 };
 
                 if (radioButtonHombre.Checked)
