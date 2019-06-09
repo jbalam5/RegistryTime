@@ -113,6 +113,16 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap calendar_plusx32 {
+            get {
+                object obj = ResourceManager.GetObject("calendar-plusx32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CicleYellowSavex48 {
             get {
                 object obj = ResourceManager.GetObject("CicleYellowSavex48", resourceCulture);
@@ -173,6 +183,16 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clock_checkedx32 {
+            get {
+                object obj = ResourceManager.GetObject("clock-checkedx32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close32 {
             get {
                 object obj = ResourceManager.GetObject("close32", resourceCulture);
@@ -206,6 +226,16 @@ namespace RegistryTime.Properties {
         internal static System.Drawing.Bitmap exit32 {
             get {
                 object obj = ResourceManager.GetObject("exit32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap falsex32 {
+            get {
+                object obj = ResourceManager.GetObject("falsex32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -423,6 +453,16 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap jobx32 {
+            get {
+                object obj = ResourceManager.GetObject("jobx32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap maximizar32 {
             get {
                 object obj = ResourceManager.GetObject("maximizar32", resourceCulture);
@@ -466,6 +506,26 @@ namespace RegistryTime.Properties {
         internal static System.Drawing.Bitmap office32 {
             get {
                 object obj = ResourceManager.GetObject("office32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pass_failx32 {
+            get {
+                object obj = ResourceManager.GetObject("pass-failx32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pass_failx321 {
+            get {
+                object obj = ResourceManager.GetObject("pass-failx321", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
