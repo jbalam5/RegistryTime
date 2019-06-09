@@ -425,7 +425,7 @@ description nvarchar(max),
 timeCheck time
 )
 insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'checkin', 'tiempo de espera para registros validos','00:30:00')
-insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'maxihours', 'tiempo de espera para registros validos','15:30:00')
+insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'maxihours', 'tiempo maximo para registros validos','15:30:00')
 
 --HISTORIAL DE MIGRACION DE LECTOR
 create table MigrationHistory(
@@ -440,8 +440,13 @@ id int primary key identity(1,1) not null,
 dateStart datetime null,
 dateEnd datetime null
 )
+
+--MODIFICACIONES
+alter table dbo.MigrationHistory add migrateLogs bit DEFAULT 0
+alter table dbo.MigrationHistory add migrateAssistance bit DEFAULT 0
+
 --Entorno de pruebas
-INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),'2017-01-01','2017-01-01')
+--INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),'2017-01-01','2017-01-01')
 --INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),GETDATE(),GETDATE())
 
 --TABLA PARA CONTROLAR LICENCIA
@@ -475,9 +480,5 @@ idEmployee int not null,
 idUser int null,
 numControl int null 
 )
-
-
-
-
 
 

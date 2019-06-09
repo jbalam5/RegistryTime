@@ -21,6 +21,7 @@ namespace BussinesLayer
             usersEmployeeDAL.IdUserSession = (GlobalBLL.userML != null) ? GlobalBLL.userML.Id : 0;
         }
 
+
         public UsersEmployeeML GetEntityByIdUser(int Id)
         {
             try

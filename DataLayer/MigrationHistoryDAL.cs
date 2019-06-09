@@ -62,25 +62,70 @@ namespace DataLayer
             }
         }
 
-        public DateTime LastRecord()
+        public bool VerifyTypeMigrate(int type)
         {
-            try
-            {
-                DateTime Fecha;
-                String Query = String.Format("SELECT  TOP 1 dateEnd FROM {0} WHERE _registry = 1 ORDER BY id DESC", TableName);
+            try{
+                if (type >= 0 && type <= 1)
+                    throw new Exception("Tipo invalido");
+
+                string field = (type == 0) ? MigrationHistoryML.Database.MigrateLogs : MigrationHistoryML.Database.MigrateAssistance;
+                String Query = String.Format("SELECT  TOP 1 {1} FROM {0} WHERE _registry = 1  ORDER BY id DESC", TableName, field);
+
                 SqlConnection Conexion = new SqlConnection
                 {
                     ConnectionString = ConnectionString
                 };
 
-                using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
-                {
-                    Conexion.Open();                    
-                    Fecha = (DateTime)cmd2.ExecuteScalar();
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtHistory = new DataTable();
+                cmd.Fill(dtHistory);
+                Conexion.Close();
 
-                    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
-                    return Fecha;                    
+                if (dtHistory != null && dtHistory.Rows.Count == 1)
+                {
+                    return (dtHistory.Rows[0][field] != DBNull.Value) ? bool.Parse(dtHistory.Rows[0][field].ToString()) : false;
                 }
+
+                return false;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(String.Format("{0}.VerifyTypeMigrate: {1}", core, ex));
+            }
+        }
+
+        public string LastRecord()
+        {
+            try
+            {                
+                String Query = String.Format("SELECT  TOP 1 dateEnd FROM {0} WHERE _registry = 1  ORDER BY id DESC", TableName);
+                
+                SqlConnection Conexion = new SqlConnection
+                {
+                    ConnectionString = ConnectionString
+                };
+
+                Conexion.Open();
+                SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
+                DataTable dtHistory = new DataTable();
+                cmd.Fill(dtHistory);
+                Conexion.Close();
+
+                if (dtHistory != null && dtHistory.Rows.Count == 1)
+                {
+                    return (dtHistory.Rows[0][MigrationHistoryML.Database.DateEnd] != DBNull.Value) ? dtHistory.Rows[0][MigrationHistoryML.Database.DateEnd].ToString() : string.Empty;
+                }
+
+                return string.Empty;
+                //using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+                //{
+                //    Conexion.Open();                    
+                //    Fecha = (DateTime)cmd2.ExecuteScalar();
+
+                //    if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                //    return Fecha;                    
+                //}
             }
             catch (Exception ex)
             {

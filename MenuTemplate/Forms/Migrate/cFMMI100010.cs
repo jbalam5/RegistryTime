@@ -18,20 +18,11 @@ namespace RegistryTime.Forms.Migrate
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
-        int _type;
-        int _dividendo;
-        DateTime _startDate;
-        DateTime _endDate;
         #endregion
 
         #region "CONSTRUCTOR"
-        public cFMMI100010(int _type, int dividendo, DateTime startDate, DateTime endDate )
+        public cFMMI100010()
         {
-            this._type = _type;
-            this._startDate = startDate;
-            this._endDate = endDate;
-            this._dividendo = dividendo;
-
             InitializeComponent();
         }
         #endregion
@@ -87,13 +78,35 @@ namespace RegistryTime.Forms.Migrate
 
                 this.Invoke(new Action(() => { MessageLabel.Text = "Paso 1: Migrando información a la Base de datos"; }));
 
+                string start = string.Empty;
+                string end = string.Empty;
+                
                 try
                 {
                     MigrationHistoryBLL migrationHistoryBLL = new MigrationHistoryBLL();
-                    DateTime start = migrationHistoryBLL.LastRecord();
-                    MigrateBackgroundWorker.ReportProgress(20);
-                    //descomentar antes de subir
-                    zKTecoHourAssistanceBLL.MigrateHoursToBD(start, DateTime.Now);
+                    string dateLastRecord = migrationHistoryBLL.LastRecord();
+                    
+                    if (!string.IsNullOrEmpty(dateLastRecord))
+                    {
+                        start = DateTime.Parse(dateLastRecord).AddMinutes(1).ToString();
+                        DateTime _Today = DateTime.Now;
+                        MigrateBackgroundWorker.ReportProgress(20);
+
+                        if (DateTime.Parse(dateLastRecord).AddMinutes(1) <= _Today)
+                        {
+                            end = _Today.ToString();
+                            zKTecoHourAssistanceBLL.MigrateHoursToBD(start, end);
+                        }
+                    }
+                    else
+                    {
+                        List<string> dateMigrate = zKTecoHourAssistanceBLL.MigrateHoursToBD();
+                        if (dateMigrate != null && dateMigrate.Count == 2)
+                        {
+                            start = dateMigrate[0];
+                            end = dateMigrate[1];
+                        }
+                    }
                 }
                 catch
                 {
@@ -101,14 +114,15 @@ namespace RegistryTime.Forms.Migrate
                 }
 
                 MigrateBackgroundWorker.ReportProgress(50);
-
                 this.Invoke(new Action(() => { MessageLabel.Text = "Paso 2: Actualizando horarios de asistencia"; }));
-                //CheckInoursBLL.Migrate2(_dividendo);
-                if (this._type == 0)
-                {
+
+                CheckInoursBLL.Migrate2(start, end);
+
+                //if (this._type == 0)
+                //{
                     //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
-                    CheckInoursBLL.Migrate2(_dividendo);
-                }
+                    //CheckInoursBLL.Migrate2(_dividendo);
+                //}
                 //if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
                 //{
                 //    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))

@@ -84,6 +84,8 @@
             this.textBoxNacionalidad = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.label42 = new System.Windows.Forms.Label();
+            this.textBoxNumHours = new System.Windows.Forms.TextBox();
             this.label41 = new System.Windows.Forms.Label();
             this.textBoxTotalhrsDia = new System.Windows.Forms.TextBox();
             this.label40 = new System.Windows.Forms.Label();
@@ -120,8 +122,6 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
-            this.textBoxNumHours = new System.Windows.Forms.TextBox();
-            this.label42 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -187,7 +187,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(773, 363);
+            this.tabPage1.Size = new System.Drawing.Size(773, 386);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Datos General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -214,7 +214,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(767, 357);
+            this.panel3.Size = new System.Drawing.Size(767, 380);
             this.panel3.TabIndex = 13;
             // 
             // label29
@@ -403,7 +403,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(773, 363);
+            this.tabPage2.Size = new System.Drawing.Size(773, 386);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Datos Personal";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -753,6 +753,25 @@
             this.panel5.TabIndex = 14;
             this.panel5.TabStop = true;
             // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(7, 342);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(137, 18);
+            this.label42.TabIndex = 70;
+            this.label42.Text = "Total hrs Empleado";
+            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxNumHours
+            // 
+            this.textBoxNumHours.Enabled = false;
+            this.textBoxNumHours.Location = new System.Drawing.Point(146, 339);
+            this.textBoxNumHours.Name = "textBoxNumHours";
+            this.textBoxNumHours.Size = new System.Drawing.Size(100, 24);
+            this.textBoxNumHours.TabIndex = 69;
+            this.textBoxNumHours.Text = "0.00";
+            // 
             // label41
             // 
             this.label41.AutoSize = true;
@@ -762,6 +781,7 @@
             this.label41.TabIndex = 68;
             this.label41.Text = "Horas por Día";
             this.label41.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label41.Visible = false;
             // 
             // textBoxTotalhrsDia
             // 
@@ -771,6 +791,7 @@
             this.textBoxTotalhrsDia.Size = new System.Drawing.Size(335, 24);
             this.textBoxTotalhrsDia.TabIndex = 67;
             this.textBoxTotalhrsDia.Text = "0.00";
+            this.textBoxTotalhrsDia.Visible = false;
             // 
             // label40
             // 
@@ -989,7 +1010,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 27);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(773, 363);
+            this.tabPage4.Size = new System.Drawing.Size(773, 386);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Datos de Acceso";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1128,24 +1149,6 @@
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = false;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
-            // 
-            // textBoxNumHours
-            // 
-            this.textBoxNumHours.Enabled = false;
-            this.textBoxNumHours.Location = new System.Drawing.Point(146, 339);
-            this.textBoxNumHours.Name = "textBoxNumHours";
-            this.textBoxNumHours.Size = new System.Drawing.Size(100, 24);
-            this.textBoxNumHours.TabIndex = 69;
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(7, 342);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(137, 18);
-            this.label42.TabIndex = 70;
-            this.label42.Text = "Total hrs Empleado";
-            this.label42.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cFMEM110010
             // 

@@ -55,7 +55,7 @@ namespace BussinesLayer
         /// Función que lee todos los Logs de Registros del Lector y los Migra a la Base de Datos
         /// </summary>
         /// <returns>Total de Registros migrados</returns>
-        public int MigrateHoursToBD()
+        public List<string> MigrateHoursToBD()
         {
             try
             {
@@ -66,11 +66,18 @@ namespace BussinesLayer
                     ICollection<HoursAssistanceInfo> hoursAssistances = zKTecoDeviceBLL.GetLogData();
 
                     int count = 0;
+                    string firstDate = string.Empty;
+                    string lastDate = string.Empty;
+                    List<string> dateMigrate = new List<string>();
 
                     if (hoursAssistances != null && hoursAssistances.Count > 0)
                     {
                         foreach (HoursAssistanceInfo ihoursAssistance in hoursAssistances)
                         {
+                            if (count == 0)
+                                firstDate = DateTime.Parse(ihoursAssistance.DateTimeRecord).ToString("yyyy-MM-dd HH:mm:ss");
+
+                            lastDate = DateTime.Parse(ihoursAssistance.DateTimeRecord).ToString("yyyy-MM-dd HH:mm:ss");
                             ZKTecoHourAssistanceML zKTecoHourAssistanceML = new ZKTecoHourAssistanceML()
                             {
                                 MachineNumber = ihoursAssistance.MachineNumber,
@@ -78,17 +85,30 @@ namespace BussinesLayer
                                 VerifyState = ihoursAssistance.VerifyState,
                                 VerifyType = ihoursAssistance.VerifyType,
                                 WorkCode = ihoursAssistance.WorkCode,
-                                DateTimeRecord = DateTime.Parse(ihoursAssistance.DateTimeRecord).ToString("yyyy-MM-dd HH:mm:ss")
+                                DateTimeRecord = lastDate
                             };
 
                             zkTecoHourAssistanceDAL.Insert(zKTecoHourAssistanceML, ConnectionStrings);
-
                             count++;
                             Console.WriteLine("Registro {0}", count);
                         }
+
+                        dateMigrate.Add(firstDate);
+                        dateMigrate.Add(lastDate);
+                        //MigrationHistoryBLL migrationHistoryBLL = new MigrationHistoryBLL();
+                        //MigrationHistoryML migrationHistoryML = new MigrationHistoryML()
+                        //{
+                        //    DateStart = DateTime.Parse(firstDate),
+                        //    DateEnd = DateTime.Parse(lastDate)
+                        //};
+
+                        //migrationHistoryBLL.Save(migrationHistoryML);
                     }
 
-                    return count;
+                    if (count > 0)
+                        return dateMigrate;
+
+                    return null;
                 }
                 else
                 {
@@ -107,17 +127,14 @@ namespace BussinesLayer
         /// <param name="startDate">Fecha de Inicio</param>
         /// <param name="endDate">Fecha Fin</param>
         /// <returns>Total de registros migrados</returns>
-        public int MigrateHoursToBD(DateTime startDate, DateTime endDate)
+        public int MigrateHoursToBD(string startDate, string endDate)
         {
             try
             {
+                if (string.IsNullOrEmpty(startDate) || string.IsNullOrEmpty(endDate)) throw new Exception("MigrateHoursToBD: No se encontró la Fecha Inicio/Fecha Fin");
 
-                if (startDate == null || endDate == null) throw new Exception("MigrateHoursToBD: No se encontró la Fecha Inicio/Fecha Fin");
-
-                //string _startDate =  startDate.ToString("yyyy-MM-dd hh:mm:ss");
-                //string _endDate = endDate.ToString("yyyy-MM-dd hh:mm:ss");
-                string _startDate = string.Format("{0} 00:00:00", startDate.ToString("yyyy-MM-dd"));
-                string _endDate = string.Format("{0} 23:59:00", endDate.ToString("yyyy-MM-dd"));
+                string _startDate = DateTime.Parse(startDate).ToString("yyyy-MM-dd hh:mm:ss");
+                string _endDate = DateTime.Parse(endDate).ToString("yyyy-MM-dd hh:mm:ss");
 
                 ZKTecoDeviceBLL zKTecoDeviceBLL = new ZKTecoDeviceBLL();
 
@@ -146,6 +163,15 @@ namespace BussinesLayer
                             count++;
                             Console.WriteLine("Registro {0}", count);
                         }
+
+                        //MigrationHistoryBLL migrationHistoryBLL = new MigrationHistoryBLL();
+                        //MigrationHistoryML migrationHistoryML = new MigrationHistoryML()
+                        //{
+                        //    DateStart = startDate,
+                        //    DateEnd = endDate
+                        //};
+
+                        //migrationHistoryBLL.Save(migrationHistoryML);
                     }
 
                     return count;
