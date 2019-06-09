@@ -203,6 +203,26 @@ namespace RegistryTime.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap event_acceptedx32 {
+            get {
+                object obj = ResourceManager.GetObject("event-acceptedx32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap event_acceptedx321 {
+            get {
+                object obj = ResourceManager.GetObject("event-acceptedx321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Excel_icon {
             get {
                 object obj = ResourceManager.GetObject("Excel-icon", resourceCulture);
@@ -616,6 +636,16 @@ namespace RegistryTime.Properties {
         internal static System.Drawing.Bitmap TimeCalendarx641 {
             get {
                 object obj = ResourceManager.GetObject("TimeCalendarx641", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap timesheetx32 {
+            get {
+                object obj = ResourceManager.GetObject("timesheetx32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

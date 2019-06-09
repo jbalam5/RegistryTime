@@ -203,7 +203,7 @@
             this.panelSubMenu.Controls.Add(this.buttonReporteAusentimos);
             this.panelSubMenu.Location = new System.Drawing.Point(220, 448);
             this.panelSubMenu.Name = "panelSubMenu";
-            this.panelSubMenu.Size = new System.Drawing.Size(200, 128);
+            this.panelSubMenu.Size = new System.Drawing.Size(200, 163);
             this.panelSubMenu.TabIndex = 14;
             this.panelSubMenu.Visible = false;
             // 
@@ -216,7 +216,7 @@
             this.buttonAdmissionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdmissionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdmissionDate.ForeColor = System.Drawing.Color.White;
-            this.buttonAdmissionDate.Image = global::RegistryTime.Properties.Resources.reports32;
+            this.buttonAdmissionDate.Image = global::RegistryTime.Properties.Resources.event_acceptedx32;
             this.buttonAdmissionDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAdmissionDate.Location = new System.Drawing.Point(1, 115);
             this.buttonAdmissionDate.Name = "buttonAdmissionDate";
@@ -256,7 +256,7 @@
             this.buttonReporteHrsJornadas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReporteHrsJornadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReporteHrsJornadas.ForeColor = System.Drawing.Color.White;
-            this.buttonReporteHrsJornadas.Image = global::RegistryTime.Properties.Resources.reports32;
+            this.buttonReporteHrsJornadas.Image = global::RegistryTime.Properties.Resources.timesheetx32;
             this.buttonReporteHrsJornadas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonReporteHrsJornadas.Location = new System.Drawing.Point(0, 77);
             this.buttonReporteHrsJornadas.Name = "buttonReporteHrsJornadas";
@@ -554,7 +554,7 @@
             this.SettingsButton.ForeColor = System.Drawing.Color.White;
             this.SettingsButton.Image = global::RegistryTime.Properties.Resources.settings32;
             this.SettingsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.SettingsButton.Location = new System.Drawing.Point(1, 528);
+            this.SettingsButton.Location = new System.Drawing.Point(1, 493);
             this.SettingsButton.Name = "SettingsButton";
             this.SettingsButton.Size = new System.Drawing.Size(221, 40);
             this.SettingsButton.TabIndex = 2;
