@@ -169,7 +169,7 @@ namespace BussinesLayer
                     EmployeeML SalaryEmployeeML = EmployeeBLL.GetColumnsEmployee(Int32.Parse(Horas["CVE"].ToString()));
                     
                     Decimal Salario = Decimal.Parse(SalaryEmployeeML.Salary.ToString());
-                    Decimal horasxDias = Decimal.Parse(SalaryEmployeeML.HoursOfDay.ToString());
+                    Decimal horasxDias = Decimal.Parse(SalaryEmployeeML.HoursDay.ToString());
 
                     if (Horas["TURNO"].ToString() != "HRS EXTRA")
                     {
@@ -218,7 +218,14 @@ namespace BussinesLayer
                     TotalHrsDia = SumToTime(HrsJornadas, HrsExtras);
                     TotalHrs = Convert.ToDecimal(Convert.ToDecimal(TotalHrsDia.Hours) + (Convert.ToDecimal(TotalHrsDia.Minutes))).ToString("#.00");
 
-                    Horas["SUELDO_TOTAL"] = (Salario/15/horasxDias) * Convert.ToDecimal(TotalHrs);
+                    if (horasxDias > 0)
+                    {
+                        Horas["SUELDO_TOTAL"] = (Salario / 15 / horasxDias) * Convert.ToDecimal(TotalHrs);
+                    }                
+                    else
+                    {
+                        Horas["SUELDO_TOTAL"] = 0;
+                    }
                 }
 
                 return HoursExtras;
@@ -227,6 +234,18 @@ namespace BussinesLayer
             catch (Exception ex)
             {
                 throw new Exception(String.Format("ReportHoursJob: {0}", ex.Message));
+            }
+        }
+
+        public DataTable ReportUsers()
+        {
+            try
+            {           
+                return ReportsDAL.ReportUsers();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("ReportUsers: {0}", ex.Message));
             }
         }
 

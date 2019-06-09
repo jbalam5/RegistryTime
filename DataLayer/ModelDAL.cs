@@ -26,7 +26,7 @@ namespace DataLayer
                     ConnectionString = ConnectionString
                 };
                 Connection.Open();
-                SqlDataAdapter cmd = new SqlDataAdapter(Query, Connection);
+                SqlDataAdapter cmd = new SqlDataAdapter(Query.ToString(), Connection);
                 DataTable ListRecord = new DataTable();
                 cmd.Fill(ListRecord);
                 Connection.Close();
@@ -69,7 +69,83 @@ namespace DataLayer
                 throw new Exception(String.Format("CountRecord: {0}", ex.Message));
             }
         }
+        /// <summary>
+        ///  Insert y devuelve el id del registro afectado
+        /// </summary>
+        /// <param name="ObjectModel"></param>
+        /// <param name="TableName"></param>
+        /// <param name="IdUserSession"></param>
+        /// <param name="ConnectionString"></param>
+        /// <returns></returns>
+        public int InsertModel(Object ObjectModel, String TableName, int IdUserSession, String ConnectionString = "" )
+        {
+            StringBuilder Query = new StringBuilder();
+            Query.AppendFormat("INSERT INTO {0}", TableName);
+            int contProperty = 0;
+            String Fields = String.Empty;
+            String FieldsValue = String.Empty;
+            foreach (PropertyInfo PropertyModel in ObjectModel.GetType().GetProperties())
+            {
+                if (PropertyModel.Name != "Id")
+                {
+                    if (contProperty > 0)
+                    {
+                        Fields += ",";
+                        FieldsValue += ",";
+                    }
+                    Fields += PropertyModel.Name;
+                    if (PropertyModel.PropertyType == typeof(int))
+                    {
+                        if (!String.IsNullOrEmpty(PropertyModel.GetValue(ObjectModel).ToString()))
+                            FieldsValue += PropertyModel.GetValue(ObjectModel).ToString();
+                        else
+                            FieldsValue += "NULL";
+                    }
+                    else if (PropertyModel.PropertyType == typeof(DateTime))
+                    {
+                        if (!String.IsNullOrEmpty(PropertyModel.GetValue(ObjectModel).ToString()))
+                        {
+                            DateTime date = Convert.ToDateTime(PropertyModel.GetValue(ObjectModel).ToString());
+                            FieldsValue += String.Format("'{0}'", date.ToString("yyyy-MM-dd HH:mm:ss"));
+                        }
+                        else
+                        {
+                            FieldsValue += "NULL";
+                        }
+                    }
+                    else
+                    {
+                        if (!String.IsNullOrEmpty(PropertyModel.GetValue(ObjectModel).ToString()))
+                            FieldsValue += String.Format("'{0}'", PropertyModel.GetValue(ObjectModel).ToString());
+                        else
+                            FieldsValue += "NULL";
+                    }
+                    contProperty++;
+                }
+            }
 
+            String[] Response = ControlFields("INSERT", IdUserSession);
+            Response[0] += String.Format(",{0}", Fields.ToString());
+            Response[1] += String.Format(",{0}", FieldsValue.ToString());
+            Query.AppendFormat("( {0} )", Response[0].ToString());
+            Query.AppendFormat("VALUES( {0} )", Response[1].ToString());
+            Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+
+            SqlConnection Conexion = new SqlConnection()
+            {
+                ConnectionString = ConnectionString
+            };
+
+            using (SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion))
+            {
+                Conexion.Open();
+                int newID = (int)cmd2.ExecuteScalar();
+
+                if (Conexion.State == System.Data.ConnectionState.Open) Conexion.Close();
+                return newID;
+            }
+
+        }
 
         public String InsertModel(Object ObjectModel, String TableName, int IdUserSession)
         {
@@ -124,9 +200,57 @@ namespace DataLayer
             Query.AppendFormat("( {0} )", Response[0].ToString());
             Query.AppendFormat("VALUES( {0} )", Response[1].ToString());
             Query.AppendLine(" SELECT CAST(scope_identity() AS int)");
+
+           
             return Query.ToString();
-            
+
         }
+
+        public void UpdateModel(Object ObjectModel, String TableName, int IdUserSession, String ConnectionString = "")
+        {
+            StringBuilder Query = new StringBuilder();
+            String Fields = String.Empty;
+            String FieldsValue = String.Empty;
+            Query.AppendFormat("UPDATE {0} SET", TableName);
+            String IdEdit = String.Empty;
+
+            foreach (PropertyInfo PropertyModel in ObjectModel.GetType().GetProperties())
+            {
+                if (PropertyModel.Name == "Id")
+                {
+                    IdEdit = PropertyModel.GetValue(ObjectModel).ToString();
+                }
+                if (PropertyModel.PropertyType == typeof(int))
+                {
+                    if (PropertyModel.Name != "Id")
+                    {
+                        Query.AppendFormat(" {0} = {1},", PropertyModel.Name.ToString(), PropertyModel.GetValue(ObjectModel).ToString());
+                    }
+                }
+                else if (PropertyModel.PropertyType == typeof(DateTime))
+                {
+                    DateTime date = Convert.ToDateTime(PropertyModel.GetValue(ObjectModel).ToString());
+                    Query.AppendFormat(" {0}='{1}',", PropertyModel.Name.ToString(), date.ToString("yyyy-MM-dd HH:mm:ss"));
+                }
+                else
+                {
+                    Query.AppendFormat(" {0}='{1}' ,", PropertyModel.Name.ToString(), PropertyModel.GetValue(ObjectModel).ToString());
+                }
+            }
+            String[] Response = ControlFields("UPDATE", IdUserSession);
+            Query.AppendLine(Response[1]);
+            Query.AppendFormat(" WHERE id = {0} ", IdEdit);
+
+            SqlConnection Connection = new SqlConnection()
+            {
+                ConnectionString = ConnectionString
+            };
+            Connection.Open();
+            SqlCommand cmd2 = new SqlCommand(Query.ToString(), Connection);
+            cmd2.ExecuteNonQuery();
+            Connection.Close();
+        }
+
 
         public String UpdateModel(Object ObjectModel, String TableName, int IdUserSession)
         {
@@ -187,6 +311,40 @@ namespace DataLayer
                 return Query.ToString();
             }
             catch(Exception ex)
+            {
+                throw new Exception(String.Format("DeleteModel: {0}", ex.Message));
+            }
+        }
+
+        public void DeleteModel(Object ObjectModel, String TableName, int IdUserSession, String ConnectionString)
+        {
+            try
+            {
+
+                StringBuilder Query = new StringBuilder();
+                Query.AppendFormat("UPDATE {0} SET ", TableName);
+                String IdEdit = String.Empty;
+                foreach (PropertyInfo PropertyModel in ObjectModel.GetType().GetProperties())
+                {
+                    if (PropertyModel.Name == "Id")
+                    {
+                        IdEdit = PropertyModel.GetValue(ObjectModel).ToString();
+                    }
+                }
+                String[] Response = ControlFields("DELETE", IdUserSession);
+                Query.AppendLine(Response[1]);
+                Query.AppendFormat(" WHERE id={0}", IdEdit);
+
+                SqlConnection Connection = new SqlConnection()
+                {
+                    ConnectionString = ConnectionString
+                };
+                Connection.Open();
+                SqlCommand cmd2 = new SqlCommand(Query.ToString(), Connection);
+                cmd2.ExecuteNonQuery();
+                Connection.Close();
+            }
+            catch (Exception ex)
             {
                 throw new Exception(String.Format("DeleteModel: {0}", ex.Message));
             }

@@ -32,11 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.PrincipalPanel = new System.Windows.Forms.Panel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.buttonUser = new System.Windows.Forms.Button();
+            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.dataGridViewDataEmpleado = new System.Windows.Forms.DataGridView();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonNuevo = new System.Windows.Forms.Button();
-            this.exportExcelControl1 = new RegistryTime.CustomControls.ExportExcelControl();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
@@ -75,6 +76,7 @@
             // 
             // ContainerPanel
             // 
+            this.ContainerPanel.Controls.Add(this.buttonUser);
             this.ContainerPanel.Controls.Add(this.exportExcelControl1);
             this.ContainerPanel.Controls.Add(this.dataGridViewDataEmpleado);
             this.ContainerPanel.Controls.Add(this.buttonEliminar);
@@ -87,6 +89,32 @@
             this.ContainerPanel.Name = "ContainerPanel";
             this.ContainerPanel.Size = new System.Drawing.Size(800, 450);
             this.ContainerPanel.TabIndex = 5;
+            // 
+            // buttonUser
+            // 
+            this.buttonUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(83)))), ((int)(((byte)(69)))));
+            this.buttonUser.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.HotTrack;
+            this.buttonUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonUser.ForeColor = System.Drawing.Color.White;
+            this.buttonUser.Location = new System.Drawing.Point(369, 43);
+            this.buttonUser.Name = "buttonUser";
+            this.buttonUser.Size = new System.Drawing.Size(82, 40);
+            this.buttonUser.TabIndex = 13;
+            this.buttonUser.Text = "Usuario";
+            this.buttonUser.UseVisualStyleBackColor = false;
+            this.buttonUser.Click += new System.EventHandler(this.buttonUser_Click);
+            // 
+            // exportExcelControl1
+            // 
+            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
+            this.exportExcelControl1.data = null;
+            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
+            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5);
+            this.exportExcelControl1.Name = "exportExcelControl1";
+            this.exportExcelControl1.Size = new System.Drawing.Size(111, 40);
+            this.exportExcelControl1.TabIndex = 12;
+            this.exportExcelControl1.Title = null;
             // 
             // dataGridViewDataEmpleado
             // 
@@ -147,17 +175,6 @@
             this.buttonNuevo.UseVisualStyleBackColor = false;
             this.buttonNuevo.Click += new System.EventHandler(this.buttonNuevo_Click);
             // 
-            // exportExcelControl1
-            // 
-            this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
-            this.exportExcelControl1.data = null;
-            this.exportExcelControl1.Location = new System.Drawing.Point(259, 43);
-            this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.exportExcelControl1.Name = "exportExcelControl1";
-            this.exportExcelControl1.Size = new System.Drawing.Size(111, 40);
-            this.exportExcelControl1.TabIndex = 12;
-            this.exportExcelControl1.Title = null;
-            // 
             // cFMEM100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,5 +206,6 @@
         private System.Windows.Forms.Button buttonNuevo;
         private System.Windows.Forms.DataGridView dataGridViewDataEmpleado;
         private CustomControls.ExportExcelControl exportExcelControl1;
+        private System.Windows.Forms.Button buttonUser;
     }
 }

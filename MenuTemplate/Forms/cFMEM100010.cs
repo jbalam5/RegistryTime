@@ -152,5 +152,35 @@ namespace RegistryTime.Forms
                 MessageBox.Show(String.Format("buttonEliminar_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void buttonUser_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridViewDataEmpleado.RowCount > 0)
+                {
+
+                    cFMEM120010 Catalogo = new cFMEM120010();
+                    AddOwnedForm(Catalogo);
+                    Catalogo.FormBorderStyle = FormBorderStyle.None;
+                    Catalogo.TopLevel = false;
+                    Catalogo.Dock = DockStyle.Fill;
+                    this.Controls.Add(Catalogo);
+                    this.Tag = Catalogo;
+                    Catalogo.BringToFront();
+                    Catalogo.Show();
+
+                }
+                else
+                {
+                    cFAT100010 Alert = new cFAT100010("Información", "No hay datos", MessageBoxIcon.Information);
+                    Alert.ShowDialog();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("buttonUser_Click: {0}", ex), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

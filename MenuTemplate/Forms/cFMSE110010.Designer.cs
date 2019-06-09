@@ -87,6 +87,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ImageOpenFileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxNumberUsers = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.PrincipalPanel.SuspendLayout();
             this.ContainerPanel.SuspendLayout();
@@ -95,6 +98,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             this.UserTabPage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -152,6 +156,7 @@
             // 
             // EnterpriseTabPage
             // 
+            this.EnterpriseTabPage.Controls.Add(this.groupBox1);
             this.EnterpriseTabPage.Controls.Add(this.label27);
             this.EnterpriseTabPage.Controls.Add(this.label26);
             this.EnterpriseTabPage.Controls.Add(this.label25);
@@ -725,6 +730,34 @@
             // 
             this.ImageOpenFileDialog.FileName = "openFileDialog1";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.textBoxNumberUsers);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Location = new System.Drawing.Point(21, 429);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(785, 68);
+            this.groupBox1.TabIndex = 42;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Configuracion Lector";
+            // 
+            // textBoxNumberUsers
+            // 
+            this.textBoxNumberUsers.Location = new System.Drawing.Point(177, 31);
+            this.textBoxNumberUsers.Name = "textBoxNumberUsers";
+            this.textBoxNumberUsers.Size = new System.Drawing.Size(127, 26);
+            this.textBoxNumberUsers.TabIndex = 1;
+            this.textBoxNumberUsers.Text = "3";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(17, 34);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(154, 20);
+            this.label28.TabIndex = 0;
+            this.label28.Text = "Numero de Usuarios";
+            // 
             // cFMSE110010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -747,6 +780,8 @@
             this.UserTabPage.ResumeLayout(false);
             this.UserTabPage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePictureBox)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -812,5 +847,8 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox textBoxNumberUsers;
+        private System.Windows.Forms.Label label28;
     }
 }

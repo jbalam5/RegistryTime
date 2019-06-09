@@ -13,6 +13,7 @@ namespace ModelLayer
             public const string id = "id";
             public const string idEmployee = "idEmploye";
             public const string idUser = "idUser";
+            public const string numControl = "numControl";
         }
 
         public int id { get; set; }
