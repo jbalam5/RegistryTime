@@ -206,7 +206,7 @@ namespace BussinesLayer
                 TMP = TMP.AddMinutes(TimeOutChec.TotalMinutes);
                 TMP = TMP.AddHours(TimeOutChec.TotalHours);
                 TimeSpan S = TimeSpan.Parse("45:00:00");
-                int F = 4 + 5;
+                
                 return TMP;
             }
             catch (Exception ex)

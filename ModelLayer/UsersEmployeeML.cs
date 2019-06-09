@@ -10,14 +10,14 @@ namespace ModelLayer
     {
         public class DataBase
         {
-            public const string id = "id";
-            public const string idEmployee = "idEmploye";
-            public const string idUser = "idUser";
-            public const string numControl = "numControl";
+            public const string Id = "id";
+            public const string IdEmployee = "idEmployee";
+            public const string IdUser = "idUser";
+            public const string NumControl = "numControl";
         }
 
-        public int id { get; set; }
-        public int idEmployee { get; set; }
-        public int idUser { get; set; }
+        public int Id { get; set; }
+        public int IdEmployee { get; set; }
+        public int IdUser { get; set; }
     }
 }

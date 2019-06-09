@@ -84,11 +84,11 @@ namespace DataLayer
                 Query.AppendFormat("employee.id CVE, ");
                 Query.AppendFormat("employee.name EMPLEADO, ");
                 Query.AppendFormat("departament.name DEPARTAMENTO, ");               
-                Query.AppendFormat("turn TURNO, ");
+                Query.AppendFormat("ISNULL(TURNO.name ,'HRS EXTRA')as TURNO , ");
                 Query.AppendFormat("DateOnlyRecord FECHA, ");
-                Query.AppendFormat("TURNO.timeEntry ENTRADA, ");
+                Query.AppendFormat("ISNULL(TURNO.timeEntry, '00:00:00') ENTRADA, ");
                 Query.AppendFormat("ISNULL(dateTimeRecord, '00:00:00')  AS ENTRADA_MARCADA, ");
-                Query.AppendFormat("TURNO.departuretime SALIDA, ");
+                Query.AppendFormat("ISNULL(TURNO.departuretime, '00:00:00') SALIDA, ");
                 Query.AppendFormat("ISNULL(( SELECT ");
                 Query.AppendFormat("dateTimeRecord ");
                 Query.AppendFormat("FROM checkInHours ");
@@ -170,7 +170,7 @@ namespace DataLayer
                 Query.AppendLine("SELECT ");
                 Query.AppendFormat("employee.id as Clave, ");
                 Query.AppendFormat("employee.name +' '+ employee.lastname as NombreEmpleado, ");
-                Query.AppendFormat("employee.controlNumber as Num_Control, ");
+                Query.AppendFormat("usersEmployee.idUser as Num_Control, ");
                 //Query.AppendFormat("users.id as Cve_Usuario, ");
                 Query.AppendFormat("users.userName as Usuario, ");
                 Query.AppendFormat("users.id as Contraseña, ");
@@ -178,7 +178,7 @@ namespace DataLayer
                 Query.AppendFormat("role.name as Rol ");
                 Query.AppendFormat("FROM users ");
                 Query.AppendFormat("INNER JOIN role ON role.id = users.rol AND role._registry > 0 ");
-                Query.AppendFormat("INNER JOIN usersEmployee ON usersEmployee.idUser = users.id ");
+                Query.AppendFormat("INNER JOIN usersEmployee ON usersEmployee.idEmployee = users.id ");
                 Query.AppendFormat("INNER JOIN employee ON employee.id = usersEmployee.idEmployee ");
                 Query.AppendFormat("ORDER BY ");
                 Query.AppendFormat("employee.id, employee.name ");

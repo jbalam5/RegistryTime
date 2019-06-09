@@ -110,6 +110,7 @@ admissionDate date null,
 idJob int not null,
 salary decimal(10,2) null,
 HoursDay decimal(10, 2) null,
+HoursOfDay decimal(10, 2) null,
 idUser int not null,
 CONSTRAINT FK_employee_idUser FOREIGN KEY (idUser)     
     REFERENCES users (id)     
@@ -273,6 +274,7 @@ email nvarchar(25),
 postalCode nvarchar(5),
 telephone nvarchar(25),
 image nvarchar(50),
+numberUserEmploye int null,
 _registry int,
 idUserInsert int,
 dateInsert datetime,
@@ -423,6 +425,7 @@ description nvarchar(max),
 timeCheck time
 )
 insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'checkin', 'tiempo de espera para registros validos','00:30:00')
+insert into timeOutCheck(_registry,dateInsert,name,description,timeCheck) values(1,GETDATE(),'maxihours', 'tiempo maximo para registros validos','15:30:00')
 
 --HISTORIAL DE MIGRACION DE LECTOR
 create table MigrationHistory(
@@ -478,8 +481,4 @@ idUser int null,
 numControl int null 
 )
 
---agregar correo en users
-alter table dbo.users add email nvarchar(25) null
 
---agregar columna HoursDay en empleado
-alter table dbo.employee add HoursDay decimal(10, 2) null

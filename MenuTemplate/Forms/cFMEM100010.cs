@@ -119,7 +119,7 @@ namespace RegistryTime.Forms
 
         public void LoadDataGridView()
         {
-            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All();
+            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All("Reporte");
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)

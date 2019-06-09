@@ -92,7 +92,7 @@ namespace RegistryTime.Help
 
         public void LoadDataGridView()
         {
-            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All();
+            dataGridViewDataEmpleado.DataSource = EmployeeBLL.All("Reporte");
         }
 
         private void Closebutton_Click(object sender, EventArgs e)

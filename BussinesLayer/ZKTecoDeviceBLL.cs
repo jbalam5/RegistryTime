@@ -130,27 +130,31 @@ namespace BussinesLayer
                     try
                     {
                         string id = string.Format("{0}00{1}", UserInfo.EnrollNumber, index);
-                        SetUserInfo(int.Parse(id), UserInfo.Name, UserInfo.Privelage, "", id);
+                        
 
                         UsersEmployeeBLL usersEmployeeBLL = new UsersEmployeeBLL();
-                        if (usersEmployeeBLL.UserExists(int.Parse(id)))
+                        if (!usersEmployeeBLL.UserExists(int.Parse(id)))
                         {
+                            SetUserInfo(int.Parse(id), UserInfo.Name, UserInfo.Privelage, "", id);
                             UsersEmployeeML usersEmployeeML = usersEmployeeBLL.GetEntityByIdUser(int.Parse(UserInfo.EnrollNumber));
 
                             if (usersEmployeeML == null)
                             {
                                 usersEmployeeML = new UsersEmployeeML()
                                 {
-                                    id = 0,
-                                    idUser = int.Parse(id),
-                                    idEmployee = int.Parse(UserInfo.EnrollNumber)
+                                    Id = 0,
+                                    IdUser = int.Parse(id),
+                                    IdEmployee = int.Parse(UserInfo.EnrollNumber)
                                 };
                             }
 
                             usersEmployeeBLL.Save(usersEmployeeML);
                         }
                     }
-                    catch { }
+                    catch(Exception ex)
+                    {
+                        throw new Exception(ex.Message);
+                    }
                 }
 
                 return 0;
@@ -177,13 +181,14 @@ namespace BussinesLayer
                 {
                     if (UserID == 0) throw new Exception("*Please input data first!");
 
-                    bool bFlag = false;
+                    //bool bFlag = false;
                     if (iPrivilege == 5) throw new Exception("*User Defined Role is Error! Please Register again!");
 
-                    int iPIN2Width = 0;
-                    int iIsABCPinEnable = 0;
-                    int iT9FunOn = 0;
-                    string strTemp = "";
+                    //int iPIN2Width = 0;
+                    //int iIsABCPinEnable = 0;
+                    //int iT9FunOn = 0;
+                    //string strTemp = "";
+
                     //objZKTeko.GetSysOption(machineNumber, "~PIN2Width", out strTemp);
                     //iPIN2Width = Convert.ToInt32(strTemp);
                     //objZKTeko.GetSysOption(machineNumber, "~IsABCPinEnable", out strTemp);

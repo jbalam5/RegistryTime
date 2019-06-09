@@ -51,9 +51,9 @@ namespace DataLayer
             {
                 UsersEmployeeML usersEmployee = new UsersEmployeeML()
                 {
-                    id = (drUserEmployee[UsersEmployeeML.DataBase.id] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.id].ToString()) : 0,
-                    idEmployee = (drUserEmployee[UsersEmployeeML.DataBase.idEmployee] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.idEmployee].ToString()) : 0,
-                    idUser = (drUserEmployee[UsersEmployeeML.DataBase.idUser] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.idUser].ToString()) : 0
+                    Id = (drUserEmployee[UsersEmployeeML.DataBase.Id] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.Id].ToString()) : 0,
+                    IdEmployee = (drUserEmployee[UsersEmployeeML.DataBase.IdEmployee] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.IdEmployee].ToString()) : 0,
+                    IdUser = (drUserEmployee[UsersEmployeeML.DataBase.IdUser] != DBNull.Value) ? int.Parse(drUserEmployee[UsersEmployeeML.DataBase.IdUser].ToString()) : 0
                 };
 
                 return usersEmployee;
@@ -98,7 +98,7 @@ namespace DataLayer
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
 
-                return usersEmployee.id;
+                return usersEmployee.Id;
 
             }
             catch (Exception ex)
