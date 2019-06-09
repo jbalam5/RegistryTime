@@ -412,6 +412,7 @@ namespace RegistryTime.Forms
                         Password = string.Format("{0}", IdNewEmployee)
 
                     };
+
                     zKTecoDevice.SetUserInfo(_userInfo, 3);
 
                 cFMEM100010 FrmDataGrid = this.Owner as cFMEM100010;

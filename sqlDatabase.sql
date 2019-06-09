@@ -437,8 +437,13 @@ id int primary key identity(1,1) not null,
 dateStart datetime null,
 dateEnd datetime null
 )
+
+--MODIFICACIONES
+alter table dbo.MigrationHistory add migrateLogs bit DEFAULT 0
+alter table dbo.MigrationHistory add migrateAssistance bit DEFAULT 0
+
 --Entorno de pruebas
-INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),'2017-01-01','2017-01-01')
+--INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),'2017-01-01','2017-01-01')
 --INSERT INTO MigrationHistory(_registry, idUserInsert,dateInsert,dateStart,dateEnd) VALUES(1,1,GETDATE(),GETDATE(),GETDATE())
 
 --TABLA PARA CONTROLAR LICENCIA
@@ -478,5 +483,3 @@ alter table dbo.users add email nvarchar(25) null
 
 --agregar columna HoursDay en empleado
 alter table dbo.employee add HoursDay decimal(10, 2) null
-
-

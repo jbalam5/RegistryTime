@@ -87,13 +87,35 @@ namespace RegistryTime.Forms.Migrate
 
                 this.Invoke(new Action(() => { MessageLabel.Text = "Paso 1: Migrando información a la Base de datos"; }));
 
+                string start = string.Empty;
+                string end = string.Empty;
+                
                 try
                 {
                     MigrationHistoryBLL migrationHistoryBLL = new MigrationHistoryBLL();
-                    DateTime start = migrationHistoryBLL.LastRecord();
-                    MigrateBackgroundWorker.ReportProgress(20);
+                    string dateLastRecord = migrationHistoryBLL.LastRecord();
+                    
+                    if (!string.IsNullOrEmpty(dateLastRecord))
+                    {
+                        start = DateTime.Parse(dateLastRecord).AddMinutes(1).ToString();
+                        DateTime _Today = DateTime.Now;
+                        MigrateBackgroundWorker.ReportProgress(20);
 
-                    //zKTecoHourAssistanceBLL.MigrateHoursToBD(start, DateTime.Now);
+                        if (DateTime.Parse(dateLastRecord).AddMinutes(1) <= _Today)
+                        {
+                            end = _Today.ToString();
+                            zKTecoHourAssistanceBLL.MigrateHoursToBD(start, end);
+                        }
+                    }
+                    else
+                    {
+                        List<string> dateMigrate = zKTecoHourAssistanceBLL.MigrateHoursToBD();
+                        if (dateMigrate != null && dateMigrate.Count == 2)
+                        {
+                            start = dateMigrate[0];
+                            end = dateMigrate[1];
+                        }
+                    }
                 }
                 catch
                 {
@@ -101,14 +123,15 @@ namespace RegistryTime.Forms.Migrate
                 }
 
                 MigrateBackgroundWorker.ReportProgress(50);
-
                 this.Invoke(new Action(() => { MessageLabel.Text = "Paso 2: Actualizando horarios de asistencia"; }));
-                //CheckInoursBLL.Migrate2(_dividendo);
-                if (this._type == 0)
-                {
+
+                CheckInoursBLL.Migrate2(start, end);
+
+                //if (this._type == 0)
+                //{
                     //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
-                    CheckInoursBLL.Migrate2(_dividendo);
-                }
+                    //CheckInoursBLL.Migrate2(_dividendo);
+                //}
                 //if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
                 //{
                 //    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))

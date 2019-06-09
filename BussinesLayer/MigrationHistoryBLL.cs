@@ -42,7 +42,7 @@ namespace BussinesLayer
             }
         }
 
-        public DateTime LastRecord()
+        public string LastRecord()
         {
             try
             {
@@ -232,8 +232,16 @@ namespace BussinesLayer
             }
         }
 
-
-
-
+        public bool VerifyTypeMigrate(int type)
+        {
+            try
+            {
+                return MigrationHistoryDAL.VerifyTypeMigrate(type);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(String.Format("{0}.VerifyTypeMigrate: {1}", core, ex.Message));
+            }
+        }
     }
 }

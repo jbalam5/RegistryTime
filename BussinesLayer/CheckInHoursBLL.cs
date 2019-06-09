@@ -104,19 +104,25 @@ namespace BussinesLayer
             }
         }
 
-        public void Migrate2(int dividendo)
+        public void Migrate2(string start, string end)
         {
             try
             {
-                MigrationHistoryBLL MigrationHistoryBLL = new MigrationHistoryBLL();
-                DateTime Start = MigrationHistoryBLL.LastRecord();
-                //CheckInHoursDAL.MigrateFunction(Start, DateTime.Now, dividendo);
-                MigrationHistoryBLL.ListRecord(Start, DateTime.Now);
+                if (!string.IsNullOrEmpty(start) && !string.IsNullOrEmpty(end))
+                {
+                    DateTime _start = DateTime.Parse(start);
+                    DateTime _end = DateTime.Parse(end);
 
-                MigrationHistoryML MigrationHistory = new MigrationHistoryML();
-                MigrationHistory.DateStart = Start;
-                MigrationHistory.DateEnd = DateTime.Now;
-                MigrationHistoryBLL.Save(MigrationHistory);
+                    MigrationHistoryBLL MigrationHistoryBLL = new MigrationHistoryBLL();
+                    MigrationHistoryBLL.ListRecord(_start, _end);
+
+                    MigrationHistoryML MigrationHistory = new MigrationHistoryML();
+                    MigrationHistory.DateStart = _start;
+                    MigrationHistory.DateEnd = _end;
+                    MigrationHistory.MigrateLogs = true;
+                    MigrationHistory.MigrateAssistance = true;
+                    MigrationHistoryBLL.Save(MigrationHistory);
+                }
             }
             catch (Exception ex)
             {

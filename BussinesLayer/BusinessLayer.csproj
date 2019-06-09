@@ -76,6 +76,7 @@
     <Compile Include="TurnBLL.cs" />
     <Compile Include="TurnsOfEmployeeBLL.cs" />
     <Compile Include="UsersBLL.cs" />
+    <Compile Include="UsersEmployeeBLL.cs" />
     <Compile Include="ZKTecoDeviceBLL.cs" />
     <Compile Include="ZKTecoHourAssistanceBLL.cs" />
   </ItemGroup>

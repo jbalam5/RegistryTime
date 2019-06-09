@@ -135,7 +135,7 @@ namespace DataLayer
                 if (idUser > 0)
                 {
                     StringBuilder Query = new StringBuilder();
-                    Query.AppendFormat("select * from {0} where idUser = {1})", TableName, idUser);
+                    Query.AppendFormat("select * from {0} where idUser = {1}", TableName, idUser);
                     SqlConnection Conexion = new SqlConnection()
                     {
                         ConnectionString = ConnectionString
