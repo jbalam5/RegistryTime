@@ -34,27 +34,21 @@
             this.BottomStatePanel = new System.Windows.Forms.Panel();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelVersion = new System.Windows.Forms.ToolStripStatusLabel();
+            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.CompanyNameToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.DatetoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ContentPanel = new System.Windows.Forms.Panel();
-            this.TopPanel = new System.Windows.Forms.Panel();
-            this.MenuLeftPanel = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.StateTimer = new System.Windows.Forms.Timer(this.components);
-            this.panelSubMenu = new System.Windows.Forms.Panel();
-            this.buttonAdmissionDate = new System.Windows.Forms.Button();
-            this.buttonReporteHrsExtras = new System.Windows.Forms.Button();
-            this.buttonReporteHrsJornadas = new System.Windows.Forms.Button();
-            this.buttonReporteAusentimos = new System.Windows.Forms.Button();
-            this.UsertoolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.ContainerPanel = new System.Windows.Forms.Panel();
+            this.TopPanel = new System.Windows.Forms.Panel();
             this.NormalButton = new System.Windows.Forms.Button();
             this.Closebutton = new System.Windows.Forms.Button();
             this.MaximizeButton = new System.Windows.Forms.Button();
             this.Minimizebutton = new System.Windows.Forms.Button();
+            this.MenuLeftPanel = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.PuestoButton = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ExitButton = new System.Windows.Forms.Button();
             this.LogoPictureBox = new System.Windows.Forms.PictureBox();
             this.EmploymentsButton = new System.Windows.Forms.Button();
@@ -64,6 +58,12 @@
             this.SettingsButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
             this.MenuPictureBox = new System.Windows.Forms.PictureBox();
+            this.StateTimer = new System.Windows.Forms.Timer(this.components);
+            this.panelSubMenu = new System.Windows.Forms.Panel();
+            this.buttonAdmissionDate = new System.Windows.Forms.Button();
+            this.buttonReporteHrsExtras = new System.Windows.Forms.Button();
+            this.buttonReporteHrsJornadas = new System.Windows.Forms.Button();
+            this.buttonReporteAusentimos = new System.Windows.Forms.Button();
             this.PrincipalPanel.SuspendLayout();
             this.BottomStatePanel.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -71,9 +71,9 @@
             this.TopPanel.SuspendLayout();
             this.MenuLeftPanel.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panelSubMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).BeginInit();
+            this.panelSubMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // PrincipalPanel
@@ -123,6 +123,15 @@
             this.toolStripStatusLabelVersion.Size = new System.Drawing.Size(48, 25);
             this.toolStripStatusLabelVersion.Text = "Version";
             // 
+            // UsertoolStripStatusLabel
+            // 
+            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
+            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
+            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
+            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(82, 25);
+            this.UsertoolStripStatusLabel.Text = "UserName";
+            // 
             // CompanyNameToolStripStatusLabel
             // 
             this.CompanyNameToolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -148,6 +157,16 @@
             this.ContentPanel.Size = new System.Drawing.Size(666, 591);
             this.ContentPanel.TabIndex = 0;
             // 
+            // ContainerPanel
+            // 
+            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
+            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
+            this.ContainerPanel.Name = "ContainerPanel";
+            this.ContainerPanel.Size = new System.Drawing.Size(666, 591);
+            this.ContainerPanel.TabIndex = 7;
+            // 
             // TopPanel
             // 
             this.TopPanel.BackColor = System.Drawing.Color.White;
@@ -161,150 +180,6 @@
             this.TopPanel.Size = new System.Drawing.Size(666, 30);
             this.TopPanel.TabIndex = 5;
             this.TopPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TopPanel_MouseDown);
-            // 
-            // MenuLeftPanel
-            // 
-            this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.MenuLeftPanel.Controls.Add(this.button2);
-            this.MenuLeftPanel.Controls.Add(this.button1);
-            this.MenuLeftPanel.Controls.Add(this.PuestoButton);
-            this.MenuLeftPanel.Controls.Add(this.panel1);
-            this.MenuLeftPanel.Controls.Add(this.LogoPictureBox);
-            this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
-            this.MenuLeftPanel.Controls.Add(this.ReportsButton);
-            this.MenuLeftPanel.Controls.Add(this.TurnosButton);
-            this.MenuLeftPanel.Controls.Add(this.DepartamentoButton);
-            this.MenuLeftPanel.Controls.Add(this.SettingsButton);
-            this.MenuLeftPanel.Controls.Add(this.HomeButton);
-            this.MenuLeftPanel.Controls.Add(this.MenuPictureBox);
-            this.MenuLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.MenuLeftPanel.Location = new System.Drawing.Point(0, 0);
-            this.MenuLeftPanel.Name = "MenuLeftPanel";
-            this.MenuLeftPanel.Size = new System.Drawing.Size(220, 621);
-            this.MenuLeftPanel.TabIndex = 4;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.ExitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 578);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 43);
-            this.panel1.TabIndex = 8;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // panelSubMenu
-            // 
-            this.panelSubMenu.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.panelSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
-            this.panelSubMenu.Controls.Add(this.buttonAdmissionDate);
-            this.panelSubMenu.Controls.Add(this.buttonReporteHrsExtras);
-            this.panelSubMenu.Controls.Add(this.buttonReporteHrsJornadas);
-            this.panelSubMenu.Controls.Add(this.buttonReporteAusentimos);
-            this.panelSubMenu.Location = new System.Drawing.Point(220, 448);
-            this.panelSubMenu.Name = "panelSubMenu";
-            this.panelSubMenu.Size = new System.Drawing.Size(200, 163);
-            this.panelSubMenu.TabIndex = 14;
-            this.panelSubMenu.Visible = false;
-            // 
-            // buttonAdmissionDate
-            // 
-            this.buttonAdmissionDate.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonAdmissionDate.FlatAppearance.BorderSize = 0;
-            this.buttonAdmissionDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonAdmissionDate.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.buttonAdmissionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdmissionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdmissionDate.ForeColor = System.Drawing.Color.White;
-            this.buttonAdmissionDate.Image = global::RegistryTime.Properties.Resources.event_acceptedx32;
-            this.buttonAdmissionDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonAdmissionDate.Location = new System.Drawing.Point(1, 115);
-            this.buttonAdmissionDate.Name = "buttonAdmissionDate";
-            this.buttonAdmissionDate.Size = new System.Drawing.Size(194, 43);
-            this.buttonAdmissionDate.TabIndex = 9;
-            this.buttonAdmissionDate.Text = "Fechas Entrada";
-            this.buttonAdmissionDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonAdmissionDate.UseVisualStyleBackColor = true;
-            this.buttonAdmissionDate.Click += new System.EventHandler(this.buttonAdmissionDate_Click);
-            // 
-            // buttonReporteHrsExtras
-            // 
-            this.buttonReporteHrsExtras.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonReporteHrsExtras.FlatAppearance.BorderSize = 0;
-            this.buttonReporteHrsExtras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonReporteHrsExtras.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.buttonReporteHrsExtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReporteHrsExtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReporteHrsExtras.ForeColor = System.Drawing.Color.White;
-            this.buttonReporteHrsExtras.Image = global::RegistryTime.Properties.Resources.time32;
-            this.buttonReporteHrsExtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReporteHrsExtras.Location = new System.Drawing.Point(-1, 39);
-            this.buttonReporteHrsExtras.Name = "buttonReporteHrsExtras";
-            this.buttonReporteHrsExtras.Size = new System.Drawing.Size(194, 43);
-            this.buttonReporteHrsExtras.TabIndex = 8;
-            this.buttonReporteHrsExtras.Text = "Horas extras";
-            this.buttonReporteHrsExtras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonReporteHrsExtras.UseVisualStyleBackColor = true;
-            this.buttonReporteHrsExtras.Click += new System.EventHandler(this.buttonReporteHrsExtras_Click);
-            // 
-            // buttonReporteHrsJornadas
-            // 
-            this.buttonReporteHrsJornadas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonReporteHrsJornadas.FlatAppearance.BorderSize = 0;
-            this.buttonReporteHrsJornadas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonReporteHrsJornadas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.buttonReporteHrsJornadas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReporteHrsJornadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReporteHrsJornadas.ForeColor = System.Drawing.Color.White;
-            this.buttonReporteHrsJornadas.Image = global::RegistryTime.Properties.Resources.timesheetx32;
-            this.buttonReporteHrsJornadas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReporteHrsJornadas.Location = new System.Drawing.Point(0, 77);
-            this.buttonReporteHrsJornadas.Name = "buttonReporteHrsJornadas";
-            this.buttonReporteHrsJornadas.Size = new System.Drawing.Size(194, 43);
-            this.buttonReporteHrsJornadas.TabIndex = 7;
-            this.buttonReporteHrsJornadas.Text = "Horas jornadas";
-            this.buttonReporteHrsJornadas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonReporteHrsJornadas.UseVisualStyleBackColor = true;
-            this.buttonReporteHrsJornadas.Click += new System.EventHandler(this.buttonReporteHrsJornadas_Click);
-            // 
-            // buttonReporteAusentimos
-            // 
-            this.buttonReporteAusentimos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonReporteAusentimos.FlatAppearance.BorderSize = 0;
-            this.buttonReporteAusentimos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
-            this.buttonReporteAusentimos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.buttonReporteAusentimos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonReporteAusentimos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonReporteAusentimos.ForeColor = System.Drawing.Color.White;
-            this.buttonReporteAusentimos.Image = global::RegistryTime.Properties.Resources.falsex32;
-            this.buttonReporteAusentimos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonReporteAusentimos.Location = new System.Drawing.Point(0, 3);
-            this.buttonReporteAusentimos.Name = "buttonReporteAusentimos";
-            this.buttonReporteAusentimos.Size = new System.Drawing.Size(194, 40);
-            this.buttonReporteAusentimos.TabIndex = 6;
-            this.buttonReporteAusentimos.Text = "Ausentimos";
-            this.buttonReporteAusentimos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.buttonReporteAusentimos.UseVisualStyleBackColor = true;
-            this.buttonReporteAusentimos.Click += new System.EventHandler(this.buttonReporteAusentimos_Click);
-            // 
-            // UsertoolStripStatusLabel
-            // 
-            this.UsertoolStripStatusLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.UsertoolStripStatusLabel.Image = global::RegistryTime.Properties.Resources.user24;
-            this.UsertoolStripStatusLabel.Margin = new System.Windows.Forms.Padding(0, 3, 5, 2);
-            this.UsertoolStripStatusLabel.Name = "UsertoolStripStatusLabel";
-            this.UsertoolStripStatusLabel.Size = new System.Drawing.Size(82, 16);
-            this.UsertoolStripStatusLabel.Text = "UserName";
-            // 
-            // ContainerPanel
-            // 
-            this.ContainerPanel.BackgroundImage = global::RegistryTime.Properties.Resources.BackgroudClock;
-            this.ContainerPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ContainerPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContainerPanel.Location = new System.Drawing.Point(0, 0);
-            this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(666, 591);
-            this.ContainerPanel.TabIndex = 7;
             // 
             // NormalButton
             // 
@@ -371,6 +246,28 @@
             this.Minimizebutton.UseVisualStyleBackColor = true;
             this.Minimizebutton.Click += new System.EventHandler(this.Minimizebutton_Click);
             // 
+            // MenuLeftPanel
+            // 
+            this.MenuLeftPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.MenuLeftPanel.Controls.Add(this.button2);
+            this.MenuLeftPanel.Controls.Add(this.button1);
+            this.MenuLeftPanel.Controls.Add(this.PuestoButton);
+            this.MenuLeftPanel.Controls.Add(this.panel1);
+            this.MenuLeftPanel.Controls.Add(this.LogoPictureBox);
+            this.MenuLeftPanel.Controls.Add(this.EmploymentsButton);
+            this.MenuLeftPanel.Controls.Add(this.ReportsButton);
+            this.MenuLeftPanel.Controls.Add(this.TurnosButton);
+            this.MenuLeftPanel.Controls.Add(this.DepartamentoButton);
+            this.MenuLeftPanel.Controls.Add(this.SettingsButton);
+            this.MenuLeftPanel.Controls.Add(this.HomeButton);
+            this.MenuLeftPanel.Controls.Add(this.MenuPictureBox);
+            this.MenuLeftPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.MenuLeftPanel.Location = new System.Drawing.Point(0, 0);
+            this.MenuLeftPanel.Name = "MenuLeftPanel";
+            this.MenuLeftPanel.Size = new System.Drawing.Size(220, 621);
+            this.MenuLeftPanel.TabIndex = 4;
+            this.MenuLeftPanel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.MenuLeftPanel_MouseClick);
+            // 
             // button2
             // 
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -430,6 +327,16 @@
             this.PuestoButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.PuestoButton.UseVisualStyleBackColor = true;
             this.PuestoButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ExitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 578);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(220, 43);
+            this.panel1.TabIndex = 8;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // ExitButton
             // 
@@ -595,6 +502,100 @@
             this.MenuPictureBox.TabStop = false;
             this.MenuPictureBox.Click += new System.EventHandler(this.MenuPictureBox_Click);
             // 
+            // panelSubMenu
+            // 
+            this.panelSubMenu.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.panelSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
+            this.panelSubMenu.Controls.Add(this.buttonAdmissionDate);
+            this.panelSubMenu.Controls.Add(this.buttonReporteHrsExtras);
+            this.panelSubMenu.Controls.Add(this.buttonReporteHrsJornadas);
+            this.panelSubMenu.Controls.Add(this.buttonReporteAusentimos);
+            this.panelSubMenu.Location = new System.Drawing.Point(220, 448);
+            this.panelSubMenu.Name = "panelSubMenu";
+            this.panelSubMenu.Size = new System.Drawing.Size(200, 163);
+            this.panelSubMenu.TabIndex = 14;
+            this.panelSubMenu.Visible = false;
+            // 
+            // buttonAdmissionDate
+            // 
+            this.buttonAdmissionDate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAdmissionDate.FlatAppearance.BorderSize = 0;
+            this.buttonAdmissionDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonAdmissionDate.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonAdmissionDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAdmissionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAdmissionDate.ForeColor = System.Drawing.Color.White;
+            this.buttonAdmissionDate.Image = global::RegistryTime.Properties.Resources.event_acceptedx32;
+            this.buttonAdmissionDate.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonAdmissionDate.Location = new System.Drawing.Point(1, 118);
+            this.buttonAdmissionDate.Name = "buttonAdmissionDate";
+            this.buttonAdmissionDate.Size = new System.Drawing.Size(199, 43);
+            this.buttonAdmissionDate.TabIndex = 9;
+            this.buttonAdmissionDate.Text = "Fechas Entrada";
+            this.buttonAdmissionDate.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonAdmissionDate.UseVisualStyleBackColor = true;
+            this.buttonAdmissionDate.Click += new System.EventHandler(this.buttonAdmissionDate_Click);
+            // 
+            // buttonReporteHrsExtras
+            // 
+            this.buttonReporteHrsExtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonReporteHrsExtras.FlatAppearance.BorderSize = 0;
+            this.buttonReporteHrsExtras.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonReporteHrsExtras.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonReporteHrsExtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReporteHrsExtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReporteHrsExtras.ForeColor = System.Drawing.Color.White;
+            this.buttonReporteHrsExtras.Image = global::RegistryTime.Properties.Resources.time32;
+            this.buttonReporteHrsExtras.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonReporteHrsExtras.Location = new System.Drawing.Point(-1, 41);
+            this.buttonReporteHrsExtras.Name = "buttonReporteHrsExtras";
+            this.buttonReporteHrsExtras.Size = new System.Drawing.Size(201, 43);
+            this.buttonReporteHrsExtras.TabIndex = 8;
+            this.buttonReporteHrsExtras.Text = "Horas extras";
+            this.buttonReporteHrsExtras.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonReporteHrsExtras.UseVisualStyleBackColor = true;
+            this.buttonReporteHrsExtras.Click += new System.EventHandler(this.buttonReporteHrsExtras_Click);
+            // 
+            // buttonReporteHrsJornadas
+            // 
+            this.buttonReporteHrsJornadas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonReporteHrsJornadas.FlatAppearance.BorderSize = 0;
+            this.buttonReporteHrsJornadas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonReporteHrsJornadas.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonReporteHrsJornadas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReporteHrsJornadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReporteHrsJornadas.ForeColor = System.Drawing.Color.White;
+            this.buttonReporteHrsJornadas.Image = global::RegistryTime.Properties.Resources.timesheetx32;
+            this.buttonReporteHrsJornadas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonReporteHrsJornadas.Location = new System.Drawing.Point(0, 79);
+            this.buttonReporteHrsJornadas.Name = "buttonReporteHrsJornadas";
+            this.buttonReporteHrsJornadas.Size = new System.Drawing.Size(200, 43);
+            this.buttonReporteHrsJornadas.TabIndex = 7;
+            this.buttonReporteHrsJornadas.Text = "Horas jornadas";
+            this.buttonReporteHrsJornadas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonReporteHrsJornadas.UseVisualStyleBackColor = true;
+            this.buttonReporteHrsJornadas.Click += new System.EventHandler(this.buttonReporteHrsJornadas_Click);
+            // 
+            // buttonReporteAusentimos
+            // 
+            this.buttonReporteAusentimos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonReporteAusentimos.FlatAppearance.BorderSize = 0;
+            this.buttonReporteAusentimos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonReporteAusentimos.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.buttonReporteAusentimos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReporteAusentimos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonReporteAusentimos.ForeColor = System.Drawing.Color.White;
+            this.buttonReporteAusentimos.Image = global::RegistryTime.Properties.Resources.falsex32;
+            this.buttonReporteAusentimos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonReporteAusentimos.Location = new System.Drawing.Point(0, 1);
+            this.buttonReporteAusentimos.Name = "buttonReporteAusentimos";
+            this.buttonReporteAusentimos.Size = new System.Drawing.Size(200, 40);
+            this.buttonReporteAusentimos.TabIndex = 6;
+            this.buttonReporteAusentimos.Text = "Ausentimos";
+            this.buttonReporteAusentimos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonReporteAusentimos.UseVisualStyleBackColor = true;
+            this.buttonReporteAusentimos.Click += new System.EventHandler(this.buttonReporteAusentimos_Click);
+            // 
             // cMRT100010
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -618,9 +619,9 @@
             this.TopPanel.ResumeLayout(false);
             this.MenuLeftPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panelSubMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.LogoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.MenuPictureBox)).EndInit();
+            this.panelSubMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

@@ -297,10 +297,10 @@
             // 
             this.exportExcelControl1.BackColor = System.Drawing.Color.Transparent;
             this.exportExcelControl1.data = null;
-            this.exportExcelControl1.Location = new System.Drawing.Point(138, 6);
+            this.exportExcelControl1.Location = new System.Drawing.Point(115, 6);
             this.exportExcelControl1.Margin = new System.Windows.Forms.Padding(8);
             this.exportExcelControl1.Name = "exportExcelControl1";
-            this.exportExcelControl1.Size = new System.Drawing.Size(105, 42);
+            this.exportExcelControl1.Size = new System.Drawing.Size(114, 42);
             this.exportExcelControl1.TabIndex = 13;
             this.exportExcelControl1.Title = null;
             // 

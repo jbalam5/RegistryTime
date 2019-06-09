@@ -540,6 +540,7 @@
     <None Include="Resources\save.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\timesheetx32.png" />
     <None Include="Resources\IconWarningx70.png" />
     <None Include="Resources\IconWarningOrngex70.png" />
     <None Include="Resources\IconWarningOrnge.png" />
@@ -556,6 +557,8 @@
     <None Include="Resources\AjaxLoader.gif" />
     <None Include="Resources\ExcelIcon%29.png" />
     <None Include="Resources\Excel-icon.png" />
+    <None Include="Resources\event-acceptedx32.png" />
+    <None Include="Resources\event-acceptedx321.png" />
     <Content Include="Resources\iconDel.png" />
     <None Include="Resources\IconError.png" />
     <None Include="Resources\IconInformation.png" />

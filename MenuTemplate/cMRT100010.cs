@@ -17,6 +17,8 @@ namespace RegistryTime
     public partial class cMRT100010 : Form
     {
         #region "GLOBAL VARIABLES"
+        int MinLenghtMenu = 50;
+        int MaxLenghtMenu = 220;
         int lx, ly;
         int sw, sh;
         private new bool Visible = false;
@@ -52,18 +54,19 @@ namespace RegistryTime
         }
         private void MenuPictureBox_Click(object sender, EventArgs e)
         {
-            if (MenuLeftPanel.Width > 50)
+            if (MenuLeftPanel.Width > MinLenghtMenu)
             {
                 LogoPictureBox.Visible = false;
-                MenuLeftPanel.Width = 50;
-                panelSubMenu.Left = panelSubMenu.Left - 165;
+                MenuLeftPanel.Width = MinLenghtMenu;
             }
             else
             {
-                panelSubMenu.Left = panelSubMenu.Left + 165;
                 LogoPictureBox.Visible = true;
-                MenuLeftPanel.Width = 220;
+                MenuLeftPanel.Width = MaxLenghtMenu;
             }
+
+            int PointX = (MenuLeftPanel.Width > MinLenghtMenu) ? MaxLenghtMenu : MinLenghtMenu;
+            panelSubMenu.Location = new Point((ReportsButton.Location.X + PointX), ReportsButton.Location.Y);
         }
 
     
@@ -146,6 +149,7 @@ namespace RegistryTime
         private void HomeButton_Click(object sender, EventArgs e)
         {
             ClearPanelContainer();
+            panelSubMenu.Visible = false;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -182,9 +186,10 @@ namespace RegistryTime
 
         private void ReportsButton_Click(object sender, EventArgs e)
         {
-            //OpenFormChild(new RegistryTime.Forms.Reports.cFMRP100010());
-            panelSubMenu.Visible = !Visible;
-            Visible = !Visible;
+            int PointX = (MenuLeftPanel.Width > MinLenghtMenu) ? MaxLenghtMenu : MinLenghtMenu;
+            panelSubMenu.Location = new Point((ReportsButton.Location.X + PointX), ReportsButton.Location.Y);
+
+            panelSubMenu.Visible = !panelSubMenu.Visible;
         }
 
         //protected override void OnSizeChanged(EventArgs e)
@@ -220,6 +225,7 @@ namespace RegistryTime
         {
             try
             {
+                panelSubMenu.Visible = false;
                 if (this.ContainerPanel.Controls.Count > 0)
                     this.ContainerPanel.Controls.RemoveAt(0);
 
@@ -273,18 +279,14 @@ namespace RegistryTime
 
         private void buttonReporteHrsExtras_Click(object sender, EventArgs e)
         {
+            panelSubMenu.Visible = !panelSubMenu.Visible;
             OpenFormChild(new RegistryTime.Forms.Reports.cFMRP130010());
-            panelSubMenu.Visible = !Visible;
-
-            Visible = !Visible;
         }
 
         private void buttonReporteHrsJornadas_Click(object sender, EventArgs e)
         {
+            panelSubMenu.Visible = !panelSubMenu.Visible;
             OpenFormChild(new RegistryTime.Forms.Reports.cFMRP140010());
-            panelSubMenu.Visible = !Visible;
-
-            Visible = !Visible;
         }
 
         private void panelSubMenu_ChangeUICues(object sender, UICuesEventArgs e)
@@ -296,18 +298,19 @@ namespace RegistryTime
 
         private void buttonReporteAusentimos_Click(object sender, EventArgs e)
         {
+            panelSubMenu.Visible = !panelSubMenu.Visible;
             OpenFormChild(new RegistryTime.Forms.Reports.cFMRP120010());
-            panelSubMenu.Visible = !Visible;
-
-            Visible = !Visible;
         }
 
         private void buttonAdmissionDate_Click(object sender, EventArgs e)
         {
+            panelSubMenu.Visible = !panelSubMenu.Visible;
             OpenFormChild(new RegistryTime.Forms.Reports.cFMRP150010());
-            panelSubMenu.Visible = !Visible;
+        }
 
-            Visible = !Visible;
+        private void MenuLeftPanel_MouseClick(object sender, MouseEventArgs e)
+        {
+            panelSubMenu.Visible = false;
         }
 
         private void SetTimer()
