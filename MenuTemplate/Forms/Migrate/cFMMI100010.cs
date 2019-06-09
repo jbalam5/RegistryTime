@@ -18,20 +18,11 @@ namespace RegistryTime.Forms.Migrate
         #region "GLOBAL VARIABLES"
         int lx, ly;
         int sw, sh;
-        int _type;
-        int _dividendo;
-        DateTime _startDate;
-        DateTime _endDate;
         #endregion
 
         #region "CONSTRUCTOR"
-        public cFMMI100010(int _type, int dividendo, DateTime startDate, DateTime endDate )
+        public cFMMI100010()
         {
-            this._type = _type;
-            this._startDate = startDate;
-            this._endDate = endDate;
-            this._dividendo = dividendo;
-
             InitializeComponent();
         }
         #endregion

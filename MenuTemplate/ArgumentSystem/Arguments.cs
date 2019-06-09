@@ -51,17 +51,17 @@ namespace RegistryTime.ArgumentSystem
                             case "FCGL":
                                 Application.Run(new Forms.Migrate.cFMCG100010());
                                 break;
-                            case "CHECK":
-                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
-                                {
-                                    ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
-                                }
-                                if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
-                                {
-                                    if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
-                                        ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
-                                }
-                                break;
+                            //case "CHECK":
+                            //    if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
+                            //    {
+                            //        ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
+                            //    }
+                            //    if (Convert.ToInt32(ArgumentsList[3].ToString()) == 1)
+                            //    {
+                            //        if (ArgumentsList.Length > 3 && Convert.ToDateTime(ArgumentsList[4].ToString()) > Convert.ToDateTime(ArgumentsList[3].ToString()))
+                            //            ProcessMigrate(Convert.ToDateTime(ArgumentsList[3]), Convert.ToDateTime(ArgumentsList[4]), Convert.ToInt32(ArgumentsList[5]));
+                            //    }
+                            //    break;
                             case "FCRP":
                                 Application.Run(new Forms.Reports.cFMRP100010());
                                 break;
@@ -77,7 +77,7 @@ namespace RegistryTime.ArgumentSystem
                                 if (Convert.ToInt32(ArgumentsList[3].ToString()) == 0)
                                 {
                                     //ProcessMigrate(Convert.ToInt32(ArgumentsList[4].ToString()));
-                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010(Convert.ToInt32(ArgumentsList[3]), Convert.ToInt32(ArgumentsList[4]), Convert.ToDateTime(ArgumentsList[5]), Convert.ToDateTime(ArgumentsList[6]));
+                                    Forms.Migrate.cFMMI100010 frm = new Forms.Migrate.cFMMI100010();
                                     Application.Run(frm);
                                     frm.Dispose();
                                 }
@@ -108,11 +108,11 @@ namespace RegistryTime.ArgumentSystem
             }
         }
 
-        public void ProcessMigrate(int dividendo)
-        {
-            CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
-            CheckInoursBLL.Migrate2(dividendo);
-        }
+        //public void ProcessMigrate(int dividendo)
+        //{
+        //    CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
+        //    CheckInoursBLL.Migrate2(dividendo);
+        //}
 
         public void ProcessMigrate(DateTime Inicio , DateTime Fin,int dividendo)
         {
@@ -120,7 +120,7 @@ namespace RegistryTime.ArgumentSystem
             {
                 CheckInHoursBLL CheckInoursBLL = new CheckInHoursBLL();
                 //CheckInoursBLL.Migrate(Inicio, Fin, dividendo);
-                CheckInoursBLL.Migrate2(dividendo);
+                CheckInoursBLL.Migrate2(Inicio.ToString(), Fin.ToString());
             }
             catch (Exception ex)
             {
