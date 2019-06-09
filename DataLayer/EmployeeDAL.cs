@@ -18,7 +18,7 @@ namespace DataLayer
 
 
 
-        public DataTable All()
+        public DataTable All(String tipo = "All" )
         {
             try
             {
@@ -27,7 +27,14 @@ namespace DataLayer
                     ConnectionString = ConnectionString
                 };
                 Conexion.Open();
-                String Query = String.Format("select {0}.id, {0}.rfc, {0}.curp, {0}.name, {0}.lastname,{0}.email, {1}.userName from {0} join {1} on {1}.id = {0}.idUser WHERE {0}._registry = 1", TableName, "users");
+                String Query = String.Empty;
+                if (tipo == "All"){
+                    Query = String.Format("select * from {0} join {1} on {1}.id = {0}.idUser WHERE {0}._registry = 1", TableName, "users");
+                }
+                else{
+                    Query = String.Format("select {0}.id AS ID, {0}.rfc AS RFC, {0}.curp AS CURP, {0}.name AS NOMBRE, {0}.lastname AS APELLIDOS,{0}.email AS CORREO, {1}.userName AS USUARIO from {0} join {1} on {1}.id = {0}.idUser WHERE {0}._registry = 1", TableName, "users");
+                }
+                
                 SqlDataAdapter cmd = new SqlDataAdapter(Query, Conexion);
                 DataTable dtDepartamentos = new DataTable();
                 cmd.Fill(dtDepartamentos);

@@ -23,11 +23,11 @@ namespace BussinesLayer
             EmployeeDAL.ConnectionString = conexion.ConnectionStrings();
         }
 
-        public DataTable All()
+        public DataTable All(string Tipo)
         {
             try
             {
-                return EmployeeDAL.All();
+                return EmployeeDAL.All( Tipo);
 
             }
             catch (Exception ex)

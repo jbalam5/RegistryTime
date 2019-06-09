@@ -181,7 +181,7 @@ namespace RegistryTime.Forms.Reports
             {
                 EmployeeBLL EmployeeBLL = new EmployeeBLL();
                 DataTable Empleados;
-                Empleados = EmployeeBLL.All();
+                Empleados = EmployeeBLL.All("All");
                 comboBoxEmpleado.DisplayMember = "Text";
                 comboBoxEmpleado.ValueMember = "Value";
 
