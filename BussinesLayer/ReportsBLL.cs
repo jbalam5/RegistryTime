@@ -165,6 +165,7 @@ namespace BussinesLayer
                     ExtraSalida = TimeSpan.Parse("00:00:00");
                     RetardoEntrada = TimeSpan.Parse("00:00:00");
                     SalidaAntes = TimeSpan.Parse("00:00:00");
+                    //horasxDias = TimeSpan.Parse("00:00:00");
 
                     EmployeeML SalaryEmployeeML = EmployeeBLL.GetColumnsEmployee(Int32.Parse(Horas["CVE"].ToString()));
                     

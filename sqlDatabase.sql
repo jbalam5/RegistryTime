@@ -109,7 +109,7 @@ numberSure nvarchar(25) null,
 admissionDate date null,
 idJob int not null,
 salary decimal(10,2) null,
-HoursDay decimal(10, 2) null,
+HoursDay Time,
 HoursOfDay decimal(10, 2) null,
 idUser int not null,
 CONSTRAINT FK_employee_idUser FOREIGN KEY (idUser)     

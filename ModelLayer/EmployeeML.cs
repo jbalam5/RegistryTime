@@ -62,7 +62,7 @@ namespace ModelLayer
         public DateTime AdmissionDate { get; set; }
         public int IdJob { get; set; }
         public decimal Salary { get; set; }
-        public decimal HoursDay { get; set; }
+        public DateTime HoursDay { get; set; }
         public int IdUser { get; set; }
         
     }
