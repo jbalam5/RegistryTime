@@ -125,6 +125,8 @@ namespace DataLayer
                     Conexion.Open();
                     SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                     cmd2.ExecuteNonQuery();
+                    Conexion.Close();
+
                     return hoursAssistanceML.Id;
 
                 }

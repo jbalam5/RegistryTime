@@ -77,6 +77,8 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();
+                Conexion.Close();
+
                 return id;
             }
             catch (Exception ex)
@@ -107,9 +109,9 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();
+                Conexion.Close();
+
                 return id;
-
-
             }
             catch (Exception ex)
             {
@@ -137,6 +139,8 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 id = cmd2.ExecuteNonQuery();
+                Conexion.Close();
+
                 return id;
             }
             catch (Exception ex)

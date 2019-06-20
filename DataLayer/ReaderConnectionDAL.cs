@@ -224,6 +224,8 @@ namespace DataLayer
                     Conexion.Open();
                     SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                     cmd2.ExecuteNonQuery();
+                    Conexion.Close();
+
                     return readerConnectionML.id;
                 }
 
@@ -255,6 +257,8 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Query.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
+
                 return id;
             }
             catch (Exception ex)

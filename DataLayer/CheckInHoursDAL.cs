@@ -126,6 +126,7 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
                 return CheckInHours.Id;
             }
             catch (Exception ex)
@@ -147,6 +148,7 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
             }
             catch (Exception ex)
             {
@@ -262,7 +264,7 @@ namespace DataLayer
                 {
                     Conexion.Open();
                     int newID = (Int32)cmd2.ExecuteScalar();
-                    
+                    Conexion.Close();
                     if (newID == 0)
                         return false;
                     else

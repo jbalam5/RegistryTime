@@ -161,6 +161,8 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
+
                 return Departament.Id;
             }
             catch (Exception ex)
@@ -182,6 +184,7 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
             }
             catch (Exception ex)
             {

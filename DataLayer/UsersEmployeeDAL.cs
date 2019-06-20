@@ -97,6 +97,7 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
+                Conexion.Close();
 
                 return usersEmployee.Id;
 
@@ -120,7 +121,7 @@ namespace DataLayer
                 Conexion.Open();
                 SqlCommand cmd2 = new SqlCommand(Response.ToString(), Conexion);
                 cmd2.ExecuteNonQuery();
-
+                Conexion.Close();
             }
             catch (Exception ex)
             {
